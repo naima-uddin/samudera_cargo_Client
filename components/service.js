@@ -2,7 +2,6 @@ import React from 'react'
 import { HiChevronRight } from 'react-icons/hi'
 import Service from "@/components/home/service"
 import Shipping from "@/components/home/shipping"
-import PromotionPricing from './home/PromotionPricing'
 function service() {
   return (
     <div>
@@ -42,7 +41,6 @@ function service() {
             </div>
             <Service/>
             <Shipping/>
-            <PromotionPricing/>
     </div>
   )
 }
