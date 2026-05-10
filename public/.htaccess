@@ -1,0 +1,34 @@
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirect legacy split sitemap to the single sitemap file
+    RewriteRule ^sitemap-0\.xml$ /sitemap.xml [R=301,L]
+
+    # Never rewrite real files or directories (keeps sitemap.xml and robots.txt reachable)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Never rewrite Next.js runtime/static assets
+    RewriteRule ^_next/ - [L]
+
+    # Never rewrite extension-like requests (.js/.css/.txt/.json/etc.)
+    RewriteCond %{REQUEST_URI} \.[A-Za-z0-9]{1,8}$ [NC]
+    RewriteRule ^ - [L]
+
+    # Route clean URLs to exported index.html files
+    RewriteRule ^(.+?)/?$ $1/index.html [L]
+
+    # Root fallback
+    RewriteRule ^$ index.html [L]
+</IfModule>
+
+<IfModule mod_mime.c>
+    AddType application/xml .xml
+    AddType text/plain .txt
+</IfModule>
+
+ErrorDocument 404 /404.html

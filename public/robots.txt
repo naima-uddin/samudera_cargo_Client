@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /auth/
+Disallow: /profile
+Disallow: /invoice
+Disallow: /my-shipping
+Disallow: /manual-shipping
+Disallow: /Bookings/
+Disallow: /api/
+Disallow: /_next/
+Sitemap: https://client.cargologisticscompany.com/sitemap.xml
