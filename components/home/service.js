@@ -155,7 +155,7 @@ const ServicesSection = () => {
 
   return (
     <section className="bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-12">
         {/* Header */}
         <div className="text-center mb-12">
           <p className="text-red-600 font-semibold text-sm mb-2">Safe & Reliable Cargo Solutions!</p>
@@ -179,39 +179,24 @@ const ServicesSection = () => {
             ))}
           </div>
 
-          {/* Grid Slider Navigation */}
-          <div className="flex justify-center gap-4 mt-8">
-            <button
-              onClick={handleGridPrev}
-              className="bg-slate-900 text-white p-3 rounded-full hover:bg-slate-800 transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
+          {/* Navigation Arrows - Left and Right */}
+          <button
+            onClick={handleGridPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-12 bg-slate-900 text-white p-3 rounded-full hover:bg-slate-800 transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
 
-            {/* Grid Slider Dots */}
-            <div className="flex gap-2 items-center">
-              {Array.from({ length: totalPages }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setGridPage(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === gridPage ? 'bg-primary' : 'bg-slate-300'
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={handleGridNext}
-              className="bg-slate-900 text-white p-3 rounded-full hover:bg-slate-800 transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+          <button
+            onClick={handleGridNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-12 bg-slate-900 text-white p-3 rounded-full hover:bg-slate-800 transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>

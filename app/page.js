@@ -13,7 +13,6 @@ import Blog from '@/components/home/blog';
 import Quote from '@/components/home/quote';
 import Partners from '@/components/home/partners';
 import React from "react";
-import PromotionPricing from '@/components/home/PromotionPricing';
 
 // 🔹 SEO metadata for Home Page
 export const metadata = {
@@ -68,13 +67,12 @@ export default function Page() {
   return (
     <>
       <Banner />
-      <Service />
       <History />
+      <Service />
       <About />
       <State />
       <LogisticTimeline />
       <Ecommerce />
-      <PromotionPricing/>
       <Shipping />
       <Partners />
       {/* <Facts /> */}
