@@ -26,12 +26,12 @@ const Banner = () => {
                 Faster
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-600 max-w-md mt-4 sm:mt-6">
+              <p className="text-sm sm:text-xl text-slate-600 max-w-md  pt-serif-regular">
                 Reliable cargo and freight operations with end-to-end support,
                 helping your shipments move safely and on schedule.
               </p>
 
-              <div className="flex flex-wrap items-center gap-3 mt-6 sm:mt-8">
+              <div className="flex flex-wrap items-center gap-3 mt-3 sm:mt-4">
                 <Link
                   href="/Bookings"
                   className="inline-flex items-center justify-center rounded-full bg-third text-white px-5 sm:px-6 py-2.5 text-sm font-medium hover:bg-fourth transition-colors"
@@ -69,7 +69,7 @@ const Banner = () => {
               {stats.map((item) => (
                 <div key={item.label} className="px-4 sm:px-6 py-4 sm:py-2 text-center">
                   <div className="text-3xl sm:text-2xl lg:text-4xl font-black leading-none pt-serif-bold">{item.value}</div>
-                  <div className="text-xs sm:text-sm mt-2 sm:mt-1 text-white/95">{item.label}</div>
+                  <div className="text-xs sm:text-sm mt-2 sm:mt-1 text-white/95 pt-serif-regular">{item.label}</div>
                 </div>
               ))}
             </div>
