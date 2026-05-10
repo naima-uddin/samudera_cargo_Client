@@ -69,8 +69,8 @@ export default function Page() {
       <History />
       <Service />
       <State />
-      <LogisticTimeline />
-      <Ecommerce />
+      {/* <LogisticTimeline /> */}
+      {/* <Ecommerce /> */}
       <Shipping />
       <Partners />
       {/* <Facts /> */}
