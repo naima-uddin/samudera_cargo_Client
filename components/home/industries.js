@@ -1,341 +1,146 @@
-// components/IndustriesSection.jsx
-'use client';
-import React, { useState, useEffect, useMemo } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
+"use client";
+import React, { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import {
   Car, ShoppingBag, Factory, HeartPulse, Cpu, Package,
   Zap, Rocket, Coffee, Fuel, FlaskConical, Building2,
   Users, Globe, TrendingUp
-} from 'lucide-react';
+} from "lucide-react";
 
-const IndustriesSection = () => {
-  const [activeIndustry, setActiveIndustry] = useState('Automotive');
-  const [hoveredIndustry, setHoveredIndustry] = useState(null);
-  const [imageErrors, setImageErrors] = useState({});
-  const [isVisible, setIsVisible] = useState(false);
+const industries = [
+  { id: 1, name: "Automotive", icon: Car, image: "/images/automotive.jpg", description: "EV components, autonomous systems and smart manufacturing.", stats: { projects: "150+", clients: "45+", growth: "28%" } },
+  { id: 2, name: "Retail", icon: ShoppingBag, image: "/images/retail.jpg", description: "Omnichannel platforms and inventory intelligence.", stats: { projects: "200+", clients: "80+", growth: "35%" } },
+  { id: 3, name: "Manufacturing", icon: Factory, image: "/images/manufacturing.jpg", description: "Industry 4.0, predictive maintenance and optimization.", stats: { projects: "180+", clients: "60+", growth: "42%" } },
+  { id: 4, name: "Healthcare", icon: HeartPulse, image: "/images/healthcare.jpg", description: "Telemedicine, EHR and imaging AI solutions.", stats: { projects: "120+", clients: "35+", growth: "52%" } },
+  { id: 5, name: "Technology", icon: Cpu, image: "/images/technology.jpg", description: "Cloud platforms, IoT and enterprise software.", stats: { projects: "250+", clients: "95+", growth: "45%" } },
+  { id: 6, name: "Consumer Goods", icon: Package, image: "/images/goods.jpg", description: "Supply chain visibility and D2C platforms.", stats: { projects: "140+", clients: "55+", growth: "31%" } },
+  { id: 7, name: "Energy", icon: Zap, image: "/images/energy.jpg", description: "Smart grid and renewable optimization.", stats: { projects: "90+", clients: "25+", growth: "38%" } },
+  { id: 8, name: "Aerospace", icon: Rocket, image: "/images/aerospace.jpg", description: "Flight systems, maintenance and simulation.", stats: { projects: "75+", clients: "20+", growth: "33%" } },
+  { id: 9, name: "Food & Beverage", icon: Coffee, image: "/images/foods.jpg", description: "Traceability and quality-control systems.", stats: { projects: "110+", clients: "40+", growth: "29%" } },
+  { id: 10, name: "Oil & Gas", icon: Fuel, image: "/images/oil gas.jpg", description: "Exploration analytics and pipeline monitoring.", stats: { projects: "85+", clients: "22+", growth: "24%" } },
+  { id: 11, name: "Chemicals", icon: FlaskConical, image: "/images/chemical.jpg", description: "Process optimization and safety compliance.", stats: { projects: "95+", clients: "30+", growth: "27%" } },
+  { id: 12, name: "Building", icon: Building2, image: "/images/building.jpg", description: "Smart building automation and construction tech.", stats: { projects: "130+", clients: "48+", growth: "36%" } },
+];
 
-  // Intersection Observer for lazy loading
+export default function IndustriesSection() {
+  const [active, setActive] = useState(industries[0].name);
+  const [visible, setVisible] = useState(false);
+
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const section = document.getElementById('industries-section');
-    if (section) {
-      observer.observe(section);
-    }
-
-    return () => observer.disconnect();
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0]?.isIntersecting) setVisible(true);
+    }, { threshold: 0.15 });
+    const el = document.getElementById("industries-section");
+    if (el) obs.observe(el);
+    return () => obs.disconnect();
   }, []);
 
-  const industries = [
-    { 
-      id: 1, 
-      name: 'Automotive', 
-      icon: Car, 
-      image: '/images/automotive.jpg',
-      description: 'EV components, autonomous systems, and smart manufacturing solutions',
-      stats: { projects: '150+', clients: '45+', growth: '28%' }
-    },
-    { 
-      id: 2, 
-      name: 'Retail', 
-      icon: ShoppingBag, 
-      image: '/images/retail.jpg',
-      description: 'Omnichannel platforms, inventory management, and customer analytics',
-      stats: { projects: '200+', clients: '80+', growth: '35%' }
-    },
-    { 
-      id: 3, 
-      name: 'Manufacturing', 
-      icon: Factory, 
-      image: '/images/manufacturing.jpg',
-      description: 'Industry 4.0, predictive maintenance, and supply chain optimization',
-      stats: { projects: '180+', clients: '60+', growth: '42%' }
-    },
-    { 
-      id: 4, 
-      name: 'Healthcare', 
-      icon: HeartPulse, 
-      image: '/images/healthcare.jpg',
-      description: 'Telemedicine platforms, EHR systems, and medical imaging AI',
-      stats: { projects: '120+', clients: '35+', growth: '52%' }
-    },
-    { 
-      id: 5, 
-      name: 'Technology', 
-      icon: Cpu, 
-      image: '/images/technology.jpg',
-      description: 'Cloud solutions, IoT platforms, and enterprise software',
-      stats: { projects: '250+', clients: '95+', growth: '45%' }
-    },
-    { 
-      id: 6, 
-      name: 'Consumer Goods', 
-      icon: Package, 
-      image: '/images/goods.jpg',
-      description: 'Supply chain visibility and direct-to-consumer platforms',
-      stats: { projects: '140+', clients: '55+', growth: '31%' }
-    },
-    { 
-      id: 7, 
-      name: 'Energy', 
-      icon: Zap, 
-      image: '/images/energy.jpg',
-      description: 'Smart grid management and renewable energy optimization',
-      stats: { projects: '90+', clients: '25+', growth: '38%' }
-    },
-    { 
-      id: 8, 
-      name: 'Aerospace', 
-      icon: Rocket, 
-      image: '/images/aerospace.jpg',
-      description: 'Flight systems, maintenance tracking, and simulation software',
-      stats: { projects: '75+', clients: '20+', growth: '33%' }
-    },
-    { 
-      id: 9, 
-      name: 'Food & Beverage', 
-      icon: Coffee, 
-      image: '/images/foods.jpg',
-      description: 'Quality control systems and supply chain traceability',
-      stats: { projects: '110+', clients: '40+', growth: '29%' }
-    },
-    { 
-      id: 10, 
-      name: 'Oil & Gas', 
-      icon: Fuel, 
-      image: '/images/oil gas.jpg',
-      description: 'Exploration analytics and pipeline monitoring solutions',
-      stats: { projects: '85+', clients: '22+', growth: '24%' }
-    },
-    { 
-      id: 11, 
-      name: 'Chemicals', 
-      icon: FlaskConical, 
-      image: '/images/chemical.jpg',
-      description: 'Process optimization and safety compliance systems',
-      stats: { projects: '95+', clients: '30+', growth: '27%' }
-    },
-    { 
-      id: 12, 
-      name: 'Building', 
-      icon: Building2, 
-      image: '/images/building.jpg',
-      description: 'Smart building automation and construction management',
-      stats: { projects: '130+', clients: '48+', growth: '36%' }
-    },
-  ];
-
-  // Memoized active data for performance
-  const activeData = useMemo(() => 
-    industries.find(ind => ind.name === activeIndustry) || industries[0],
-    [activeIndustry]
-  );
-
-  const displayData = useMemo(() => 
-    hoveredIndustry ? 
-      industries.find(ind => ind.name === hoveredIndustry) || activeData : 
-      activeData,
-    [hoveredIndustry, activeData]
-  );
-  
-  const handleImageError = (industryName) => {
-    setImageErrors(prev => ({ ...prev, [industryName]: true }));
-  };
+  const activeData = useMemo(() => industries.find(i => i.name === active) || industries[0], [active]);
 
   return (
-    <section id="industries-section" className="py-4 bg-white">
+    <section id="industries-section" className="py-8 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            <span className="text-[#122652]">Industries We</span>
-            <span className="text-[#FD5621]"> Serve</span>
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Delivering innovative solutions across 12+ industries worldwide
-          </p>
-        </div>
+        <div className="flex flex-col lg:flex-row gap-6 items-start">
+          {/* Left: vertical nav */}
+          <div className="w-full lg:w-1/3">
+            <div className="mb-6">
+              <h3 className="text-sm uppercase tracking-wider text-[#0E2047]">Our Expertise</h3>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#122652]">Industries We Serve</h2>
+              <p className="text-sm text-gray-600 mt-2">Select an industry to view dedicated solutions, case highlights and quick stats.</p>
+            </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 items-center">
-          {/* Left Side - Industries Grid */}
-          <div className="lg:w-2/3">
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
-              {industries.map((industry) => {
-                const Icon = industry.icon;
-                const isActive = activeIndustry === industry.name;
-                const isHovered = hoveredIndustry === industry.name;
-                
+            <div className="space-y-3 max-h-[520px] overflow-auto pr-2">
+              {industries.map((it) => {
+                const Icon = it.icon;
+                const isActive = it.name === active;
                 return (
-                  <motion.button
-                    key={industry.id}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => setActiveIndustry(industry.name)}
-                    onHoverStart={() => setHoveredIndustry(industry.name)}
-                    onHoverEnd={() => setHoveredIndustry(null)}
-                    className={`
-                      relative p-3 rounded-xl transition-all duration-300 group
-                      ${isActive || isHovered
-                        ? 'bg-[#FD5621] text-white shadow-lg' 
-                        : 'bg-gray-50 text-[#122652] hover:bg-[#FD5621]/10 border border-gray-100'
-                      }
-                    `}
+                  <button
+                    key={it.id}
+                    onClick={() => setActive(it.name)}
+                    className={`w-full text-left flex items-center gap-4 p-3 rounded-xl transition-all duration-200 ${isActive ? 'bg-gradient-to-r from-[#d10000] to-[#1D2D52] text-white shadow-lg' : 'bg-gray-50 hover:bg-white hover:shadow-sm'}`}
                   >
-                    <Icon className="w-5 h-5 mx-auto mb-1" />
-                    <span className="text-xs font-medium block truncate">
-                      {industry.name}
-                    </span>
-                    
-                    {/* Hover Tooltip */}
-                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-[#122652] text-white text-xs rounded-lg py-1 px-3 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10 hidden sm:block">
-                      {industry.description.substring(0, 30)}...
-                      <div className="absolute bottom-[-4px] left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#122652] rotate-45"></div>
+                    <div className={`p-2 rounded-md ${isActive ? 'bg-white/20' : 'bg-white'}`}>
+                      <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-[#1D2D52]'}`} />
                     </div>
-                  </motion.button>
+                    <div className="flex-1">
+                      <div className={`font-semibold ${isActive ? 'text-white' : 'text-[#0E2047]'}`}>{it.name}</div>
+                      <div className={`text-xs ${isActive ? 'text-white/90' : 'text-gray-500'}`}>{it.stats.projects}</div>
+                    </div>
+                    <div className={`text-xs font-mono ${isActive ? 'text-white/90' : 'text-gray-400'}`}>{it.stats.projects}</div>
+                  </button>
                 );
               })}
             </div>
-            
-            {/* Selected Industry Description - Mobile View */}
-            <div className="mt-4 lg:hidden">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndustry}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="bg-gradient-to-r from-[#FD5621]/10 to-[#122652]/10 p-4 rounded-xl"
-                >
-                  <h3 className="font-semibold text-[#122652] mb-2">{activeData.name}</h3>
-                  <p className="text-sm text-gray-600">{activeData.description}</p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
           </div>
 
-          {/* Right Side - Direct Image Display without any overlay */}
-          <div className="w-full lg:w-1/3">
+          {/* Right: detail card */}
+          <div className="w-full lg:w-2/3">
             <AnimatePresence mode="wait">
-              <motion.div
-                key={displayData.name}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="relative w-full h-52 sm:h-56 rounded-xl overflow-hidden shadow-lg group cursor-pointer"
-                onHoverStart={() => setHoveredIndustry(displayData.name)}
-                onHoverEnd={() => setHoveredIndustry(null)}
-              >
-                {!imageErrors[displayData.name] && isVisible && (
-                  <Image
-                    src={displayData.image}
-                    alt={displayData.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    onError={() => handleImageError(displayData.name)}
-                    priority={displayData.name === 'Automotive' || displayData.name === 'Retail'}
-                    loading={displayData.name === 'Automotive' || displayData.name === 'Retail' ? 'eager' : 'lazy'}
-                    quality={75}
-                  />
-                )}
-                
-                {/* Fallback (if image fails to load) */}
-                {imageErrors[displayData.name] && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#FD5621] to-[#122652]">
-                    <displayData.icon className="absolute inset-0 w-24 h-24 text-white/10 mx-auto my-auto" />
-                  </div>
-                )}
-                
-                {/* Content Overlay - Only gradient and text, no loading overlay */}
-                <div className="absolute inset-0">
-                  {/* Bottom Gradient */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                    <h3 className="text-white font-semibold text-lg">{displayData.name}</h3>
-                    <p className="text-white/70 text-xs line-clamp-1">{displayData.description}</p>
+              {visible && (
+                <motion.div
+                  key={activeData.name}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.28 }}
+                  className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100 bg-white"
+                >
+                  <div className="relative h-72 sm:h-80 lg:h-96">
+                    <Image
+                      src={activeData.image}
+                      alt={activeData.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 65vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute left-6 bottom-6 text-white z-10">
+                      <h3 className="text-2xl font-bold">{activeData.name}</h3>
+                      <p className="text-sm max-w-xl mt-1 text-white/90">{activeData.description}</p>
+                      <div className="mt-4 flex gap-3">
+                        {(() => {
+                          const slug = activeData.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+                          return (
+                            <>
+                              <Link href={`/industries/${slug}`} className="px-4 py-2 rounded-md bg-white text-[#0E2047] font-semibold shadow-sm">Explore Solutions</Link>
+                              <Link href={`/case-studies/${slug}`} className="px-4 py-2 rounded-md bg-white/10 border border-white text-white">Case Studies</Link>
+                            </>
+                          );
+                        })()}
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Hover Details */}
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute inset-0 bg-gradient-to-br from-[#FD5621]/95 to-[#122652]/95 p-5 flex flex-col justify-center items-start opacity-0 group-hover:opacity-100 transition-all duration-300"
-                  >
-                    <h4 className="text-white font-bold text-xl mb-2">{displayData.name}</h4>
-                    <p className="text-white/90 text-sm mb-4">{displayData.description}</p>
-                    
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-3 gap-2 w-full mb-4">
+                  <div className="p-5 bg-white">
+                    <div className="grid grid-cols-3 gap-4">
                       <div className="text-center">
-                        <div className="text-white font-bold text-sm">{displayData.stats.projects}</div>
-                        <div className="text-white/70 text-[10px]">Projects</div>
+                        <div className="text-sm text-gray-400">Clients</div>
+                        <div className="text-lg font-bold text-[#122652]">{activeData.stats.clients}</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-white font-bold text-sm">{displayData.stats.clients}</div>
-                        <div className="text-white/70 text-[10px]">Clients</div>
+                        <div className="text-sm text-gray-400">Projects</div>
+                        <div className="text-lg font-bold text-[#122652]">{activeData.stats.projects}</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-white font-bold text-sm">{displayData.stats.growth}</div>
-                        <div className="text-white/70 text-[10px]">Growth</div>
+                        <div className="text-sm text-gray-400">Growth</div>
+                        <div className="text-lg font-bold text-[#122652]">{activeData.stats.growth}</div>
                       </div>
                     </div>
 
-                    {/* Key Solutions */}
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full">AI Solutions</span>
-                      <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full">Analytics</span>
-                      <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full">Cloud</span>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <span className="px-3 py-1 bg-[#f1f5fb] text-[#0E2047] rounded-full text-sm">AI Solutions</span>
+                      <span className="px-3 py-1 bg-[#f1f5fb] text-[#0E2047] rounded-full text-sm">Analytics</span>
+                      <span className="px-3 py-1 bg-[#f1f5fb] text-[#0E2047] rounded-full text-sm">Cloud</span>
                     </div>
-                  </motion.div>
-                </div>
-              </motion.div>
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
-
-            {/* Quick Stats */}
-            <motion.div 
-              key={displayData.name + "-stats"}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="mt-3 grid grid-cols-3 gap-2"
-            >
-              <div className="bg-gray-50 rounded-lg p-2 text-center">
-                <div className="flex items-center justify-center gap-1 text-[#FD5621] mb-1">
-                  <Users className="w-3 h-3" />
-                  <span className="text-xs font-medium text-[#122652]">Clients</span>
-                </div>
-                <span className="text-sm font-bold text-[#122652]">{displayData.stats.clients}</span>
-              </div>
-              <div className="bg-gray-50 rounded-lg p-2 text-center">
-                <div className="flex items-center justify-center gap-1 text-[#FD5621] mb-1">
-                  <Globe className="w-3 h-3" />
-                  <span className="text-xs font-medium text-[#122652]">Countries</span>
-                </div>
-                <span className="text-sm font-bold text-[#122652]">15+</span>
-              </div>
-              <div className="bg-gray-50 rounded-lg p-2 text-center">
-                <div className="flex items-center justify-center gap-1 text-[#FD5621] mb-1">
-                  <TrendingUp className="w-3 h-3" />
-                  <span className="text-xs font-medium text-[#122652]">Growth</span>
-                </div>
-                <span className="text-sm font-bold text-[#122652]">{displayData.stats.growth}</span>
-              </div>
-            </motion.div>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default IndustriesSection;
+}

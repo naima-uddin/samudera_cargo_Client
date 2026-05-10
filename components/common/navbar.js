@@ -131,26 +131,8 @@ const Navbar = () => {
 
   const navItems = [
     { label: 'Home', href: '/', icon: <Home className="w-4 h-4" /> },
-    {
-      label: 'About',
-      href: '#',
-      icon: <User className="w-4 h-4" />,
-      dropdown: [
-        { label: 'Our Company', href: '/about/company' },
-        { label: 'History', href: '/about/history' },
-        { label: 'Projects', href: '/about/project' }, 
-        { label: 'Pricing Table', href: '/about/price' }, 
-      ]
-    },
-    {
-      label: 'Industries',
-      href: '#',
-      icon: <FileText className="w-4 h-4" />,
-      dropdown: [
-        { label: 'Industries', href: '/industries' },
-        { label: 'Industries Details', href: '/industries_deatils' }, 
-      ]
-    },
+    { label: 'About', href: '/about', icon: <User className="w-4 h-4" /> },
+    { label: 'Industries', href: '/industries', icon: <FileText className="w-4 h-4" /> },
     { label: 'Services', href: '/service', icon: <Settings className="w-4 h-4" /> },
     { label: 'Contact', href: '/contact', icon: <Mail className="w-4 h-4" /> }
   ];
@@ -214,63 +196,14 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
               {navItems.map((item) => (
-                <div
-                  key={item.label}
-                  className="relative"
-                  onMouseEnter={() => item.dropdown && handleMouseEnter(item.label)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {item.dropdown ? (
-                    <button
-                      className={`flex items-center space-x-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                        scrolled ? 'text-gray-700 hover:text-primary' : 'text-gray-700 hover:text-third'
-                      }`}
-                    >
-                      <span className="opacity-70">{item.icon}</span>
-                      <span>{item.label}</span>
-                      <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
-                    </button>
-                  ) : (
-                    <Link href={item.href}>
-                      <div className={`flex items-center space-x-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                        scrolled ? 'text-gray-700 hover:text-primary' : 'text-gray-700 hover:text-third'
-                      }`}>
-                        <span className="opacity-70">{item.icon}</span>
-                        <span>{item.label}</span>
-                      </div>
-                    </Link>
-                  )}
-
-                  {/* Dropdown Menu */}
-                  {item.dropdown && activeDropdown === item.label && (
-                    <div 
-                      className="absolute left-0 top-full pt-2 z-50"
-                      onMouseEnter={() => handleMouseEnter(item.label)}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      <div className="bg-white rounded-lg shadow-lg border border-gray-100 min-w-[200px] overflow-hidden">
-                        <div className="py-1">
-                          {item.dropdown.map((subItem) => (
-                            <Link 
-                              key={subItem.label} 
-                              href={subItem.href} 
-                              onClick={() => setIsMenuOpen(false)}
-                            >
-                              <div className="flex items-center gap-2 px-4 py-2 hover:bg-primary/5 transition-colors duration-150 cursor-pointer">
-                                <div className="w-5 h-5 rounded-md bg-primary/10 flex items-center justify-center">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                                </div>
-                                <span className="text-sm text-gray-700 hover:text-primary">
-                                  {subItem.label}
-                                </span>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                <Link key={item.label} href={item.href}>
+                  <div className={`flex items-center space-x-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                    scrolled ? 'text-gray-700 hover:text-primary' : 'text-gray-700 hover:text-third'
+                  }`}>
+                    <span className="opacity-70">{item.icon}</span>
+                    <span>{item.label}</span>
+                  </div>
+                </Link>
               ))}
             </div>
 
@@ -413,48 +346,12 @@ const Navbar = () => {
 
                     {navItems.map((item) => (
                       <div key={item.label}>
-                        {item.dropdown ? (
-                          <>
-                            <button
-                              onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
-                              className="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-primary/5 transition-colors"
-                            >
-                              <div className="flex items-center space-x-3">
-                                <span className="text-gray-600">{item.icon}</span>
-                                <span className="font-medium text-gray-800">{item.label}</span>
-                              </div>
-                              <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
-                            </button>
-
-                            <AnimatePresence>
-                              {activeDropdown === item.label && (
-                                <motion.div
-                                  initial={{ opacity: 0, height: 0 }}
-                                  animate={{ opacity: 1, height: 'auto' }}
-                                  exit={{ opacity: 0, height: 0 }}
-                                  className="ml-8 mt-1 mb-2"
-                                >
-                                  <div className="bg-gray-50 rounded-lg border border-gray-100">
-                                    {item.dropdown.map((subItem) => (
-                                      <Link key={subItem.label} href={subItem.href} onClick={() => setIsMenuOpen(false)}>
-                                        <div className="px-4 py-2 text-sm text-gray-600 hover:text-primary hover:bg-white rounded-lg transition-colors">
-                                          {subItem.label}
-                                        </div>
-                                      </Link>
-                                    ))}
-                                  </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </>
-                        ) : (
-                          <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
-                            <div className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/5 transition-colors">
-                              <span className="text-gray-600">{item.icon}</span>
-                              <span className="font-medium text-gray-800">{item.label}</span>
-                            </div>
-                          </Link>
-                        )}
+                        <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
+                          <div className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/5 transition-colors">
+                            <span className="text-gray-600">{item.icon}</span>
+                            <span className="font-medium text-gray-800">{item.label}</span>
+                          </div>
+                        </Link>
                       </div>
                     ))}
 

@@ -213,15 +213,10 @@ export default function RequestQuote() {
 
           {/* Header */}
           <div className="mb-8 text-center">
-            <div className="inline-flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full mb-3">
-              <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-              <span className="text-primary uppercase tracking-wider text-[11px] font-semibold">
-                Get Your Quote
-              </span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">
+            
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 mt-2">
               <span className="bg-gradient-to-r from-third via-primary to-fourth bg-clip-text text-transparent">
-                Request Your Estimate
+                Moving Your Cargo Forward, get a quote in seconds!
               </span>
             </h2>
           </div>
@@ -412,7 +407,7 @@ export default function RequestQuote() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="relative group bg-gradient-to-r from-primary to-fourth text-white font-semibold px-10 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-lg min-w-[220px]"
+                className="relative group bg-gradient-to-r from-primary to-red-700 text-white font-semibold px-10 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-lg min-w-[220px]"
               >
                 <span className="flex items-center justify-center gap-3">
                   {isSubmitting ? (

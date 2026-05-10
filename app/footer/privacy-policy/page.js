@@ -120,8 +120,7 @@ export default function Page() {
             description: "Leading logistics and supply chain solutions provider",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "Green Tower, 9th floor, 3656/27-28
-Rama IV Road",
+              streetAddress: "Green Tower, 9th floor, 3656/27-28 Rama IV Road",
               addressLocality: "Columbia",
               addressRegion: "MD",
               postalCode: "21045",

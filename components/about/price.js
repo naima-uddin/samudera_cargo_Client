@@ -1,6 +1,5 @@
 import React from 'react'
 import { HiChevronRight } from 'react-icons/hi'
-import PromotionPricing from '../home/PromotionPricing'
 function price() {
   return (
     <div>
@@ -39,7 +38,7 @@ function price() {
                 </nav>
               </div>
             </div>
-            <PromotionPricing/>
+           
     </div>
   )
 }

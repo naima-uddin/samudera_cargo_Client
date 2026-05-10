@@ -73,8 +73,8 @@ export default function Page() {
       {/* <Ecommerce /> */}
       <Shipping />
       <Partners />
-      {/* <Facts /> */}
-      <Industries />
+      <Facts />
+      {/* <Industries /> */}
       {/* <Blog /> */}
       <Quote />
       <Warehouse />

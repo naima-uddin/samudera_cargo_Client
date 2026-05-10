@@ -177,9 +177,7 @@ const PrivacyPolicy = () => {
     },
     { 
       icon: <HiLocationMarker className="w-5 h-5" />, 
-      text: "Green Tower, 9th floor, 3656/27-28
-Rama IV Road, Klongton-Klong Toey
-Bangkok 10110, Thailand", 
+      text: "Green Tower, 9th floor, 3656/27-28 Rama IV Road, Klongton-Klong Toey Bangkok 10110, Thailand", 
       href: "https://maps.google.com/?q=8825+Stanford+Blvd+Suite+306+Columbia+MD+21045",
       label: "View Headquarters"
     }
