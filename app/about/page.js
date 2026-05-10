@@ -3,7 +3,6 @@ import Company from "@/components/about/company";
 import History from "@/components/about/history";
 import Teams from "@/components/about/Teams";
 import ProjectTabs from "@/components/about/project";
-import Price from "@/components/about/price";
 
 export const metadata = {
   title: "About Us | Samudera Traffic Co., Ltd.s Group",
@@ -57,7 +56,6 @@ export default function Page() {
       <History />
       <Teams />
       <ProjectTabs />
-      <Price />
 
       <script
         type="application/ld+json"

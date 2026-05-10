@@ -505,12 +505,12 @@ export default function OurCompany() {
     <div>
       {/* Banner Section */}
       <div 
-        className="min-h-[300px] bg-cover bg-center bg-no-repeat relative mx-6"
+        className="min-h-[340px] bg-cover bg-center bg-no-repeat relative mx-6"
         style={{
-          backgroundImage: "url('/images/aboutBanner.jpg')",
+          backgroundImage: "url('/images/aboutBannerimg.jpeg')",
         }}
       >
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative z-10 p-8">
           <nav className="flex items-center text-sm font-medium text-white" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-2">

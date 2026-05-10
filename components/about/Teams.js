@@ -94,51 +94,8 @@ const [ref, inView] = useInView({
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Banner Section */}
-      <div
-        className="min-h-[350px] bg-cover bg-center bg-no-repeat relative mx-6 rounded-b-3xl overflow-hidden"
-        style={{
-          backgroundImage: "url('/images/aboutBanner.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
-        <div className="relative z-10 p-8 md:p-12">
-          <nav
-            className="flex items-center text-sm font-medium text-white"
-            aria-label="Breadcrumb"
-          >
-            <ol className="flex items-center space-x-2">
-              <li>
-                <a
-                  href="/"
-                  className="hover:text-primary transition-colors duration-200"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <HiChevronRight
-                  className="h-4 w-4 text-gray-400"
-                  aria-hidden="true"
-                />
-              </li>
-              <li className="text-primary font-semibold" aria-current="page">
-                Teams
-              </li>
-            </ol>
-          </nav>
-          
-          <div className="mt-16 max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Meet Our Expert Team
-            </h1>
-            <p className="text-lg text-gray-200">
-              Our dedicated team of 50+ professionals works tirelessly to ensure your cargo reaches its destination safely and on time.
-            </p>
-          </div>
-        </div>
-      </div>
+    <>
+     
 
       {/* Team Stats Banner */}
       <div className="max-w-7xl mx-auto px-6 mt-10" ref={ref}>
@@ -168,7 +125,7 @@ const [ref, inView] = useInView({
       <div className="text-sm text-gray-600 font-medium">Support</div>
     </div>
   </div>
-</div>
+      </div>
 
       {/* Team Members Section */}
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -310,7 +267,8 @@ const [ref, inView] = useInView({
           </div>
         </div>
       </div> 
-    </div>
+      </>
+
   )
 }
 

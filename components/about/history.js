@@ -74,42 +74,7 @@ const statsData = [
 export default function History() {
   return (
     <div className="bg-white text-slate-900">
-      <section className="relative overflow-hidden bg-white">
-        <div className="absolute inset-0 opacity-15">
-          <Image
-            src="/images/aboutBanner.jpg"
-            alt="Cargo and logistics operations"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-          <span className="inline-flex rounded-full bg-[#FD5621] px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white">
-            Logistics history
-          </span>
-          <h1 className="mt-6 max-w-3xl text-5xl font-bold tracking-tight text-slate-950 sm:text-6xl">
-            Built for cargo, grown for global trade.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-            From the first shipment to a worldwide freight network, our history is defined by reliability, high-performance systems, and a customer-first approach.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[#FD5621] px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#FD5621]/20 transition hover:bg-[#f14f18]"
-            >
-              Talk to our team
-            </Link>
-            <Link
-              href="/service"
-              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/90 px-8 py-3 text-base font-semibold text-slate-950 transition hover:bg-slate-100"
-            >
-              Explore services
-            </Link>
-          </div>
-        </div>
-      </section>
+     
 
       <section className="bg-slate-50 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

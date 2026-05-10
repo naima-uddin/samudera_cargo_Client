@@ -120,14 +120,14 @@ const TestimonialsSection = () => {
   const active = testimonials[activeIndex];
 
   return (
-    <div className="w-full relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-white">
+    <div className="w-full relative overflow-hidden py-6 sm:py-10 lg:py-14 bg-white">
       <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: `radial-gradient(circle at 18% 18%, ${colors.primary}10 0, transparent 28%), radial-gradient(circle at 78% 28%, ${colors.secondary}08 0, transparent 24%), linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,1))` }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[0.95fr_1.35fr] gap-8 lg:gap-10 items-start">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-4 lg:gap-6 items-stretch">
           {/* Left intro panel */}
           <div className="rounded-[28px] border border-slate-200 bg-white p-6 sm:p-8 shadow-[0_20px_70px_rgba(15,23,42,0.06)]">
-            <div className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-slate-600">
+            <div className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-red-600">
               Testimonials
             </div>
             <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-black leading-[0.95] tracking-tight text-[#122652]">
@@ -140,15 +140,15 @@ const TestimonialsSection = () => {
             <div className="mt-8 grid grid-cols-3 gap-3">
               <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4">
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-500">Rating</div>
-                <div className="mt-2 text-2xl font-extrabold text-[#122652]">5.0</div>
+                <div className="mt-2 text-2xl font-extrabold text-[#c51a03]">5.0</div>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4">
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-500">Stories</div>
-                <div className="mt-2 text-2xl font-extrabold text-[#122652]">6</div>
+                <div className="mt-2 text-2xl font-extrabold text-[#cf210a]">6</div>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4">
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-500">Trust</div>
-                <div className="mt-2 text-2xl font-extrabold text-[#122652]">100%</div>
+                <div className="mt-2 text-2xl font-extrabold text-[#cf210a]">100%</div>
               </div>
             </div>
           </div>
@@ -156,7 +156,7 @@ const TestimonialsSection = () => {
           {/* Right testimonial board */}
           <div
             ref={containerRef}
-            className="relative rounded-[32px] border border-slate-200 bg-white p-4 sm:p-6 lg:p-8 shadow-[0_20px_70px_rgba(15,23,42,0.06)]"
+            className="relative rounded-[32px] border border-slate-200 bg-white p-4 shadow-[0_20px_70px_rgba(15,23,42,0.06)]"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
@@ -164,7 +164,7 @@ const TestimonialsSection = () => {
               <div className="h-full rounded-full transition-all duration-300" style={{ width: `${((activeIndex + 1) / testimonials.length) * 100}%`, background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})` }} />
             </div>
 
-            <div className="mt-6 grid gap-6 xl:grid-cols-[190px_1fr_84px] items-stretch">
+            <div className="mt-4 grid gap-4 xl:grid-cols-[190px_1fr] items-stretch">
               {/* Vertical list */}
               <div className="order-2 xl:order-1 flex xl:flex-col gap-3 overflow-auto xl:max-h-[420px] pb-1 xl:pr-1">
                 {testimonials.map((item, index) => {
@@ -189,7 +189,7 @@ const TestimonialsSection = () => {
               </div>
 
               {/* Main testimonial */}
-              <div className="order-1 xl:order-2 relative overflow-hidden rounded-[28px] bg-[#fafafa] border border-slate-200 min-h-[420px]">
+              <div className="order-1 xl:order-2 relative overflow-hidden rounded-[28px] bg-[#fafafa] border border-slate-200">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(209,0,0,0.06),_transparent_26%),radial-gradient(circle_at_bottom_left,_rgba(29,45,82,0.06),_transparent_28%)]" />
                 <div
                   key={activeIndex}
@@ -233,13 +233,7 @@ const TestimonialsSection = () => {
              
             </div>
 
-            <div className="mt-6 flex justify-center gap-2">
-              {testimonials.map((_, index) => (
-                <button key={index} onClick={() => goToTestimonial(index)} className="relative h-2.5 rounded-full transition-all duration-300" style={{ width: index === activeIndex ? '2.5rem' : '0.75rem', backgroundColor: index === activeIndex ? colors.primary : 'rgba(29,45,82,0.15)' }} aria-label={`Go to testimonial ${index + 1}`}>
-                  {index === activeIndex && <span className="absolute inset-0 rounded-full opacity-30 animate-pulse" style={{ backgroundColor: colors.primary }} />}
-                </button>
-              ))}
-            </div>
+          
           </div>
         </div>
       </div>
