@@ -13,8 +13,9 @@ module.exports = {
         secondary: '#f5f8ff',
         third: '#1D2D52',
         fourth: '#0E2047',
-        fifth: '#4b5563',
-        orange: {
+        fifth: '#1C2C4F',
+        sixth: '#4b5563',
+                orange: {
           50: '#fff1f1',
           100: '#ffe0e0',
           200: '#ffbcbc',
