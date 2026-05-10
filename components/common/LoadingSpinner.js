@@ -63,7 +63,7 @@ export default function LoadingSpinner({
     <div className="relative">
       {/* Outer ring with gradient */}
       <div className={`${sizeClasses[size].ring} rounded-full`}>
-        <div className="w-full h-full rounded-full bg-gradient-to-r from-[#E67E22] via-[#F39C12] to-[#E67E22] animate-pulse opacity-20"></div>
+        <div className="w-full h-full rounded-full bg-gradient-to-r from-primary via-third to-fourth animate-pulse opacity-20"></div>
       </div>
       
       {/* Spinning ring */}
@@ -82,9 +82,9 @@ export default function LoadingSpinner({
           />
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#E67E22" />
-              <stop offset="50%" stopColor="#F39C12" />
-              <stop offset="100%" stopColor="#E67E22" />
+              <stop offset="0%" stopColor="#d10000" />
+              <stop offset="50%" stopColor="#1D2D52" />
+              <stop offset="100%" stopColor="#0E2047" />
             </linearGradient>
           </defs>
         </svg>
@@ -92,8 +92,8 @@ export default function LoadingSpinner({
       
       {/* Center pulsing dot */}
       <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}>
-        <div className={`${sizeClasses[size].dot} bg-gradient-to-r from-[#E67E22] to-[#F39C12] rounded-full animate-ping`}></div>
-        <div className={`${sizeClasses[size].dot} bg-[#E67E22] rounded-full absolute top-0 left-0 animate-pulse`}></div>
+        <div className={`${sizeClasses[size].dot} bg-gradient-to-r from-primary to-fourth rounded-full animate-ping`}></div>
+        <div className={`${sizeClasses[size].dot} bg-primary rounded-full absolute top-0 left-0 animate-pulse`}></div>
       </div>
     </div>
   );
@@ -104,20 +104,20 @@ export default function LoadingSpinner({
         <div className="relative">
           {/* Animated background circles */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="absolute w-64 h-64 bg-orange-200 rounded-full opacity-20 animate-ping"></div>
-            <div className="absolute w-48 h-48 bg-orange-300 rounded-full opacity-20 animate-pulse"></div>
-            <div className="absolute w-32 h-32 bg-orange-400 rounded-full opacity-20 animate-bounce"></div>
+            <div className="absolute w-64 h-64 bg-primary/20 rounded-full opacity-20 animate-ping"></div>
+            <div className="absolute w-48 h-48 bg-third/20 rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute w-32 h-32 bg-fourth/20 rounded-full opacity-20 animate-bounce"></div>
           </div>
           
           {/* Main content */}
-          <div className="relative bg-white/90 backdrop-blur-lg rounded-2xl shadow-2xl p-8 min-w-[320px] text-center border border-orange-100">
+          <div className="relative bg-white/90 backdrop-blur-lg rounded-2xl shadow-2xl p-8 min-w-[320px] text-center border border-primary/10">
             {spinner}
             
             {/* Progress bar */}
             {showProgress && (
               <div className="mt-6 w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
                 <div 
-                  className="bg-gradient-to-r from-[#E67E22] to-[#F39C12] h-full rounded-full transition-all duration-300 ease-out"
+                  className="bg-gradient-to-r from-primary to-fourth h-full rounded-full transition-all duration-300 ease-out"
                   style={{ width: `${progress}%` }}
                 ></div>
               </div>
@@ -146,7 +146,7 @@ export default function LoadingSpinner({
             {showTimeout && (
               <button 
                 onClick={() => window.location.reload()}
-                className="mt-6 px-6 py-2 bg-gradient-to-r from-[#E67E22] to-[#F39C12] text-white rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="mt-6 px-6 py-2 bg-gradient-to-r from-primary to-fourth text-white rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,9 +159,9 @@ export default function LoadingSpinner({
             
             {/* Decorative elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-              <div className="absolute top-2 left-2 w-2 h-2 bg-orange-300 rounded-full animate-pulse"></div>
-              <div className="absolute bottom-2 right-2 w-2 h-2 bg-orange-400 rounded-full animate-pulse delay-100"></div>
-              <div className="absolute top-1/2 right-4 w-1 h-1 bg-orange-200 rounded-full animate-pulse delay-200"></div>
+              <div className="absolute top-2 left-2 w-2 h-2 bg-primary/60 rounded-full animate-pulse"></div>
+              <div className="absolute bottom-2 right-2 w-2 h-2 bg-third/60 rounded-full animate-pulse delay-100"></div>
+              <div className="absolute top-1/2 right-4 w-1 h-1 bg-fourth/60 rounded-full animate-pulse delay-200"></div>
             </div>
           </div>
         </div>

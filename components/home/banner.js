@@ -119,8 +119,8 @@ const Banner = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 text-white z-10">
-                        <h2 className="text-xl sm:text-2xl font-bold leading-tight">{slide.title}</h2>
-                        <p className="text-xs sm:text-sm text-white/90 mt-1">{slide.subtitle}</p>
+                        <h2 className="text-xl sm:text-2xl font-bold leading-tight pt-serif-bold">{slide.title}</h2>
+                        <p className="text-xs sm:text-sm text-white/90 mt-1 pt-serif-regular">{slide.subtitle}</p>
                       </div>
                     </div>
                   </SwiperSlide>
@@ -136,7 +136,7 @@ const Banner = () => {
                 <span className="text-sm font-semibold text-primary">Slide {activeSlide + 1}/{slides.length}</span>
               </div>
 
-              <h1 className="text-3xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-3xl font-bold text-gray-900 leading-tight pt-serif-bold">
                 {activeContent.title}
               </h1>
               
@@ -193,7 +193,7 @@ const Banner = () => {
               <div className="relative h-[60px]">
                 <h1 
                   key={activeSlide}
-                  className="text-5xl xl:text-6xl font-bold text-gray-900 leading-tight absolute top-0 left-0 animate-slide-in"
+                  className="text-5xl xl:text-6xl font-bold text-gray-900 leading-tight absolute top-0 left-0 animate-slide-in pt-serif-bold"
                 >
                   {activeContent.title}
                 </h1>
@@ -342,6 +342,7 @@ export default Banner;
 
 // Animation styles
 const styles = `
+
 @keyframes gradient-x {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }

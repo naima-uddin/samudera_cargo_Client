@@ -30,7 +30,7 @@ export const metadata = {
     canonical: "/",
   },
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.s", 
     "freight forwarding",
     "international shipping",
     "air freight",

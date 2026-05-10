@@ -20,21 +20,21 @@ export default function States() {
       title: "Advanced Technology",
       description: "Shrinking from toil and pain these cases are perfectly simple.",
       icon: <CheckCircle className="w-8 h-8" />,
-      color: "from-orange-500/20 to-orange-500/5"
+      color: "from-primary/20 to-primary/5"
     },
     {
       id: 2,
       title: "Experts Support",
       description: "The claims of duty or the obligations business it will frequently.",
       icon: <Headphones className="w-8 h-8" />,
-      color: "from-blue-900/20 to-blue-900/5"
+      color: "from-third/20 to-fourth/5"
     },
     {
       id: 3,
       title: "Cost-Effective",
       description: "Right to find fault with a chooses to a pleasure consequences.",
       icon: <TrendingDown className="w-8 h-8" />,
-      color: "from-orange-500/10 to-blue-900/5"
+      color: "from-primary/10 to-fourth/5"
     }
   ];
 
@@ -101,13 +101,13 @@ export default function States() {
         {/* Enhanced Counter Section */}
         <div ref={statsRef} className="mt-6 relative">
           {/* Background Pattern */}
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-blue-900/5 rounded-3xl -rotate-1"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-fourth/5 rounded-3xl -rotate-1"></div>
           
           {/* Main Stats Card */}
           <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-gray-200/50">
             <div className="text-center mb-8">
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
-                 Why Choose <span className="text-orange-500">Our Solutions</span>
+                Why Choose <span className="text-primary">Our Solutions</span>
               </h3>
               <p className="text-gray-600 mt-2">Real-time statistics that speak volumes</p>
             </div>
@@ -115,17 +115,17 @@ export default function States() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Client Satisfaction */}
               <div className="relative group">
-                <div className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-xl border border-orange-100 hover:border-orange-300 transition-all duration-300 hover:shadow-lg">
+                <div className="bg-gradient-to-br from-primary/5 to-white p-6 rounded-xl border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:shadow-lg">
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-orange-500/20 to-orange-500/5 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary/20 to-fourth/5 flex items-center justify-center">
+                      <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                       </svg>
                     </div>
                   </div>
                   <div className="text-center">
                     <div className="text-5xl font-bold text-gray-900 mb-2">
-                      <span className="text-orange-500">{counters.satisfaction}</span>%
+                      <span className="text-primary">{counters.satisfaction}</span>%
                     </div>
                     <div className="text-gray-700 font-medium">Client Satisfaction</div>
                     <p className="text-gray-500 text-sm mt-2">Based on 500+ reviews</p>
@@ -134,31 +134,31 @@ export default function States() {
                   <div className="mt-4">
                     <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full transition-all duration-1000"
+                        className="h-full bg-gradient-to-r from-primary to-fourth rounded-full transition-all duration-1000"
                         style={{ width: `${counters.satisfaction}%` }}
                       ></div>
                     </div>
                   </div>
                 </div>
                 {/* Floating Element */}
-                <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
+                <div className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded-lg">
                   TOP
                 </div>
               </div>
 
               {/* Expert Support */}
               <div className="relative group">
-                <div className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl border border-blue-100 hover:border-blue-300 transition-all duration-300 hover:shadow-lg">
+                <div className="bg-gradient-to-br from-third/5 to-white p-6 rounded-xl border border-third/10 hover:border-third/30 transition-all duration-300 hover:shadow-lg">
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-900/20 to-blue-900/5 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-blue-900" fill="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-third/20 to-fourth/5 flex items-center justify-center">
+                      <svg className="w-8 h-8 text-third" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
                       </svg>
                     </div>
                   </div>
                   <div className="text-center">
                     <div className="text-5xl font-bold text-gray-900 mb-2 flex items-center justify-center">
-                      <span className="text-blue-900">{counters.support}</span>
+                      <span className="text-third">{counters.support}</span>
                       <span className="text-2xl text-gray-600 ml-1">/7</span>
                     </div>
                     <div className="text-gray-700 font-medium">Expert Support</div>
@@ -166,7 +166,7 @@ export default function States() {
                   </div>
                   {/* Support Badge */}
                   <div className="mt-4 inline-flex items-center justify-center w-full">
-                    <span className="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">
+                    <span className="bg-third/10 text-third text-xs font-medium px-3 py-1 rounded-full">
                       Always Available
                     </span>
                   </div>
@@ -182,17 +182,17 @@ export default function States() {
 
               {/* Cost Reduction */}
               <div className="relative group">
-                <div className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-xl border border-orange-100 hover:border-orange-300 transition-all duration-300 hover:shadow-lg">
+                <div className="bg-gradient-to-br from-primary/5 to-white p-6 rounded-xl border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:shadow-lg">
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-orange-500/20 to-orange-500/5 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary/20 to-fourth/5 flex items-center justify-center">
+                      <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
                       </svg>
                     </div>
                   </div>
                   <div className="text-center">
                     <div className="text-5xl font-bold text-gray-900 mb-2">
-                      <span className="text-orange-500">{counters.reduction}</span>%
+                      <span className="text-primary">{counters.reduction}</span>%
                     </div>
                     <div className="text-gray-700 font-medium">Cost Reduction</div>
                     <p className="text-gray-500 text-sm mt-2">Average savings per client</p>
@@ -209,7 +209,7 @@ export default function States() {
                 </div>
                 {/* Ribbon */}
                 <div className="absolute -top-3 right-4">
-                  <div className="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold px-3 py-1 rounded-t-lg">
+                  <div className="bg-gradient-to-r from-primary to-fourth text-white text-xs font-bold px-3 py-1 rounded-t-lg">
                     SAVE
                   </div>
                 </div>

@@ -208,37 +208,37 @@ export default function RequestQuote() {
         theme="light"
       />
       
-      <section className="bg-gradient-to-br from-slate-50 to-orange-50 py-4 px-4 flex items-center justify-center">
+      <section className="bg-gradient-to-br from-slate-50 to-primary/5 py-4 px-4 flex items-center justify-center">
         <div className="max-w-5xl mx-auto w-full">
 
           {/* Header */}
           <div className="mb-8 text-center">
-            <div className="inline-flex items-center gap-2 bg-orange-100 px-3 py-1.5 rounded-full mb-3">
-              <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
-              <span className="text-orange-600 uppercase tracking-wider text-[11px] font-semibold">
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full mb-3">
+              <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+              <span className="text-primary uppercase tracking-wider text-[11px] font-semibold">
                 Get Your Quote
               </span>
             </div>
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
-              <span className="bg-gradient-to-r from-slate-800 via-orange-600 to-orange-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-third via-primary to-fourth bg-clip-text text-transparent">
                 Request Your Estimate
               </span>
             </h2>
           </div>
 
           {/* Form Card */}
-          <form onSubmit={handleSubmit} className="bg-white/90 backdrop-blur-sm border border-orange-200 rounded-3xl p-4 md:p-6 shadow-xl relative overflow-hidden">
+          <form onSubmit={handleSubmit} className="bg-white/90 backdrop-blur-sm border border-primary/10 rounded-3xl p-4 md:p-6 shadow-xl relative overflow-hidden">
             
             {/* Decorative Elements */}
-            <div className="absolute top-0 right-0 w-72 h-72 bg-orange-200 rounded-full blur-3xl opacity-20"></div>
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-300 rounded-full blur-3xl opacity-20"></div>
+            <div className="absolute top-0 right-0 w-72 h-72 bg-primary/20 rounded-full blur-3xl opacity-20"></div>
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-fourth/20 rounded-full blur-3xl opacity-20"></div>
             
             <div className="grid lg:grid-cols-2 gap-4 lg:gap-6 relative z-10">
 
               {/* Shipment Info */}
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-center gap-3 mb-4 md:mb-5">
-                  <div className="w-9 h-9 bg-orange-100 rounded-lg flex items-center justify-center">
+                  <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center">
                     <span className="text-lg">📦</span>
                   </div>
                   <h3 className="text-lg font-semibold text-slate-800">Shipment & Cargo Details</h3>
@@ -299,7 +299,7 @@ export default function RequestQuote() {
                     placeholder="Any special requirements or additional information..."
                     value={formData.instructions}
                     onChange={handleChange}
-                    className="w-full bg-white border border-slate-200 focus:border-orange-400 focus:ring-4 focus:ring-orange-100 rounded-xl px-4 py-3 outline-none transition-all duration-300 hover:border-orange-300 text-sm text-slate-700 placeholder:text-sm placeholder-slate-400 resize-none"
+                    className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-xl px-4 py-3 outline-none transition-all duration-300 hover:border-primary/30 text-sm text-slate-700 placeholder:text-sm placeholder-slate-400 resize-none"
                   />
                 </div>
               </div>
@@ -307,7 +307,7 @@ export default function RequestQuote() {
               {/* Contact Info */}
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-center gap-3 mb-4 md:mb-5">
-                  <div className="w-9 h-9 bg-orange-100 rounded-lg flex items-center justify-center">
+                  <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center">
                     <span className="text-lg">👤</span>
                   </div>
                   <h3 className="text-lg font-semibold text-slate-800">Contact Information</h3>
@@ -375,7 +375,7 @@ export default function RequestQuote() {
       name="agreeToTerms"
       checked={formData.agreeToTerms}
       onChange={handleChange}
-      className="w-5 h-5 mt-0.5 accent-orange-500 rounded border-slate-300 text-orange-500 focus:ring-orange-200 focus:ring-offset-0"
+      className="w-5 h-5 mt-0.5 accent-primary rounded border-slate-300 text-primary focus:ring-primary/20 focus:ring-offset-0"
     />
     <span className="text-slate-600 text-sm">
       I agree to the{" "}
@@ -383,7 +383,7 @@ export default function RequestQuote() {
         href="/footer/terms" 
         target="_blank"
         rel="noopener noreferrer"
-        className="text-orange-600 font-medium hover:text-orange-700 hover:underline cursor-pointer transition-colors"
+        className="text-primary font-medium hover:text-[#b00000] hover:underline cursor-pointer transition-colors"
         onClick={(e) => e.stopPropagation()} // checkbox trigger না হওয়ার জন্য
       >
         Terms & Conditions
@@ -393,7 +393,7 @@ export default function RequestQuote() {
         href="/footer/privacy-policy" 
         target="_blank"
         rel="noopener noreferrer"
-        className="text-orange-600 font-medium hover:text-orange-700 hover:underline cursor-pointer transition-colors"
+        className="text-primary font-medium hover:text-[#b00000] hover:underline cursor-pointer transition-colors"
         onClick={(e) => e.stopPropagation()}
       >
         Privacy Policy
@@ -412,7 +412,7 @@ export default function RequestQuote() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="relative group bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold px-10 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-lg min-w-[220px]"
+                className="relative group bg-gradient-to-r from-primary to-fourth text-white font-semibold px-10 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-lg min-w-[220px]"
               >
                 <span className="flex items-center justify-center gap-3">
                   {isSubmitting ? (
@@ -480,9 +480,9 @@ function Input({ label, name, type = 'text', placeholder, value, onChange, error
           w-full bg-white border rounded-xl px-3 py-2 outline-none transition-all duration-300 text-sm text-slate-700 placeholder:text-sm placeholder-slate-400
           ${error 
             ? 'border-red-400 focus:border-red-400 focus:ring-4 focus:ring-red-100' 
-            : 'border-slate-200 focus:border-orange-400 focus:ring-4 focus:ring-orange-100'
+            : 'border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10'
           }
-          hover:border-orange-300
+          hover:border-primary/30
         `}
       />
       {error && (
@@ -514,9 +514,9 @@ function Select({ label, name, value, onChange, options, error, icon, placeholde
             w-full bg-white border rounded-xl px-3 py-2 outline-none appearance-none cursor-pointer transition-all duration-300 text-sm text-slate-700 placeholder:text-sm
             ${error 
               ? 'border-red-400 focus:border-red-400 focus:ring-4 focus:ring-red-100' 
-              : 'border-slate-200 focus:border-orange-400 focus:ring-4 focus:ring-orange-100'
+              : 'border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10'
             }
-            hover:border-orange-300
+            hover:border-primary/30
             ${!value && 'text-slate-400'}
           `}
         >

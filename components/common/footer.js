@@ -209,10 +209,10 @@ Bangkok 10110, Thailand
           </p>
           
           <div className="flex gap-3 sm:gap-4 lg:gap-6 text-[8px] sm:text-xs lg:text-sm">
-            <Link href="/footer/privacy-policy" className="text-gray-600 hover:text-[#FD5621] transition-colors">
+            <Link href="/footer/privacy-policy" className="text-gray-600 hover:text-primary transition-colors">
               Privacy
             </Link>
-            <Link href="/footer/terms" className="text-gray-600 hover:text-[#FD5621] transition-colors">
+            <Link href="/footer/terms" className="text-gray-600 hover:text-primary transition-colors">
               Terms
             </Link>
           </div>

@@ -223,7 +223,7 @@ const Navbar = () => {
                   {item.dropdown ? (
                     <button
                       className={`flex items-center space-x-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                        scrolled ? 'text-gray-700 hover:text-[#E67E22]' : 'text-gray-700 hover:text-[#246092]'
+                        scrolled ? 'text-gray-700 hover:text-primary' : 'text-gray-700 hover:text-third'
                       }`}
                     >
                       <span className="opacity-70">{item.icon}</span>
@@ -233,7 +233,7 @@ const Navbar = () => {
                   ) : (
                     <Link href={item.href}>
                       <div className={`flex items-center space-x-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                        scrolled ? 'text-gray-700 hover:text-[#E67E22]' : 'text-gray-700 hover:text-[#246092]'
+                        scrolled ? 'text-gray-700 hover:text-primary' : 'text-gray-700 hover:text-third'
                       }`}>
                         <span className="opacity-70">{item.icon}</span>
                         <span>{item.label}</span>
@@ -256,11 +256,11 @@ const Navbar = () => {
                               href={subItem.href} 
                               onClick={() => setIsMenuOpen(false)}
                             >
-                              <div className="flex items-center gap-2 px-4 py-2 hover:bg-orange-50 transition-colors duration-150 cursor-pointer">
-                                <div className="w-5 h-5 rounded-md bg-orange-50 flex items-center justify-center">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-orange-400"></div>
+                              <div className="flex items-center gap-2 px-4 py-2 hover:bg-primary/5 transition-colors duration-150 cursor-pointer">
+                                <div className="w-5 h-5 rounded-md bg-primary/10 flex items-center justify-center">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
                                 </div>
-                                <span className="text-sm text-gray-700 hover:text-[#E67E22]">
+                                <span className="text-sm text-gray-700 hover:text-primary">
                                   {subItem.label}
                                 </span>
                               </div>
@@ -281,7 +281,7 @@ const Navbar = () => {
                   <button
                     onClick={() => router.push('/tracking-number')}
                     className={`px-5 py-2 rounded-lg text-sm font-semibold shadow-md transition-all duration-200 ${
-                      scrolled ? 'bg-[#E67E22] text-white hover:bg-[#d35400]' : 'bg-fourth text-white hover:bg-primary'
+                      scrolled ? 'bg-primary text-white hover:bg-[#b00000]' : 'bg-fourth text-white hover:bg-primary'
                     }`}
                   >
                     Track Order
@@ -294,7 +294,7 @@ const Navbar = () => {
                   >
                     <button
                       className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-semibold shadow-md transition-all duration-200 ${
-                        scrolled ? 'bg-[#E67E22] text-white' : 'bg-fourth text-white hover:bg-primary'
+                        scrolled ? 'bg-primary text-white' : 'bg-fourth text-white hover:bg-primary'
                       }`}
                     >
                       <UserCircle className="w-4 h-4" />
@@ -310,9 +310,9 @@ const Navbar = () => {
                         onMouseLeave={handleMouseLeave}
                       >
                         <div className="bg-white rounded-lg shadow-lg border border-gray-100 min-w-[240px] overflow-hidden">
-                          <div className="px-4 py-3 border-b border-gray-100 bg-gradient-to-r from-orange-50 to-amber-50">
+                          <div className="px-4 py-3 border-b border-gray-100 bg-gradient-to-r from-primary/5 to-third/5">
                             <div className="flex items-center gap-2">
-                              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-fourth flex items-center justify-center">
                                 <UserCircle className="w-5 h-5 text-white" />
                               </div>
                               <div>
@@ -329,11 +329,11 @@ const Navbar = () => {
                                 href={item.href} 
                                 onClick={() => setIsMenuOpen(false)}
                               >
-                                <div className="flex items-center gap-2 px-4 py-2 hover:bg-orange-50 transition-colors duration-150 cursor-pointer">
+                                <div className="flex items-center gap-2 px-4 py-2 hover:bg-primary/5 transition-colors duration-150 cursor-pointer">
                                   <div className="w-5 h-5 rounded-md bg-gray-100 flex items-center justify-center">
                                     {item.icon}
                                   </div>
-                                  <span className="text-sm text-gray-700 hover:text-[#E67E22]">
+                                  <span className="text-sm text-gray-700 hover:text-primary">
                                     {item.label}
                                   </span>
                                 </div>
@@ -371,7 +371,7 @@ const Navbar = () => {
                   <button
                     onClick={() => router.push('/tracking-number')}
                     className={`px-5 py-2 rounded-lg text-sm font-semibold shadow-md transition-all duration-200 ${
-                      scrolled ? 'bg-[#E67E22] text-white hover:bg-[#d35400]' : 'bg-fourth text-white hover:bg-primary'
+                      scrolled ? 'bg-primary text-white hover:bg-[#b00000]' : 'bg-fourth text-white hover:bg-primary'
                     }`}
                   >
                     Track Order
@@ -402,7 +402,7 @@ const Navbar = () => {
                 <div className="bg-white rounded-xl shadow-xl border py-4 max-h-[calc(100vh-200px)] overflow-y-auto">
                   <div className="space-y-1 px-3">
                     {isLoggedIn && user && (
-                      <div className="px-4 py-3 bg-gradient-to-r from-orange-50 to-amber-50 rounded-lg mb-2">
+                      <div className="px-4 py-3 bg-gradient-to-r from-primary/5 to-third/5 rounded-lg mb-2">
                         <p className="text-xs text-gray-500">Logged in as</p>
                         <p className="font-semibold text-gray-800">
                           {user.firstName} {user.lastName}
@@ -417,7 +417,7 @@ const Navbar = () => {
                           <>
                             <button
                               onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
-                              className="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-orange-50 transition-colors"
+                              className="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-primary/5 transition-colors"
                             >
                               <div className="flex items-center space-x-3">
                                 <span className="text-gray-600">{item.icon}</span>
@@ -437,7 +437,7 @@ const Navbar = () => {
                                   <div className="bg-gray-50 rounded-lg border border-gray-100">
                                     {item.dropdown.map((subItem) => (
                                       <Link key={subItem.label} href={subItem.href} onClick={() => setIsMenuOpen(false)}>
-                                        <div className="px-4 py-2 text-sm text-gray-600 hover:text-[#E67E22] hover:bg-white rounded-lg transition-colors">
+                                        <div className="px-4 py-2 text-sm text-gray-600 hover:text-primary hover:bg-white rounded-lg transition-colors">
                                           {subItem.label}
                                         </div>
                                       </Link>
@@ -449,7 +449,7 @@ const Navbar = () => {
                           </>
                         ) : (
                           <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
-                            <div className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-orange-50 transition-colors">
+                            <div className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/5 transition-colors">
                               <span className="text-gray-600">{item.icon}</span>
                               <span className="font-medium text-gray-800">{item.label}</span>
                             </div>
@@ -463,7 +463,7 @@ const Navbar = () => {
                         <p className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Account</p>
                         {profileDropdownItems.map((item) => (
                           <Link key={item.label} href={item.href} onClick={() => setIsMenuOpen(false)}>
-                            <div className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-orange-50 transition-colors">
+                            <div className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/5 transition-colors">
                               <span className="text-gray-600 w-4 h-4">{item.icon}</span>
                               <span className="font-medium text-gray-800">{item.label}</span>
                             </div>
@@ -478,11 +478,11 @@ const Navbar = () => {
                   </div>
 
                   <div className="mt-4 pt-4 border-t border-gray-100 px-4">
-                    <button onClick={() => router.push('/tracking-number')} className="w-full bg-[#122652] text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all mb-2">
+                    <button onClick={() => router.push('/tracking-number')} className="w-full bg-third text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all mb-2">
                       Track Your Order
                     </button>
                     {!isLoggedIn && (
-                      <button onClick={() => { router.push('/auth/login'); setIsMenuOpen(false); }} className="w-full bg-[#246092] text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all">
+                      <button onClick={() => { router.push('/auth/login'); setIsMenuOpen(false); }} className="w-full bg-fourth text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all">
                         Login
                       </button>
                     )}
