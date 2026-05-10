@@ -56,20 +56,20 @@ const Banner = () => {
             </div>
           </div>
 
-          <div className="relative  z-10 rounded-3xl overflow-hidden shadow-lg">
+          <div className="relative -mt-22 sm:-mt-26 lg:-mt-36 z-10 rounded-xl overflow-hidden shadow-lg">
             <img
               src="/banner/ship.jpg"
               alt="Cargo ship"
-              className="w-full h-[240px] sm:h-[320px] lg:h-[380px] object-cover"
+              className="w-full h-[300px] sm:h-[360px] lg:h-[400px] object-cover"
             />
           </div>
 
-          <div className="relative lg:absolute lg:left-6 lg:right-6 lg:bottom-0 mt-6 lg:mt-0 lg:translate-y-1/2 w-auto bg-primary text-white rounded-2xl overflow-hidden shadow-2xl z-30">
+          <div className="relative lg:absolute  lg:bottom-0 mt-6 lg:mt-0 lg:translate-y-1/2 w-auto bg-primary text-white  overflow-hidden shadow-2xl z-30">
             <div className="grid grid-cols-3 divide-x divide-white/20">
               {stats.map((item) => (
-                <div key={item.label} className="px-4 sm:px-6 py-5 sm:py-6 text-center">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-black leading-none pt-serif-bold">{item.value}</div>
-                  <div className="text-xs sm:text-sm mt-2 sm:mt-3 text-white/95">{item.label}</div>
+                <div key={item.label} className="px-4 sm:px-6 py-4 sm:py-2 text-center">
+                  <div className="text-3xl sm:text-2xl lg:text-4xl font-black leading-none pt-serif-bold">{item.value}</div>
+                  <div className="text-xs sm:text-sm mt-2 sm:mt-1 text-white/95">{item.label}</div>
                 </div>
               ))}
             </div>
