@@ -54,8 +54,9 @@ export default function Page() {
     <>
       <Company />
       <History />
-      <Teams />
       <ProjectTabs />
+      <Teams />
+
 
       <script
         type="application/ld+json"
