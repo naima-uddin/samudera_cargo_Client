@@ -1,6 +1,5 @@
 import Banner from '@/components/home/banner';
 import State from '@/components/home/states';
-import About from '@/components/home/about';
 import History from '@/components/home/history';
 import LogisticTimeline from '@/components/home/logiaticTimeline';
 import Service from '@/components/home/service';
@@ -69,7 +68,6 @@ export default function Page() {
       <Banner />
       <History />
       <Service />
-      <About />
       <State />
       <LogisticTimeline />
       <Ecommerce />

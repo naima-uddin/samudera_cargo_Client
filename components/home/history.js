@@ -1,90 +1,95 @@
 "use client"
 import React from 'react'
+import { Eye, Flag } from 'lucide-react'
 
 function history() {
   return (
-    <div className=" bg-gradient-to-br from-gray-50 to-blue-50 py-4 md:py-6 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
-          {/* Left Column - history Content */}
-          <div className="lg:w-2/5"> 
-            
-            <section className="mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 pb-3 border-b-4 border-primary inline-block">
-                Our <span className="text-primary">History</span>
-              </h2>
+    <div className="relative w-full  bg-white">
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+          
+          {/* Left Column - Ship Image with Container Overlay */}
+          <div className="relative order-2 lg:order-1">
+            <div className="relative h-[440px] md:h-[590px] lg:h-[640px] w-4/5">
+              {/* Ship background image */}
+              <img
+                src="/images/cargo-ship.jpg"
+                alt="Cargo Ship"
+                className="w-full h-full object-cover shadow-2xl"
+              />
               
-              <div className="space-y-10 ml-4 border-l-4 border-primary pl-8 mt-8">
-                {/* Vision Section */}
-                <div className="relative">
-                  <div className="absolute -left-[52px] top-2 w-8 h-8 rounded-full bg-third border-4 border-blue-50 flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
+              {/* Very light dark overlay */}
+              <div className="absolute inset-0 bg-black/20"></div>
+              
+              {/* Double Container overlay - positioned absolutely, can overflow */}
+              <div className="absolute -bottom-32 -left-14 w-90 h-74 md:w-106 md:h-90 lg:w-[450px] lg:h-126">
+                <img
+                  src="/images/doubleContainer.png"
+                  alt="Double Container"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+          
+          {/* Right Column - Text Content */}
+          <div className="order-1 lg:order-2">
+            {/* Label */}
+            <p className="text-primary font-bold text-sm md:text-base tracking-widest uppercase mb-4">
+              About Samudera Cargo
+            </p>
+            
+            {/* Heading */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl  text-gray-900 mb-6 leading-tight pt-serif-bold">
+              Logistics Beyond <br className="hidden md:block" />Expectation
+            </h1>
+            
+            {/* Description */}
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-10">
+              Delivering excellence in global freight services with operational expertise, strategic solutions, and innovative technology to move your business forward with confidence. We connect sea, air, and land logistics into one reliable experience built around speed, safety, and consistency.
+            </p>
+            
+            {/* Vision and Mission Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+              {/* Vision */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center ">
+                    <Eye className="h-8 w-8 text-primary" />
                   </div>
-                  
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">Our vision</h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">
-                    To become a globally recognized logistics partner known for operational excellence, strategic trade expertise, and innovation in international freight management.
-                  </p>
                 </div>
-                
-                {/* Mission Section */}
-                <div className="relative">
-                  <div className="absolute -left-[52px] top-2 w-8 h-8 rounded-full bg-third border-4 border-blue-50 flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">Our mission</h3>
-                  <ul className="space-y-3 text-gray-600">
-                    <li className="flex items-start">
-                      {/* <svg className="w-5 h-5 text-third mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg> */}
-                      <span>To provide secure, efficient, and cost-effective logistics solutions that empower businesses to move goods globally with confidence. We are committed to reliability, compliance, and customer-focused service at every stage of the supply chain.</span>
-                    </li>
-                    {/* <li className="flex items-start">
-                      <svg className="w-5 h-5 text-third mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span>Stet clita kasd gubergren, no sea takimata sanctus.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="w-5 h-5 text-third mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span>Tempor invidunt ut labore et dolore magna aliquyam erat.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="w-5 h-5 text-third mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span>Risus commodo viverra maecenas accumsan lacus vel facilisis.</span>
-                    </li> */}
-                  </ul>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Our Vision</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    To become a globally recognized logistics partner known for operational excellence, innovation, and dependable service across every shipment.
+                  </p>
                 </div>
               </div>
               
-              {/* <a 
-                href="#" 
-                className="inline-flex items-center justify-center mt-10 px-8 py-3 text-base font-semibold text-white bg-third rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out shadow-md hover:shadow-lg"
-              >
-                Read More
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a> */}
-            </section>
-          </div>
-          
-          {/* Right Column - Experience Card */}
-          <div className="lg:w-3/5">
-            <div className="sticky top-0 relative  overflow-hidden  ">
-              {/* Background/History Image */}
-              <img
-                src="/images/cargo.png"
-                alt="History background"
-                className="w-full h-[160px] md:h-[520px] object-contain rounded-3xl"
-              />
+              {/* Mission */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center">
+                    <Flag className="h-8 w-8 text-primary" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Our Mission</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    To provide secure, efficient, and cost-effective logistics solutions worldwide, while helping clients move cargo with clarity and confidence at every step.
+                  </p>
+                </div>
+              </div>
             </div>
+            
+            {/* CTA Button */}
+            <button className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition duration-300 ease-in-out shadow-lg hover:shadow-xl">
+              Learn More
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

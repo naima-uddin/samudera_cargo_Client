@@ -1,223 +1,71 @@
 // app/components/states.js
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { CheckCircle, Headphones, TrendingDown } from 'lucide-react';
+import { Package, Radar, ShieldCheck, Truck } from 'lucide-react';
 
 export default function States() {
-  const [activeFeature, setActiveFeature] = useState(0);
-  const [counters, setCounters] = useState({
-    satisfaction: 0,
-    support: 0,
-    reduction: 0
-  });
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const statsRef = useRef(null);
-
-  const features = [
-    {
-      id: 1,
-      title: "Advanced Technology",
-      description: "Shrinking from toil and pain these cases are perfectly simple.",
-      icon: <CheckCircle className="w-8 h-8" />,
-      color: "from-primary/20 to-primary/5"
-    },
-    {
-      id: 2,
-      title: "Experts Support",
-      description: "The claims of duty or the obligations business it will frequently.",
-      icon: <Headphones className="w-8 h-8" />,
-      color: "from-third/20 to-fourth/5"
-    },
-    {
-      id: 3,
-      title: "Cost-Effective",
-      description: "Right to find fault with a chooses to a pleasure consequences.",
-      icon: <TrendingDown className="w-8 h-8" />,
-      color: "from-primary/10 to-fourth/5"
-    }
-  ];
-
-  // Intersection Observer for counter animation
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true);
-            
-            // Animate counters
-            const duration = 2000; // 2 seconds
-            const steps = 60;
-            const stepDuration = duration / steps;
-            
-            const targets = {
-              satisfaction: 99,
-              support: 24, // Changed from 24/7 to 24 for counting
-              reduction: 50
-            };
-            
-            let step = 0;
-            const interval = setInterval(() => {
-              step++;
-              const progress = step / steps;
-              
-              setCounters({
-                satisfaction: Math.floor(easeOutCubic(progress) * targets.satisfaction),
-                support: Math.floor(easeOutCubic(progress) * targets.support),
-                reduction: Math.floor(easeOutCubic(progress) * targets.reduction)
-              });
-              
-              if (step >= steps) {
-                clearInterval(interval);
-              }
-            }, stepDuration);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
-    }
-    
-    return () => {
-      if (statsRef.current) {
-        observer.unobserve(statsRef.current);
-      }
-    };
-  }, [hasAnimated]);
-
-  // Easing function for smooth animation
-  const easeOutCubic = (t) => {
-    return 1 - Math.pow(1 - t, 3);
-  };
-
   return (
-    <div className=" bg-gradient-to-br from-gray-50 to-gray-100 py-6 px-4">
-      <div className="max-w-7xl mx-auto">
-    
-        {/* Enhanced Counter Section */}
-        <div ref={statsRef} className="mt-6 relative">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-fourth/5 rounded-3xl -rotate-1"></div>
-          
-          {/* Main Stats Card */}
-          <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-gray-200/50">
-            <div className="text-center mb-8">
-              <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
-                Why Choose <span className="text-primary">Our Solutions</span>
-              </h3>
-              <p className="text-gray-600 mt-2">Real-time statistics that speak volumes</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Client Satisfaction */}
-              <div className="relative group">
-                <div className="bg-gradient-to-br from-primary/5 to-white p-6 rounded-xl border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:shadow-lg">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary/20 to-fourth/5 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-5xl font-bold text-gray-900 mb-2">
-                      <span className="text-primary">{counters.satisfaction}</span>%
-                    </div>
-                    <div className="text-gray-700 font-medium">Client Satisfaction</div>
-                    <p className="text-gray-500 text-sm mt-2">Based on 500+ reviews</p>
-                  </div>
-                  {/* Animated Progress Bar */}
-                  <div className="mt-4">
-                    <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-gradient-to-r from-primary to-fourth rounded-full transition-all duration-1000"
-                        style={{ width: `${counters.satisfaction}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-                {/* Floating Element */}
-                <div className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded-lg">
-                  TOP
-                </div>
-              </div>
-
-              {/* Expert Support */}
-              <div className="relative group">
-                <div className="bg-gradient-to-br from-third/5 to-white p-6 rounded-xl border border-third/10 hover:border-third/30 transition-all duration-300 hover:shadow-lg">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-third/20 to-fourth/5 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-third" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-5xl font-bold text-gray-900 mb-2 flex items-center justify-center">
-                      <span className="text-third">{counters.support}</span>
-                      <span className="text-2xl text-gray-600 ml-1">/7</span>
-                    </div>
-                    <div className="text-gray-700 font-medium">Expert Support</div>
-                    <p className="text-gray-500 text-sm mt-2">Round the clock assistance</p>
-                  </div>
-                  {/* Support Badge */}
-                  <div className="mt-4 inline-flex items-center justify-center w-full">
-                    <span className="bg-third/10 text-third text-xs font-medium px-3 py-1 rounded-full">
-                      Always Available
-                    </span>
-                  </div>
-                </div>
-                {/* Pulsing Dot */}
-                <div className="absolute -top-2 -right-2">
-                  <div className="relative">
-                    <div className="w-4 h-4 bg-green-500 rounded-full animate-ping"></div>
-                    <div className="w-4 h-4 bg-green-500 rounded-full absolute top-0 left-0"></div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Cost Reduction */}
-              <div className="relative group">
-                <div className="bg-gradient-to-br from-primary/5 to-white p-6 rounded-xl border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:shadow-lg">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary/20 to-fourth/5 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-5xl font-bold text-gray-900 mb-2">
-                      <span className="text-primary">{counters.reduction}</span>%
-                    </div>
-                    <div className="text-gray-700 font-medium">Cost Reduction</div>
-                    <p className="text-gray-500 text-sm mt-2">Average savings per client</p>
-                  </div>
-                  {/* Savings Badge */}
-                  <div className="mt-4">
-                    <div className="inline-flex items-center bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 text-xs font-medium px-3 py-2 rounded-lg">
-                      <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                      </svg>
-                      Smart Savings
-                    </div>
-                  </div>
-                </div>
-                {/* Ribbon */}
-                <div className="absolute -top-3 right-4">
-                  <div className="bg-gradient-to-r from-primary to-fourth text-white text-xs font-bold px-3 py-1 rounded-t-lg">
-                    SAVE
-                  </div>
-                </div>
-              </div>
-            </div> 
+    <section className="relative w-full overflow-hidden bg-[#e3ddd7] py-10 md:py-14 lg:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="relative min-h-[560px] lg:min-h-[700px]">
+          {/* Background container artwork */}
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center pointer-events-none select-none">
+            <img
+              src="/images/blue-container.png"
+              alt="Cargo container illustration"
+              className="w-[72%] sm:w-[66%] lg:w-[58%] max-w-none object-contain drop-shadow-[0_38px_40px_rgba(180,91,34,0.25)]"
+            />
           </div>
-        </div> 
+
+          {/* Left content */}
+          <div className="relative z-10 max-w-[420px] pt-2 lg:pt-8">
+            <h2 className="text-4xl sm:text-5xl lg:text-[4.5rem] font-semibold leading-[0.95] tracking-[-0.05em] text-[#25282c] uppercase">
+              Your Cargo, Handled
+              <br />
+              With Care
+            </h2>
+
+            <p className="mt-8 max-w-sm text-sm sm:text-base leading-7 text-[#4c596e]">
+              From delicate goods to oversized containers, we ensure secure loading, transport, and delivery every time. Our cargo workflows are designed to keep shipments protected, visible, and moving smoothly.
+            </p>
+          </div>
+
+          {/* Right feature cards */}
+          <div className="relative z-10 mt-10 lg:mt-0 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-[52%] grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="rounded-lg bg-[#aca6a2] text-white p-6 min-h-[150px] flex flex-col justify-between">
+              <Package className="h-9 w-9 text-white/90" />
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Secure Container Sealing</h3>
+                <p className="text-sm leading-6 text-white/90">Tamper-proof protocols for full cargo protection.</p>
+              </div>
+            </div>
+
+            <div className="rounded-lg bg-[#aca6a2] text-white p-6 min-h-[150px] flex flex-col justify-between">
+              <Truck className="h-9 w-9 text-white/90" />
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Global Port Access</h3>
+                <p className="text-sm leading-6 text-white/90">Seamless operations across major international shipping hubs.</p>
+              </div>
+            </div>
+
+            <div className="rounded-lg bg-gradient-to-r from-[#b35b24] to-[#aca6a2] text-white p-6 min-h-[150px] flex flex-col justify-between">
+              <Radar className="h-9 w-9 text-white/90" />
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Real-Time Tracking</h3>
+                <p className="text-sm leading-6 text-white/90">Total visibility from origin to destination.</p>
+              </div>
+            </div>
+
+            <div className="rounded-lg bg-[#aca6a2] text-white p-6 min-h-[150px] flex flex-col justify-between">
+              <ShieldCheck className="h-9 w-9 text-white/90" />
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Fully Insured Shipments</h3>
+                <p className="text-sm leading-6 text-white/90">Your cargo is covered for added peace of mind.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
