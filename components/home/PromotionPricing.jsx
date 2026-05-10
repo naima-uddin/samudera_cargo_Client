@@ -145,59 +145,28 @@ const PromotionPricing = () => {
 
   // Function to determine card style based on package color
   const getCardStyle = (pkg, isHovered) => {
-    const colorMap = {
-      teal: {
-        headerBg: 'bg-gradient-to-br from-[#122652] to-[#3C719D]',
-        buttonBg: 'bg-gradient-to-r from-[#FCA960] to-[#FA8219]',
-        buttonHover: 'hover:bg-[#d35400]',
-        ribbonBg: 'bg-gradient-to-r from-[#E67E22] via-[#F8B16B] to-[#FDE2B3]',
-        iconBg: 'bg-[#7DD3FC]'
-      },
-      orange: {
-        headerBg: 'bg-gradient-to-br from-[#122652] to-[#3C719D]',
-        buttonBg: ' bg-gradient-to-r from-[#FCA960] to-[#FA8219]',
-        buttonHover: 'hover:bg-[#d35400]',
-        ribbonBg: 'bg-gradient-to-r from-[#E67E22] via-[#F8B16B] to-[#FDE2B3]',
-        iconBg: 'bg-[#FDBA74]'
-      },
-      red: {
-        headerBg: 'bg-gradient-to-br from-[#122652] to-[#3C719D]',
-        buttonBg: ' bg-gradient-to-r from-[#FCA960] to-[#FA8219]',
-        buttonHover: 'hover:bg-[#d35400]',
-        ribbonBg: 'bg-gradient-to-r from-[#E67E22] via-[#F8B16B] to-[#FDE2B3]',
-        iconBg: 'bg-[#FCA5A5]'
-      },
-      blue: {
-        headerBg: 'bg-gradient-to-br from-[#122652] to-[#3C719D]',
-        buttonBg: 'bg-gradient-to-r from-[#FCA960] to-[#FA8219]',
-        buttonHover: 'hover:bg-[#d35400]',
-        ribbonBg: 'bg-gradient-to-r from-[#E67E22] via-[#F8B16B] to-[#FDE2B3]',
-        iconBg: 'bg-[#60A5FA]'
-      },
-      purple: {
-        headerBg: 'bg-gradient-to-br from-[#122652] to-[#3C719D]',
-        buttonBg: ' bg-gradient-to-r from-[#FCA960] to-[#FA8219]',
-        buttonHover: 'hover:bg-[#d35400]',
-        ribbonBg: 'bg-gradient-to-r from-[#E67E22] via-[#F8B16B] to-[#FDE2B3]',
-        iconBg: 'bg-[#C084FC]'
-      },
-      indigo: {
-        headerBg: 'bg-gradient-to-br from-[#122652] to-[#3C719D]',
-        buttonBg: 'bg-gradient-to-r from-[#FCA960] to-[#FA8219]',
-        buttonHover: 'hover:bg-[#d35400]',
-        ribbonBg: 'bg-gradient-to-r from-[#E67E22] via-[#F8B16B] to-[#FDE2B3]',
-        iconBg: 'bg-[#6366F1]'
-      }
-    };
+    // Simplified color mapping using theme tokens. Red packages are highlighted.
+    const isRed = pkg.color === 'red';
+    const headerBg = isRed ? 'bg-gradient-to-r from-[#d10000] to-[#ff2a2a]' : 'bg-gradient-to-br from-third to-fourth';
+    const priceBg = isRed ? 'bg-gradient-to-r from-[#d10000] to-[#ff2a2a]' : 'bg-gradient-to-br from-gray-50 to-gray-100';
+    const featuresBg = isRed ? 'bg-[#d10000]' : 'bg-white';
+    const ctaBg = isRed ? 'bg-slate-800' : 'bg-gradient-to-r from-primary to-[#ff2a2a]';
+    const buttonHover = 'hover:opacity-95';
+    const ribbonBg = isRed ? 'bg-slate-700 text-white' : 'bg-primary';
+    const iconBg = isRed ? 'bg-white/20' : 'bg-third/20';
 
-    const colors = colorMap[pkg.color] || colorMap.blue;
-    
     return {
-      ...colors,
+      headerBg,
+      priceBg,
+      featuresBg,
+      ctaBg,
+      buttonHover,
+      ribbonBg,
+      iconBg,
       headerText: 'text-white',
-      bodyBg: 'bg-white',
-      bodyText: 'text-gray-700',
-      buttonText: 'text-white',
+      bodyText: isRed ? 'text-white' : 'text-gray-700',
+      priceText: isRed ? 'text-white' : 'text-gray-900',
+      ctaText: 'text-white',
       borderColor: 'border-gray-200',
       shadow: isHovered
         ? 'shadow-[0_30px_90px_-45px_rgba(15,23,42,0.32)]'
@@ -211,8 +180,7 @@ const PromotionPricing = () => {
 
   return (
     <>   
-      <section className="relative pt-20  flex items-center justify-center overflow-hidden">
-     
+      <section className="relative pt-0  flex items-center justify-center overflow-hidden">
       <style jsx>{`
         .btn-3d {
           padding: 18px 45px;
@@ -339,35 +307,66 @@ const PromotionPricing = () => {
 
       `}</style> 
       </section>
-    
-    <div className=" bg-gradient-to-b from-gray-50 to-white pt-6 pb-0">
 
-      {/* Header */}
-      <div className="container mx-auto">
-          <section className="py-2">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-3">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 leading-tight" >
-                    <div className="text-center mb-10 relative">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FD5621] to-[#122652] inline-block">
-            PRICING & PLANS
-          </span>
-        </h1>
-        <p className="text-[#122652]/60 text-sm font-medium mt-1 tracking-wide">
-          Reliable Freight Services for every stage of your shipment.
-        </p>
-      </div>
-            </h2>
-          
+      {/* Background hero with dark truck image + overlay */}
+      <div className="relative w-full">
+        <div className="w-full h-[320px] md:h-[380px] lg:h-[420px] bg-cover bg-center" style={{backgroundImage: "url('/images/pricing-bg.jpg')"}}>
+          <div className="absolute inset-0 bg-[rgba(3,7,18,0.6)]/70 backdrop-blur-sm"></div>
+        </div>
+
+        {/* Heading positioned over hero */}
+        <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
+          <div className="container mx-auto pt-20 pointer-events-auto">
+            <div className="text-center">
+              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-2 text-white">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#d10000] to-[#1D2D52] inline-block">
+                  PRICING & PLANS
+                </span>
+              </h1>
+              <p className="text-white/70 text-sm font-medium mt-1 tracking-wide">Reliable Freight Services for every stage of your shipment.</p>
+            </div>
           </div>
+        </div>
+      </div>
 
-          {/* Enhanced Pricing Cards with Navigation */}
-          <div className="relative">
+    <div className=" bg-transparent -mt-20 pb-12">
+
+      {/* Enhanced Pricing Cards with Navigation */}
+      <div className="container mx-auto">
+        <section className="py-2">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="relative">
+            {/* Vertical slider (desktop only) */}
+            <div className="hidden lg:flex flex-col items-center gap-3 absolute left-[-64px] top-1/2 -translate-y-1/2">
+              <button
+                aria-label="prev"
+                onClick={prevPage}
+                className="w-8 h-8 rounded-full bg-white shadow flex items-center justify-center text-gray-600 hover:bg-gray-50"
+              >
+                ▲
+              </button>
+              <div className="flex flex-col items-center gap-2">
+                {Array.from({ length: totalPages }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentPage(i)}
+                    aria-label={`Go to page ${i + 1}`}
+                    className={`transition-all duration-200 ${currentPage === i ? 'w-3 h-10 bg-primary rounded-full' : 'w-2 h-6 bg-gray-200/60 rounded-full hover:opacity-80'}`}
+                  />
+                ))}
+              </div>
+              <button
+                aria-label="next"
+                onClick={nextPage}
+                className="w-8 h-8 rounded-full bg-white shadow flex items-center justify-center text-gray-600 hover:bg-gray-50"
+              >
+                ▼
+              </button>
+            </div>
         
 
             {/* Cards Container - Different grid for mobile vs desktop */}
-            <div className={`mb-10 ${isMobile ? 'px-3' : 'grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 items-stretch'}`}>
+            <div className={`mb-10 ${isMobile ? 'px-3' : 'grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-6 items-stretch'}`}>
               {visiblePackages.map((pkg, index) => {
                 const isHovered = hoveredCard === pkg.id;
                 const style = getCardStyle(pkg, isHovered);
@@ -377,27 +376,34 @@ const PromotionPricing = () => {
                     key={pkg.id}
                     onMouseEnter={() => setHoveredCard(pkg.id)}
                     onMouseLeave={() => setHoveredCard(null)}
-                    className={`rounded-lg overflow-hidden ${style.shadow} transition-all duration-500 ${style.transform} ${ 
+                    className={`rounded-xl overflow-hidden ${style.shadow} transition-all duration-500 ${style.transform} ${ 
                       isMobile ? 'w-full max-w-[340px] mx-auto mb-8' : 'h-full flex flex-col'
-                    } relative bg-white`}
-                  >
+                    } relative bg-white` }>
+                  
                     {/* Discount Ribbon - Top Right */}
                     <div className="absolute top-0 right-0 z-20">
-                      <div 
-                        className={`${style.ribbonBg} text-slate-900 px-3 py-1 sm:px-5 sm:py-1.5 font-bold text-xs sm:text-sm shadow-sm ring-1 ring-slate-200 whitespace-nowrap max-w-[140px]`}
-                        style={{
-                          clipPath: 'polygon(0 0, 100% 0, 100% 100%, 15% 100%)',
-                          minWidth: '90px',
-                          maxWidth: '140px',
-                          textAlign: 'right'
-                        }}
-                      >
-                        {pkg.discount}
-                      </div>
+                      {(() => {
+                        const isRedPkg = pkg.color === 'red';
+                        const ribbonClass = isRedPkg ? 'bg-slate-800 text-white' : style.ribbonBg;
+                        const ribbonText = isRedPkg ? 'POPULAR' : pkg.discount;
+                        return (
+                          <div
+                            className={`${ribbonClass} px-3 py-1 sm:px-5 sm:py-1.5 font-bold text-xs sm:text-sm shadow-sm ring-1 ring-slate-200 whitespace-nowrap max-w-[140px] transform origin-top-right ${isRedPkg ? 'rotate-0' : ''}`}
+                            style={{
+                              clipPath: 'polygon(0 0, 100% 0, 100% 100%, 15% 100%)',
+                              minWidth: '90px',
+                              maxWidth: '140px',
+                              textAlign: 'right'
+                            }}
+                          >
+                            {ribbonText}
+                          </div>
+                        );
+                      })()}
                     </div>
 
                     {/* Package Header with Icon and Background */}
-                    <div className={`${style.headerBg} p-5 md:p-6 text-left relative`}>
+                    <div className={`${style.headerBg} p-6 md:p-6 text-left relative`}>
                       <div className="flex items-start gap-4">
                         {/* Building Icon */}
                         <div className="flex-shrink-0">
@@ -421,37 +427,39 @@ const PromotionPricing = () => {
                     </div>
 
                     {/* Price Section - Separate Background */}
-                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 px-6 py-3 md:px-8 md:py-3 text-center border-b border-gray-200">
+                    <div className={`${style.priceBg} px-6 py-4 md:px-8 md:py-6 text-center ${style.borderColor} border-b` }>
                       <div className="flex  items-center justify-center gap-2 mb-1">
-                        <span className="text-2xl sm:text-3xl md:text-5xl font-black text-gray-900">{pkg.price}</span>
-                        <span className="text-[0.68rem] sm:text-sm md:text-base text-red-500 line-through font-semibold">{pkg.originalPrice}</span>
+                        <span className={`text-2xl sm:text-3xl md:text-5xl font-black ${style.priceText}`}>{pkg.price}</span>
+                        <span className="text-[0.68rem] sm:text-sm md:text-base text-gray-400 line-through font-semibold">{pkg.originalPrice}</span>
                       </div>
                     </div>
 
                     {/* Package Features - Scrollable */}
-                    <div className="bg-white px-6 py-5 md:px-8 border-b border-gray-200">
+                    <div className={`${style.featuresBg} px-6 py-6 md:px-8 ${style.borderColor} border-b`}>
                       <div className="h-[10.5rem] sm:h-[12rem] overflow-y-auto pr-2 thin-scrollbar">
                         <ul className="space-y-2 md:space-y-3">
-                          {pkg.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <div className="mt-1 flex-shrink-0 ml-3">
-                                <svg className={`w-2 h-2 ${style.headerBg.includes('teal') ? 'text-teal-500' : style.headerBg.includes('orange') ? 'text-orange-500' : style.headerBg.includes('red') ? 'text-red-500' : style.headerBg.includes('blue') ? 'text-blue-500' : style.headerBg.includes('purple') ? 'text-purple-500' : 'text-indigo-500'}`} fill="currentColor" viewBox="0 0 20 20">
-                                  <circle cx="10" cy="10" r="10"/>
-                                </svg>
-                              </div>
-                              <span className="text-[0.72rem] sm:text-sm md:text-base text-gray-700 leading-relaxed">{feature}</span>
-                            </li>
-                          ))}
+                          {pkg.features.map((feature, idx) => {
+                            const iconColor = pkg.color === 'teal' ? 'text-teal-500' : pkg.color === 'orange' ? 'text-orange-500' : pkg.color === 'red' ? 'text-white' : pkg.color === 'blue' ? 'text-blue-500' : 'text-indigo-500';
+                            return (
+                              <li key={idx} className="flex items-start gap-2">
+                                <div className="mt-1 flex-shrink-0 ml-3">
+                                  <svg className={`w-2 h-2 ${iconColor}`} fill="currentColor" viewBox="0 0 20 20">
+                                    <circle cx="10" cy="10" r="10"/>
+                                  </svg>
+                                </div>
+                                <span className={`text-[0.72rem] sm:text-sm md:text-base leading-relaxed ${style.bodyText}`}>{feature}</span>
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
                     </div>
 
                     {/* CTA Button */}
-                    <div className="p-4 md:p-6 bg-white">
-                      
+                    <div className="p-6 md:p-6">
                       <Link
                         href={`/contact`}
-                        className={`block w-full text-center py-3 md:py-4 ${style.buttonBg} ${style.buttonText} ${style.buttonHover} font-bold text-sm md:text-base rounded-md transition-all duration-300 transform hover:scale-[1.02] shadow-lg uppercase tracking-wider cursor-pointer`}
+                        className={`block w-full text-center py-3 md:py-4 ${style.ctaBg} ${style.ctaText} ${style.buttonHover} font-bold text-sm md:text-base rounded-md transition-all duration-300 transform hover:scale-[1.02] shadow-lg uppercase tracking-wider cursor-pointer`}
                       >
                         START PROJECT
                       </Link>

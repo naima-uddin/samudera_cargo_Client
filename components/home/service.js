@@ -1,195 +1,219 @@
-// components/ServicesSection.jsx
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const ServicesSection = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [scrollY, setScrollY] = useState(0);
-  const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const services = [
+  const allServices = [
     {
       id: 1,
-      title: 'Sea Freight',
-      subtitle: 'Global Reach, Reliable Sea Freight Solutions',
-      image: '/images/service1.avif',
-      stats: { shipments: '10K+', countries: '50+', satisfaction: '98%' },
+      title: 'Air Freight',
+      description: 'We provide air freight with the competence and service in the sphere of urgent, valuable, time cargo we ensure.',
+      image: '/images/service2.jpg',
+      features: [
+        '100% Satisfaction Guarantee',
+        'Highly Professional Staff',
+        'Quality Control System',
+      ]
     },
     {
       id: 2,
-      title: 'Air Freight',
-      subtitle: 'Move High-Value Items Swiftly with Air Freight',
-      image: '/images/service2.avif',
-      stats: { shipments: '5K+', countries: '30+', satisfaction: '96%' },
+      title: 'Ocean Freight',
+      description: 'We provide with the best types of basic conditions international sea transportation is implemented by our partners.',
+      image: '/images/service1.jpg',
+      features: [
+        'Accurate Testing Processes',
+        'Professional and Qualified',
+        'Unrivalled workmanship',
+      ]
     },
     {
       id: 3,
       title: 'Road Freight',
-      subtitle: 'Ship Quickly Nationwide with Road Freight',
-      image: '/images/service3.avif',
-      stats: { shipments: '15K+', countries: '80+', satisfaction: '97%' },
+      description: 'We provide a wide range of services including quality international road transportation services including goods & service.',
+      image: '/images/service3.jpg',
+      features: [
+        'Commercial expertise',
+        'Logistical expertise',
+        'Sustainability goals',
+      ]
+    },
+    {
+      id: 4,
+      title: 'Warehousing',
+      description: 'We provide with the best types of basic conditions international sea transportation is implemented by our partners.',
+      image: '/images/project (4).jpg',
+      features: [
+        '100% Satisfaction Guarantee',
+        'Highly Professional Staff',
+        'Quality Control System',
+      ]
+    },
+    {
+      id: 5,
+      title: 'Supply Chain',
+      description: 'We provide with the best types of basic conditions international sea transportation is implemented by our partners.',
+      image: '/images/supplychain.webp',
+      features: [
+        'Accurate Testing Processes',
+        'Professional and Qualified',
+        'Unrivalled workmanship',
+      ]
+    },
+    {
+      id: 6,
+      title: 'Packaging',
+      description: 'We provide with the best types of basic conditions international sea transportation is implemented by our partners.',
+      image: '/images/packaging.jpg',
+      features: [
+        'Commercial expertise',
+        'Logistical expertise',
+        'Sustainability goals',
+      ]
     },
   ];
 
-  return (
-    <section ref={sectionRef} className="relative py-10 px-4 md:px-8 lg:px-16 min-h-screen overflow-hidden bg-white">
-      <div className="absolute inset-0 overflow-hidden">
-        <div 
-          className="absolute w-[800px] h-[800px] rounded-full bg-gradient-to-r from-[#FD5621]/10 via-purple-600/10 to-blue-600/10 blur-3xl"
-          style={{
-            left: `${mousePosition.x * 0.05}px`,
-            top: `${mousePosition.y * 0.05}px`,
-            transform: 'translate(-50%, -50%)',
-          }}
-        ></div>
+  // Split services: 4 for main grid, all 6 for slider (infinite loop)
+  const mainServices = allServices.slice(0, 4);
+  const sliderServices = allServices; // All 6 services for infinite loop
 
-        <div 
-          className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-r from-blue-600/10 via-cyan-600/10 to-emerald-600/10 blur-3xl"
-          style={{
-            right: `${mousePosition.x * 0.03}px`,
-            bottom: `${mousePosition.y * 0.03}px`,
-            transform: 'translate(50%, 50%)',
-          }}
-        ></div>
+  // Pagination for main grid (shows 4 at a time, 2 pages)
+  const [gridPage, setGridPage] = useState(0);
+  const servicesPerPage = 4;
+  const totalPages = 2; // Only 2 pages: (1,2,3,4) and (5,6,1,2)
+  
+  // Get visible services - only 2 pages cycling
+  const visibleServices = gridPage === 0 
+    ? allServices.slice(0, 4) // Cards 1,2,3,4
+    : [allServices[4], allServices[5], allServices[0], allServices[1]]; // Cards 5,6,1,2
 
-        <div className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px',
-            transform: `translateY(${scrollY * 0.2}px)`,
-          }}
-        ></div>
+  // Auto-play grid slider every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGridPage((prev) => (prev + 1) % totalPages);
+    }, 8000);
 
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: i % 3 === 0 ? '#FD5621' : i % 3 === 1 ? '#0EA5E9' : '#06B6D4',
-              opacity: 0.2,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${20 + Math.random() * 20}s`,
-            }}
-          ></div>
-        ))}
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleGridPrev = () => {
+    setGridPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  const handleGridNext = () => {
+    setGridPage((prev) => (prev + 1) % totalPages);
+  };
+
+  const ServiceCard = ({ service }) => (
+    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+      {/* Image */}
+      <div className="relative h-[240px] overflow-hidden bg-slate-100">
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          className="object-cover hover:scale-110 transition-transform duration-500"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+        />
       </div>
 
-      <div className="relative max-w-7xl mx-auto z-10">
-        <div className="text-center mb-6 relative">
-          <div className="flex justify-center items-center gap-4 mb-6">
-            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-[#FD5621] to-transparent"></div>
-            <span className="text-sm tracking-[0.3em] text-third font-light">OUR SERVICES</span>
-            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-[#FD5621] to-transparent"></div>
-          </div>
+      {/* Content */}
+      <div className="p-5">
+        {/* Title */}
+        <h3 className="text-xl font-bold text-third mb-3 pt-serif-bold">
+          {service.title}
+        </h3>
 
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">
-            <span className="bg-gradient-to-r from-primary via-gray-300 to-third bg-clip-text text-transparent">
-              Explore Our
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-[#FD5621] via-orange-500 to-[#FD5621] bg-clip-text text-transparent">
-              Premium Services
-            </span>
-          </h1>
+        {/* Description */}
+        <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+          {service.description}
+        </p>
 
-          <p className="text-sm text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Transmax is the world's driving worldwide coordinations provider — 
-            we uphold industry and exchange the worldwide exchange of merchandise through land transport.
-          </p>
-
-          <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-18 h-18  md:w-32 md:h-32">
-            <div className="absolute inset-0 border-2 border-[#FD5621]/20 rounded-full animate-ping-slow"></div>
-            <div className="absolute inset-4 border-2 border-blue-500/20 rounded-full animate-pulse"></div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={service.id}
-              className="relative overflow-hidden rounded-[28px] shadow-2xl shadow-slate-900/10 bg-slate-900 animate-fadeInUp"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              <div className="relative h-[350px] md:h-[450px] xl:h-[550px] ">
-                <Image
-                  src={service.image} 
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={index < 2}
-                />
-                <div className="absolute inset-0 bg-black/35"></div>
-
-                <div className="absolute inset-x-0 top-4 px-5">
-                  <span className="rounded-full bg-slate-900/70 px-3 py-1 text-xs uppercase tracking-[0.24em] text-white w-fit">
-                    {service.title}
-                  </span>
-                </div>
-
-                <div className="absolute inset-x-5 bottom-5 space-y-2">
-                  <p className="text-xl md:text-2xl font-medium text-white leading-6">
-                    {service.subtitle}
-                  </p>
-                  <div className="rounded-[24px] bg-gradient-to-r from-blue-500/20 to-blue-900/20 p-4 backdrop-blur-xl border border-blue-300/10">
-                    <div className="grid grid-cols-3 gap-3 text-center text-white">
-                      {Object.entries(service.stats).map(([key, value]) => (
-                        <div key={key}>
-                          <div className="text-lg font-semibold">{value}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+        {/* Features with Red Checkmarks */}
+        <div className="space-y-2 mb-5">
+          {service.features.map((feature, idx) => (
+            <div key={idx} className="flex items-start gap-2">
+              <div className="text-primary mt-0.5">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <circle cx="10" cy="10" r="10" />
+                  <path d="M6 10l2 2 6-6" stroke="white" strokeWidth="2" fill="none" />
+                </svg>
               </div>
+              <span className="text-sm text-slate-700 font-medium pt-serif-normal">{feature}</span>
             </div>
           ))}
         </div>
 
-        
+        {/* Read More Button */}
+        <button className="w-full bg-slate-900 text-white py-2.5 rounded-md font-bold text-sm hover:bg-slate-800 transition-colors">
+          Read More
+        </button>
       </div>
+    </div>
+  );
 
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(24px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+  return (
+    <section className="bg-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <p className="text-red-600 font-semibold text-sm mb-2">Safe & Reliable Cargo Solutions!</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-2 pt-serif-bold">
+            Managing Logistics For World's
+          </h2>
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 pt-serif-bold">
+            Multinational Companies.
+          </h3>
+        </div>
 
-        .animate-fadeInUp {
-          animation: fadeInUp 0.75s ease-out forwards;
-          opacity: 0;
-        }
-      `}</style>
+        {/* Main Grid - 4 Services Slider */}
+        <div className="relative mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-700 ease-in-out">
+            {visibleServices.map((service) => (
+              <div
+                key={service.id}
+              >
+                <ServiceCard service={service} />
+              </div>
+            ))}
+          </div>
+
+          {/* Grid Slider Navigation */}
+          <div className="flex justify-center gap-4 mt-8">
+            <button
+              onClick={handleGridPrev}
+              className="bg-slate-900 text-white p-3 rounded-full hover:bg-slate-800 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Grid Slider Dots */}
+            <div className="flex gap-2 items-center">
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setGridPage(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    index === gridPage ? 'bg-primary' : 'bg-slate-300'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={handleGridNext}
+              className="bg-slate-900 text-white p-3 rounded-full hover:bg-slate-800 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
