@@ -1,49 +1,33 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { FaArrowDown } from "react-icons/fa";
+import { ArrowBigUp } from "lucide-react";
 
 const steps = [
-  {
-    number: "01",
-    title: "Request a Quote",
-    desc: "Best every pleasures is too welcome business to handling.",
-    align: "top",      // card position relative to dot
-    left: "15%",        // horizontal position
-    dotY: 140,          // vertical position of dot (pixels from top of container)
-  },
-  {
-    number: "02",
-    title: "Book Your Shipment",
-    desc: "How all this mistaken idea of denouncing pleasure.",
-    align: "bottom",
-    left: "32%",
-    dotY: 100,
-  },
-  {
-    number: "03",
-    title: "Track Your Shipment",
-    desc: "Nor again is there anyone who loves or pursues.",
-    align: "top",
-    left: "47%",
-    dotY: 260,
-  },
-  {
-    number: "04",
-    title: "Delivery & Receipt",
-    desc: "Take a trivial example which undertakes laborious.",
-    align: "bottom",
-    left: "80%",
-    dotY: 200,
-  },
+  { number: '01', title: 'Request a Quote', desc: 'Tell us what you need and receive a tailored quote quickly.', align: 'top', left: '8%', dotY: 120 },
+  { number: '02', title: 'Book Your Shipment', desc: 'Confirm dates, select services and lock in pricing.', align: 'bottom', left: '28%', dotY: 90 },
+  { number: '03', title: 'Pickup & Consolidation', desc: 'We collect cargo and consolidate for efficient transit.', align: 'top', left: '46%', dotY: 140 },
+  { number: '04', title: 'Customs Clearance', desc: 'Expert handling of paperwork and regulatory processes.', align: 'bottom', left: '62%', dotY: 110 },
+  { number: '05', title: 'Track in Real-Time', desc: 'Live updates and ETA notifications at every stage.', align: 'top', left: '78%', dotY: 170 },
+  { number: '06', title: 'Delivery & Confirmation', desc: 'Safe delivery with digital proof of receipt and follow-up.', align: 'bottom', left: '92%', dotY: 140 },
 ];
 
 export default function ShippingProcess() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((c) => (c + 1) % steps.length);
+    }, 1600);
+    return () => clearInterval(interval);
+  }, []);
   return (
-    <section className="relative bg-[#f5f7fb] pb-24 pt-2 overflow-hidden mt-6">
+    <section className="relative bg-gradient-to-b from-white via-[#f7f9fc] to-[#f1f5fb] pb-8 pt-16 overflow-hidden ">
 
       {/* Watermark */}
-      <h1 className="absolute bottom-10 left-0 text-[160px] font-black text-gray-200 opacity-40 select-none pointer-events-none hidden lg:block">
-        WORK PROCESS
+      <h1 className="absolute bottom-10 left-0 text-[120px] font-black text-gray-200 opacity-20 select-none pointer-events-none hidden lg:block">
+        WORK
       </h1>
 
       {/* Right side image */}
@@ -60,108 +44,79 @@ export default function ShippingProcess() {
           <p className="text-[#FD5621] font-semibold tracking-widest text-sm">
             HOW WE WORK
           </p>
-          <h2 className="text-5xl font-extrabold text-[#122652] mt-3 mb-50">
+          <h2 className="text-5xl font-extrabold text-[#122652] mt-3 mb-50 pt-serif-bold">
             Simple Shipping Process
           </h2>
         </div>
 
         {/* Desktop Timeline */}
-        <div className="relative hidden lg:block h-[400px] ">
+        <div className="relative hidden lg:block h-[480px] ">
 
-          {/* Start label */}
-          <div className="absolute left-20 top-[155px] font-semibold text-[#122652]">
-            Start
-          </div>
-
-          {/* Finish label */}
-          <div className="absolute right-20 bottom-20 font-semibold text-[#122652]">
-            Finish
-          </div>
-
-          {/* Animated Zigzag Path */}
-          <svg
-            className="absolute left-[20%] top-[130px]"
-            width="860"
-            height="220"
-            viewBox="0 0 860 220"
-            fill="none"
-          >
-            <motion.path
-              d="M0 40 H180 V120 H360 V40 H560 V140 H760"
-              stroke="#cbd5e1"
-              strokeWidth="2"
-              strokeDasharray="8 8"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              transition={{ duration: 2.5, ease: "easeInOut" }}
-              viewport={{ once: true }}
+          {/* Static Zigzag Connector Path (box-style movement) */}
+          <svg className="absolute left-[10%] top-[100px]" width="1100" height="260" viewBox="0 0 1100 260" fill="none">
+            <path
+              d="M20 60 L180 60 L260 140 L420 140 L560 40 L640 40 L800 100 L940 100 L1020 180 L1080 180"
+              stroke="#e6eef7"
+              strokeWidth="4"
+              strokeDasharray="10 8"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
             />
           </svg>
 
           {/* Steps */}
           {steps.map((step, i) => {
-  const isTop = step.align === "top";
+            const isTop = step.align === 'top';
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20, x: -40 }}
+                whileInView={{ opacity: 1, y: 0, x: 0 }}
+                transition={{ delay: i * 0.14, duration: 0.6, ease: 'easeOut' }}
+                viewport={{ once: true }}
+                className="absolute group"
+                style={{ left: step.left, top: step.dotY }}
+              >
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#d10000] to-[#ff2a2a] text-white font-bold flex items-center justify-center shadow-2xl transition-transform duration-300 z-20 relative ring-4 ring-white">
+                    <div className="text-sm tracking-widest">{step.number}</div>
+                  </div>
 
-  return (
-    <motion.div
-      key={i}
-      initial={{ opacity: 0, y: 80 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: i * 0.3, duration: 0.6 }}
-      viewport={{ once: true }}
-      className="absolute group"
-      style={{ left: step.left, top: step.dotY }}
-    >
-      {/* Number Dot */}
-      <div className="w-14 h-14 rounded-full bg-white border-2 border-[#FD5621] text-[#FD5621] font-bold flex items-center justify-center shadow-lg group-hover:bg-[#FD5621] group-hover:text-white transition-all duration-300 z-10 relative">
-        {step.number}
-      </div>
+                    {/* connector from dot to card */}
+                    <div className={`absolute left-1/2 -translate-x-1/2 ${isTop ? 'top-[40px]' : 'bottom-[40px]'} w-0 h-10`}> 
+                      <div className="w-[2px] h-full bg-gradient-to-b from-transparent to-[#c43b1a] mx-auto rounded" />
+                    </div>
 
-      {/* Card */}
-      <div
-        className={`absolute w-[240px] ${
-          isTop ? "top-[80px]" : "bottom-[80px]"
-        } left-1/2 -translate-x-1/2`}
-      >
-        <motion.div
-          whileHover={{ 
-            y: -8,
-            boxShadow: "0 25px 30px -12px rgba(253, 86, 33, 0.25)"
-          }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="relative bg-white p-6 rounded-xl shadow-lg group-hover:bg-fourth transition-all duration-300"
-        >
-          {/* Arrow (triangle) */}
-          <div
-            className={`absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-white rotate-45 ${
-              isTop ? "-top-2.5" : "-bottom-2.5"
-            } group-hover:bg-fourth transition-colors duration-300`}
-          />
+                <div className={`absolute w-[320px] ${isTop ? 'top-[84px]' : 'bottom-[84px]'} left-1/2 -translate-x-1/2`}>
+                  <motion.div
+                    whileHover={{ y: -12, scale: 1.03 }}
+                    className="relative bg-white/95 backdrop-blur-sm border border-gray-100 p-6 rounded-3xl shadow-2xl hover:shadow-3xl transition-transform duration-300"
+                  >
+                    <div className={`absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-white rotate-45 ${isTop ? '-top-2.5' : '-bottom-2.5'}`} />
 
-          {/* Default Content */}
-          <div className="group-hover:hidden">
-            <h3 className="font-bold text-[#122652] mb-3">
-              {step.title}
-            </h3>
-            <p className="text-sm text-gray-500 leading-relaxed">
-              {step.desc}
-            </p>
-          </div>
+                    <div className="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-[#d10000] to-[#ff2a2a] rounded-l-md" />
 
-          {/* Hover Content */}
-          <div className="hidden group-hover:block text-white"> 
-            <p className="text-sm text-white/90 leading-relaxed">
-              {step.number === "01" && "Best every pleasures is too welcome business to the claims of duty or the obligation of business."}
-              {step.number === "02" && "How all this mistaken idea of denouncing pleasure to the claims of duty or the obliga- tion of business."}
-              {step.number === "03" && "Nor again is there anyone in who loves or pursues to the claims of duty or the obliga- tion of business."}
-              {step.number === "04" && "Take a trivial example, which undertakes laborious to the claims of duty or the obliga- tion of business."}
-            </p>
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-})}
+                    <div className="pl-4">
+                      <h3 className="font-bold text-[#0E2047] mb-2 text-lg">{step.title}</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            );
+          })}
+
+          {/* Traveler box: hops from step to step (desktop only) */}
+          <motion.div
+            aria-hidden
+            className="absolute z-30 lg:block hidden"
+            initial={false}
+            animate={{ left: steps[current].left, top: `${steps[current].dotY}px` }}
+            transition={{ duration: 0.7, ease: 'easeInOut' }}
+            style={{ width: 56, height: 56 }}
+          >
+            
+            <ArrowBigUp className="text-black" />
+          </motion.div>
         </div>
 
         {/* Mobile Layout */}
