@@ -21,7 +21,7 @@ export default function about() {
           </div>
           
           <h1 className="text-4xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-            Cargo Logistic Company
+            Samudera Traffic Co., Ltd.
             <span className="block text-orange-500 mt-2">About Us</span>
           </h1>
           

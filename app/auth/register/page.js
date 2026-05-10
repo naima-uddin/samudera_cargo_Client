@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Registration
 export const metadata = {
-  title: "Create Account | Cargo Logistics Group",
+  title: "Create Account | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Join Cargo Logistics Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
+    "Join Samudera Traffic Co., Ltd.s Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Create Account",
     "Register",
     "Sign Up",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/auth/register",
   },
   openGraph: {
-    title: "Create Account | Cargo Logistics Group",
+    title: "Create Account | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Join Cargo Logistics Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
+      "Join Samudera Traffic Co., Ltd.s Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
     url: "https://client.cargologisticscompany.com/auth/register",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-register.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Create Account",
+        alt: "Samudera Traffic Co., Ltd.s Group - Create Account",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Create Account | Cargo Logistics Group",
+    title: "Create Account | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Join Cargo Logistics Group today. Create your customer account to access real-time shipment tracking and global logistics solutions.",
+      "Join Samudera Traffic Co., Ltd.s Group today. Create your customer account to access real-time shipment tracking and global logistics solutions.",
     images: ["/og-register.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Create Account",
             description:
-              "Join Cargo Logistics Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
+              "Join Samudera Traffic Co., Ltd.s Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
             url: "https://client.cargologisticscompany.com/auth/register",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },

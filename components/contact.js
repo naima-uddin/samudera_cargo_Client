@@ -227,8 +227,10 @@ function Contact() {
         <div>
           <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-1 sm:mb-2">Location</h3>
           <p className="text-gray-600 text-xs sm:text-sm lg:text-base">
-            8825 Stanford Blvd Suite 306 <br />
-            Columbia MD 21045 USA
+            Green Tower, 9th floor, 3656/27-28
+Rama IV Road <br />
+            Klongton-Klong Toey
+Bangkok 10110, Thailand
           </p>
         </div>
       </div>

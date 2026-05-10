@@ -4,11 +4,11 @@ import React, { Suspense } from "react";
 
 // 🔹 SEO metadata for My Shipments
 export const metadata = {
-  title: "My Shipments | Cargo Logistics Group",
+  title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Track and manage your shipments with Cargo Logistics Group. View real-time shipment status, track packages, monitor transit progress, and manage your logistics operations from one dashboard.",
+    "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View real-time shipment status, track packages, monitor transit progress, and manage your logistics operations from one dashboard.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "My Shipments",
     "Track Shipment",
     "Shipment Tracking",
@@ -23,26 +23,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/shipments",
   },
   openGraph: {
-    title: "My Shipments | Cargo Logistics Group",
+    title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Track and manage your shipments with Cargo Logistics Group. View real-time shipment status, track packages, monitor transit progress, and manage your logistics operations from one dashboard.",
+      "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View real-time shipment status, track packages, monitor transit progress, and manage your logistics operations from one dashboard.",
     url: "https://client.cargologisticscompany.com/shipments",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-shipments.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - My Shipments",
+        alt: "Samudera Traffic Co., Ltd.s Group - My Shipments",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "My Shipments | Cargo Logistics Group",
+    title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Track and manage your shipments with Cargo Logistics Group. View real-time shipment status and track packages.",
+      "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View real-time shipment status and track packages.",
     images: ["/og-shipments.jpg"],
   },
   robots: {
@@ -68,11 +68,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "My Shipments Dashboard",
             description:
-              "Track and manage your shipments with Cargo Logistics Group. View real-time shipment status, track packages, monitor transit progress, and manage your logistics operations.",
+              "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View real-time shipment status, track packages, monitor transit progress, and manage your logistics operations.",
             url: "https://client.cargologisticscompany.com/shipments",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },
@@ -123,7 +123,7 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Cargo Logistics Group",
+            name: "Samudera Traffic Co., Ltd.s Group",
             url: "https://client.cargologisticscompany.com",
             logo: "https://client.cargologisticscompany.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",

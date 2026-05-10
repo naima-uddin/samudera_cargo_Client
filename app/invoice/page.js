@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for My Invoices
 export const metadata = {
-  title: "My Invoices | Cargo Logistics Group",
+  title: "My Invoices | Samudera Traffic Co., Ltd.s Group",
   description:
-    "View and manage your shipping invoices with Cargo Logistics Group. Track invoice status, download PDF copies, view payment history, and manage your logistics billing online.",
+    "View and manage your shipping invoices with Samudera Traffic Co., Ltd.s Group. Track invoice status, download PDF copies, view payment history, and manage your logistics billing online.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "My Invoices",
     "Shipping Invoices",
     "Logistics Billing",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/invoices",
   },
   openGraph: {
-    title: "My Invoices | Cargo Logistics Group",
+    title: "My Invoices | Samudera Traffic Co., Ltd.s Group",
     description:
-      "View and manage your shipping invoices with Cargo Logistics Group. Track invoice status, download PDF copies, view payment history, and manage your logistics billing online.",
+      "View and manage your shipping invoices with Samudera Traffic Co., Ltd.s Group. Track invoice status, download PDF copies, view payment history, and manage your logistics billing online.",
     url: "https://client.cargologisticscompany.com/invoices",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-invoices.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - My Invoices",
+        alt: "Samudera Traffic Co., Ltd.s Group - My Invoices",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "My Invoices | Cargo Logistics Group",
+    title: "My Invoices | Samudera Traffic Co., Ltd.s Group",
     description:
-      "View and manage your shipping invoices with Cargo Logistics Group. Track invoice status and download PDF copies.",
+      "View and manage your shipping invoices with Samudera Traffic Co., Ltd.s Group. Track invoice status and download PDF copies.",
     images: ["/og-invoices.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "My Invoices",
             description:
-              "View and manage your shipping invoices with Cargo Logistics Group. Track invoice status, download PDF copies, view payment history, and manage your logistics billing online.",
+              "View and manage your shipping invoices with Samudera Traffic Co., Ltd.s Group. Track invoice status, download PDF copies, view payment history, and manage your logistics billing online.",
             url: "https://client.cargologisticscompany.com/invoices",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },
@@ -119,7 +119,7 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Cargo Logistics Group",
+            name: "Samudera Traffic Co., Ltd.s Group",
             url: "https://client.cargologisticscompany.com",
             logo: "https://client.cargologisticscompany.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",

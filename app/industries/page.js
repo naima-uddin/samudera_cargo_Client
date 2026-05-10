@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Industries
 export const metadata = {
-  title: "Industries We Serve | Cargo Logistics Group",
+  title: "Industries We Serve | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Explore the industries we serve at Cargo Logistics Group. Specialized logistics solutions for eCommerce, manufacturing, retail, automotive, pharmaceuticals, food & beverage, and more. Get tailored shipping solutions for your business.",
+    "Explore the industries we serve at Samudera Traffic Co., Ltd.s Group. Specialized logistics solutions for eCommerce, manufacturing, retail, automotive, pharmaceuticals, food & beverage, and more. Get tailored shipping solutions for your business.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Industries We Serve",
     "Logistics Solutions",
     "eCommerce Logistics",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/industries",
   },
   openGraph: {
-    title: "Industries We Serve | Cargo Logistics Group",
+    title: "Industries We Serve | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Explore the industries we serve at Cargo Logistics Group. Specialized logistics solutions for eCommerce, manufacturing, retail, automotive, pharmaceuticals, food & beverage, and more.",
+      "Explore the industries we serve at Samudera Traffic Co., Ltd.s Group. Specialized logistics solutions for eCommerce, manufacturing, retail, automotive, pharmaceuticals, food & beverage, and more.",
     url: "https://client.cargologisticscompany.com/industries",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-industries.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Industries We Serve",
+        alt: "Samudera Traffic Co., Ltd.s Group - Industries We Serve",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Industries We Serve | Cargo Logistics Group",
+    title: "Industries We Serve | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Explore the industries we serve at Cargo Logistics Group. Specialized logistics solutions for various business sectors.",
+      "Explore the industries we serve at Samudera Traffic Co., Ltd.s Group. Specialized logistics solutions for various business sectors.",
     images: ["/og-industries.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Industries We Serve",
             description:
-              "Explore the industries we serve at Cargo Logistics Group. Specialized logistics solutions for eCommerce, manufacturing, retail, automotive, pharmaceuticals, food & beverage, and more.",
+              "Explore the industries we serve at Samudera Traffic Co., Ltd.s Group. Specialized logistics solutions for eCommerce, manufacturing, retail, automotive, pharmaceuticals, food & beverage, and more.",
             url: "https://client.cargologisticscompany.com/industries",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },

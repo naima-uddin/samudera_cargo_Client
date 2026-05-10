@@ -65,10 +65,12 @@ const Topbar = () => {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
               <MapPin className="w-4 h-4 text-orange-600" />
-              <span className="text-third">8825 STANFORD BLVD SUITE 306</span>
+              <span className="text-third">Green Tower, 9th floor, 3656/27-28
+Rama IV Road</span>
             </div>
             <span className="text-orange-600 hidden md:inline">|</span>
-            <span className="text-third hidden md:block">COLUMBIA MD 21045 USA</span>
+            <span className="text-third hidden md:block">Klongton-Klong Toey
+Bangkok 10110, Thailand</span>
             <motion.button
               whileHover={{ scale: 1.05 }}
               className="hidden lg:flex items-center space-x-1 text-white font-bold hover:text-third"

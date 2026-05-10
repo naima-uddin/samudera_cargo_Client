@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Our Company
 export const metadata = {
-  title: "Our Company | Cargo Logistics Group",
+  title: "Our Company | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Discover Cargo Logistics Group, our mission, vision, and dedicated team providing logistics, supply chain management, warehousing, and cargo solutions worldwide.",
+    "Discover Samudera Traffic Co., Ltd.s Group, our mission, vision, and dedicated team providing logistics, supply chain management, warehousing, and cargo solutions worldwide.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Our Company",
     "Logistics Company",
     "Supply Chain Management",
@@ -21,26 +21,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/our-company",
   },
   openGraph: {
-    title: "Our Company | Cargo Logistics Group",
+    title: "Our Company | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Discover Cargo Logistics Group, our mission, vision, and dedicated team providing logistics, supply chain management, warehousing, and cargo solutions worldwide.",
+      "Discover Samudera Traffic Co., Ltd.s Group, our mission, vision, and dedicated team providing logistics, supply chain management, warehousing, and cargo solutions worldwide.",
     url: "https://client.cargologisticscompany.com/our-company",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-our-company.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Our Company",
+        alt: "Samudera Traffic Co., Ltd.s Group - Our Company",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Company | Cargo Logistics Group",
+    title: "Our Company | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Discover Cargo Logistics Group, our mission, vision, and dedicated team providing logistics, supply chain management, warehousing, and cargo solutions worldwide.",
+      "Discover Samudera Traffic Co., Ltd.s Group, our mission, vision, and dedicated team providing logistics, supply chain management, warehousing, and cargo solutions worldwide.",
     images: ["/og-our-company.jpg"],
   },
 };
@@ -60,10 +60,10 @@ export default function Page() {
             name: "Our Company",
             url: "https://client.cargologisticscompany.com/our-company",
             description:
-              "Discover Cargo Logistics Group, our mission, vision, and dedicated team providing logistics, supply chain management, warehousing, and cargo solutions worldwide.",
+              "Discover Samudera Traffic Co., Ltd.s Group, our mission, vision, and dedicated team providing logistics, supply chain management, warehousing, and cargo solutions worldwide.",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },

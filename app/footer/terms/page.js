@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Terms of Service
 export const metadata = {
-  title: "Terms of Service | Cargo Logistics Group",
+  title: "Terms of Service | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Read the Terms of Service for Cargo Logistics Group. Understand our legal framework for international freight forwarding, logistics management, and B2B operations across Thailand, China, USA, UK & Canada.",
+    "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and B2B operations across Thailand, China, USA, UK & Canada.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Terms of Service",
     "Terms and Conditions",
     "Legal Terms",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/terms-of-service",
   },
   openGraph: {
-    title: "Terms of Service | Cargo Logistics Group",
+    title: "Terms of Service | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Read the Terms of Service for Cargo Logistics Group. Understand our legal framework for international freight forwarding, logistics management, and B2B operations.",
+      "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and B2B operations.",
     url: "https://client.cargologisticscompany.com/terms-of-service",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-terms-of-service.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Terms of Service",
+        alt: "Samudera Traffic Co., Ltd.s Group - Terms of Service",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terms of Service | Cargo Logistics Group",
+    title: "Terms of Service | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Read the Terms of Service for Cargo Logistics Group. Understand our legal framework for international freight forwarding.",
+      "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding.",
     images: ["/og-terms-of-service.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Terms of Service",
             description:
-              "Read the Terms of Service for Cargo Logistics Group. Understand our legal framework for international freight forwarding, logistics management, and B2B operations across Thailand, China, USA, UK & Canada.",
+              "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and B2B operations across Thailand, China, USA, UK & Canada.",
             url: "https://client.cargologisticscompany.com/terms-of-service",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },
@@ -114,13 +114,14 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Cargo Logistics Group",
+            name: "Samudera Traffic Co., Ltd.s Group",
             url: "https://client.cargologisticscompany.com",
             logo: "https://client.cargologisticscompany.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "8825 Stanford Blvd Suite 306",
+              streetAddress: "Green Tower, 9th floor, 3656/27-28
+Rama IV Road",
               addressLocality: "Columbia",
               addressRegion: "MD",
               postalCode: "21045",
@@ -133,7 +134,7 @@ export default function Page() {
               email: "info@cargologisticscompany.com",
               availableLanguage: ["English"],
             },
-            legalName: "Cargo Logistics Group",
+            legalName: "Samudera Traffic Co., Ltd.s Group",
             foundingDate: "2009",
             termsOfService: "https://client.cargologisticscompany.com/terms-of-service",
           }),
@@ -147,9 +148,9 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "TermsOfService",
-            name: "Terms of Service of Cargo Logistics Group",
+            name: "Terms of Service of Samudera Traffic Co., Ltd.s Group",
             description:
-              "These Terms of Service govern the use of Cargo Logistics Group's freight forwarding platform and logistics services.",
+              "These Terms of Service govern the use of Samudera Traffic Co., Ltd.s Group's freight forwarding platform and logistics services.",
             url: "https://client.cargologisticscompany.com/terms-of-service",
             lastReviewed: "2026-02-02",
             inLanguage: "en-US",

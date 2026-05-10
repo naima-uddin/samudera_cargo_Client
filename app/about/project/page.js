@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Our Projects
 export const metadata = {
-  title: "Our Projects | Cargo Logistics Group",
+  title: "Our Projects | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Explore our latest projects in logistics, supply chain management, customs clearance, freight solutions, and smart warehousing. Discover how Cargo Logistics Group delivers innovation across industries.",
+    "Explore our latest projects in logistics, supply chain management, customs clearance, freight solutions, and smart warehousing. Discover how Samudera Traffic Co., Ltd.s Group delivers innovation across industries.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Our Projects",
     "Logistics Projects",
     "Customs Clearance",
@@ -22,24 +22,24 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/projects",
   },
   openGraph: {
-    title: "Our Projects | Cargo Logistics Group",
+    title: "Our Projects | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Explore our latest projects in logistics, supply chain management, customs clearance, freight solutions, and smart warehousing. Discover how Cargo Logistics Group delivers innovation across industries.",
+      "Explore our latest projects in logistics, supply chain management, customs clearance, freight solutions, and smart warehousing. Discover how Samudera Traffic Co., Ltd.s Group delivers innovation across industries.",
     url: "https://client.cargologisticscompany.com/projects",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-projects.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Our Projects",
+        alt: "Samudera Traffic Co., Ltd.s Group - Our Projects",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Projects | Cargo Logistics Group",
+    title: "Our Projects | Samudera Traffic Co., Ltd.s Group",
     description:
       "Explore our latest projects in logistics, supply chain management, customs clearance, freight solutions, and smart warehousing.",
     images: ["/og-projects.jpg"],
@@ -63,11 +63,11 @@ export default function Page() {
               "Explore our latest projects in logistics, supply chain management, customs clearance, freight solutions, and smart warehousing.",
             brand: {
               "@type": "Brand",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
             },
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },

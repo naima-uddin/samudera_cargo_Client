@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Pricing
 export const metadata = {
-  title: "Pricing Table | Cargo Logistics Group",
+  title: "Pricing Table | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Explore our competitive pricing plans for logistics, supply chain management, warehousing, and cargo services. Find the right solution for your business needs at Cargo Logistics Group.",
+    "Explore our competitive pricing plans for logistics, supply chain management, warehousing, and cargo services. Find the right solution for your business needs at Samudera Traffic Co., Ltd.s Group.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Pricing Table",
     "Logistics Pricing",
     "Shipping Rates",
@@ -22,24 +22,24 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/pricing",
   },
   openGraph: {
-    title: "Pricing Table | Cargo Logistics Group",
+    title: "Pricing Table | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Explore our competitive pricing plans for logistics, supply chain management, warehousing, and cargo services. Find the right solution for your business needs at Cargo Logistics Group.",
+      "Explore our competitive pricing plans for logistics, supply chain management, warehousing, and cargo services. Find the right solution for your business needs at Samudera Traffic Co., Ltd.s Group.",
     url: "https://client.cargologisticscompany.com/pricing",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-pricing.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Pricing Table",
+        alt: "Samudera Traffic Co., Ltd.s Group - Pricing Table",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pricing Table | Cargo Logistics Group",
+    title: "Pricing Table | Samudera Traffic Co., Ltd.s Group",
     description:
       "Explore our competitive pricing plans for logistics, supply chain management, warehousing, and cargo services.",
     images: ["/og-pricing.jpg"],
@@ -63,7 +63,7 @@ export default function Page() {
               "Competitive pricing plans for logistics, supply chain management, warehousing, and cargo services.",
             brand: {
               "@type": "Brand",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
             },
             offers: {
               "@type": "AggregateOffer",
@@ -73,7 +73,7 @@ export default function Page() {
             },
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },

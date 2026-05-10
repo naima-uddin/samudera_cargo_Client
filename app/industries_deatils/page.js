@@ -5,11 +5,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Industries Details
 export const metadata = {
-  title: "Industries Details | Cargo Logistics Group",
+  title: "Industries Details | Samudera Traffic Co., Ltd.s Group",
   description:
     "Discover our tailored logistics solutions for various industries. We provide just-in-time delivery, returnable packaging, specialized vehicles, rapid delivery, and advanced technology solutions for your business needs.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Industries Details",
     "Tailored Logistics",
     "Just-in-Time Delivery",
@@ -24,24 +24,24 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/industries-details",
   },
   openGraph: {
-    title: "Industries Details | Cargo Logistics Group",
+    title: "Industries Details | Samudera Traffic Co., Ltd.s Group",
     description:
       "Discover our tailored logistics solutions for various industries. We provide just-in-time delivery, returnable packaging, specialized vehicles, rapid delivery, and advanced technology solutions.",
     url: "https://client.cargologisticscompany.com/industries-details",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-industries-details.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Industries Details",
+        alt: "Samudera Traffic Co., Ltd.s Group - Industries Details",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Industries Details | Cargo Logistics Group",
+    title: "Industries Details | Samudera Traffic Co., Ltd.s Group",
     description:
       "Discover our tailored logistics solutions for various industries. We provide just-in-time delivery, returnable packaging, specialized vehicles, and rapid delivery.",
     images: ["/og-industries-details.jpg"],
@@ -72,7 +72,7 @@ export default function Page() {
             url: "https://client.cargologisticscompany.com/industries-details",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },
@@ -148,7 +148,7 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Cargo Logistics Group",
+            name: "Samudera Traffic Co., Ltd.s Group",
             url: "https://client.cargologisticscompany.com",
             logo: "https://client.cargologisticscompany.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",

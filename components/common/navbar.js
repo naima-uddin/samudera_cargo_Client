@@ -207,7 +207,7 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex items-center space-x-2 flex-shrink-0">
               <a href="/">
-                <img src="/images/logo.png" alt="Cargo Logistics Company" className="h-12 w-auto" />
+                <img src="/images/logo.png" alt="Samudera Traffic Co., Ltd.s Company" className="h-12 w-auto" />
               </a>
             </div>
 

@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Track Shipment
 export const metadata = {
-  title: "Track Shipment | Cargo Logistics Group",
+  title: "Track Shipment | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Track your shipment in real-time with Cargo Logistics Group. Enter your tracking number to get live updates on your cargo location, status, and estimated delivery time.",
+    "Track your shipment in real-time with Samudera Traffic Co., Ltd.s Group. Enter your tracking number to get live updates on your cargo location, status, and estimated delivery time.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Track Shipment",
     "Tracking Number",
     "Shipment Tracking",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/tracking",
   },
   openGraph: {
-    title: "Track Shipment | Cargo Logistics Group",
+    title: "Track Shipment | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Track your shipment in real-time with Cargo Logistics Group. Enter your tracking number to get live updates on your cargo location, status, and estimated delivery time.",
+      "Track your shipment in real-time with Samudera Traffic Co., Ltd.s Group. Enter your tracking number to get live updates on your cargo location, status, and estimated delivery time.",
     url: "https://client.cargologisticscompany.com/tracking",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-tracking.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Track Shipment",
+        alt: "Samudera Traffic Co., Ltd.s Group - Track Shipment",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Track Shipment | Cargo Logistics Group",
+    title: "Track Shipment | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Track your shipment in real-time with Cargo Logistics Group. Enter your tracking number for live updates.",
+      "Track your shipment in real-time with Samudera Traffic Co., Ltd.s Group. Enter your tracking number for live updates.",
     images: ["/og-tracking.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Track Shipment",
             description:
-              "Track your shipment in real-time with Cargo Logistics Group. Enter your tracking number to get live updates on your cargo location, status, and estimated delivery time.",
+              "Track your shipment in real-time with Samudera Traffic Co., Ltd.s Group. Enter your tracking number to get live updates on your cargo location, status, and estimated delivery time.",
             url: "https://client.cargologisticscompany.com/tracking",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },
@@ -126,7 +126,7 @@ export default function Page() {
             serviceType: "Shipment Tracking",
             provider: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
             },
             areaServed: {
               "@type": "Country",

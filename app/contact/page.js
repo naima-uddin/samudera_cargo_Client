@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Contact Us
 export const metadata = {
-  title: "Contact Us | Cargo Logistics Group",
+  title: "Contact Us | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Get in touch with Cargo Logistics Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
+    "Get in touch with Samudera Traffic Co., Ltd.s Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Contact Us",
     "Logistics Support",
     "Shipping Inquiries",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/contact",
   },
   openGraph: {
-    title: "Contact Us | Cargo Logistics Group",
+    title: "Contact Us | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Get in touch with Cargo Logistics Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
+      "Get in touch with Samudera Traffic Co., Ltd.s Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
     url: "https://client.cargologisticscompany.com/contact",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-contact.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Contact Us",
+        alt: "Samudera Traffic Co., Ltd.s Group - Contact Us",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us | Cargo Logistics Group",
+    title: "Contact Us | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Get in touch with Cargo Logistics Group for all your shipping and logistics needs. Contact our support team for inquiries.",
+      "Get in touch with Samudera Traffic Co., Ltd.s Group for all your shipping and logistics needs. Contact our support team for inquiries.",
     images: ["/og-contact.jpg"],
   },
   robots: {
@@ -64,17 +64,17 @@ export default function Page() {
             "@type": "ContactPage",
             name: "Contact Us",
             description:
-              "Get in touch with Cargo Logistics Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
+              "Get in touch with Samudera Traffic Co., Ltd.s Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
             url: "https://client.cargologisticscompany.com/contact",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },
             mainEntity: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               contactPoint: [
                 {
                   "@type": "ContactPoint",
@@ -102,7 +102,8 @@ export default function Page() {
               ],
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "8825 Stanford Blvd Suite 306",
+                streetAddress: "Green Tower, 9th floor, 3656/27-28
+Rama IV Road",
                 addressLocality: "Columbia",
                 addressRegion: "MD",
                 postalCode: "21045",

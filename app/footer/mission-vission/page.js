@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Our History
 export const metadata = {
-  title: "Our History | Cargo Logistics Group",
+  title: "Our History | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Learn about the history, vision, and mission of Cargo Logistics Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
+    "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd.s Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Our History",
     "Company History",
     "Logistics Vision",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/history",
   },
   openGraph: {
-    title: "Our History | Cargo Logistics Group",
+    title: "Our History | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Learn about the history, vision, and mission of Cargo Logistics Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
+      "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd.s Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
     url: "https://client.cargologisticscompany.com/history",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-history.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Our History",
+        alt: "Samudera Traffic Co., Ltd.s Group - Our History",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our History | Cargo Logistics Group",
+    title: "Our History | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Learn about the history, vision, and mission of Cargo Logistics Group. Discover our commitment to logistics excellence.",
+      "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd.s Group. Discover our commitment to logistics excellence.",
     images: ["/og-history.jpg"],
   },
   robots: {
@@ -64,17 +64,17 @@ export default function Page() {
             "@type": "WebPage",
             name: "Our History",
             description:
-              "Learn about the history, vision, and mission of Cargo Logistics Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
+              "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd.s Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
             url: "https://client.cargologisticscompany.com/history",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },
             mainEntity: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               foundingDate: "2009",
               foundingLocation: {
                 "@type": "Place",
@@ -119,7 +119,7 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Cargo Logistics Group",
+            name: "Samudera Traffic Co., Ltd.s Group",
             url: "https://client.cargologisticscompany.com",
             logo: "https://client.cargologisticscompany.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
@@ -132,7 +132,8 @@ export default function Page() {
             ],
             address: {
               "@type": "PostalAddress",
-              streetAddress: "8825 Stanford Blvd Suite 306",
+              streetAddress: "Green Tower, 9th floor, 3656/27-28
+Rama IV Road",
               addressLocality: "Columbia",
               addressRegion: "MD",
               postalCode: "21045",
@@ -161,12 +162,12 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "AboutPage",
-            name: "About Cargo Logistics Group",
+            name: "About Samudera Traffic Co., Ltd.s Group",
             description:
-              "Cargo Logistics Group is a leading provider of secure, efficient, and cost-effective logistics solutions worldwide.",
+              "Samudera Traffic Co., Ltd.s Group is a leading provider of secure, efficient, and cost-effective logistics solutions worldwide.",
             mainEntity: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               description: "Global logistics and supply chain solutions provider",
             },
           }),

@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for My Shipments
 export const metadata = {
-  title: "My Shipments | Cargo Logistics Group",
+  title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Track and manage your shipments with Cargo Logistics Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
+    "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "My Shipments",
     "Track Shipment",
     "Booking Management",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/bookings/my_bookings",
   },
   openGraph: {
-    title: "My Shipments | Cargo Logistics Group",
+    title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Track and manage your shipments with Cargo Logistics Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
+      "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
     url: "https://client.cargologisticscompany.com/bookings/my_bookings",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-my-bookings.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - My Shipments",
+        alt: "Samudera Traffic Co., Ltd.s Group - My Shipments",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "My Shipments | Cargo Logistics Group",
+    title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Track and manage your shipments with Cargo Logistics Group. View booking details, track real-time status, and manage your logistics operations.",
+      "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View booking details, track real-time status, and manage your logistics operations.",
     images: ["/og-my-bookings.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "My Shipments Dashboard",
             description:
-              "Track and manage your shipments with Cargo Logistics Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
+              "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
             url: "https://client.cargologisticscompany.com/bookings/my_bookings",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },

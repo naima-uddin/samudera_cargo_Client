@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Our History
 export const metadata = {
-  title: "Our History | Cargo Logistics Group",
+  title: "Our History | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Explore the journey of Cargo Logistics Group since 1984. Learn about our foundation, expansion, global reach, milestones, and achievements in the logistics industry.",
+    "Explore the journey of Samudera Traffic Co., Ltd.s Group since 1984. Learn about our foundation, expansion, global reach, milestones, and achievements in the logistics industry.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Our History",
     "Company History",
     "Logistics Journey",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/history",
   },
   openGraph: {
-    title: "Our History | Cargo Logistics Group",
+    title: "Our History | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Explore the journey of Cargo Logistics Group since 1984. Learn about our foundation, expansion, global reach, milestones, and achievements in the logistics industry.",
+      "Explore the journey of Samudera Traffic Co., Ltd.s Group since 1984. Learn about our foundation, expansion, global reach, milestones, and achievements in the logistics industry.",
     url: "https://client.cargologisticscompany.com/history",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-history.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Our History",
+        alt: "Samudera Traffic Co., Ltd.s Group - Our History",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our History | Cargo Logistics Group",
+    title: "Our History | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Explore the journey of Cargo Logistics Group since 1984. Learn about our foundation, expansion, global reach, and milestones.",
+      "Explore the journey of Samudera Traffic Co., Ltd.s Group since 1984. Learn about our foundation, expansion, global reach, and milestones.",
     images: ["/og-history.jpg"],
   },
 };
@@ -58,10 +58,10 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Cargo Logistics Group",
+            name: "Samudera Traffic Co., Ltd.s Group",
             url: "https://client.cargologisticscompany.com/history",
             description:
-              "Explore the journey of Cargo Logistics Group since 1984. Learn about our foundation, expansion, global reach, milestones, and achievements in the logistics industry.",
+              "Explore the journey of Samudera Traffic Co., Ltd.s Group since 1984. Learn about our foundation, expansion, global reach, milestones, and achievements in the logistics industry.",
             foundingDate: "1984",
             foundingLocation: {
               "@type": "Place",
@@ -69,11 +69,11 @@ export default function Page() {
             },
             brand: {
               "@type": "Brand",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
             },
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },

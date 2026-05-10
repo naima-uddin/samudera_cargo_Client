@@ -4,11 +4,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Create Booking
 export const metadata = {
-  title: "Create Booking | Cargo Logistics Group",
+  title: "Create Booking | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Create a new shipping booking with Cargo Logistics Group. Book sea freight, air freight, inland trucking, or multimodal shipping. Get competitive rates with real-time tracking.",
+    "Create a new shipping booking with Samudera Traffic Co., Ltd.s Group. Book sea freight, air freight, inland trucking, or multimodal shipping. Get competitive rates with real-time tracking.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Create Booking",
     "Shipping Booking",
     "Sea Freight Booking",
@@ -23,26 +23,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com/create-booking",
   },
   openGraph: {
-    title: "Create Booking | Cargo Logistics Group",
+    title: "Create Booking | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Create a new shipping booking with Cargo Logistics Group. Book sea freight, air freight, inland trucking, or multimodal shipping. Get competitive rates with real-time tracking.",
+      "Create a new shipping booking with Samudera Traffic Co., Ltd.s Group. Book sea freight, air freight, inland trucking, or multimodal shipping. Get competitive rates with real-time tracking.",
     url: "https://client.cargologisticscompany.com/create-booking",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-create-booking.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Create Booking",
+        alt: "Samudera Traffic Co., Ltd.s Group - Create Booking",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Create Booking | Cargo Logistics Group",
+    title: "Create Booking | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Create a new shipping booking with Cargo Logistics Group. Book sea freight, air freight, inland trucking, or multimodal shipping.",
+      "Create a new shipping booking with Samudera Traffic Co., Ltd.s Group. Book sea freight, air freight, inland trucking, or multimodal shipping.",
     images: ["/og-create-booking.jpg"],
   },
   robots: {
@@ -65,11 +65,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Create Shipping Booking",
             description:
-              "Create a new shipping booking with Cargo Logistics Group. Book sea freight, air freight, inland trucking, or multimodal shipping with competitive rates.",
+              "Create a new shipping booking with Samudera Traffic Co., Ltd.s Group. Book sea freight, air freight, inland trucking, or multimodal shipping with competitive rates.",
             url: "https://client.cargologisticscompany.com/create-booking",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },

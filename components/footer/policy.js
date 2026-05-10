@@ -177,7 +177,9 @@ const PrivacyPolicy = () => {
     },
     { 
       icon: <HiLocationMarker className="w-5 h-5" />, 
-      text: "8825 Stanford Blvd Suite 306, Columbia MD 21045 USA", 
+      text: "Green Tower, 9th floor, 3656/27-28
+Rama IV Road, Klongton-Klong Toey
+Bangkok 10110, Thailand", 
       href: "https://maps.google.com/?q=8825+Stanford+Blvd+Suite+306+Columbia+MD+21045",
       label: "View Headquarters"
     }
@@ -278,7 +280,7 @@ const PrivacyPolicy = () => {
                 </div>
               </div>
               <p className="text-gray-600 text-lg leading-relaxed">
-                At <span className="font-semibold text-[#122652]">Cargo Logistics Company</span>, we believe privacy is a fundamental right. 
+                At <span className="font-semibold text-[#122652]">Samudera Traffic Co., Ltd.s Company</span>, we believe privacy is a fundamental right. 
                 This policy outlines our comprehensive approach to protecting your personal information while delivering 
                 world-class freight forwarding and logistics services. We adhere to the highest standards of data protection 
                 and transparency in everything we do.
@@ -476,7 +478,7 @@ const PrivacyPolicy = () => {
         >
           <div className="inline-block px-6 py-3 bg-white rounded-full shadow-md border border-gray-100 mb-6">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Cargo Logistics Company. All rights reserved.
+              © {new Date().getFullYear()} Samudera Traffic Co., Ltd.s Company. All rights reserved.
             </p>
           </div>
           

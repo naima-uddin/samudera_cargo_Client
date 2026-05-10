@@ -17,11 +17,11 @@ import PromotionPricing from '@/components/home/PromotionPricing';
 
 // 🔹 SEO metadata for Home Page
 export const metadata = {
-  title: "Cargo Logistics Group | Global Freight Forwarding & Supply Chain Solutions",
+  title: "Samudera Traffic Co., Ltd.s Group | Global Freight Forwarding & Supply Chain Solutions",
   description:
-    "Cargo Logistics Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide. Trusted logistics partner for businesses across USA, UK, Canada, China, and Thailand.",
+    "Samudera Traffic Co., Ltd.s Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide. Trusted logistics partner for businesses across USA, UK, Canada, China, and Thailand.",
   keywords: [
-    "Cargo Logistics",
+    "Samudera Traffic Co., Ltd.s",
     "Freight Forwarding",
     "Sea Freight",
     "Air Freight",
@@ -36,26 +36,26 @@ export const metadata = {
     canonical: "https://client.cargologisticscompany.com",
   },
   openGraph: {
-    title: "Cargo Logistics Group | Global Freight Forwarding & Supply Chain Solutions",
+    title: "Samudera Traffic Co., Ltd.s Group | Global Freight Forwarding & Supply Chain Solutions",
     description:
-      "Cargo Logistics Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide.",
+      "Samudera Traffic Co., Ltd.s Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide.",
     url: "https://client.cargologisticscompany.com",
-    siteName: "Cargo Logistics Group",
+    siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
         url: "/og-home.jpg",
         width: 1200,
         height: 630,
-        alt: "Cargo Logistics Group - Global Logistics Solutions",
+        alt: "Samudera Traffic Co., Ltd.s Group - Global Logistics Solutions",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cargo Logistics Group | Global Logistics Solutions",
+    title: "Samudera Traffic Co., Ltd.s Group | Global Logistics Solutions",
     description:
-      "International freight forwarding and supply chain solutions from Cargo Logistics Group.",
+      "International freight forwarding and supply chain solutions from Samudera Traffic Co., Ltd.s Group.",
     images: ["/og-home.jpg"],
   },
   robots: {
@@ -90,13 +90,13 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: "Cargo Logistics Group",
+            name: "Samudera Traffic Co., Ltd.s Group",
             description:
-              "Cargo Logistics Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide.",
+              "Samudera Traffic Co., Ltd.s Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide.",
             url: "https://client.cargologisticscompany.com",
             publisher: {
               "@type": "Organization",
-              name: "Cargo Logistics Group",
+              name: "Samudera Traffic Co., Ltd.s Group",
               url: "https://client.cargologisticscompany.com",
               logo: "https://client.cargologisticscompany.com/logo.png",
             },
@@ -111,18 +111,18 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Cargo Logistics Group",
+            name: "Samudera Traffic Co., Ltd.s Group",
             url: "https://client.cargologisticscompany.com",
             logo: "https://client.cargologisticscompany.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
             foundingDate: "2009",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "8825 Stanford Blvd Suite 306",
-              addressLocality: "Columbia",
-              addressRegion: "MD",
-              postalCode: "21045",
-              addressCountry: "USA",
+              streetAddress: "Green Tower, 9th floor, 3656/27-28 Rama IV Road",
+              addressLocality: "Klongton-Klong Toey",
+              addressRegion: "Bangkok",
+              postalCode: "10110",
+              addressCountry: "Thailand",
             },
             contactPoint: {
               "@type": "ContactPoint",
@@ -147,15 +147,15 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "Cargo Logistics Group",
+            name: "Samudera Traffic Co., Ltd.s Group",
             image: "https://client.cargologisticscompany.com/logo.png",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "8825 Stanford Blvd Suite 306",
-              addressLocality: "Columbia",
-              addressRegion: "MD",
-              postalCode: "21045",
-              addressCountry: "USA",
+              streetAddress: "Green Tower, 9th floor, 3656/27-28 Rama IV Road",
+              addressLocality: "Klongton-Klong Toey",
+              addressRegion: "Bangkok",
+              postalCode: "10110",
+              addressCountry: "Thailand",
             },
             telephone: "+1-647-362-7735",
             email: "support@cargologisticscompany.com",

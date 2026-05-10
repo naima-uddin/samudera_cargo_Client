@@ -52,7 +52,7 @@ const TermsOfService = () => {
       content: (
         <div className="space-y-3">
           <p className="text-gray-700 leading-relaxed">
-            By accessing and using the Cargo Logistics Company freight forwarding platform
+            By accessing and using the Samudera Traffic Co., Ltd.s Company freight forwarding platform
             (the "Platform"), you agree to be bound by these Terms of Service ("Terms").
             These Terms apply to all users including B2B customers, freight forwarders,
             warehouse managers, and administrative personnel operating within Thailand,
@@ -78,7 +78,7 @@ const TermsOfService = () => {
       content: (
         <div className="space-y-3">
           <p className="text-gray-700 leading-relaxed">
-            Cargo Logistics Company offers international freight forwarding services including:
+            Samudera Traffic Co., Ltd.s Company offers international freight forwarding services including:
           </p>
           <ul className="space-y-2 ml-6">
             {[
@@ -359,7 +359,7 @@ const TermsOfService = () => {
       content: (
         <div className="space-y-3">
           <p className="text-gray-700 leading-relaxed">
-            Cargo Logistics Company shall not be liable for delays caused by customs
+            Samudera Traffic Co., Ltd.s Company shall not be liable for delays caused by customs
             holds, natural disasters, political instability, labor strikes, pandemics,
             or any force majeure events. Liability for lost or damaged goods is
             limited to the declared value on the shipping documentation, not exceeding
@@ -403,7 +403,9 @@ const TermsOfService = () => {
               HEAD OFFICE
             </h3>
             <p className="text-gray-600 text-[9px] sm:text-sm leading-tight">
-              8825 STANFORD BLVD, SUITE 306, COLUMBIA, MD 21045, USA
+              Green Tower, 9th floor, 3656/27-28
+Rama IV Road, Klongton-Klong Toey
+Bangkok 10110, Thailand
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-x-1 mb-4 sm:mb-1">
