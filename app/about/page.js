@@ -53,9 +53,9 @@ export default function Page() {
   return (
     <>
       <Company />
-      <History />
       <ProjectTabs />
       <Teams />
+      <History />
 
 
       <script
