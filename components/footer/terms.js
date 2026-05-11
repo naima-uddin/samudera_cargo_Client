@@ -425,11 +425,11 @@ Bangkok 10110, Thailand
               EMAIL:
             </span>
             <a
-              href="mailto:info@cargologisticscompany.com"
+              href="mailto:info@samuderathai.com"
               className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5 truncate max-w-[180px] sm:max-w-none"
             >
               <Mail className="w-2.5 h-2.5 sm:w-4 sm:h-4 flex-shrink-0" />
-              <span className="truncate">info@cargologisticscompany.com</span>
+              <span className="truncate">info@samuderathai.com</span>
             </a>
           </div>
         </div>
@@ -583,10 +583,10 @@ Bangkok 10110, Thailand
               <p className="text-gray-600">
                 For questions or clarifications, please contact our legal team at{" "}
                 <a
-                  href="mailto:info@cargologisticscompany.com"
+                  href="mailto:info@samuderathai.com"
                   className="text-primary hover:underline"
                 >
-                  info@cargologisticscompany.com
+                  info@samuderathai.com
                 </a>
               </p>
             </motion.div>

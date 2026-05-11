@@ -130,7 +130,7 @@ export default function Page() {
               "@type": "ContactPoint",
               telephone: "+1-647-362-7735",
               contactType: "privacy",
-              email: "info@cargologisticscompany.com",
+              email: "info@samuderathai.com",
               availableLanguage: ["English"],
             },
             legalName: "Samudera Traffic Co., Ltd.s Group",
@@ -158,7 +158,7 @@ export default function Page() {
             contactPoint: {
               "@type": "ContactPoint",
               telephone: "+1-647-362-7735",
-              email: "info@cargologisticscompany.com",
+              email: "info@samuderathai.com",
               contactType: "privacy officer",
             },
           }),

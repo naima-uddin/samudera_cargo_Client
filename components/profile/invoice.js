@@ -109,7 +109,7 @@ const InvoicePDF = ({ invoice, companyInfo }) => {
     address: '8825 STANFORD BLVD, SUITE 306,  ',
     city: 'COLUMBIA, MD 21045,USA',
     phone: '+1-647-362-7735',
-    email: 'info@cargologisticscompany.com'
+    email: 'info@samuderathai.com'
   };
   const info = companyInfo || defaultCompany;
 
@@ -195,7 +195,7 @@ const COMPANY_INFO = {
   address: '8825 STANFORD BLVD, SUITE 306,',
   city: 'COLUMBIA, MD 21045,USA',
   phone: '+1-647-362-7735',
-  email: 'info@cargologisticscompany.com'
+  email: 'info@samuderathai.com'
 };
  
 

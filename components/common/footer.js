@@ -38,9 +38,9 @@ Bangkok 10110, Thailand
       </div>
       
       <div className="flex flex-wrap items-center gap-x-1">
-        <a href="mailto:info@cargologisticscompany.com" className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5 truncate max-w-[180px] sm:max-w-none">
+        <a href="mailto:info@samuderathai.com" className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5 truncate max-w-[180px] sm:max-w-none">
           <Mail className="w-2.5 h-2.5 sm:w-4 sm:h-4 flex-shrink-0" />
-          <span className="truncate">info@cargologisticscompany.com</span>
+          <span className="truncate">info@samuderathai.com</span>
         </a>
       </div>
       </div>
