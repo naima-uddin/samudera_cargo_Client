@@ -68,17 +68,17 @@ Bangkok 10110, Thailand
       ]
     },
     {
-      title: "Gallery",
+      title: "Snapshots",
       content: (
         <div>
           <div className="grid grid-cols-3 gap-1 sm:gap-2">
             {[
-              { id: 1, src: "/images/about1.jpg", alt: "Gallery 1", path: "/gallery/1" },
-              { id: 2, src: "/images/blog2.jpg", alt: "Gallery 2", path: "/gallery/2" },
-              { id: 3, src: "/images/blog1.jpg", alt: "Gallery 3", path: "/gallery/3" },
-              { id: 4, src: "/images/products.jpg", alt: "Gallery 4", path: "/gallery/4" },
-              { id: 5, src: "/images/project (1).jpg", alt: "Gallery 5", path: "/gallery/5" },
-              { id: 6, src: "/images/project (4).jpg", alt: "Gallery 6", path: "/gallery/6" }
+              { id: 1, src: "/images/history (2).jpg", alt: "Gallery 1", path: "/images/history (2).jpg" },
+              { id: 2, src: "/images/history (5).jpg", alt: "Gallery 2", path: "/images/history (5).jpg" },
+              { id: 3, src: "/images/serviceBanner.jpg", alt: "Gallery 3", path: "/images/serviceBanner.jpg" },
+              { id: 4, src: "/images/project (7).jpg", alt: "Gallery 4", path: "/images/project (7).jpg" },
+              { id: 5, src: "/images/service3.jpg", alt: "Gallery 5", path: "/images/service3.jpg" },
+              { id: 6, src: "/images/packaging.jpg", alt: "Gallery 6", path: "/images/packaging.jpg" }
             ].map((item) => (
               <Link href={item.path} key={item.id}>
                 <motion.div

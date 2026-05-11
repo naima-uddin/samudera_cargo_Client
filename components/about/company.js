@@ -328,7 +328,7 @@ export default function OurCompany() {
             <div className="space-y-8">
               <p className="text-[#d10000] font-semibold uppercase tracking-[0.4em] text-sm -mt-16">About Us</p>
               <h1 className="max-w-3xl text-4xl sm:text-5xl font-bold leading-tight text-[#ffffff] pt-serif-bold">Modern cargo logistics, simplified for global teams.</h1>
-              <p className="max-w-2xl text-lg leading-8 text-slate-600 ">
+              <p className="max-w-2xl text-lg -leading-2 -mt-5 md:mt-0 md:leading-8 text-white md:text-slate-600 ">
                 We combine intelligence, flexibility, and trusted execution to reduce complexity and move more freight with confidence.
               </p>
               <div className="grid gap-4 sm:grid-cols-3">

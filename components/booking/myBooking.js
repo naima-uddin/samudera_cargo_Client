@@ -1244,7 +1244,7 @@ const BookingDetailsModal = ({ isOpen, onClose, booking, onAction }) => {
                           Valid for {daysRemaining} more day{daysRemaining !== 1 ? 's' : ''}
                         </span>
                       ) : (
-                        <span className="text-xs text-red-600">Quote expired</span>
+                        <span className="text-xs text-red-600">Quote expired or till didn't given a quote yet</span>
                       )}
                     </div>
                   </div>
