@@ -11,7 +11,7 @@ function history() {
           
           {/* Left Column - Ship Image with Container Overlay */}
           <div className="relative order-2 lg:order-1">
-            <div className="relative h-[440px] md:h-[590px] lg:h-[640px] w-4/5">
+            <div className="relative h-[260px] sm:h-[340px] md:h-[590px] lg:h-[640px] w-full sm:w-4/5">
               {/* Ship background image */}
               <img
                 src="/images/cargo-ship.jpg"
@@ -23,7 +23,7 @@ function history() {
               <div className="absolute inset-0 bg-black/20"></div>
               
               {/* Double Container overlay - positioned absolutely, can overflow */}
-              <div className="absolute -bottom-32 -left-14 w-90 h-74 md:w-106 md:h-90 lg:w-[450px] lg:h-126">
+              <div className="absolute -bottom-12 -left-4 w-40 h-28 sm:-bottom-20 sm:-left-8 sm:w-72 sm:h-44 md:-bottom-32 md:-left-14 md:w-[424px] md:h-[360px] lg:w-[450px] lg:h-[504px]">
                 <img
                   src="/images/doubleContainer.png"
                   alt="Double Container"
