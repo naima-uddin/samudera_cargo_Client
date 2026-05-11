@@ -1206,7 +1206,7 @@ export default function CreateBooking() {
         <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
           <p className="text-sm font-semibold text-blue-900">How booking works</p>
           <p className="mt-2 text-sm text-blue-800">
-            Fill the form in 4 easy steps, submit your request, then wait for the quote. You can accept or reject the quote from My Bookings.
+            Fill the form in 4 easy steps, submit your request, then wait for the quote. You can accept or reject the quote from My Bookings
           </p>
           <ul className="mt-3 text-xs text-blue-700 space-y-1 list-disc list-inside">
             <li>Step 1: Choose shipment type and destination.</li>
@@ -1314,6 +1314,16 @@ export default function CreateBooking() {
                       icon={Briefcase}
                     />
                   </div>
+                   <div className="grid grid-cols-1 gap-3">
+                  <Select
+                    label="Service Type"
+                    name="serviceType"
+                    value={formData.serviceType}
+                    onChange={handleInputChange}
+                    options={SERVICE_TYPES}
+                    icon={Truck}
+                  />
+                </div>
                 </div>
 
                 
@@ -1376,16 +1386,7 @@ export default function CreateBooking() {
                   />
                 </div> 
 
-                <div className="grid grid-cols-2 gap-3">
-                  <Select
-                    label="Service Type"
-                    name="serviceType"
-                    value={formData.serviceType}
-                    onChange={handleInputChange}
-                    options={SERVICE_TYPES}
-                    icon={Truck}
-                  />
-                </div>
+               
             </div>
             
             )}
