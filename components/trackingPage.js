@@ -1616,11 +1616,11 @@ export default function TrackingPage() {
             {/* Container & Vessel Details */}
             <div className="space-y-4">
               <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Container</p>
+                <p className="text-xs text-green-600 uppercase tracking-wide font-semibold mb-2">Container</p>
                 <p className="text-sm font-semibold text-gray-900">{selectedContainerDetails.containerNumber || 'N/A'}</p>
-              </div>
+              <div className="grid grid-cols-2 gap-3 mt-4">
               <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Seal Number</p>
+                <p className="text-xs text-green-600 uppercase tracking-wide font-semibold mb-2">Seal Number</p>
                 <div className="space-y-1">
                   {selectedContainerDetails.sealNumbers && selectedContainerDetails.sealNumbers.length > 0 ? (
                     selectedContainerDetails.sealNumbers.map((seal, i) => (
@@ -1634,7 +1634,7 @@ export default function TrackingPage() {
                 </div>
               </div>
               <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Vessel</p>
+                <p className="text-xs text-green-600 uppercase tracking-wide font-semibold mb-2">Vessel</p>
                 <div className="space-y-1">
                   {selectedContainerDetails.vessels && selectedContainerDetails.vessels.length > 0 ? (
                     selectedContainerDetails.vessels.map((v, i) => (
@@ -1648,7 +1648,7 @@ export default function TrackingPage() {
                 </div>
               </div>
               <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Voyage</p>
+                <p className="text-xs text-green-600 uppercase tracking-wide font-semibold mb-2">Voyage</p>
                 <div className="space-y-1">
                   {selectedContainerDetails.voyages && selectedContainerDetails.voyages.length > 0 ? (
                     selectedContainerDetails.voyages.map((v, i) => (
@@ -1662,7 +1662,7 @@ export default function TrackingPage() {
                 </div>
               </div>
               <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">BL Number</p>
+                <p className="text-xs text-green-600 uppercase tracking-wide font-semibold mb-2">BL Number</p>
                 <div className="space-y-1">
                   {selectedContainerDetails.blNumbers && selectedContainerDetails.blNumbers.length > 0 ? (
                     selectedContainerDetails.blNumbers.map((bl, i) => (
@@ -1674,6 +1674,8 @@ export default function TrackingPage() {
                     <p className="text-sm font-semibold text-gray-900">N/A</p>
                   )}
                 </div>
+              </div>
+              </div>
               </div>
             </div>
 
