@@ -297,7 +297,7 @@ const Navbar = () => {
                       scrolled ? 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50' : 'bg-fourth text-white hover:bg-primary'
                     }`}
                   >
-                    Create New Bookings
+                    Create Shipment
                   </button>
                   
                   <button

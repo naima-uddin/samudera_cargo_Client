@@ -65,7 +65,7 @@ export default function Teams() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-16 grid gap-6 sm:grid-cols-1 md:grid-cols-3">
           {teamMembers.map((member, index) => (
             <div key={index} className="group overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-2">
               <div className="relative h-72 overflow-hidden bg-slate-100">
@@ -75,10 +75,7 @@ export default function Teams() {
                 <span className="inline-flex rounded-full bg-[#d10000]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#d10000]">{member.experience}</span>
                 <h3 className="mt-4 text-xl font-semibold text-[#1D2D52]">{member.name}</h3>
                 <p className="mt-2 text-sm font-medium text-slate-500">{member.title}</p>
-                <div className="mt-5 flex items-center gap-3 text-sm text-slate-600">
-                  <FaEnvelope className="h-4 w-4 text-[#d10000]" />
-                  <a href={`mailto:${member.email}`} className="hover:text-[#d10000] transition-colors">{member.email}</a>
-                </div>
+                
               </div>
             </div>
           ))}

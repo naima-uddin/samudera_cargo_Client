@@ -145,10 +145,10 @@ function Contact() {
       <div
         className="min-h-[300px] bg-cover bg-center bg-no-repeat relative mx-6 rounded-xl overflow-hidden"
         style={{
-          backgroundImage: "url('/images/aboutBanner.jpg')",
+          backgroundImage: "url('/images/aboutBannerimg.jpeg')",
         }}
       >
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
 
         <div className="relative z-10 p-10 flex flex-col justify-center h-full">
           <nav

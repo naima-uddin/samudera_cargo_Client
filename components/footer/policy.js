@@ -171,7 +171,7 @@ const PrivacyPolicy = () => {
     },
     { 
       icon: <HiPhone className="w-5 h-5" />, 
-      text: "+1 (647) 362-7735", 
+      text: "+66977830395", 
       href: "tel:+66977830395",
       label: "Call Privacy Office"
     },

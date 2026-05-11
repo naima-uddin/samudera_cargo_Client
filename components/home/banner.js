@@ -33,7 +33,7 @@ const Banner = () => {
 
               <div className="flex flex-wrap items-center gap-3 mt-3 sm:mt-4">
                 <Link
-                  href="/Bookings"
+                  href="/Bookings/create_bookings/"
                   className="inline-flex items-center justify-center rounded-full bg-third text-white px-5 sm:px-6 py-2.5 text-sm font-medium hover:bg-fourth transition-colors"
                 >
                   Get Started
