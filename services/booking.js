@@ -320,7 +320,14 @@ export const getMyBookings = async (params = {}) => {
     const response = await axiosInstance.get(`/my-bookings?${queryParams}&_=${timestamp}`);
     
     if (response.data.success) {
-      let bookings = response.data.data || [];
+      const responseData = response.data.data;
+      let bookings = Array.isArray(responseData)
+        ? responseData
+        : Array.isArray(responseData?.bookings)
+          ? responseData.bookings
+          : Array.isArray(response.data.bookings)
+            ? response.data.bookings
+            : [];
       
       // ✅ প্রতিটি booking এর quote validity রিয়েল-টাইম চেক করুন
       bookings = bookings.map(booking => {
@@ -479,9 +486,10 @@ export const getMyBookingsSummary = async () => {
     const response = await axiosInstance.get('/my-bookings/summary');
     
     if (response.data.success) {
+      const responseData = response.data.data;
       return {
         success: true,
-        data: response.data.data,
+        data: responseData?.summary || response.data.summary || responseData || null,
         message: response.data.message
       };
     }
