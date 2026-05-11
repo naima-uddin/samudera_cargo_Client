@@ -32,43 +32,65 @@ const features = [
 
 function WhyChooseUs() {
   return (
-    <section className="relative overflow-hidden bg-white py-10">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.12),transparent_38%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_35%)]" />
+    <section className="relative overflow-hidden bg-white py-12">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.12),transparent_38%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_35%)]" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[#d10000] font-semibold uppercase tracking-[0.4em] text-xs">Why choose us</p>
-          <h2 className="mt-4 md:text-4xl text-3xl font-semibold text-[#1D2D52] pt-serif-bold">Logistics designed to keep your business moving forward.</h2>
-         
+        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] items-start">
+          <div className="space-y-3">
+            <p className="text-[#d10000] font-semibold uppercase tracking-[0.4em] text-xs">Why choose us</p>
+            <h2 className="text-3xl font-semibold text-[#1D2D52] sm:text-4xl">Smarter logistics, clearer outcomes.</h2>
+            <p className="max-w-2xl text-base leading-7 text-slate-600">
+              Live tracking, responsive support, and secure industry workflows make every shipment feel easier.
+            </p>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-[28px] border border-slate-200 bg-[#F8FAFC] p-5 shadow-sm transition-transform duration-300 hover:-translate-y-1">
+                <p className="text-xs uppercase tracking-[0.35em] text-slate-500">Live visibility</p>
+                <p className="mt-3 text-xl font-semibold text-[#1D2D52]">Real-time shipment tracking</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">Stay ahead with a dashboard that updates every mile.</p>
+              </div>
+              <div className="rounded-[28px] border border-slate-200 bg-[#F8FAFC] p-5 shadow-sm transition-transform duration-300 hover:-translate-y-1">
+                <p className="text-xs uppercase tracking-[0.35em] text-slate-500">Trusted by partners</p>
+                <p className="mt-3 text-xl font-semibold text-[#1D2D52]">Consistent global delivery</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">Secure, compliant handling for every route and cargo type.</p>
+              </div>
+            </div>
+
+            <div className="mt-2 grid gap-4 sm:grid-cols-2">
+              {features.slice(0, 2).map((item) => (
+                <FeatureCard key={item.id} item={item} compact />
+              ))}
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            <div className="relative overflow-hidden rounded-[28px] border border-slate-200 bg-slate-100 shadow-lg">
+              <Image src="/images/about1.jpg" alt="Cargo ship" width={760} height={160} className="h-full w-full object-cover transition duration-700 hover:scale-105" />
+              <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#1D2D52] shadow-sm">
+                Live Monitoring
+              </div>
+            </div>
+            
+          </div>
         </div>
 
-        <div className="mt-4 grid gap-6 lg:grid-cols-2">
-          <div className="grid gap-6">
-            {features.slice(0, 2).map((item) => (
-              <FeatureCard key={item.id} item={item} />
-            ))}
-          </div>
-          <div className="grid gap-6">
-            {features.slice(2).map((item) => (
-              <FeatureCard key={item.id} item={item} />
-            ))}
-          </div>
-        </div>
+        
       </div>
     </section>
   );
 }
 
-function FeatureCard({ item }) {
+function FeatureCard({ item, compact }) {
   return (
-    <div className="group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_65px_rgba(29,45,82,0.12)]">
-      <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-[#d10000] to-[#1D2D52] text-white shadow-lg">
+    <div className={`group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white ${compact ? 'p-6' : 'p-8'} shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_65px_rgba(29,45,82,0.12)]`}>
+      <div className={`flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-[#d10000] to-[#1D2D52] text-white shadow-lg ${compact ? '' : ''}`}>
         {item.icon}
       </div>
       <div className="mt-6 flex items-center justify-between gap-6">
-        <h3 className="text-xl font-semibold text-[#1D2D52]">{item.title}</h3>
+        <h3 className={`font-semibold text-[#1D2D52] ${compact ? 'text-lg' : 'text-xl'}`}>{item.title}</h3>
         <span className="rounded-2xl bg-[#d10000]/10 px-4 py-2 text-sm font-semibold text-[#d10000]">{item.id}</span>
       </div>
-      <p className="mt-4 text-slate-600 leading-7">{item.desc}</p>
+      <p className={`mt-4 text-slate-600 leading-7 ${compact ? 'text-sm' : ''}`}>{item.desc}</p>
     </div>
   );
 }
@@ -93,22 +115,6 @@ const InterestingFacts = () => {
       unit: '%',
       description: 'Precision delivery that keeps your schedules on track.',
       icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-    },
-    {
-      id: 3,
-      title: 'WEEKLY SHIPMENTS',
-      numericValue: 5,
-      unit: 'K+',
-      description: 'Thousands of weekly shipments managed with care.',
-      icon: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4'
-    },
-    {
-      id: 4,
-      title: 'INDUSTRY AWARDS',
-      numericValue: 25,
-      unit: '+',
-      description: 'Recognized for excellence in service, speed, and support.',
-      icon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z'
     }
   ];
 

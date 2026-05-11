@@ -108,7 +108,7 @@ export default function ProjectTabs() {
           ))}
         </div>
 
-        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" layout>
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" layout>
           <AnimatePresence mode="popLayout">
             {filtered.map((item) => (
               <motion.div
@@ -125,10 +125,10 @@ export default function ProjectTabs() {
                   <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent" />
                   <span className="absolute left-4 top-4 rounded-full bg-[#d10000] px-3 py-1 text-xs font-semibold text-white">{item.category}</span>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-[#1D2D52]">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>
-                  <div className="mt-6 flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-slate-500">
+                <div className="px-6 py-3">
+                  <h3 className="text-xl font-semibold text-[#1D2D52] pt-serif-bold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-2 text-slate-600">{item.description}</p>
+                  <div className="mt-3 flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-slate-500">
                     <span>{item.location}</span>
                     <span>{item.year}</span>
                   </div>
@@ -138,11 +138,7 @@ export default function ProjectTabs() {
           </AnimatePresence>
         </motion.div>
 
-        <div className="mt-10 text-center">
-          <button className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#d10000] to-[#1D2D52] px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-[#d10000]/15 hover:opacity-95 transition-opacity duration-200">
-            View More Projects
-          </button>
-        </div>
+       
       </div>
     </section>
   );
