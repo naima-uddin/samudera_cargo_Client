@@ -858,7 +858,13 @@ export default function TrackingPage() {
       });
     }
 
-    return containers;
+    // Final dedup by containerNumber to guard against any upstream duplicates
+    const seen = new Map();
+    for (const c of containers) {
+      const key = c.containerNumber || 'N/A';
+      if (!seen.has(key)) seen.set(key, c);
+    }
+    return [...seen.values()];
   };
 
   const getShipmentContainerSummary = () => {
@@ -874,9 +880,9 @@ export default function TrackingPage() {
     const containers = getShipmentContainers();
     if (containers.length === 0) return 'N/A';
 
-    const values = containers
-      .map((container) => container?.[kind] || '')
-      .filter(Boolean);
+    const values = [...new Set(
+      containers.map((container) => container?.[kind] || '').filter(Boolean)
+    )];
 
     return values.length > 0 ? values.join(', ') : 'N/A';
   };
@@ -2189,12 +2195,12 @@ export default function TrackingPage() {
                                     const senderInfo = getSenderInfo();
                                     const receiverInfo = getReceiverInfo();
                                     const blText = getShipmentBlValue();
-                                    const blArray = blText && blText !== 'N/A' 
-                                      ? blText.split(', ').filter(Boolean) 
+                                    const blArray = blText && blText !== 'N/A'
+                                      ? [...new Set(blText.split(', ').filter(Boolean))]
                                       : [];
                                     const sealText = getShipmentContainerValue('sealNumber');
-                                    const sealArray = sealText && sealText !== 'N/A' 
-                                      ? sealText.split(', ').filter(s => s && s.trim() !== 'N/A')
+                                    const sealArray = sealText && sealText !== 'N/A'
+                                      ? [...new Set(sealText.split(', ').filter(s => s && s.trim() !== 'N/A'))]
                                       : [];
 
                                     // Resolve bookingNumber if it's an ObjectId (raw ID)
