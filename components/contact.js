@@ -158,7 +158,7 @@ function Contact() {
               <li>
                 <a
                   href="/"
-                  className="hover:text-orange-400 transition-colors duration-200"
+                  className="hover:text-red-400 transition-colors duration-200"
                 >
                   Home
                 </a>
@@ -166,7 +166,7 @@ function Contact() {
               <li>
                 <HiChevronRight className="h-4 w-4 text-gray-300" />
               </li>
-              <li className="text-orange-400 font-semibold">Contact</li>
+              <li className="text-red-400 font-semibold">Contact</li>
             </ol>
           </nav>
         </div>
@@ -184,7 +184,7 @@ function Contact() {
     {/* Phone & Email */}
     <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
       <div className="flex items-start gap-3 sm:gap-4 lg:gap-5">
-        <div className="bg-orange-100 p-2.5 sm:p-3 lg:p-4 rounded-lg text-orange-500 text-lg sm:text-xl lg:text-2xl">
+        <div className="bg-red-100 p-2.5 sm:p-3 lg:p-4 rounded-lg text-red-500 text-lg sm:text-xl lg:text-2xl">
           <HiPhone />
         </div>
         <div>
@@ -205,7 +205,7 @@ function Contact() {
     {/* Working Hours */}
     <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
       <div className="flex items-start gap-3 sm:gap-4 lg:gap-5">
-        <div className="bg-orange-100 p-2.5 sm:p-3 lg:p-4 rounded-lg text-orange-500 text-lg sm:text-xl lg:text-2xl">
+        <div className="bg-red-100 p-2.5 sm:p-3 lg:p-4 rounded-lg text-red-500 text-lg sm:text-xl lg:text-2xl">
           <HiClock />
         </div>
         <div>
@@ -221,7 +221,7 @@ function Contact() {
     {/* Location */}
     <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
       <div className="flex items-start gap-3 sm:gap-4 lg:gap-5">
-        <div className="bg-orange-100 p-2.5 sm:p-3 lg:p-4 rounded-lg text-orange-500 text-lg sm:text-xl lg:text-2xl">
+        <div className="bg-red-100 p-2.5 sm:p-3 lg:p-4 rounded-lg text-red-500 text-lg sm:text-xl lg:text-2xl">
           <HiLocationMarker />
         </div>
         <div>
@@ -239,7 +239,7 @@ Bangkok 10110, Thailand
     {/* Support */}
     <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
       <div className="flex items-start gap-3 sm:gap-4 lg:gap-5">
-        <div className="bg-orange-100 p-2.5 sm:p-3 lg:p-4 rounded-lg text-orange-500 text-lg sm:text-xl lg:text-2xl">
+        <div className="bg-red-100 p-2.5 sm:p-3 lg:p-4 rounded-lg text-red-500 text-lg sm:text-xl lg:text-2xl">
           <HiMail />
         </div>
         <div>
@@ -255,7 +255,7 @@ Bangkok 10110, Thailand
   {/* Contact Form Section */}
   <div className="mt-8 sm:mt-12 lg:mt-20 bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 lg:p-14 border border-gray-100">
     <div className="text-center mb-6 sm:mb-8 lg:mb-12">
-      <p className="text-orange-500 font-semibold tracking-wider uppercase text-xs sm:text-sm">
+      <p className="text-red-500 font-semibold tracking-wider uppercase text-xs sm:text-sm">
         Send Message
       </p>
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mt-2 sm:mt-3">
@@ -277,7 +277,7 @@ Bangkok 10110, Thailand
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter your full name"
-            className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition ${
+            className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-red-400 focus:border-red-400 outline-none transition ${
               errors.name ? 'border-red-400 bg-red-50' : 'border-gray-200'
             }`}
           />
@@ -294,7 +294,7 @@ Bangkok 10110, Thailand
             value={formData.phone}
             onChange={handleChange}
             placeholder="+1 Number"
-            className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition ${
+            className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-red-400 focus:border-red-400 outline-none transition ${
               errors.phone ? 'border-red-400 bg-red-50' : 'border-gray-200'
             }`}
           />
@@ -311,7 +311,7 @@ Bangkok 10110, Thailand
             value={formData.email}
             onChange={handleChange}
             placeholder="Enter your email address"
-            className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition ${
+            className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-red-400 focus:border-red-400 outline-none transition ${
               errors.email ? 'border-red-400 bg-red-50' : 'border-gray-200'
             }`}
           />
@@ -326,7 +326,7 @@ Bangkok 10110, Thailand
             name="inquiryType"
             value={formData.inquiryType}
             onChange={handleChange}
-            className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition bg-white ${
+            className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-red-400 focus:border-red-400 outline-none transition bg-white ${
               errors.inquiryType ? 'border-red-400 bg-red-50' : 'border-gray-200'
             }`}
           >
@@ -351,7 +351,7 @@ Bangkok 10110, Thailand
           value={formData.message}
           onChange={handleChange}
           placeholder="Write your message here..."
-          className={`w-full h-full min-h-[120px] sm:min-h-[200px] lg:min-h-[250px] px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition resize-none ${
+          className={`w-full h-full min-h-[120px] sm:min-h-[200px] lg:min-h-[250px] px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-red-400 focus:border-red-400 outline-none transition resize-none ${
             errors.message ? 'border-red-400 bg-red-50' : 'border-gray-200'
           }`}
         ></textarea>
@@ -366,15 +366,15 @@ Bangkok 10110, Thailand
             name="agreeToTerms"
             checked={formData.agreeToTerms}
             onChange={handleChange}
-            className="accent-orange-500 w-3.5 h-3.5 sm:w-4 sm:h-4" 
+            className="accent-red-500 w-3.5 h-3.5 sm:w-4 sm:h-4" 
           />
           <span>
             I agree to the{" "}
-            <a href="/footer/terms" className="text-orange-500 hover:underline">
+            <a href="/footer/terms" className="text-red-500 hover:underline">
               Terms
             </a>{" "}
             and{" "}
-            <a href="/footer/privacy-policy" className="text-orange-500 hover:underline">
+            <a href="/footer/privacy-policy" className="text-red-500 hover:underline">
               Privacy
             </a>
           </span>
@@ -386,7 +386,7 @@ Bangkok 10110, Thailand
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white text-sm sm:text-base font-semibold rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-red-500 to-red-600 text-white text-sm sm:text-base font-semibold rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? 'Sending...' : 'Send Request'}
         </button>

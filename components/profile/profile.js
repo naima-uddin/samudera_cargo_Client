@@ -232,7 +232,7 @@ const ProfilePage = () => {
                   {!isEditing && (
                     <button
                       onClick={() => setIsEditing(true)}
-                      className="p-2 text-[#E67E22] hover:bg-orange-50 rounded-lg transition-colors"
+                      className="p-2 text-[#E67E22] hover:bg-red-50 rounded-lg transition-colors"
                     >
                       <Edit2 className="w-5 h-5" />
                     </button>
@@ -270,7 +270,7 @@ const ProfilePage = () => {
                       onClick={() => setActiveSection(section.id)}
                       className={`w-full flex items-center justify-between px-6 py-3 text-sm transition-colors ${
                         activeSection === section.id
-                          ? 'bg-orange-50 text-[#E67E22] border-l-4 border-[#E67E22]'
+                          ? 'bg-red-50 text-[#E67E22] border-l-4 border-[#E67E22]'
                           : 'text-gray-600 hover:bg-gray-50 border-l-4 border-transparent'
                       }`}
                     >

@@ -329,9 +329,9 @@ const mergeInvoices = (invoices) => {
 // ==================== COMPONENTS ====================
 
 // Stat Card Component
-const StatCard = ({ title, value, icon: Icon, color = 'orange', subtitle }) => {
+const StatCard = ({ title, value, icon: Icon, color = 'red', subtitle }) => {
   const colorClasses = {
-    orange: 'bg-orange-50 text-red-600',
+    red: 'bg-red-50 text-red-600',
     blue: 'bg-blue-50 text-blue-600',
     green: 'bg-green-50 text-green-600',
     yellow: 'bg-yellow-50 text-yellow-600',
@@ -382,7 +382,7 @@ const FilterBar = ({ filters, onFilterChange, onSearch, searchTerm, onRefresh, r
             placeholder="Search by invoice number..."
             value={searchTerm}
             onChange={(e) => onSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+            className="w-full pl-9 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
           />
         </div>
         
@@ -412,7 +412,7 @@ const FilterBar = ({ filters, onFilterChange, onSearch, searchTerm, onRefresh, r
 
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`p-2 border rounded-lg hover:bg-gray-50 ${showFilters ? 'bg-orange-50 border-orange-200' : ''}`}
+            className={`p-2 border rounded-lg hover:bg-gray-50 ${showFilters ? 'bg-red-50 border-red-200' : ''}`}
           >
             <Filter className="h-4 w-4 text-gray-600" />
           </button>
@@ -475,10 +475,10 @@ const InvoiceCard = ({ invoice, onView, onDownload }) => {
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all">
-      <div className="bg-gradient-to-r from-orange-50 to-amber-50 px-4 py-3 border-b">
+      <div className="bg-gradient-to-r from-red-50 to-amber-50 px-4 py-3 border-b">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Receipt className="h-5 w-5 text-orange-500" />
+            <Receipt className="h-5 w-5 text-red-500" />
             <div>
               <span className="font-semibold text-gray-900">{getInvoiceNumber(invoice)}</span>
               <p className="text-xs text-gray-500">{formatInvoiceSourceLabel(getInvoiceSource(invoice))}</p>
@@ -535,7 +535,7 @@ const InvoiceCard = ({ invoice, onView, onDownload }) => {
         <div className="flex items-center justify-end space-x-2 pt-2 border-t">
           <button
             onClick={() => onView(invoice)}
-            className="flex-1 px-3 py-2 bg-orange-50 text-red-600 rounded-lg hover:bg-orange-100 transition-colors flex items-center justify-center"
+            className="flex-1 px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors flex items-center justify-center"
           >
             <Eye className="h-4 w-4 mr-2" />
             View
@@ -568,7 +568,7 @@ const InvoiceTableRow = ({ invoice, onView, onDownload }) => {
       </td>
       <td className="px-4 py-3">
         <div className="flex items-center space-x-2">
-          <div className="w-7 h-7 bg-orange-100 rounded-full flex items-center justify-center">
+          <div className="w-7 h-7 bg-red-100 rounded-full flex items-center justify-center">
             <span className="text-xs font-medium text-[#E67E22]">
               {getInvoiceCustomerName(invoice)?.charAt(0) || 'C'}
             </span>
@@ -649,7 +649,7 @@ const InvoiceDetailsModal = ({ isOpen, onClose, invoice, onDownload }) => {
         <div className="sticky top-0 bg-white border-b p-6">
           <div className="flex justify-between items-start">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-orange-100 rounded-lg">
+              <div className="p-2 bg-red-100 rounded-lg">
                 <Receipt className="h-6 w-6 text-red-600" />
               </div>
               <div>
@@ -671,7 +671,7 @@ const InvoiceDetailsModal = ({ isOpen, onClose, invoice, onDownload }) => {
                 onClick={() => setActiveTab(tab)}
                 className={`pb-2 px-1 text-sm font-medium border-b-2 transition-colors capitalize ${
                   activeTab === tab
-                    ? 'border-orange-500 text-red-600'
+                    ? 'border-red-500 text-red-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -845,8 +845,8 @@ const InvoiceDetailsModal = ({ isOpen, onClose, invoice, onDownload }) => {
 // Empty State Component
 const EmptyState = ({ onRefresh }) => (
   <div className="text-center py-16 bg-white rounded-xl border">
-    <div className="bg-orange-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-      <Receipt className="h-10 w-10 text-orange-500" />
+    <div className="bg-red-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+      <Receipt className="h-10 w-10 text-red-500" />
     </div>
     <h3 className="text-lg font-medium text-gray-900 mb-2">No invoices found</h3>
     <p className="text-sm text-gray-500 mb-6 max-w-md mx-auto">
@@ -1141,7 +1141,7 @@ export default function MyInvoicesPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <Loader2 className="h-10 w-10 animate-spin text-orange-500 mx-auto mb-4" />
+          <Loader2 className="h-10 w-10 animate-spin text-red-500 mx-auto mb-4" />
           <p className="text-gray-500">Loading your invoices...</p>
         </div>
       </div>
@@ -1159,7 +1159,7 @@ export default function MyInvoicesPage() {
               </Link>
               <div>
                 <h1 className="text-xl font-bold text-gray-900 flex items-center">
-                  <Receipt className="h-6 w-6 mr-2 text-orange-500" />
+                  <Receipt className="h-6 w-6 mr-2 text-red-500" />
                   My Invoices
                 </h1>
                 <p className="text-sm text-gray-500">View and download your invoices</p>
@@ -1225,7 +1225,7 @@ export default function MyInvoicesPage() {
                 setSearchTerm('');
                 setFilters({ status: 'all', paymentStatus: 'all', startDate: '', endDate: '', sort: '-createdAt' });
               }}
-              className="mt-2 text-orange-500 hover:text-red-600 underline"
+              className="mt-2 text-red-500 hover:text-red-600 underline"
             >
               Clear filters
             </button>

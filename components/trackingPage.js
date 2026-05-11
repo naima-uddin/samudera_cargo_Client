@@ -22,11 +22,11 @@ import { TrackingPDF } from '@/components/trackingPdf';
 const STATUS_CONFIG = {
   booking: { label: 'Booking', color: 'bg-gray-100 text-gray-600', icon: Package, progress: 5, order: 0, stage: 'pending' },
   pending: { label: 'Pending', color: 'bg-yellow-100 text-yellow-800', icon: Package, progress: 10, order: 1, stage: 'pending' },
-  received_at_warehouse: { label: 'Received at Warehouse', color: 'bg-orange-100 text-orange-800', icon: Building, progress: 14, order: 2, stage: 'warehouse' },
+  received_at_warehouse: { label: 'Received at Warehouse', color: 'bg-red-100 text-red-800', icon: Building, progress: 14, order: 2, stage: 'warehouse' },
   picked_up_from_warehouse: { label: 'Picked up from Warehouse', color: 'bg-blue-100 text-blue-800', icon: Truck, progress: 20, order: 3, stage: 'warehouse' },
   loaded_into_container: { label: 'Loaded into Container', color: 'bg-blue-200 text-blue-800', icon: Container, progress: 30, order: 4, stage: 'dispatch' },
   container_sealed: { label: 'Container Sealed', color: 'bg-blue-300 text-blue-900', icon: Shield, progress: 35, order: 5, stage: 'dispatch' },
-  departed_port_of_origin: { label: 'Departed Port of Origin', color: 'bg-orange-100 text-orange-800', icon: Ship, progress: 40, order: 6, stage: 'transit' },
+  departed_port_of_origin: { label: 'Departed Port of Origin', color: 'bg-red-100 text-red-800', icon: Ship, progress: 40, order: 6, stage: 'transit' },
   in_transit_sea_freight: { label: 'In Transit (Sea Freight)', color: 'bg-amber-100 text-amber-800', icon: Ship, progress: 50, order: 7, stage: 'transit' },
   arrived_at_destination_port: { label: 'Arrived at Destination Port', color: 'bg-green-100 text-green-800', icon: Flag, progress: 60, order: 8, stage: 'arrival' },
   under_customs_clearance: { label: 'Under Customs Clearance', color: 'bg-blue-100 text-blue-800', icon: Shield, progress: 70, order: 9, stage: 'customs' },
@@ -1346,17 +1346,17 @@ export default function TrackingPage() {
             {/* Modal Content */}
           <div className="p-6 space-y-6">
             {selectedContainerDetails.stepTitle && (
-              <div className="border border-orange-200 bg-orange-50 rounded-lg p-4">
-                <p className="text-xs text-orange-600 uppercase tracking-wide mb-1 font-semibold">Timeline Step</p>
-                <p className="text-lg font-bold text-orange-900">{selectedContainerDetails.stepTitle}</p>
+              <div className="border border-red-200 bg-red-50 rounded-lg p-4">
+                <p className="text-xs text-red-600 uppercase tracking-wide mb-1 font-semibold">Timeline Step</p>
+                <p className="text-lg font-bold text-red-900">{selectedContainerDetails.stepTitle}</p>
                 {selectedContainerDetails.stepDate && (
-                  <p className="text-sm text-orange-800 mt-1">{selectedContainerDetails.stepDate}</p>
+                  <p className="text-sm text-red-800 mt-1">{selectedContainerDetails.stepDate}</p>
                 )}
                 {selectedContainerDetails.stepLocation && (
-                  <p className="text-sm text-orange-800 mt-1">Location: {selectedContainerDetails.stepLocation}</p>
+                  <p className="text-sm text-red-800 mt-1">Location: {selectedContainerDetails.stepLocation}</p>
                 )}
                 {selectedContainerDetails.stepDescription && (
-                  <p className="text-sm text-orange-900 mt-2">{selectedContainerDetails.stepDescription}</p>
+                  <p className="text-sm text-red-900 mt-2">{selectedContainerDetails.stepDescription}</p>
                 )}
               </div>
             )}
@@ -1448,15 +1448,15 @@ export default function TrackingPage() {
             )}
 
             {/* Status */}
-            <div className="border border-orange-200 bg-orange-50 rounded-lg p-3">
-              <p className="text-xs text-orange-600 uppercase tracking-wide mb-2 font-semibold">Current Status</p>
-              <p className="text-sm font-semibold text-orange-900">{selectedContainerDetails.status || 'N/A'}</p>
+            <div className="border border-red-200 bg-red-50 rounded-lg p-3">
+              <p className="text-xs text-red-600 uppercase tracking-wide mb-2 font-semibold">Current Status</p>
+              <p className="text-sm font-semibold text-red-900">{selectedContainerDetails.status || 'N/A'}</p>
             </div>
 
             {/* Close Button */}
             <button
               onClick={() => setSelectedContainerDetails(null)}
-              className="w-full border border-bg-red-500 text-black hover:bg-gradient-to-r hover:from-orange-400 hover:to-orange-600 hover:text-white py-2 rounded-lg font-medium hover:from-orange-500 hover:to-orange-700 transition"
+              className="w-full border border-bg-red-500 text-black hover:bg-gradient-to-r hover:from-red-400 hover:to-red-600 hover:text-white py-2 rounded-lg font-medium hover:from-red-500 hover:to-red-700 transition"
             >
               Close Details
             </button>
@@ -1587,7 +1587,7 @@ export default function TrackingPage() {
                     <p className="text-sm font-semibold text-gray-900 break-words">{getRouteOrigin()} → {getRouteDestination()}</p>
                   </div>
                   <div className="flex flex-wrap items-center gap-2 sm:justify-end">
-                    <span className="text-xs px-2.5 py-1 rounded-full bg-orange-100 text-orange-700 font-medium shrink-0">
+                    <span className="text-xs px-2.5 py-1 rounded-full bg-red-100 text-red-700 font-medium shrink-0">
                       {trackingData.shipmentDetails?.shippingMode || trackingData.shippingMode || 'DDU'}
                     </span>
                     <span className="text-xs text-gray-500">
@@ -1697,8 +1697,8 @@ export default function TrackingPage() {
                       </div>
                     )}
 
-                    <div className="mt-3 rounded-lg border border-orange-100 bg-gradient-to-r from-orange-50 via-amber-50 to-white px-4 py-2.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
-                      <div className="flex items-center gap-2 text-sm text-orange-700 font-medium">
+                    <div className="mt-3 rounded-lg border border-red-100 bg-gradient-to-r from-red-50 via-amber-50 to-white px-4 py-2.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
+                      <div className="flex items-center gap-2 text-sm text-red-700 font-medium">
                         <Activity className="h-4 w-4" />
                         <span>Live Tracking Timeline</span>
                       </div>
@@ -1736,12 +1736,12 @@ export default function TrackingPage() {
             {/* Rest of your tabs and content remain the same */}
             {/* ===== TABS ===== */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden -mt-2 border border-gray-200">
-              <div className="flex items-center justify-between px-6 pt-4 pb-3 border-b bg-gradient-to-r from-white to-orange-50/40">
+              <div className="flex items-center justify-between px-6 pt-4 pb-3 border-b bg-gradient-to-r from-white to-red-50/40">
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">Shipment Timeline</h3>
                   <p className="text-xs text-gray-500 mt-0.5">Operational events, exceptions, and delivery milestones</p>
                 </div>
-                <div className="text-xs px-2.5 py-1 rounded-full bg-orange-100 text-orange-700 font-medium">
+                <div className="text-xs px-2.5 py-1 rounded-full bg-red-100 text-red-700 font-medium">
                   Live event stream
                 </div>
               </div>
@@ -1876,7 +1876,7 @@ export default function TrackingPage() {
                               key={stepStatus}
                               className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow bg-white"
                             >
-                              <div className="bg-gradient-to-r from-orange-50 to-orange-100 border-b border-orange-200 px-6 py-4">
+                              <div className="bg-gradient-to-r from-red-50 to-red-100 border-b border-red-200 px-6 py-4">
                                 <h3 className="text-lg font-bold text-gray-900">{stepTitle}</h3>
                               </div>
 
@@ -1961,8 +1961,8 @@ export default function TrackingPage() {
               {/* ===== PACKAGES TAB ===== */}
               {activeTab === 'packages' && (
                 <div className="p-6">
-                  <h3 className="font-medium mb-3 flex items-center text-center border-b border-orange-200">
-                        <Package className="h-4 w-4 text-orange-500 mr-2 " />
+                  <h3 className="font-medium mb-3 flex items-center text-center border-b border-red-200">
+                        <Package className="h-4 w-4 text-red-500 mr-2 " />
                         Package Details
                       </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4 bg-gray-50 border border-gray-200 rounded-xl p-4">
@@ -2034,7 +2034,7 @@ export default function TrackingPage() {
                                   <button
                                     onClick={() => togglePackageExpanded(index)}
                                     aria-expanded={isExpanded}
-                                    className="p-1.5 bg-orange-50 hover:bg-orange-100 text-red-600 rounded-md text-sm transition"
+                                    className="p-1.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-md text-sm transition"
                                   >
                                     {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                                   </button>
@@ -2104,7 +2104,7 @@ export default function TrackingPage() {
                       {trackingData.packages.length > 6 && (
                         <button
                           onClick={() => setShowAllPackages(!showAllPackages)}
-                          className="w-full py-2 text-orange-500 text-sm flex items-center justify-center"
+                          className="w-full py-2 text-red-500 text-sm flex items-center justify-center"
                         >
                           {showAllPackages ? 'Show Less' : `Show All (${trackingData.packages.length} packages)`}
                           {showAllPackages ? <ChevronUp className="h-4 w-4 ml-1" /> : <ChevronDown className="h-4 w-4 ml-1" />}
@@ -2122,8 +2122,8 @@ export default function TrackingPage() {
                 <div className="p-6">
                   <div className="grid grid-cols-1">
                     <div className="px-6">
-                      <h3 className="font-medium mb-3 flex items-center text-center border-b border-orange-200">
-                        <ShipIcon className="h-4 w-4 text-orange-500 mr-2 " />
+                      <h3 className="font-medium mb-3 flex items-center text-center border-b border-red-200">
+                        <ShipIcon className="h-4 w-4 text-red-500 mr-2 " />
                         Shipment Summary
                       </h3>
                       <div className="space-y-2 ">
@@ -2212,10 +2212,10 @@ export default function TrackingPage() {
                     {trackingData.consolidation && (
                      <div className="md:col-span-2 mt-6 px-6">
                         <h3 className="font-medium mb-3 flex items-center">
-                          <Layers className="h-4 w-4 text-orange-500 mr-2" />
+                          <Layers className="h-4 w-4 text-red-500 mr-2" />
                           Consolidation Information
                         </h3>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-orange-50 p-4 rounded-lg">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-red-50 p-4 rounded-lg">
                           <div>
                             <p className="text-xs text-gray-500">Queue Number</p>
                             <p className="font-medium">{trackingData.consolidation.number || 'N/A'}</p>
@@ -2246,7 +2246,7 @@ export default function TrackingPage() {
                     {getShipmentContainers().length > 0 && (
                       <div className="md:col-span-2">
                         <h3 className="font-medium mb-3 flex items-center">
-                          <Box className="h-4 w-4 text-orange-500 mr-2" />
+                          <Box className="h-4 w-4 text-red-500 mr-2" />
                           Container & Seal Numbers
                         </h3>
                         <div className="bg-blue-50 p-4 rounded-lg space-y-2">
@@ -2274,7 +2274,7 @@ export default function TrackingPage() {
                     {trackingData.sender && (
                       <div>
                         <h3 className="font-medium mb-3 flex items-center">
-                          <User className="h-4 w-4 text-orange-500 mr-2" />
+                          <User className="h-4 w-4 text-red-500 mr-2" />
                           Sender Information
                         </h3>
                         <div className="bg-gray-50 p-4 rounded-lg space-y-2">
@@ -2298,7 +2298,7 @@ export default function TrackingPage() {
                     {trackingData.receiver && (
                       <div>
                         <h3 className="font-medium mb-3 flex items-center">
-                          <User className="h-4 w-4 text-orange-500 mr-2" />
+                          <User className="h-4 w-4 text-red-500 mr-2" />
                           Receiver Information
                         </h3>
                         <div className="bg-gray-50 p-4 rounded-lg space-y-2">

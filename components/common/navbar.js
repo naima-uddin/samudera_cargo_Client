@@ -226,13 +226,12 @@ const Navbar = () => {
                     onMouseLeave={handleMouseLeave}
                   >
                     <button
-                      className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-semibold shadow-md transition-all duration-200 ${
+                      className={`flex items-center space-x-1 px-2 py-2 rounded-lg text-sm font-semibold shadow-md transition-all duration-200 ${
                         scrolled ? 'bg-primary text-white' : 'bg-fourth text-white hover:bg-primary'
                       }`}
                     >
-                      <UserCircle className="w-4 h-4" />
-                      <span className="max-w-[100px] truncate">{getDisplayName()}</span>
                       <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === 'profile' ? 'rotate-180' : ''}`} />
+                      <UserCircle className="w-4 h-4" />
                     </button>
 
                     {/* Profile Dropdown Menu */}

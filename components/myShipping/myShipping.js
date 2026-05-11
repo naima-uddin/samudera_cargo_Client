@@ -55,7 +55,7 @@ const COLORS = {
   warning: '#f59e0b',
   info: '#3b82f6',
   purple: '#8b5cf6',
-  orange: '#f97316',
+  red: '#f97316',
   cyan: '#06b6d4',
   emerald: '#10b981',
   teal: '#14b8a6'
@@ -71,7 +71,7 @@ const STATUS_CONFIG = {
   },
   received_at_warehouse: {
     label: 'Received at Warehouse',
-    color: 'bg-orange-50 text-orange-700 border-orange-200',
+    color: 'bg-red-50 text-red-700 border-red-200',
     icon: Package,
     progress: 20
   },
@@ -113,7 +113,7 @@ const STATUS_CONFIG = {
   },
   dispatched: {
     label: 'Dispatched',
-    color: 'bg-orange-100 text-orange-700 border-orange-200',
+    color: 'bg-red-100 text-red-700 border-red-200',
     icon: Send,
     progress: 45
   },
@@ -185,7 +185,7 @@ const STATUS_CONFIG = {
   },
   returned: {
     label: 'Returned',
-    color: 'bg-orange-50 text-orange-700 border-orange-200',
+    color: 'bg-red-50 text-red-700 border-red-200',
     icon: RotateCcw,
     progress: 0
   },
@@ -197,7 +197,7 @@ const SHIPMENT_MODE_CONFIG = {
   sea_freight: { icon: Ship, label: 'Sea Freight', color: COLORS.secondary },
   road_freight: { icon: Truck, label: 'Road Freight', color: COLORS.success },
   rail_freight: { icon: Train, label: 'Rail Freight', color: COLORS.purple },
-  express_courier: { icon: Package, label: 'Express', color: COLORS.orange }
+  express_courier: { icon: Package, label: 'Express', color: COLORS.red }
 };
 
 // ==================== BUTTON COMPONENT ====================
@@ -653,8 +653,8 @@ const ReturnRequestModal = ({ isOpen, onClose, shipment, onSuccess }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Request Return" size="md">
       <div className="space-y-5">
-        <div className="bg-orange-50 p-3 rounded-lg">
-          <p className="text-sm text-orange-700">
+        <div className="bg-red-50 p-3 rounded-lg">
+          <p className="text-sm text-red-700">
             <AlertCircle className="h-4 w-4 inline mr-1" />
             You have 14 days from delivery date to request a return.
           </p>
@@ -901,7 +901,7 @@ const ReturnStatusModal = ({ isOpen, onClose, shipment, onSuccess }) => {
     rejected_by_customer: {
       title: 'Return Cancelled',
       description: `You have cancelled this return request. Reason: ${returnRequest.customerRejectionReason || 'Not specified'}`,
-      color: 'bg-orange-50 text-orange-700 border-orange-200',
+      color: 'bg-red-50 text-red-700 border-red-200',
       icon: XCircle,
       actions: null
     },
@@ -1385,7 +1385,7 @@ const ShipmentDetailsModal = ({ isOpen, onClose, shipment, source = 'first' }) =
                           event.status === 'customs_cleared' ? 'bg-emerald-100' :
                           event.status === 'out_for_delivery' ? 'bg-pink-100' :
                           event.status === 'in_transit' ? 'bg-cyan-100' :
-                          event.status === 'dispatched' ? 'bg-orange-100' :
+                          event.status === 'dispatched' ? 'bg-red-100' :
                           'bg-gray-100'
                         }`}>
                           {event.status === 'delivered' && <CheckCircleSolid className="h-4 w-4 text-green-600" />}

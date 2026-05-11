@@ -15,7 +15,7 @@ const STATUS_CONFIG = {
   'picked_up_from_warehouse': { label: 'Picked up from Warehouse', color: 'bg-blue-50 text-blue-700 border-blue-200', icon: Truck, progress: 20 },
   'loaded_into_container': { label: 'Loaded into Container', color: 'bg-indigo-100 text-indigo-700 border-indigo-200', icon: Package, progress: 30 },
   'container_sealed': { label: 'Container Sealed', color: 'bg-blue-300 text-blue-900 border-blue-200', icon: Shield, progress: 35 },
-  'departed_port_of_origin': { label: 'Departed Port of Origin', color: 'bg-orange-100 text-orange-700 border-orange-200', icon: Send, progress: 40 },
+  'departed_port_of_origin': { label: 'Departed Port of Origin', color: 'bg-red-100 text-red-700 border-red-200', icon: Send, progress: 40 },
   'in_transit_sea_freight': { label: 'In Transit (Sea Freight)', color: 'bg-blue-50 text-blue-700 border-blue-200', icon: Truck, progress: 50 },
   'arrived_at_destination_port': { label: 'Arrived at Destination Port', color: 'bg-green-50 text-green-700 border-green-200', icon: Flag, progress: 60 },
   'under_customs_clearance': { label: 'Under Customs Clearance', color: 'bg-blue-100 text-blue-800 border-blue-200', icon: Shield, progress: 70 },
@@ -34,7 +34,7 @@ const COLORS = {
   success: '#10b981',
   info: '#0ea5e9',
   purple: '#8b5cf6',
-  orange: '#f97316'
+  red: '#f97316'
 };
 // ...existing code...
 
@@ -44,7 +44,7 @@ const SHIPMENT_MODE_CONFIG = {
   sea_freight: { icon: Ship, label: 'Sea Freight', color: COLORS.secondary },
   road_freight: { icon: Truck, label: 'Road Freight', color: COLORS.success },
   rail_freight: { icon: Train, label: 'Rail Freight', color: COLORS.purple },
-  express_courier: { icon: Package, label: 'Express', color: COLORS.orange }
+  express_courier: { icon: Package, label: 'Express', color: COLORS.red }
 };
 
 // ==================== BUTTON COMPONENT ====================
@@ -62,7 +62,7 @@ const Button = ({
   const variants = {
     primary: 'bg-red-600 text-white hover:bg-red-600',
     secondary: 'bg-blue-600 text-white hover:bg-blue-700',
-    outline: 'border-2 border-orange-500 text-orange-500 hover:bg-orange-50',
+    outline: 'border-2 border-red-500 text-red-500 hover:bg-red-50',
     ghost: 'text-gray-600 hover:bg-gray-100',
     success: 'bg-green-500 text-white hover:bg-green-600',
     danger: 'bg-red-500 text-white hover:bg-red-600',
@@ -82,7 +82,7 @@ const Button = ({
     <button
       onClick={onClick}
       disabled={disabled || isLoading}
-      className={`rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 inline-flex items-center justify-center ${variants[variant]} ${sizes[size]} ${className} ${disabled || isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+      className={`rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 inline-flex items-center justify-center ${variants[variant]} ${sizes[size]} ${className} ${disabled || isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
     >
       {isLoading ? (
         <>
@@ -601,8 +601,8 @@ const ReturnRequestModal = ({ isOpen, onClose, shipment, onSuccess, source = 'fi
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Request Return" size="md">
       <div className="space-y-5">
-        <div className="bg-orange-50 p-3 rounded-lg">
-          <p className="text-sm text-orange-700">
+        <div className="bg-red-50 p-3 rounded-lg">
+          <p className="text-sm text-red-700">
             <AlertCircle className="h-4 w-4 inline mr-1" />
             You have 14 days from delivery date to request a return.
           </p>
@@ -824,7 +824,7 @@ const ReturnStatusModal = ({ isOpen, onClose, shipment, onSuccess }) => {
     rejected_by_customer: {
       title: 'Return Cancelled',
       description: `You have cancelled this return request. Reason: ${returnRequest.customerRejectionReason || 'Not specified'}`,
-      color: 'bg-orange-50 text-orange-700 border-orange-200',
+      color: 'bg-red-50 text-red-700 border-red-200',
       icon: XCircle,
       actions: null
     },
@@ -1251,7 +1251,7 @@ const ShipmentDetailsModal = ({ isOpen, onClose, shipment, source = 'first' }) =
                           event.status === 'customs_cleared' ? 'bg-emerald-100' :
                           event.status === 'out_for_delivery' ? 'bg-pink-100' :
                           event.status === 'in_transit' ? 'bg-cyan-100' :
-                          event.status === 'dispatched' ? 'bg-orange-100' :
+                          event.status === 'dispatched' ? 'bg-red-100' :
                           'bg-gray-100'
                         }`}>
                           {event.status === 'delivered' && <CheckCircleSolid className="h-4 w-4 text-green-600" />}
@@ -1678,14 +1678,14 @@ export default function ShipmentsPage() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Welcome Banner */}
-        <div className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-4 mb-6 border border-orange-100">
+        <div className="bg-gradient-to-r from-red-50 to-amber-50 rounded-xl p-4 mb-6 border border-red-100">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-lg font-semibold text-gray-900">Welcome Back!</h2>
               <p className="text-sm text-gray-600 mt-1">Track and manage all your shipments from one place</p>
             </div>
             <div className="hidden sm:block">
-              <Award className="h-12 w-12 text-orange-300" />
+              <Award className="h-12 w-12 text-red-300" />
             </div>
           </div>
         </div>
@@ -1884,7 +1884,7 @@ export default function ShipmentsPage() {
       shipment.returnRequest?.status === 'approved' ? 'bg-green-100 text-green-700' :
       shipment.returnRequest?.status === 'completed' ? 'bg-emerald-100 text-emerald-700' :
       shipment.returnRequest?.status === 'rejected' || shipment.returnRequest?.status === 'rejected_by_admin' ? 'bg-red-100 text-red-700' :
-      shipment.returnRequest?.status === 'rejected_by_customer' ? 'bg-orange-100 text-orange-700' :
+      shipment.returnRequest?.status === 'rejected_by_customer' ? 'bg-red-100 text-red-700' :
       'bg-gray-100 text-gray-700'
     }`}>
       <Undo2 className="h-2.5 w-2.5 mr-1" />
