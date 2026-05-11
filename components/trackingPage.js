@@ -758,11 +758,11 @@ export default function TrackingPage() {
     }
 
     if (trackingData?.consolidation?.containerNumber) {
-      addContainerEntry(
-        trackingData.consolidation.containerNumber,
-        trackingData.consolidation.sealNumber,
-        trackingData.consolidation.blNumber
-      );
+      // Split on commas — the field may hold a comma-separated list
+      const cnNums = trackingData.consolidation.containerNumber.split(',').map((n) => n.trim()).filter(Boolean);
+      for (const num of cnNums) {
+        addContainerEntry(num, trackingData.consolidation.sealNumber, trackingData.consolidation.blNumber);
+      }
     }
 
     // Check top-level containers array (for manual shipments with multiple containers)
