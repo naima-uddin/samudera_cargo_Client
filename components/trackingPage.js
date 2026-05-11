@@ -1968,13 +1968,6 @@ export default function TrackingPage() {
                       </div>
                     </div>
 
-                    {getShipmentContainers().length > 0 && (
-                      <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50 p-3">
-                        <p className="text-[11px] text-blue-700 uppercase tracking-wide font-semibold mb-2">Shipment Containers</p>
-                        <p className="text-sm text-blue-900 break-words">{getShipmentContainerSummary()}</p>
-                      </div>
-                    )}
-
                     <div className="mt-3 rounded-lg border border-red-100 bg-gradient-to-r from-red-50 via-amber-50 to-white px-4 py-2.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
                       <div className="flex items-center gap-2 text-sm text-red-700 font-medium">
                         <Activity className="h-4 w-4" />
