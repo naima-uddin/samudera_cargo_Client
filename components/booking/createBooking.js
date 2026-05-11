@@ -361,6 +361,8 @@ export default function CreateBooking() {
       totalPackages: 0,
       totalWeight: 0,
       totalVolume: 0,
+      vesselName: '',
+      voyageNumber: '',
       specialInstructions: '',
       referenceNumber: ''
     },
@@ -1017,6 +1019,8 @@ export default function CreateBooking() {
           origin: formData.shipmentDetails.origin,
           destination: formData.shipmentDetails.destination,
           shippingMode: formData.shipmentDetails.shippingMode,
+          vesselName: formData.shipmentDetails.vesselName,
+          voyageNumber: formData.shipmentDetails.voyageNumber,
           packageDetails: formData.shipmentDetails.packageDetails.map(pkg => ({
             description: pkg.description,
             packagingType: pkg.packagingType,
@@ -1300,17 +1304,38 @@ export default function CreateBooking() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
-                  <Select
-                    label="Shipping Mode"
-                    name="shipmentDetails.shippingMode"
-                    value={formData.shipmentDetails.shippingMode}
+                  <div className="grid grid-cols-1 gap-3">
+                    <Select
+                      label="Shipping Mode"
+                      name="shipmentDetails.shippingMode"
+                      value={formData.shipmentDetails.shippingMode}
+                      onChange={handleInputChange}
+                      options={SHIPPING_MODES}
+                      icon={Briefcase}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <Input
+                    label="Vessel Name"
+                    name="shipmentDetails.vesselName"
+                    value={formData.shipmentDetails.vesselName}
                     onChange={handleInputChange}
-                    options={SHIPPING_MODES}
-                    icon={Briefcase}
+                    placeholder="Enter vessel name"
+                    icon={Package}
                   />
-                  
-                  {/* Payment Mode & Currency Display */}
-                  <div className="grid grid-cols-2 gap-2">
+                  <Input
+                    label="Voyage Number"
+                    name="shipmentDetails.voyageNumber"
+                    value={formData.shipmentDetails.voyageNumber}
+                    onChange={handleInputChange}
+                    placeholder="Enter voyage number"
+                    icon={MapPin}
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
                     <Select
                       label="Payment Mode"
                       name="payment.mode"

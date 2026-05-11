@@ -32,18 +32,16 @@ const features = [
 
 function WhyChooseUs() {
   return (
-    <section className="relative overflow-hidden bg-white py-20">
+    <section className="relative overflow-hidden bg-white py-10">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.12),transparent_38%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_35%)]" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-[#d10000] font-semibold uppercase tracking-[0.4em] text-xs">Why choose us</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-[#1D2D52]">Logistics designed to keep your business moving forward.</h2>
-          <p className="mt-4 text-base leading-8 text-slate-600">
-            We bring precision planning, reliable execution, and proactive support together in a clean, modern logistics experience.
-          </p>
+          <h2 className="mt-4 md:text-4xl text-3xl font-semibold text-[#1D2D52] pt-serif-bold">Logistics designed to keep your business moving forward.</h2>
+         
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+        <div className="mt-4 grid gap-6 lg:grid-cols-2">
           <div className="grid gap-6">
             {features.slice(0, 2).map((item) => (
               <FeatureCard key={item.id} item={item} />
@@ -254,16 +252,16 @@ const TestimonialsSection = () => {
 
 export default function OurCompany() {
   return (
-    <div className="bg-white text-[#1D2D52]">
-      <section className="relative overflow-hidden bg-white py-24">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-cover bg-center bg-no-repeat bg-[url('/images/aboutBanner.jpg')]" />
-        <div className="absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-[#1D2D52]/10 via-transparent to-white/90" />
+    <div className="bg-white text-[#1D2D52] ">
+      <section className="relative overflow-hidden bg-white py-20">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-cover bg-center bg-no-repeat bg-[url('/images/aboutBannerimg.jpeg')]" />
+        <div className="absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-white/15 via-transparent to-[#1D2D52]/80" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] items-center">
             <div className="space-y-8">
-              <p className="text-[#d10000] font-semibold uppercase tracking-[0.4em] text-sm">About Us</p>
-              <h1 className="max-w-3xl text-4xl sm:text-5xl font-bold leading-tight text-[#1D2D52]">Modern cargo logistics, simplified for global teams.</h1>
-              <p className="max-w-2xl text-lg leading-8 text-slate-600">
+              <p className="text-[#d10000] font-semibold uppercase tracking-[0.4em] text-sm -mt-16">About Us</p>
+              <h1 className="max-w-3xl text-4xl sm:text-5xl font-bold leading-tight text-[#ffffff] pt-serif-bold">Modern cargo logistics, simplified for global teams.</h1>
+              <p className="max-w-2xl text-lg leading-8 text-slate-600 ">
                 We combine intelligence, flexibility, and trusted execution to reduce complexity and move more freight with confidence.
               </p>
               <div className="grid gap-4 sm:grid-cols-3">
@@ -281,29 +279,26 @@ export default function OurCompany() {
                 </div>
               </div>
             </div>
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="rounded-[32px] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-                <div className="grid h-72 grid-rows-2 gap-4 overflow-hidden rounded-[28px]">
-                  <div className="relative overflow-hidden rounded-[20px]">
+            <div className="grid gap-6 sm:grid-cols-2 items-stretch">
+              <div className="rounded-[12px]  p-0 shadow-[0_20px_60px_rgba(15,23,42,0.08)] h-full">
+                <div className="grid h-full grid-rows-[1fr_1fr] gap-6 overflow-hidden rounded-xl">
+                  <div className="relative h-full overflow-hidden">
                     <Image src="/images/about1.jpg" alt="Cargo Ship" fill className="object-cover" />
                   </div>
-                  <div className="relative overflow-hidden rounded-[20px]">
-                    <Image src="/images/about2.jpg" alt="Cargo Terminal" fill className="object-cover" />
-                  </div>
-                  <div className="relative overflow-hidden rounded-[20px]">
-                    <Image src="/images/about2.jpg" alt="Cargo Terminal" fill className="object-cover" />
+                  <div className="relative h-full overflow-hidden">
+                    <Image src="/images/supplychain.webp" alt="Cargo Terminal" fill className="object-cover" />
                   </div>
                 </div>
               </div>
-              <div className="space-y-6">
-                <div className="rounded-[32px] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-                  <div className="relative h-40 overflow-hidden rounded-[28px]">
+              <div className="space-y-4">
+                <div className="rounded-[22px] bg-white p-4 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+                  <div className="relative h-40 overflow-hidden rounded-[22px]">
                     <Image src="/images/about2.jpg" alt="Workers" fill className="object-cover" />
                   </div>
                 </div>
                 <div className="rounded-[32px] bg-[#F8FAFC] p-8 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
                   <p className="text-sm uppercase tracking-[0.32em] text-[#d10000]">Precision delivery</p>
-                  <h2 className="mt-4 text-2xl font-semibold text-[#1D2D52]">A modern logistics partner for complex supply chains.</h2>
+                  <h2 className="mt-4 text-2xl font-semibold text-[#1D2D52] pt-serif-bold">A modern logistics partner for complex supply chains.</h2>
                   <p className="mt-4 text-slate-600 leading-7">
                     Our customer-first process helps businesses move faster, reduce risk, and stay in control from pickup to final mile.
                   </p>
