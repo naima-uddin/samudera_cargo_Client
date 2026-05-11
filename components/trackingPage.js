@@ -804,23 +804,75 @@ export default function TrackingPage() {
     return values.length > 0 ? values.join(', ') : 'N/A';
   };
 
+  const getShipmentVessels = () => {
+    const vessels = [];
+    
+    // Get from transportLegs array (multiple entries)
+    if (Array.isArray(trackingData?.shipmentDetails?.transportLegs) && trackingData.shipmentDetails.transportLegs.length > 0) {
+      trackingData.shipmentDetails.transportLegs.forEach(leg => {
+        if (leg?.vesselName) vessels.push(leg.vesselName);
+      });
+    }
+    
+    // Get from transportLegs at top level
+    if (Array.isArray(trackingData?.transportLegs) && trackingData.transportLegs.length > 0) {
+      trackingData.transportLegs.forEach(leg => {
+        if (leg?.vesselName && !vessels.includes(leg.vesselName)) vessels.push(leg.vesselName);
+      });
+    }
+    
+    // Fallback to single transport object
+    if (vessels.length === 0) {
+      const singleVessel = trackingData?.transport?.vesselName ||
+                           trackingData?.shipmentDetails?.vesselName ||
+                           trackingData?.consolidation?.vesselName ||
+                           trackingData?.consolidation?.carrier?.vesselNumber ||
+                           trackingData?.vesselName ||
+                           trackingData?.vessel;
+      if (singleVessel) vessels.push(singleVessel);
+    }
+    
+    return vessels;
+  };
+
+  const getShipmentVoyages = () => {
+    const voyages = [];
+    
+    // Get from transportLegs array (multiple entries)
+    if (Array.isArray(trackingData?.shipmentDetails?.transportLegs) && trackingData.shipmentDetails.transportLegs.length > 0) {
+      trackingData.shipmentDetails.transportLegs.forEach(leg => {
+        if (leg?.voyageNumber) voyages.push(leg.voyageNumber);
+      });
+    }
+    
+    // Get from transportLegs at top level
+    if (Array.isArray(trackingData?.transportLegs) && trackingData.transportLegs.length > 0) {
+      trackingData.transportLegs.forEach(leg => {
+        if (leg?.voyageNumber && !voyages.includes(leg.voyageNumber)) voyages.push(leg.voyageNumber);
+      });
+    }
+    
+    // Fallback to single transport object
+    if (voyages.length === 0) {
+      const singleVoyage = trackingData?.transport?.voyageNumber ||
+                          trackingData?.shipmentDetails?.voyageNumber ||
+                          trackingData?.consolidation?.voyageNumber ||
+                          trackingData?.voyageNumber ||
+                          trackingData?.voyage;
+      if (singleVoyage) voyages.push(singleVoyage);
+    }
+    
+    return voyages;
+  };
+
   const getShipmentVessel = () => {
-    return trackingData?.transport?.vesselName ||
-           trackingData?.shipmentDetails?.vesselName ||
-           trackingData?.consolidation?.vesselName ||
-           trackingData?.consolidation?.carrier?.vesselNumber ||
-           trackingData?.vesselName ||
-           trackingData?.vessel ||
-           'N/A';
+    const vessels = getShipmentVessels();
+    return vessels.length > 0 ? vessels[0] : 'N/A';
   };
 
   const getShipmentVoyage = () => {
-    return trackingData?.transport?.voyageNumber ||
-           trackingData?.shipmentDetails?.voyageNumber ||
-           trackingData?.consolidation?.voyageNumber ||
-           trackingData?.voyageNumber ||
-           trackingData?.voyage ||
-           'N/A';
+    const voyages = getShipmentVoyages();
+    return voyages.length > 0 ? voyages[0] : 'N/A';
   };
 
   const getShipmentBlValue = () => {
@@ -1344,11 +1396,37 @@ export default function TrackingPage() {
                       </div>
                       <div className="rounded-lg border border-gray-200 bg-white p-3">
                         <p className="text-[11px] text-gray-500 uppercase tracking-wide">Vessel</p>
-                        <p className="text-lg font-semibold text-gray-900 mt-1">{getShipmentVessel()}</p>
+                        {(() => {
+                          const vessels = getShipmentVessels();
+                          return (
+                            <div className="mt-1">
+                              {vessels.length > 0 ? (
+                                <div className="space-y-1">
+                                  {vessels.map((v, i) => <p key={i} className="text-sm font-semibold text-gray-900">{v}</p>)}
+                                </div>
+                              ) : (
+                                <p className="text-lg font-semibold text-gray-900">N/A</p>
+                              )}
+                            </div>
+                          );
+                        })()}
                       </div>
                       <div className="rounded-lg border border-gray-200 bg-white p-3">
                         <p className="text-[11px] text-gray-500 uppercase tracking-wide">Voyage</p>
-                        <p className="text-lg font-semibold text-gray-900 mt-1">{getShipmentVoyage()}</p>
+                        {(() => {
+                          const voyages = getShipmentVoyages();
+                          return (
+                            <div className="mt-1">
+                              {voyages.length > 0 ? (
+                                <div className="space-y-1">
+                                  {voyages.map((v, i) => <p key={i} className="text-sm font-semibold text-gray-900">{v}</p>)}
+                                </div>
+                              ) : (
+                                <p className="text-lg font-semibold text-gray-900">N/A</p>
+                              )}
+                            </div>
+                          );
+                        })()}
                       </div>
                       <div className="rounded-lg border border-gray-200 bg-white p-3">
                         <p className="text-[11px] text-gray-500 uppercase tracking-wide">BL Number</p>
@@ -1722,11 +1800,37 @@ export default function TrackingPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4 bg-gray-50 border border-gray-200 rounded-xl p-4">
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wide">Vessel</p>
-                      <p className="font-medium text-sm text-gray-900 mt-1">{getShipmentVessel()}</p>
+                      {(() => {
+                        const vessels = getShipmentVessels();
+                        return (
+                          <div className="mt-1">
+                            {vessels.length > 0 ? (
+                              <div className="space-y-1">
+                                {vessels.map((v, i) => <p key={i} className="font-medium text-sm text-gray-900">{v}</p>)}
+                              </div>
+                            ) : (
+                              <p className="font-medium text-sm text-gray-900">N/A</p>
+                            )}
+                          </div>
+                        );
+                      })()}
                     </div>
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wide">Voyage</p>
-                      <p className="font-medium text-sm text-gray-900 mt-1">{getShipmentVoyage()}</p>
+                      {(() => {
+                        const voyages = getShipmentVoyages();
+                        return (
+                          <div className="mt-1">
+                            {voyages.length > 0 ? (
+                              <div className="space-y-1">
+                                {voyages.map((v, i) => <p key={i} className="font-medium text-sm text-gray-900">{v}</p>)}
+                              </div>
+                            ) : (
+                              <p className="font-medium text-sm text-gray-900">N/A</p>
+                            )}
+                          </div>
+                        );
+                      })()}
                     </div>
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wide">BL Number</p>
@@ -1875,14 +1979,42 @@ export default function TrackingPage() {
                           <span className="text-gray-500">Service Type</span>
                           <span className="font-medium capitalize">{trackingData.shipmentDetails?.serviceType || 'standard'}</span>
                         </div>
-                        <div className="flex justify-between py-1 border-b">
-                          <span className="text-gray-500">Vessel</span>
-                          <span className="font-medium">{getShipmentVessel()}</span>
-                        </div>
-                        <div className="flex justify-between py-1 border-b">
-                          <span className="text-gray-500">Voyage</span>
-                          <span className="font-medium">{getShipmentVoyage()}</span>
-                        </div>
+                        {(() => {
+                          const vessels = getShipmentVessels();
+                          return vessels.length > 0 ? (
+                            <div>
+                              {vessels.map((v, i) => (
+                                <div key={`vessel-${i}`} className="flex justify-between py-1 border-b">
+                                  <span className="text-gray-500">{vessels.length > 1 ? `Vessel ${i + 1}` : 'Vessel'}</span>
+                                  <span className="font-medium">{v}</span>
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="flex justify-between py-1 border-b">
+                              <span className="text-gray-500">Vessel</span>
+                              <span className="font-medium">N/A</span>
+                            </div>
+                          );
+                        })()}
+                        {(() => {
+                          const voyages = getShipmentVoyages();
+                          return voyages.length > 0 ? (
+                            <div>
+                              {voyages.map((v, i) => (
+                                <div key={`voyage-${i}`} className="flex justify-between py-1 border-b">
+                                  <span className="text-gray-500">{voyages.length > 1 ? `Voyage ${i + 1}` : 'Voyage'}</span>
+                                  <span className="font-medium">{v}</span>
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="flex justify-between py-1 border-b">
+                              <span className="text-gray-500">Voyage</span>
+                              <span className="font-medium">N/A</span>
+                            </div>
+                          );
+                        })()}
                         {(() => {
                           const blText = getShipmentBlValue();
                           return blText && blText !== 'N/A' ? (
