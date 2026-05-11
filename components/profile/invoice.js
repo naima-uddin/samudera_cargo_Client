@@ -830,7 +830,7 @@ const InvoiceDetailsModal = ({ isOpen, onClose, invoice, onDownload }) => {
             <button onClick={onClose} className="px-4 py-2 border rounded-lg hover:bg-gray-50">Close</button>
             <button
               onClick={() => { onDownload(invoice); }}
-              className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-red-600 flex items-center"
+              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-600 flex items-center"
             >
               <Download className="h-4 w-4 mr-2" />
               Download PDF

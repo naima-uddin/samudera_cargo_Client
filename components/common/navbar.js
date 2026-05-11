@@ -214,10 +214,10 @@ const Navbar = () => {
                   <button
                     onClick={() => router.push('/tracking-number')}
                     className={`px-5 py-2 rounded-lg text-sm font-semibold shadow-md transition-all duration-200 ${
-                      scrolled ? 'bg-primary text-white hover:bg-[#b00000]' : 'bg-fourth text-white hover:bg-primary'
+                      scrolled ? 'bg-primary text-white hover:bg-[#b00000]' : 'bg-[#f53434] text-white hover:bg-primary'
                     }`}
                   >
-                    Track Order
+                    Track Now
                   </button>
 
                   <div
@@ -307,7 +307,7 @@ const Navbar = () => {
                       scrolled ? 'bg-primary text-white hover:bg-[#b00000]' : 'bg-fourth text-white hover:bg-primary'
                     }`}
                   >
-                    Track Order
+                    Track Now
                   </button>
                 </>
               )}

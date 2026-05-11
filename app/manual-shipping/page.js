@@ -60,7 +60,7 @@ const Button = ({
   disabled 
 }) => {
   const variants = {
-    primary: 'bg-orange-500 text-white hover:bg-red-600',
+    primary: 'bg-red-600 text-white hover:bg-red-600',
     secondary: 'bg-blue-600 text-white hover:bg-blue-700',
     outline: 'border-2 border-orange-500 text-orange-500 hover:bg-orange-50',
     ghost: 'text-gray-600 hover:bg-gray-100',
