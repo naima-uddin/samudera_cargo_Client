@@ -331,7 +331,7 @@ const mergeInvoices = (invoices) => {
 // Stat Card Component
 const StatCard = ({ title, value, icon: Icon, color = 'orange', subtitle }) => {
   const colorClasses = {
-    orange: 'bg-orange-50 text-orange-600',
+    orange: 'bg-orange-50 text-red-600',
     blue: 'bg-blue-50 text-blue-600',
     green: 'bg-green-50 text-green-600',
     yellow: 'bg-yellow-50 text-yellow-600',
@@ -492,7 +492,7 @@ const InvoiceCard = ({ invoice, onView, onDownload }) => {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs text-gray-500 mb-1">Total Amount</p>
-            <p className="text-xl font-bold text-orange-600">
+            <p className="text-xl font-bold text-red-600">
               {formatCurrency(invoice.totalAmount, invoice.currency)}
             </p>
           </div>
@@ -535,7 +535,7 @@ const InvoiceCard = ({ invoice, onView, onDownload }) => {
         <div className="flex items-center justify-end space-x-2 pt-2 border-t">
           <button
             onClick={() => onView(invoice)}
-            className="flex-1 px-3 py-2 bg-orange-50 text-orange-600 rounded-lg hover:bg-orange-100 transition-colors flex items-center justify-center"
+            className="flex-1 px-3 py-2 bg-orange-50 text-red-600 rounded-lg hover:bg-orange-100 transition-colors flex items-center justify-center"
           >
             <Eye className="h-4 w-4 mr-2" />
             View
@@ -650,7 +650,7 @@ const InvoiceDetailsModal = ({ isOpen, onClose, invoice, onDownload }) => {
           <div className="flex justify-between items-start">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-orange-100 rounded-lg">
-                <Receipt className="h-6 w-6 text-orange-600" />
+                <Receipt className="h-6 w-6 text-red-600" />
               </div>
               <div>
                 <h2 className="text-xl font-bold">{invoice.invoiceNumber}</h2>
@@ -671,7 +671,7 @@ const InvoiceDetailsModal = ({ isOpen, onClose, invoice, onDownload }) => {
                 onClick={() => setActiveTab(tab)}
                 className={`pb-2 px-1 text-sm font-medium border-b-2 transition-colors capitalize ${
                   activeTab === tab
-                    ? 'border-orange-500 text-orange-600'
+                    ? 'border-orange-500 text-red-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -781,7 +781,7 @@ const InvoiceDetailsModal = ({ isOpen, onClose, invoice, onDownload }) => {
                   <div className="border-t pt-2">
                     <div className="flex justify-between font-bold">
                       <span>Total:</span>
-                      <span className="text-lg text-orange-600">
+                      <span className="text-lg text-red-600">
                         {formatCurrency(invoice.totalAmount, invoice.currency)}
                       </span>
                     </div>
@@ -830,7 +830,7 @@ const InvoiceDetailsModal = ({ isOpen, onClose, invoice, onDownload }) => {
             <button onClick={onClose} className="px-4 py-2 border rounded-lg hover:bg-gray-50">Close</button>
             <button
               onClick={() => { onDownload(invoice); }}
-              className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 flex items-center"
+              className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-red-600 flex items-center"
             >
               <Download className="h-4 w-4 mr-2" />
               Download PDF
@@ -1225,7 +1225,7 @@ export default function MyInvoicesPage() {
                 setSearchTerm('');
                 setFilters({ status: 'all', paymentStatus: 'all', startDate: '', endDate: '', sort: '-createdAt' });
               }}
-              className="mt-2 text-orange-500 hover:text-orange-600 underline"
+              className="mt-2 text-orange-500 hover:text-red-600 underline"
             >
               Clear filters
             </button>

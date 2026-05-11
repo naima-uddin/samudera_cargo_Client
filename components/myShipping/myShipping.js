@@ -419,11 +419,11 @@ const ActionMenu = ({ shipment, onAction }) => {
   const actions = [
     { label: 'View Details', icon: Eye, action: 'view', color: 'text-blue-600' },
     { label: 'Track Shipment', icon: Navigation, action: 'track', color: 'text-green-600' },
-    { label: 'Request Return', icon: Undo2, action: 'return', color: 'text-orange-600' },
+    { label: 'Request Return', icon: Undo2, action: 'return', color: 'text-red-600' },
   ];
 
   if (canReturn && !hasReturnRequest) {
-    actions.push({ label: 'Request Return', icon: Undo2, action: 'return', color: 'text-orange-600' });
+    actions.push({ label: 'Request Return', icon: Undo2, action: 'return', color: 'text-red-600' });
   }
 
   if (hasReturnRequest) {
@@ -438,7 +438,7 @@ const ActionMenu = ({ shipment, onAction }) => {
       label: returnLabel, 
       icon: returnStatus === 'approved' ? ThumbsUp : returnStatus === 'rejected' ? ThumbsDown : Undo2, 
       action: 'viewReturn', 
-      color: returnStatus === 'approved' ? 'text-green-600' : returnStatus === 'rejected' ? 'text-red-600' : 'text-orange-600' 
+      color: returnStatus === 'approved' ? 'text-green-600' : returnStatus === 'rejected' ? 'text-red-600' : 'text-red-600' 
     });
   }
 
@@ -1393,7 +1393,7 @@ const ShipmentDetailsModal = ({ isOpen, onClose, shipment, source = 'first' }) =
                           {event.status === 'customs_cleared' && <Shield className="h-4 w-4 text-emerald-600" />}
                           {event.status === 'out_for_delivery' && <Truck className="h-4 w-4 text-pink-600" />}
                           {event.status === 'in_transit' && <Truck className="h-4 w-4 text-cyan-600" />}
-                          {event.status === 'dispatched' && <Send className="h-4 w-4 text-orange-600" />}
+                          {event.status === 'dispatched' && <Send className="h-4 w-4 text-red-600" />}
                           {(!event.status || event.status === 'pending') && <Clock className="h-4 w-4 text-gray-600" />}
                         </div>
                       </div>

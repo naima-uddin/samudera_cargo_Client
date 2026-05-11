@@ -990,31 +990,31 @@ export default function TrackingPage() {
       <>
         {dedupedContainers.length > 0 && (
           <>
-            <span className="text-orange-600">Container:</span> {dedupedContainers.join(', ')}
+            <span className="text-red-600">Container:</span> {dedupedContainers.join(', ')}
           </>
         )}
         {dedupedContainers.length > 0 && dedupedSeals.length > 0 && ' '}
         {dedupedSeals.length > 0 && (
           <>
-            <span className="text-orange-600">Seal:</span> {dedupedSeals.join(', ')}
+            <span className="text-red-600">Seal:</span> {dedupedSeals.join(', ')}
           </>
         )}
         {(vesselName && vesselName !== 'N/A') && (
           <>
             <br />
-            <span className="text-orange-600">Vessel:</span> {vesselName}
+            <span className="text-red-600">Vessel:</span> {vesselName}
           </>
         )}
         {(voyageNumber && voyageNumber !== 'N/A') && (
           <>
             <br />
-            <span className="text-orange-600">Voyage:</span> {voyageNumber}
+            <span className="text-red-600">Voyage:</span> {voyageNumber}
           </>
         )}
         {(blNumber && blNumber !== 'N/A') && (
           <>
             <br />
-            <span className="text-orange-600">BL:</span> {blNumber}
+            <span className="text-red-600">BL:</span> {blNumber}
           </>
         )}
       </>
@@ -1189,7 +1189,7 @@ export default function TrackingPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-orange-300 to-orange-600 text-white py-16">
+      <div className="bg-gradient-to-r from-orange-300 to-red-600 text-white py-16">
         <div className="max-w-4xl mx-auto text-center px-4">
           <h1 className="text-4xl font-bold mb-4">Track Your Shipment</h1>
           <p className="text-xl opacity-90">
@@ -1376,7 +1376,7 @@ export default function TrackingPage() {
                         <Activity className="h-4 w-4" />
                         <span>Live Tracking Timeline</span>
                       </div>
-                      <span className="text-xs text-orange-600">Newest updates first for faster review</span>
+                      <span className="text-xs text-red-600">Newest updates first for faster review</span>
                     </div>
 
                     {/* Containers Section */}
@@ -1424,7 +1424,7 @@ export default function TrackingPage() {
                   onClick={() => setActiveTab('timeline')}
                   className={`px-6 py-3 text-sm font-medium whitespace-nowrap ${
                     activeTab === 'timeline' 
-                      ? 'text-orange-600 border-b-2 border-orange-600' 
+                      ? 'text-red-600 border-b-2 border-red-600' 
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
                 >
@@ -1434,7 +1434,7 @@ export default function TrackingPage() {
                   onClick={() => setActiveTab('packages')}
                   className={`px-6 py-3 text-sm font-medium whitespace-nowrap ${
                     activeTab === 'packages' 
-                      ? 'text-orange-600 border-b-2 border-orange-600' 
+                      ? 'text-red-600 border-b-2 border-red-600' 
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
                 >
@@ -1444,7 +1444,7 @@ export default function TrackingPage() {
                   onClick={() => setActiveTab('overview')}
                   className={`px-6 py-3 text-sm font-medium whitespace-nowrap ${
                     activeTab === 'overview' 
-                      ? 'text-orange-600 border-b-2 border-orange-600' 
+                      ? 'text-red-600 border-b-2 border-red-600' 
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
                 >
@@ -1454,7 +1454,7 @@ export default function TrackingPage() {
                   onClick={() => setActiveTab('details')}
                   className={`px-6 py-3 text-sm font-medium whitespace-nowrap ${
                     activeTab === 'details' 
-                      ? 'text-orange-600 border-b-2 border-orange-600' 
+                      ? 'text-red-600 border-b-2 border-red-600' 
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
                 >
@@ -1600,7 +1600,7 @@ export default function TrackingPage() {
                                     <CheckCircle className="relative z-10 h-3.5 w-3.5 sm:h-5 sm:w-5 text-green-600" />
                                   ) : (
                                     <StatusIconComponent className={`relative z-10 h-3.5 w-3.5 sm:h-5 sm:w-5 ${
-                                      isCurrentStep && !isHold ? (isReturn ? 'text-purple-600' : 'text-orange-600') : 
+                                      isCurrentStep && !isHold ? (isReturn ? 'text-purple-600' : 'text-red-600') : 
                                       isHold ? 'text-gray-600' : 'text-gray-500'
                                     }`} />
                                   )}
@@ -1667,11 +1667,11 @@ export default function TrackingPage() {
                                           </div>
                                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
                                             <p className="text-gray-700 break-words">
-                                              <span className="font-semibold text-orange-600">Container:</span>{' '}
+                                              <span className="font-semibold text-red-600">Container:</span>{' '}
                                               {cleanedSealedContainers.map((container) => container.containerNumber).filter((value) => value && value !== 'N/A').join(', ') || 'N/A'}
                                             </p>
                                             <p className="text-gray-700 break-words">
-                                              <span className="font-semibold text-orange-600">Seal:</span>{' '}
+                                              <span className="font-semibold text-red-600">Seal:</span>{' '}
                                               {cleanedSealedContainers.map((container) => container.sealNumber).filter((value) => value && value !== 'N/A').join(', ') || 'N/A'}
                                             </p>
                                           </div>
@@ -1762,7 +1762,7 @@ export default function TrackingPage() {
                                   <button
                                     onClick={() => togglePackageExpanded(index)}
                                     aria-expanded={isExpanded}
-                                    className="p-1.5 bg-orange-50 hover:bg-orange-100 text-orange-600 rounded-md text-sm transition"
+                                    className="p-1.5 bg-orange-50 hover:bg-orange-100 text-red-600 rounded-md text-sm transition"
                                   >
                                     {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                                   </button>

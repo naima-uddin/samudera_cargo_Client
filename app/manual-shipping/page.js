@@ -60,7 +60,7 @@ const Button = ({
   disabled 
 }) => {
   const variants = {
-    primary: 'bg-orange-500 text-white hover:bg-orange-600',
+    primary: 'bg-orange-500 text-white hover:bg-red-600',
     secondary: 'bg-blue-600 text-white hover:bg-blue-700',
     outline: 'border-2 border-orange-500 text-orange-500 hover:bg-orange-50',
     ghost: 'text-gray-600 hover:bg-gray-100',
@@ -336,14 +336,14 @@ const ActionMenu = ({ shipment, onAction, source = 'first' }) => {
 
   // ✅ Only add return option if eligible
   if (canReturn()) {
-    actions.push({ label: 'Request Return', icon: Undo2, action: 'return', color: 'text-orange-600' });
+    actions.push({ label: 'Request Return', icon: Undo2, action: 'return', color: 'text-red-600' });
   }
 
   // ✅ Only show return status if there's an ACTIVE return request
   if (hasActiveReturnRequest()) {
     const returnStatus = getReturnStatus();
     let returnLabel = 'Return Request';
-    let returnColor = 'text-orange-600';
+    let returnColor = 'text-red-600';
     
     if (returnStatus === 'pending') {
       returnLabel = 'Return Pending';
@@ -1259,7 +1259,7 @@ const ShipmentDetailsModal = ({ isOpen, onClose, shipment, source = 'first' }) =
                           {event.status === 'customs_cleared' && <Shield className="h-4 w-4 text-emerald-600" />}
                           {event.status === 'out_for_delivery' && <Truck className="h-4 w-4 text-pink-600" />}
                           {event.status === 'in_transit' && <Truck className="h-4 w-4 text-cyan-600" />}
-                          {event.status === 'dispatched' && <Send className="h-4 w-4 text-orange-600" />}
+                          {event.status === 'dispatched' && <Send className="h-4 w-4 text-red-600" />}
                           {(!event.status || event.status === 'pending') && <Clock className="h-4 w-4 text-gray-600" />}
                         </div>
                       </div>
