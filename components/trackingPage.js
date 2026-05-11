@@ -612,39 +612,63 @@ export default function TrackingPage() {
 
   const getShipmentContainers = () => {
     const containers = [];
-    const containerNumbers = new Set();
+    const blNumbers = new Set();
     const sealNumbers = new Set();
     const pairs = new Map();
 
-    // Collect from timeline events
+    const addContainerEntry = (containerNumber, sealNumber, blNumber) => {
+      if (!containerNumber) return;
+      const key = containerNumber;
+      if (!pairs.has(key)) {
+        pairs.set(key, {
+          containerNumber,
+          sealNumber: sealNumber || 'N/A',
+          blNumber: blNumber || 'N/A'
+        });
+      }
+      const entry = pairs.get(key);
+
+      if (sealNumber) {
+        entry.sealNumber = sealNumber;
+        sealNumbers.add(sealNumber);
+      }
+
+      if (blNumber) {
+        const values = Array.isArray(blNumber) ? blNumber : [blNumber];
+        values.forEach((b) => {
+          if (b) blNumbers.add(b);
+        });
+
+        const existingBl = entry.blNumber && entry.blNumber !== 'N/A'
+          ? entry.blNumber.split(', ').filter(Boolean)
+          : [];
+        const combinedBl = [...new Set([...existingBl, ...values.filter(Boolean)])].filter(Boolean);
+        entry.blNumber = combinedBl.length > 0 ? combinedBl.join(', ') : entry.blNumber;
+      }
+    };
+
+    const collectBl = (value) => {
+      if (!value) return;
+      const values = Array.isArray(value) ? value : [value];
+      values.forEach((bl) => {
+        if (bl) blNumbers.add(bl);
+      });
+    };
+
     if (Array.isArray(trackingData?.timeline)) {
       for (const event of trackingData.timeline) {
         if (event?.containers && Array.isArray(event.containers)) {
           for (const container of event.containers) {
-            if (container?.containerNumber) {
-              containerNumbers.add(container.containerNumber);
-              const key = container.containerNumber;
-              if (!pairs.has(key)) {
-                pairs.set(key, { containerNumber: container.containerNumber, sealNumber: null });
-              }
-              if (container.sealNumber) {
-                pairs.get(key).sealNumber = container.sealNumber;
-                sealNumbers.add(container.sealNumber);
-              }
-            }
+            addContainerEntry(
+              container.containerNumber,
+              container.sealNumber,
+              container.blNumber || container.bl || container.blNumbers
+            );
           }
         }
 
         if (event?.containerNumber) {
-          containerNumbers.add(event.containerNumber);
-          const key = event.containerNumber;
-          if (!pairs.has(key)) {
-            pairs.set(key, { containerNumber: event.containerNumber, sealNumber: null });
-          }
-          if (event.sealNumber) {
-            pairs.get(key).sealNumber = event.sealNumber;
-            sealNumbers.add(event.sealNumber);
-          }
+          addContainerEntry(event.containerNumber, event.sealNumber, event.blNumber || event.bl || event.blNumbers);
         }
 
         if (event?.metadata?.containerNumber) {
@@ -652,12 +676,7 @@ export default function TrackingPage() {
             ? event.metadata.containerNumber
             : [event.metadata.containerNumber];
           for (const num of values) {
-            if (num) {
-              containerNumbers.add(num);
-              if (!pairs.has(num)) {
-                pairs.set(num, { containerNumber: num, sealNumber: null });
-              }
-            }
+            addContainerEntry(num, event?.metadata?.sealNumber, event?.metadata?.blNumber);
           }
         }
 
@@ -665,83 +684,101 @@ export default function TrackingPage() {
           const values = Array.isArray(event.metadata.sealNumber)
             ? event.metadata.sealNumber
             : [event.metadata.sealNumber];
-          for (const num of values) {
+          values.forEach((num) => {
             if (num) sealNumbers.add(num);
-          }
+          });
         }
 
         if (event?.sealNumber) {
           const values = Array.isArray(event.sealNumber) ? event.sealNumber : [event.sealNumber];
-          for (const num of values) {
+          values.forEach((num) => {
             if (num) sealNumbers.add(num);
-          }
+          });
+        }
+
+        if (event?.blNumber) {
+          collectBl(event.blNumber);
         }
       }
     }
 
-    // Collect from top-level data
     if (trackingData?.consolidation?.containerNumber) {
-      const num = trackingData.consolidation.containerNumber;
-      containerNumbers.add(num);
-      if (!pairs.has(num)) {
-        pairs.set(num, { containerNumber: num, sealNumber: null });
-      }
-      if (trackingData.consolidation.sealNumber) {
-        pairs.get(num).sealNumber = trackingData.consolidation.sealNumber;
-        sealNumbers.add(trackingData.consolidation.sealNumber);
-      }
+      addContainerEntry(
+        trackingData.consolidation.containerNumber,
+        trackingData.consolidation.sealNumber,
+        trackingData.consolidation.blNumber
+      );
     }
 
     if (trackingData?.shipmentDetails?.containerNumber) {
-      const nums = trackingData.shipmentDetails.containerNumber.split(',').map(n => n.trim()).filter(Boolean);
+      const nums = trackingData.shipmentDetails.containerNumber
+        .split(',')
+        .map((n) => n.trim())
+        .filter(Boolean);
       for (const num of nums) {
-        containerNumbers.add(num);
-        if (!pairs.has(num)) {
-          pairs.set(num, { containerNumber: num, sealNumber: null });
-        }
+        addContainerEntry(num, trackingData.shipmentDetails.sealNumber, trackingData.shipmentDetails.blNumber);
       }
     }
 
     if (trackingData?.shipmentDetails?.sealNumber) {
-      const nums = trackingData.shipmentDetails.sealNumber.split(',').map(n => n.trim()).filter(Boolean);
-      for (const num of nums) {
-        sealNumbers.add(num);
-      }
+      const nums = trackingData.shipmentDetails.sealNumber
+        .split(',')
+        .map((n) => n.trim())
+        .filter(Boolean);
+      nums.forEach((num) => {
+        if (num) sealNumbers.add(num);
+      });
+    }
+
+    if (trackingData?.shipmentDetails?.blNumber) {
+      collectBl(trackingData.shipmentDetails.blNumber);
     }
 
     if (trackingData?.containerNumber) {
-      const nums = trackingData.containerNumber.split(',').map(n => n.trim()).filter(Boolean);
+      const nums = trackingData.containerNumber
+        .split(',')
+        .map((n) => n.trim())
+        .filter(Boolean);
       for (const num of nums) {
-        containerNumbers.add(num);
-        if (!pairs.has(num)) {
-          pairs.set(num, { containerNumber: num, sealNumber: null });
-        }
+        addContainerEntry(num, trackingData.sealNumber, trackingData.blNumber);
       }
     }
 
     if (trackingData?.sealNumber) {
-      const nums = trackingData.sealNumber.split(',').map(n => n.trim()).filter(Boolean);
-      for (const num of nums) {
-        sealNumbers.add(num);
-      }
-    }
-
-    // Build result from pairs map
-    for (const [containerNum, data] of pairs) {
-      containers.push({
-        containerNumber: data.containerNumber || containerNum,
-        sealNumber: data.sealNumber || 'N/A'
+      const nums = trackingData.sealNumber.split(',').map((n) => n.trim()).filter(Boolean);
+      nums.forEach((num) => {
+        if (num) sealNumbers.add(num);
       });
     }
 
-    // If we have unpaired seals, add them
+    if (trackingData?.blNumber) {
+      collectBl(trackingData.blNumber);
+    }
+
+    for (const [containerNum, data] of pairs) {
+      containers.push({
+        containerNumber: data.containerNumber || containerNum,
+        sealNumber: data.sealNumber || 'N/A',
+        blNumber: data.blNumber || 'N/A'
+      });
+    }
+
     if (containers.length === 0 && sealNumbers.size > 0) {
       for (const seal of sealNumbers) {
         containers.push({
           containerNumber: 'N/A',
-          sealNumber: seal
+          sealNumber: seal,
+          blNumber: 'N/A'
         });
       }
+    }
+
+    if (containers.length === 0 && blNumbers.size > 0) {
+      containers.push({
+        containerNumber: 'N/A',
+        sealNumber: 'N/A',
+        blNumber: [...blNumbers].join(', ')
+      });
     }
 
     return containers;
@@ -765,6 +802,47 @@ export default function TrackingPage() {
       .filter(Boolean);
 
     return values.length > 0 ? values.join(', ') : 'N/A';
+  };
+
+  const getShipmentVessel = () => {
+    return trackingData?.transport?.vesselName ||
+           trackingData?.shipmentDetails?.vesselName ||
+           trackingData?.vesselName ||
+           trackingData?.vessel ||
+           'N/A';
+  };
+
+  const getShipmentVoyage = () => {
+    return trackingData?.transport?.voyageNumber ||
+           trackingData?.shipmentDetails?.voyageNumber ||
+           trackingData?.voyageNumber ||
+           trackingData?.voyage ||
+           'N/A';
+  };
+
+  const getShipmentBlValue = () => {
+    const containers = getShipmentContainers();
+    const values = containers
+      .map((container) => container?.blNumber)
+      .filter((val) => val && val !== 'N/A');
+
+    if (values.length > 0) {
+      return [...new Set(values.join(', ').split(',').map((v) => v.trim()).filter(Boolean))].join(', ');
+    }
+
+    const blValues = [];
+    if (trackingData?.consolidation?.blNumber) blValues.push(trackingData.consolidation.blNumber);
+    if (trackingData?.shipmentDetails?.blNumber) {
+      blValues.push(...trackingData.shipmentDetails.blNumber.split(',').map((v) => v.trim()).filter(Boolean));
+    }
+    if (trackingData?.blNumber) {
+      blValues.push(...(Array.isArray(trackingData.blNumber) ? trackingData.blNumber : [trackingData.blNumber]));
+    }
+    if (trackingData?.transport?.blNumber) blValues.push(trackingData.transport.blNumber);
+
+    return blValues.length > 0
+      ? [...new Set(blValues)].join(', ')
+      : 'N/A';
   };
 
   const getPackageSealNumber = (pkg) => {
@@ -898,6 +976,9 @@ export default function TrackingPage() {
 
     const dedupedContainers = [...new Set(containerNumbers)];
     const dedupedSeals = [...new Set(sealNumbers)];
+    const vesselName = getShipmentVessel();
+    const voyageNumber = getShipmentVoyage();
+    const blNumber = getShipmentBlValue();
 
     return (
       <>
@@ -910,6 +991,24 @@ export default function TrackingPage() {
         {dedupedSeals.length > 0 && (
           <>
             <span className="text-orange-600">Seal:</span> {dedupedSeals.join(', ')}
+          </>
+        )}
+        {(vesselName && vesselName !== 'N/A') && (
+          <>
+            <br />
+            <span className="text-orange-600">Vessel:</span> {vesselName}
+          </>
+        )}
+        {(voyageNumber && voyageNumber !== 'N/A') && (
+          <>
+            <br />
+            <span className="text-orange-600">Voyage:</span> {voyageNumber}
+          </>
+        )}
+        {(blNumber && blNumber !== 'N/A') && (
+          <>
+            <br />
+            <span className="text-orange-600">BL:</span> {blNumber}
           </>
         )}
       </>
@@ -1224,7 +1323,7 @@ export default function TrackingPage() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3 mt-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-6 gap-3 mt-3">
                       <div className="rounded-lg border border-gray-200 bg-white p-3">
                         <p className="text-[11px] text-gray-500 uppercase tracking-wide">Total Packages</p>
                         <p className="text-lg font-semibold text-gray-900 mt-1">{trackingData.shipmentDetails?.totalPackages || trackingData.totalPackages || 0}</p>
@@ -1236,6 +1335,18 @@ export default function TrackingPage() {
                       <div className="rounded-lg border border-gray-200 bg-white p-3">
                         <p className="text-[11px] text-gray-500 uppercase tracking-wide">Shipping Mode</p>
                         <p className="text-lg font-semibold text-gray-900 mt-1">{trackingData.shipmentDetails?.shippingMode || trackingData.shippingMode || 'DDU'}</p>
+                      </div>
+                      <div className="rounded-lg border border-gray-200 bg-white p-3">
+                        <p className="text-[11px] text-gray-500 uppercase tracking-wide">Vessel</p>
+                        <p className="text-lg font-semibold text-gray-900 mt-1">{getShipmentVessel()}</p>
+                      </div>
+                      <div className="rounded-lg border border-gray-200 bg-white p-3">
+                        <p className="text-[11px] text-gray-500 uppercase tracking-wide">Voyage</p>
+                        <p className="text-lg font-semibold text-gray-900 mt-1">{getShipmentVoyage()}</p>
+                      </div>
+                      <div className="rounded-lg border border-gray-200 bg-white p-3">
+                        <p className="text-[11px] text-gray-500 uppercase tracking-wide">BL Number</p>
+                        <p className="text-lg font-semibold text-gray-900 mt-1">{getShipmentBlValue()}</p>
                       </div>
                       <div className="rounded-lg border border-gray-200 bg-white p-3">
                         <p className="text-[11px] text-gray-500 uppercase tracking-wide">Current Location</p>
@@ -1602,6 +1713,20 @@ export default function TrackingPage() {
                         <Package className="h-4 w-4 text-orange-500 mr-2 " />
                         Package Details
                       </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4 bg-gray-50 border border-gray-200 rounded-xl p-4">
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide">Vessel</p>
+                      <p className="font-medium text-sm text-gray-900 mt-1">{getShipmentVessel()}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide">Voyage</p>
+                      <p className="font-medium text-sm text-gray-900 mt-1">{getShipmentVoyage()}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide">BL Number</p>
+                      <p className="font-medium text-sm text-gray-900 mt-1">{getShipmentBlValue()}</p>
+                    </div>
+                  </div>
                   {trackingData.packages && trackingData.packages.length > 0 ? (
                     <>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3 mb-4 auto-rows-max">
@@ -1740,10 +1865,27 @@ export default function TrackingPage() {
                           <span className="text-gray-500">Shipping Mode</span>
                           <span className="font-medium">{trackingData.shipmentDetails?.shippingMode || trackingData.shippingMode || 'DDU'}</span>
                         </div>
-                        <div className="flex justify-between py-1">
+                        <div className="flex justify-between py-1 border-b">
                           <span className="text-gray-500">Service Type</span>
                           <span className="font-medium capitalize">{trackingData.shipmentDetails?.serviceType || 'standard'}</span>
                         </div>
+                        <div className="flex justify-between py-1 border-b">
+                          <span className="text-gray-500">Vessel</span>
+                          <span className="font-medium">{getShipmentVessel()}</span>
+                        </div>
+                        <div className="flex justify-between py-1 border-b">
+                          <span className="text-gray-500">Voyage</span>
+                          <span className="font-medium">{getShipmentVoyage()}</span>
+                        </div>
+                        {(() => {
+                          const blText = getShipmentBlValue();
+                          return blText && blText !== 'N/A' ? (
+                            <div className="flex justify-between py-1 border-b">
+                              <span className="text-gray-500">BL Number</span>
+                              <span className="font-medium">{blText}</span>
+                            </div>
+                          ) : null;
+                        })()}
                         <div className="flex justify-between py-1">
                           <span className="text-gray-500">Container Number</span>
                           <span className="font-medium capitalize">{getShipmentContainerValue('containerNumber')}</span>
@@ -1811,7 +1953,10 @@ export default function TrackingPage() {
                               {container.sealNumber && container.sealNumber !== 'N/A' && (
                                 <p className="text-sm text-gray-700">Seal: {container.sealNumber}</p>
                               )}
-                              {(!container.containerNumber || container.containerNumber === 'N/A') && (!container.sealNumber || container.sealNumber === 'N/A') && (
+                              {container.blNumber && container.blNumber !== 'N/A' && (
+                                <p className="text-sm text-gray-700">BL: {container.blNumber}</p>
+                              )}
+                              {(!container.containerNumber || container.containerNumber === 'N/A') && (!container.sealNumber || container.sealNumber === 'N/A') && (!container.blNumber || container.blNumber === 'N/A') && (
                                 <p className="text-xs text-gray-500 italic">No valid data</p>
                               )}
                             </div>

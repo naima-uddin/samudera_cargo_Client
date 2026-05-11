@@ -35,7 +35,7 @@ function WhyChooseUs() {
     <section className="relative overflow-hidden bg-white py-12">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.12),transparent_38%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_35%)]" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] items-start">
+        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] items-stretch">
           <div className="space-y-3">
             <p className="text-[#d10000] font-semibold uppercase tracking-[0.4em] text-xs">Why choose us</p>
             <h2 className="text-3xl font-semibold text-[#1D2D52] sm:text-4xl">Smarter logistics, clearer outcomes.</h2>
@@ -63,14 +63,14 @@ function WhyChooseUs() {
             </div>
           </div>
 
-          <div className="grid gap-4">
-            <div className="relative overflow-hidden rounded-[28px] border border-slate-200 bg-slate-100 shadow-lg">
-              <Image src="/images/about1.jpg" alt="Cargo ship" width={760} height={160} className="h-full w-full object-cover transition duration-700 hover:scale-105" />
-              <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#1D2D52] shadow-sm">
-                Live Monitoring
-              </div>
+          <div className="flex h-full flex-col gap-4">
+            <div className="grid h-full grid-cols-2 gap-2 overflow-hidden rounded-[28px] border border-slate-200 bg-slate-100 p-2 shadow-lg">
+              {['/images/blog2.jpg', '/images/cargo-ship.jpg', '/images/project (8).jpg', '/images/imgi_8_services-2.jpg','/images/service2.jpg' ,'/images/blue-container.png', '/images/blog1.jpg', '/images/project (4).jpg', '/images/manufacturing.jpg', '/images/shipping.png'].map((src, idx) => (
+                <div key={idx} className="relative overflow-hidden rounded-[18px] transition duration-700 hover:scale-[1.02]">
+                  <Image src={src} alt={`Gallery ${idx + 1}`} fill className="object-cover" />
+                </div>
+              ))}
             </div>
-            
           </div>
         </div>
 
