@@ -54,7 +54,7 @@ const TermsOfService = () => {
           <p className="text-gray-700 leading-relaxed">
             By accessing and using the Samudera Traffic Co., Ltd.s Company freight forwarding platform
             (the "Platform"), you agree to be bound by these Terms of Service ("Terms").
-            These Terms apply to all users including B2B customers, freight forwarders,
+            These Terms apply to all users including Samudera Cargo customers, freight forwarders,
             warehouse managers, and administrative personnel operating within Thailand,
             China, USA, UK, and Canada.
           </p>
@@ -129,7 +129,7 @@ const TermsOfService = () => {
               desc: "Handles consolidation: receiving cargo, warehouse location assignment, package grouping, and container loading status.",
             },
             {
-              role: "B2B Customer",
+              role: "Samudera Cargo Customer",
               desc: "Portal access: book shipments, upload packing lists, track shipments, download invoices and shipping documents.",
             },
           ].map((role, idx) => (
@@ -510,7 +510,7 @@ Bangkok 10110, Thailand
             </h1>
             <p className="text-lg md:text-xl text-white max-w-3xl mx-auto">
               Legal framework for international freight forwarding, logistics
-              management, and B2B operations across Thailand, China, USA, UK & Canada
+              management, and Samudera Cargo operations across Thailand, China, USA, UK & Canada
             </p>
           </motion.div>
         </div>

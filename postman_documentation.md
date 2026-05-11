@@ -1,6 +1,6 @@
-# B2B Cargo Client API
+# Samudera Cargo Cargo Client API
 
-Postman collection generated from B2B Cargo Client service wrappers.
+Postman collection generated from Samudera Cargo Cargo Client service wrappers.
 
 ## Environment Variables
 

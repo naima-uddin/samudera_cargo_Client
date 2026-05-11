@@ -3,6 +3,8 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// react-toastify v11: closeToast(reason) expects a CloseReason string, not a DOM event.
+// Stop propagation on the button, then call closeToast with the correct reason string.
 function CloseButton({ closeToast }) {
   return (
     <button
@@ -11,7 +13,7 @@ function CloseButton({ closeToast }) {
       className="ml-2 inline-flex h-6 w-6 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
       onClick={(event) => {
         event.stopPropagation();
-        closeToast?.(event);
+        closeToast?.('click');
       }}
     >
       <span className="text-lg leading-none">&times;</span>
@@ -30,6 +32,7 @@ export default function ToastProvider() {
       draggable
       pauseOnHover
       newestOnTop
+      limit={3}
     />
   );
 }

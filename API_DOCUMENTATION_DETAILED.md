@@ -1,4 +1,4 @@
-# B2B Cargo Client Detailed API Documentation
+# Samudera Cargo Cargo Client Detailed API Documentation
 
 ## Overview
 This document describes every API route used by `B2B_Cargo_Client`.

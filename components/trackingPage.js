@@ -212,15 +212,12 @@ export default function TrackingPage() {
       if (result.success) {
         const processedData = processTimelineForHoldResume(result.data);
         setTrackingData(processedData);
-        toast.success('Tracking data found');
       } else {
         setError(result.message || 'No shipment found with this tracking number');
-        toast.error(result.message);
       }
     } catch (error) {
       console.error('Error:', error);
       setError('Failed to fetch tracking data');
-      toast.error('Something went wrong');
     } finally {
       setLoading(false);
     }
@@ -247,7 +244,7 @@ export default function TrackingPage() {
     const selectedLabel = SEARCH_TYPE_LABELS[searchType] || 'number';
 
     if (!trimmed) {
-      toast.warning(`Please enter a ${selectedLabel}`);
+      toast.warning(`Please enter a ${selectedLabel}`, { toastId: 'empty-input' });
       return;
     }
 
@@ -283,15 +280,12 @@ export default function TrackingPage() {
       if (result.success) {
         const processedData = processTimelineForHoldResume(result.data);
         setTrackingData(processedData);
-        toast.success('Tracking data found');
       } else {
         setError(result.message || `No shipment found with this ${selectedLabel.toLowerCase()}`);
-        toast.error(result.message);
       }
     } catch (error) {
       console.error('Error:', error);
       setError('Failed to fetch tracking data');
-      toast.error('Something went wrong');
     } finally {
       setLoading(false);
     }

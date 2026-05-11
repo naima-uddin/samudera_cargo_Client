@@ -5,7 +5,7 @@ import React from "react";
 export const metadata = {
   title: "Terms of Service | Samudera Traffic Co., Ltd.s Group",
   description:
-    "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and B2B operations across Thailand, China, USA, UK & Canada.",
+    "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations across Thailand, China, USA, UK & Canada.",
   keywords: [
     "Samudera Traffic Co., Ltd.s",
     "Terms of Service",
@@ -13,7 +13,7 @@ export const metadata = {
     "Legal Terms",
     "Freight Forwarding Terms",
     "Logistics Agreement",
-    "B2B Terms",
+    "Samudera Cargo Terms",
     "Shipping Terms",
     "Service Agreement",
     "User Agreement",
@@ -24,7 +24,7 @@ export const metadata = {
   openGraph: {
     title: "Terms of Service | Samudera Traffic Co., Ltd.s Group",
     description:
-      "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and B2B operations.",
+      "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations.",
     url: "https://client.cargologisticscompany.com/terms-of-service",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
@@ -64,7 +64,7 @@ export default function Page() {
             "@type": "WebPage",
             name: "Terms of Service",
             description:
-              "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and B2B operations across Thailand, China, USA, UK & Canada.",
+              "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations across Thailand, China, USA, UK & Canada.",
             url: "https://client.cargologisticscompany.com/terms-of-service",
             publisher: {
               "@type": "Organization",
