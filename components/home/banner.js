@@ -47,7 +47,7 @@ const Banner = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-7 relative h-[220px] sm:h-[300px] lg:h-[480px] z-0 hidden md:block">
+            <div className="lg:col-span-7 relative h-[220px] sm:h-[300px] lg:h-[480px] z-20 hidden md:block">
               <img
                 src="/banner/container1.png"
                 alt="Cargo container"
