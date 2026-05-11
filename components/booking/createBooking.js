@@ -1363,12 +1363,11 @@ export default function CreateBooking() {
                           className="w-full px-3 py-2 pl-8 text-sm border rounded-md bg-gray-100 text-gray-700"
                         />
                       </div>
-                      <p className="text-xs text-gray-500 mt-1">
-                        Based on destination: {formData.shipmentDetails.destination}
-                      </p>
-                    </div>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Based on destination: {formData.shipmentDetails.destination}
+                    </p>
                   </div>
-                </div>
+                  </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <Select
@@ -1404,7 +1403,8 @@ export default function CreateBooking() {
                     icon={Truck}
                   />
                 </div>
-              </div>
+            </div>
+            
             )}
 
             {/* Step 2: Package Details */}

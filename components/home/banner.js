@@ -47,7 +47,7 @@ const Banner = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-7 relative h-[400px] sm:h-[300px] lg:h-[480px] z-0">
+            <div className="lg:col-span-7 relative h-[220px] sm:h-[300px] lg:h-[480px] z-0">
               <img
                 src="/banner/container1.png"
                 alt="Cargo container"
@@ -56,11 +56,11 @@ const Banner = () => {
             </div>
           </div>
 
-          <div className="relative -mt-22 sm:-mt-26 lg:-mt-36 z-0 rounded-xl overflow-hidden shadow-lg">
+          <div className="relative -mt-12 sm:-mt-16 lg:-mt-36 z-0 rounded-xl overflow-hidden shadow-lg">
             <img
               src="/banner/ship.jpg"
               alt="Cargo ship"
-              className="w-full h-[300px] sm:h-[360px] lg:h-[400px] object-cover"
+              className="w-full h-[200px] sm:h-[360px] lg:h-[400px] object-cover"
             />
           </div>
 
