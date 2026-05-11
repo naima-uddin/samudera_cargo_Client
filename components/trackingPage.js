@@ -68,6 +68,40 @@ const CANONICAL_STATUS_STEPS = [
   { status: 'returned', label: 'Returned', icon: RotateCcw, order: 16 }
 ];
 
+// ==================== SEARCH TYPE HELPERS ====================
+const SEARCH_TYPE_LABELS = {
+  tracking_number: 'Tracking Number',
+  bl_number: 'BL Number',
+  booking_number: 'Booking Number',
+  container_number: 'Container Number',
+};
+
+const SEARCH_TYPE_PLACEHOLDERS = {
+  tracking_number: 'Enter tracking number (e.g., CLGWF2764TN)',
+  bl_number: 'Enter BL number (e.g., HBLSMU1234567)',
+  booking_number: 'Enter booking number (e.g., BKG-2501-00001)',
+  container_number: 'Enter container number (e.g., ABCD1234567)',
+};
+
+/**
+ * Detect the likely type of a given search input value.
+ * Returns the matching type key or null if it cannot be determined.
+ */
+const detectInputType = (value) => {
+  const v = value.trim().toUpperCase();
+
+  // Container number: ISO 6346 — 4 uppercase letters + 7 digits (11 chars)
+  if (/^[A-Z]{4}\d{7}$/.test(v)) return 'container_number';
+
+  // Booking number: BKG-YYMM-NNNNN
+  if (/^BKG-\d{4}-\d{5}$/.test(v)) return 'booking_number';
+
+  // Tracking number: CLG prefix + optional dash + 8 alphanumeric chars
+  if (/^CLG-?[A-Z0-9]{8}$/.test(v)) return 'tracking_number';
+
+  return null; // Unknown — possibly BL number or other format
+};
+
 const TIMELINE_STATUS_ALIASES = {
   booking_requested: 'booking',
   booking: 'booking',
@@ -167,13 +201,13 @@ export default function TrackingPage() {
   const [selectedContainerDetails, setSelectedContainerDetails] = useState(null);
 
   // Get tracking number from URL on load
-  const handleTrackFromUrl = useCallback(async (trackingNum) => {
+  const handleTrackFromUrl = useCallback(async (trackingNum, typeParam = 'tracking_number') => {
     setLoading(true);
     setError(null);
     setTrackingData(null);
     
     try {
-      const result = await trackByNumber(trackingNum);
+      const result = await trackByNumber(trackingNum, typeParam);
       
       if (result.success) {
         const processedData = processTimelineForHoldResume(result.data);
@@ -192,41 +226,66 @@ export default function TrackingPage() {
     }
   }, []);
 
+  // Only auto-search when the page is loaded with a URL param (shared link / refresh).
+  // Form submissions update the URL via window.history.replaceState which does NOT
+  // trigger this effect, preventing any race condition.
   useEffect(() => {
     const trackingParam = searchParams.get('tracking');
+    const typeParam = searchParams.get('type') || 'tracking_number';
     if (trackingParam) {
       setTrackingNumber(trackingParam.toUpperCase());
-      // Auto-search if tracking number exists in URL
-      handleTrackFromUrl(trackingParam.toUpperCase());
+      setSearchType(typeParam);
+      handleTrackFromUrl(trackingParam.toUpperCase(), typeParam);
     }
-  }, [searchParams, handleTrackFromUrl]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // run once on mount only
 
   const handleTrack = async (e) => {
     e.preventDefault();
-    
-    if (!trackingNumber.trim()) {
-      toast.warning('Please enter a tracking number');
+
+    const trimmed = trackingNumber.trim();
+    const selectedLabel = SEARCH_TYPE_LABELS[searchType] || 'number';
+
+    if (!trimmed) {
+      toast.warning(`Please enter a ${selectedLabel}`);
       return;
     }
 
-    // Update URL with tracking number
-    const params = new URLSearchParams(searchParams);
-    params.set('tracking', trackingNumber.toUpperCase());
-    router.push(`/tracking-number?${params.toString()}`, { scroll: false });
+    // Detect the type of the entered value and show mismatch in the results area (not toast)
+    const detectedType = detectInputType(trimmed);
+    if (detectedType && detectedType !== searchType) {
+      const detectedLabel = SEARCH_TYPE_LABELS[detectedType];
+      setError(
+        `You entered a ${detectedLabel}, but "${selectedLabel}" is selected. ` +
+        `Please select "${detectedLabel}" from the dropdown, or enter a valid ${selectedLabel}.`
+      );
+      setTrackingData(null);
+      return;
+    }
+
+    // Update URL so the browser shows the correct address and the page is
+    // bookmarkable / shareable. Use replaceState (not router.push) so that
+    // Next.js searchParams does NOT change — preventing the useEffect from
+    // firing a duplicate search with the wrong type.
+    window.history.replaceState(
+      null,
+      '',
+      `/tracking-number?tracking=${encodeURIComponent(trimmed.toUpperCase())}&type=${encodeURIComponent(searchType)}`
+    );
 
     setLoading(true);
     setError(null);
     setTrackingData(null);
     
     try {
-      const result = await trackByNumber(trackingNumber);
+      const result = await trackByNumber(trimmed, searchType);
       
       if (result.success) {
         const processedData = processTimelineForHoldResume(result.data);
         setTrackingData(processedData);
         toast.success('Tracking data found');
       } else {
-        setError(result.message || 'No shipment found with this tracking number');
+        setError(result.message || `No shipment found with this ${selectedLabel.toLowerCase()}`);
         toast.error(result.message);
       }
     } catch (error) {
@@ -1731,7 +1790,7 @@ export default function TrackingPage() {
                 type="text"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value.toUpperCase())}
-                placeholder="Enter search number (e.g., CLG-BC6944CD)"
+                placeholder={SEARCH_TYPE_PLACEHOLDERS[searchType] || 'Enter search number'}
                 className="w-full px-3 py-4 focus:outline-none"
                 disabled={loading}
               />
@@ -1741,7 +1800,7 @@ export default function TrackingPage() {
             <button
               type="submit"
               disabled={loading}
-              className="px-8 py-4 bg-[#E67E22] text-white rounded-lg hover:bg-[#d35400] disabled:bg-gray-300 font-medium min-w-[120px]"
+              className="px-8 py-4 bg-[#dc0000] text-white rounded-lg hover:bg-[#9c0000] disabled:bg-gray-300 font-medium min-w-[120px]"
             >
               {loading ? 'Searching...' : 'Search'}
             </button>
@@ -1757,7 +1816,7 @@ export default function TrackingPage() {
             <h3 className="text-xl font-medium text-red-800 mb-2">Shipment Not Found</h3>
             <p className="text-red-600 mb-4">{error}</p>
             <p className="text-sm text-gray-500">
-              Please check your tracking number and try again
+              Please check your {SEARCH_TYPE_LABELS[searchType]?.toLowerCase() || 'search input'} and try again
             </p>
           </div>
         )}

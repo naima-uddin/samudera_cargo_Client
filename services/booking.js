@@ -510,17 +510,24 @@ export const getMyBookingsSummary = async () => {
 // 14. TRACK BY NUMBER (Public)
 // services/booking.js - trackByNumber ফাংশন
 
-export const trackByNumber = async (trackingNumber) => {
+export const trackByNumber = async (trackingNumber, searchType = 'tracking_number') => {
     try {
-        // ক্যাশ বাইপাস করতে timestamp যোগ করুন
         const timestamp = Date.now();
         
-    const response = await axiosInstance.get(`/track/${trackingNumber}?_=${timestamp}`);
+    const response = await axiosInstance.get(`/track/${encodeURIComponent(trackingNumber)}?type=${encodeURIComponent(searchType)}&_=${timestamp}`);
         
         return response.data;
     } catch (error) {
         console.error('Error tracking shipment:', error);
-        throw error;
+        // Return a proper error object instead of throwing so the component
+        // can display the server's message in the results area.
+        if (error.response?.data) {
+            return {
+                success: false,
+                message: error.response.data.message || 'No shipment found',
+            };
+        }
+        return { success: false, message: 'Failed to connect to server' };
     }
 };
 
