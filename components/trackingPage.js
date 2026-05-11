@@ -14,7 +14,7 @@ import {
   ThumbsDown
 } from 'lucide-react';
 import { toast } from 'react-toastify';
-import { trackByNumber } from '@/services/booking'; 
+import { trackByNumber, getBookingById } from '@/services/booking'; 
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { TrackingPDF } from '@/components/trackingPdf';
 
@@ -2191,7 +2191,7 @@ export default function TrackingPage() {
                                 </div>
 
                                 <button
-                                  onClick={() => {
+                                  onClick={async () => {
                                     const bookingInfo = getBookingInfo();
                                     const senderInfo = getSenderInfo();
                                     const receiverInfo = getReceiverInfo();
@@ -2203,12 +2203,32 @@ export default function TrackingPage() {
                                     const sealArray = sealText && sealText !== 'N/A' 
                                       ? sealText.split(', ').filter(s => s && s.trim() !== 'N/A')
                                       : [];
+
+                                    // Resolve bookingNumber if it's an ObjectId (raw ID)
+                                    let bookingNumberValue = bookingInfo.bookingNumber;
+                                    // fallback to trackingData.bookingId if present
+                                    if ((!bookingNumberValue || bookingNumberValue === 'N/A') && trackingData?.bookingId) {
+                                      bookingNumberValue = trackingData.bookingId.bookingNumber || String(trackingData.bookingId);
+                                    }
+
+                                    const oidRegex = /^[0-9a-fA-F]{24}$/;
+                                    if (bookingNumberValue && oidRegex.test(String(bookingNumberValue))) {
+                                      try {
+                                        const res = await getBookingById(String(bookingNumberValue));
+                                        if (res && res.success && res.data) {
+                                          bookingNumberValue = res.data.bookingNumber || bookingNumberValue;
+                                        }
+                                      } catch (e) {
+                                        // ignore and keep original value
+                                      }
+                                    }
+
                                     setSelectedContainerDetails({
                                       stepTitle,
                                       stepDate,
                                       stepLocation,
                                       stepDescription,
-                                      bookingNumber: bookingInfo.bookingNumber,
+                                      bookingNumber: bookingNumberValue || bookingInfo.bookingNumber || 'N/A',
                                       shipmentNumber: bookingInfo.shipmentNumber,
                                       quantity: bookingInfo.quantity,
                                       weight: bookingInfo.weight,

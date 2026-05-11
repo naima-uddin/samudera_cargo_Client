@@ -1,6 +1,7 @@
 // services/shipping.js - getAllShipments ফাংশন আপডেট
 
 import axiosInstance from '@/lib/axiosInstance';
+import { getBookingById } from '@/services/booking';
 import Cookies from 'js-cookie'; 
 export const trackByNumber = async (trackingNumber) => {
     try {
@@ -848,12 +849,28 @@ export const trackShipmentByNumber = async (trackingNumber) => {
         status: event.status || event.type,
         formattedDate: event.formattedDate || (event.timestamp ? new Date(event.timestamp).toLocaleString() : null)
       }));
-      
+      // Copy data and ensure bookingNumber is resolved if it's an ObjectId
+      const data = {
+        ...response.data.data,
+        timeline
+      };
+
+      const oidRegex = /^[0-9a-fA-F]{24}$/;
+      if (data.bookingNumber && oidRegex.test(String(data.bookingNumber))) {
+        try {
+          const bookingResp = await getBookingById(String(data.bookingNumber));
+          if (bookingResp && bookingResp.success && bookingResp.data) {
+            data.bookingNumber = bookingResp.data.bookingNumber || data.bookingNumber;
+          }
+        } catch (err) {
+          // ignore and keep original bookingNumber
+        }
+      }
+
       return {
         success: true,
         data: {
-          ...response.data.data,
-          timeline,
+          ...data,
           progress: response.data.data.progress || getProgressFromStatus(response.data.data.status)
         }
       };
