@@ -141,7 +141,7 @@ Rama IV Road",
             },
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+66 2 367 3747",
+              telephone: "+66 2 105 6119",
               contactType: "customer service",
               email: "info@samuderathai.com",
               availableLanguage: ["English"],

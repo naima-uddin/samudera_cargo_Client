@@ -31,9 +31,9 @@ Bangkok 10110, Thailand
       
       {/* Phone & Email - Side by side, no gap */}
       <div className="flex flex-wrap items-center gap-x-1 mb-4 sm:mb-1">
-        <a href="tel:+66 2 367 3747" className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5">
+        <a href="tel:+66 2 105 6119" className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5">
           <Phone className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
-          +66 2 367 3747
+          +66 2 105 6119
         </a>
       </div>
       

@@ -1,6 +1,8 @@
 "use client"
 import React from 'react'
 import { Eye, Flag } from 'lucide-react'
+import Link from 'next/link'
+
 
 function history() {
   return (
@@ -84,12 +86,12 @@ function history() {
             </div>
             
             {/* CTA Button */}
-            <button className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition duration-300 ease-in-out shadow-lg hover:shadow-xl">
-              Learn More
+            <Link href="/about" className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition duration-300 ease-in-out shadow-lg hover:shadow-xl">
+            
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

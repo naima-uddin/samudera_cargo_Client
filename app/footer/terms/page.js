@@ -128,7 +128,7 @@ export default function Page() {
             },
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+66 2 367 3747",
+              telephone: "+66 2 105 6119",
               contactType: "legal",
               email: "info@samuderathai.com",
               availableLanguage: ["English"],
@@ -157,7 +157,7 @@ export default function Page() {
             applicableLegislation: ["UCC", "CISG"],
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+66 2 367 3747",
+              telephone: "+66 2 105 6119",
               email: "info@samuderathai.com",
               contactType: "legal support",
             },

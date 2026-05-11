@@ -122,7 +122,7 @@ export default function Page() {
             },
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+66 2 367 3747",
+              telephone: "+66 2 105 6119",
               contactType: "customer service",
               email: "info@samuderathai.com",
               availableLanguage: ["English"],
@@ -153,7 +153,7 @@ export default function Page() {
               postalCode: "10110",
               addressCountry: "Thailand",
             },
-            telephone: "+66 2 367 3747",
+            telephone: "+66 2 105 6119",
             email: "info@samuderathai.com",
             openingHoursSpecification: [
               {
