@@ -1,231 +1,112 @@
 "use client"
 import React from 'react'
-import { HiChevronRight } from 'react-icons/hi'
-import { FaEnvelope, FaPhone, FaLinkedin, FaTwitter, FaFacebookF } from 'react-icons/fa'
+import { FaEnvelope } from 'react-icons/fa'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
 
-
 function Teams() {
-  // In your component:
-const [ref, inView] = useInView({
-  triggerOnce: true,
-  threshold: 0.5,
-})
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  })
+
   const teamMembers = [
     {
       name: "Leo George",
       title: "CHIEF EXECUTIVE OFFICER",
       image: "/images/team (1).jpg",
       email: "leo.george@cargologisticscompany.com",
-      phone: "+1 (555) 123-4567",
       experience: "15+ years",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        facebook: "#"
-      }
     },
     {
       name: "Benjamin Ebenezer",
       title: "LOGISTICS MANAGER",
-      image: "/images/team (2).jpg", 
+      image: "/images/team (2).jpg",
       email: "benjamin.ebenezer@cargologisticscompany.com",
-      phone: "+1 (555) 234-5678",
       experience: "12+ years",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        facebook: "#"
-      }
     },
     {
       name: "Sophia Luna",
       title: "CLIENT RELATIONS SPECIALIST",
       image: "/images/team (3).jpg",
       email: "sophia.luna@cargologisticscompany.com",
-      phone: "+1 (555) 345-6789",
       experience: "8+ years",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        facebook: "#"
-      }
     },
     {
       name: "Michael Chen",
       title: "OPERATIONS DIRECTOR",
       image: "/images/team (4).jpg",
       email: "michael.chen@cargologisticscompany.com",
-      phone: "+1 (555) 456-7890",
       experience: "10+ years",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        facebook: "#"
-      }
     },
     {
       name: "Sarah Williams",
       title: "FINANCE MANAGER",
       image: "/images/team (5).jpg",
       email: "sarah.williams@cargologisticscompany.com",
-      phone: "+1 (555) 567-8901",
       experience: "9+ years",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        facebook: "#"
-      }
     },
     {
       name: "David Rodriguez",
       title: "FLEET SUPERVISOR",
       image: "/images/team (6).jpg",
       email: "david.rodriguez@cargologisticscompany.com",
-      phone: "+1 (555) 678-9012",
       experience: "7+ years",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        facebook: "#"
-      }
-    }
+    },
   ]
 
   return (
-    <>
-     {/* Team Members Section */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Our Leadership & Management Team
-          </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
-        </div>
+    <div className="bg-white">
+      <section className="relative overflow-hidden py-20">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-60 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.08),transparent_30%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_28%)]" />
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="text-[#d10000] text-xs uppercase tracking-[0.4em]">Leadership</p>
+            <h2 className="mt-4 text-3xl md:text-4xl font-bold text-[#1D2D52]">The team steering your cargo with confidence.</h2>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
-            >
-              {/* Member Image */}
-              <div className="relative h-72 overflow-hidden bg-gray-200">
-                {member.image ? (
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-600 to-purple-600">
-                    <span className="text-5xl font-bold text-white">
-                      {member.name.split(' ').map(n => n[0]).join('')}
-                    </span>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {teamMembers.map((member, index) => (
+              <div key={index} className="group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(29,45,82,0.12)]">
+                <div className="relative h-72 overflow-hidden bg-slate-100">
+                  <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/95 via-white/10 to-transparent" />
+                </div>
+                <div className="p-6">
+                  <div className="inline-flex rounded-full bg-[#d10000]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#d10000]">{member.experience}</div>
+                  <h3 className="mt-4 text-xl font-semibold text-[#1D2D52]">{member.name}</h3>
+                  <p className="mt-2 text-sm font-medium text-slate-500">{member.title}</p>
+                  <div className="mt-5 space-y-3 text-sm text-slate-600">
+                    <div className="flex items-center gap-3">
+                      <FaEnvelope className="h-4 w-4 text-[#d10000]" />
+                      <a href={`mailto:${member.email}`} className="hover:text-[#d10000] transition-colors">{member.email}</a>
+                    </div>
                   </div>
-                )}
-                
-                {/* Social Links Overlay */}
-                {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6 gap-3">
-                  <a
-                    href={member.social.linkedin}
-                    className="bg-white p-2.5 rounded-full hover:bg-[#0077b5] hover:text-white transition-all duration-300 transform hover:scale-110"
-                  >
-                    <FaLinkedin className="w-4 h-4" />
-                  </a>
-                  <a
-                    href={member.social.twitter}
-                    className="bg-white p-2.5 rounded-full hover:bg-[#1DA1F2] hover:text-white transition-all duration-300 transform hover:scale-110"
-                  >
-                    <FaTwitter className="w-4 h-4" />
-                  </a>
-                  <a
-                    href={member.social.facebook}
-                    className="bg-white p-2.5 rounded-full hover:bg-[#4267B2] hover:text-white transition-all duration-300 transform hover:scale-110"
-                  >
-                    <FaFacebookF className="w-4 h-4" />
-                  </a>
-                </div> */}
-
-                {/* Experience Badge */}
-                <div className="absolute top-4 right-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">
-                  {member.experience}
                 </div>
               </div>
+            ))}
+          </div>
 
-              {/* Member Info */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-sm font-semibold text-primary mb-4 pb-2 border-b border-gray-100">
-                  {member.title}
-                </p>
-                
-                {/* Contact Details */}
-                <div className="space-y-2">
-                  <div className="flex items-center gap-3 text-gray-600 group/email">
-                    <FaEnvelope className="w-4 h-4 flex-shrink-0 text-gray-400 group-hover/email:text-primary transition-colors" />
-                    <a
-                      href={`mailto:${member.email}`}
-                      className="text-sm hover:text-primary transition-colors truncate"
-                    >
-                      {member.email}
-                    </a>
-                  </div>
-                  {/* <div className="flex items-center gap-3 text-gray-600 group/phone">
-                    <FaPhone className="w-4 h-4 flex-shrink-0 text-gray-400 group-hover/phone:text-primary transition-colors" />
-                    <a
-                      href={`tel:${member.phone}`}
-                      className="text-sm hover:text-primary transition-colors"
-                    >
-                      {member.phone}
-                    </a>
-                  </div> */}
-                </div>
-              </div>
+          <div ref={ref} className="mt-16 rounded-[32px] border border-slate-200 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <StatCard value={inView ? 50 : 0} suffix="+" label="Team Members" />
+              <StatCard value={inView ? 15 : 0} suffix="+" label="Years Experience" />
+              <StatCard value={inView ? 500 : 0} suffix="+" label="Projects Done" />
+              <StatCard value={inView ? 24 : 0} suffix="/7" label="Support" />
             </div>
-          ))}
+          </div>
         </div>
-      </div>
-
-      {/* Team Stats Banner */}
-      <div className="max-w-7xl mx-auto px-6 mt-10" ref={ref}>
-  <div className="bg-white rounded-2xl shadow-xl p-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-    <div className="text-center">
-      <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
-        {inView ? <CountUp end={50} duration={2.5} suffix="+" /> : "0+"}
-      </div>
-      <div className="text-sm text-gray-600 font-medium">Team Members</div>
+      </section>
     </div>
-    <div className="text-center">
-      <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
-        {inView ? <CountUp end={15} duration={2.5} suffix="+" /> : "0+"}
-      </div>
-      <div className="text-sm text-gray-600 font-medium">Years Experience</div>
-    </div>
-    <div className="text-center">
-      <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
-        {inView ? <CountUp end={500} duration={2.5} suffix="+" /> : "0+"}
-      </div>
-      <div className="text-sm text-gray-600 font-medium">Projects Done</div>
-    </div>
-    <div className="text-center">
-      <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
-        {inView ? <CountUp end={24} duration={2.5} suffix="/7" /> : "0/7"}
-      </div>
-      <div className="text-sm text-gray-600 font-medium">Support</div>
-    </div>
-  </div>
-      </div>
+  )
+}
 
-      
-
-      
-      </>
-
+function StatCard({ value, suffix, label }) {
+  return (
+    <div className="rounded-[24px] border border-slate-200 bg-[#F8FAFC] p-6 text-center">
+      <p className="text-4xl font-bold text-[#d10000]">{value}{suffix}</p>
+      <p className="mt-3 text-sm text-slate-600">{label}</p>
+    </div>
   )
 }
 

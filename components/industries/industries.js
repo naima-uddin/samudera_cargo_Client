@@ -10,10 +10,10 @@ function industries() {
             <div
               className="min-h-[300px] bg-cover bg-center bg-no-repeat relative mx-6"
               style={{
-                backgroundImage: "url('/images/aboutBanner.jpg')",
+                backgroundImage: "url('/images/shipping.png')",
               }}
             >
-              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="absolute inset-0 bg-black/30"></div>
               <div className="relative z-10 p-8">
                 <nav
                   className="flex items-center text-sm font-medium text-white"
@@ -30,7 +30,7 @@ function industries() {
                     </li>
                     <li>
                       <HiChevronRight
-                        className="h-4 w-4 text-gray-400"
+                        className="h-4 w-4 text-white"
                         aria-hidden="true"
                       />
                     </li>
@@ -42,8 +42,8 @@ function industries() {
               </div>
             </div>
             <Serve/>
-            <Ecommerce/>
-            <Partner/>
+            <Ecommerce className="mb-16"/>
+            <Partner />
     </div>
   )
 }

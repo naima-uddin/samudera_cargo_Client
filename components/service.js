@@ -8,7 +8,7 @@ function service() {
       <div
               className="min-h-[300px] bg-cover bg-center bg-no-repeat relative mx-6"
               style={{
-                backgroundImage: "url('/images/aboutBanner.jpg')",
+                backgroundImage: "url('/images/serviceBanner.jpg')",
               }}
             >
               <div className="absolute inset-0 bg-black/50"></div>

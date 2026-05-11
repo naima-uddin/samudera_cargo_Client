@@ -2,85 +2,57 @@
 import Image from "next/image";
 import { FaHeadset, FaShieldAlt, FaDollarSign, FaCogs } from "react-icons/fa";
 import React, { useState, useEffect, useRef } from "react";
-import { HiChevronRight } from 'react-icons/hi';
-import CountUp from "react-countup";
 
-// Why Choose Us Features Data
 const features = [
   {
     id: "01",
     title: "Advanced Technology",
-    desc: "Shrinking from toil and pain these cases are perfectly simple.",
+    desc: "Real-time tracking, automation, and intelligent routing for every shipment.",
     icon: <FaCogs />,
-    position: "left",
   },
   {
     id: "02",
     title: "Experts Support",
-    desc: "The claims of duty or the obligation of business it will frequently.",
+    desc: "Dedicated logistics specialists available around the clock for every client.",
     icon: <FaHeadset />,
-    position: "right",
   },
   {
     id: "03",
     title: "Cost-Effective",
-    desc: "Right to find fault with a chooses to a pleasure consequences.",
+    desc: "Lean operations and smarter planning cut transit costs without compromise.",
     icon: <FaDollarSign />,
-    position: "left",
   },
   {
     id: "04",
     title: "Commitment to Safety",
-    desc: "Shrinking from toil and pain these all cases are perfectly simple.",
+    desc: "Secure handling, compliant warehousing, and trusted cargo protection.",
     icon: <FaShieldAlt />,
-    position: "right",
   },
 ];
 
-// Why Choose Us Component
 function WhyChooseUs() {
   return (
-    <section className="py-20 bg-gray-50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <p className="text-[#FD5621] font-semibold tracking-widest">
-          WHY CHOOSE US
-        </p>
+    <section className="relative overflow-hidden bg-white py-20">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.12),transparent_38%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_35%)]" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-[#d10000] font-semibold uppercase tracking-[0.4em] text-xs">Why choose us</p>
+          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-[#1D2D52]">Logistics designed to keep your business moving forward.</h2>
+          <p className="mt-4 text-base leading-8 text-slate-600">
+            We bring precision planning, reliable execution, and proactive support together in a clean, modern logistics experience.
+          </p>
+        </div>
 
-        <h2 className="text-4xl font-bold text-[#122652] mt-2 mb-16">
-          Why We’re the Right Choice
-        </h2>
-
-        <div className="grid lg:grid-cols-3 gap-10 items-center">
-          {/* LEFT SIDE */}
-          <div className="space-y-10">
-            {features
-              .filter((item) => item.position === "left")
-              .map((item) => (
-                <Card key={item.id} item={item} align="right" />
-              ))}
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6">
+            {features.slice(0, 2).map((item) => (
+              <FeatureCard key={item.id} item={item} />
+            ))}
           </div>
-
-          {/* CENTER IMAGE */}
-          <div className="relative flex justify-center">
-            <div className="absolute w-[420px] h-[420px] rounded-full border border-dashed border-gray-300 animate-spin-slow"></div>
-
-            <div className="relative w-[300px] h-[300px] rounded-full overflow-hidden shadow-2xl border-8 border-white">
-              <Image
-                src="/images/choose.jpg"
-                alt="worker"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className="space-y-10">
-            {features
-              .filter((item) => item.position === "right")
-              .map((item) => (
-                <Card key={item.id} item={item} align="left" />
-              ))}
+          <div className="grid gap-6">
+            {features.slice(2).map((item) => (
+              <FeatureCard key={item.id} item={item} />
+            ))}
           </div>
         </div>
       </div>
@@ -88,35 +60,21 @@ function WhyChooseUs() {
   );
 }
 
-function Card({ item, align }) {
+function FeatureCard({ item }) {
   return (
-    <div
-      className={`group relative bg-[#122652] text-white p-6 rounded-xl 
-      transition duration-500 hover:-translate-y-3 hover:shadow-[0_20px_50px_rgba(0,0,0,0.25)]`}
-    >
-      {/* Number */}
-      <span className="text-[#FD5621] font-bold text-lg">{item.id}</span>
-
-      <h3 className="text-xl font-semibold mt-2 group-hover:text-[#FD5621] transition">
-        {item.title}
-      </h3>
-
-      <p className="text-gray-300 text-sm mt-2">{item.desc}</p>
-
-      {/* Icon */}
-      <div
-        className={`absolute -top-6 ${
-          align === "right" ? "-right-6" : "-left-6"
-        } bg-white text-[#FD5621] w-14 h-14 rounded-lg flex items-center justify-center text-xl shadow-lg 
-        transition group-hover:scale-110`}
-      >
+    <div className="group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_65px_rgba(29,45,82,0.12)]">
+      <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-[#d10000] to-[#1D2D52] text-white shadow-lg">
         {item.icon}
       </div>
+      <div className="mt-6 flex items-center justify-between gap-6">
+        <h3 className="text-xl font-semibold text-[#1D2D52]">{item.title}</h3>
+        <span className="rounded-2xl bg-[#d10000]/10 px-4 py-2 text-sm font-semibold text-[#d10000]">{item.id}</span>
+      </div>
+      <p className="mt-4 text-slate-600 leading-7">{item.desc}</p>
     </div>
   );
 }
 
-// Interesting Facts Component
 const InterestingFacts = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -125,37 +83,33 @@ const InterestingFacts = () => {
     {
       id: 1,
       title: 'WAREHOUSE SPACE',
-      value: '400k',
       numericValue: 400,
       unit: 'k ft²',
-      description: 'Strategic storage & distribution network across major cities',
+      description: 'Strategic storage space across high-value logistics hubs.',
       icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4'
     },
     {
       id: 2,
       title: 'ON-TIME DELIVERY',
-      value: '98',
       numericValue: 98,
       unit: '%',
-      description: 'Industry-leading precision delivery performance',
+      description: 'Precision delivery that keeps your schedules on track.',
       icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
     },
     {
       id: 3,
       title: 'WEEKLY SHIPMENTS',
-      value: '5K',
       numericValue: 5,
       unit: 'K+',
-      description: 'Shipments processed with real-time tracking',
+      description: 'Thousands of weekly shipments managed with care.',
       icon: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4'
     },
     {
       id: 4,
       title: 'INDUSTRY AWARDS',
-      value: '25',
       numericValue: 25,
       unit: '+',
-      description: 'Recognition for excellence & innovation',
+      description: 'Recognized for excellence in service, speed, and support.',
       icon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z'
     }
   ];
@@ -179,152 +133,42 @@ const InterestingFacts = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-gradient-to-br from-gray-50 via-white to-gray-50 py-6 overflow-hidden">  
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
-        {/* Stats Grid with Glass Morphism */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {facts.map((fact, index) => (
-            <div
-              key={fact.id}
-              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100"
-              style={{
-                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
-              }}
-            >
-              {/* Gradient Overlay on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-              {/* Icon with Gradient Background */}
-              <div className="relative mb-8">
-                <div className="absolute inset-0 bg-primary rounded-xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-                <div className="relative w-14 h-14 bg-primary rounded-xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                  <svg 
-                    className="w-7 h-7 text-white" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={fact.icon} />
-                  </svg>
+    <section ref={sectionRef} className="relative overflow-hidden bg-white py-20">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.12),transparent_34%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_30%)]" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-center">
+          <div className="rounded-[32px] border border-slate-200 bg-[#F8FAFC] p-10 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
+            <p className="text-[#d10000] font-semibold uppercase tracking-[0.35em] text-xs">Fast facts</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-[#1D2D52]">Performance metrics that speak for themselves.</h2>
+            <p className="mt-6 text-base leading-8 text-slate-600">
+              Every number reflects the efficiency, scale, and reliability built into our logistics network.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {facts.map((fact) => (
+              <div key={fact.id} className="relative overflow-hidden rounded-[28px] border border-slate-200 bg-white p-8 shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(29,45,82,0.12)]">
+                <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-[#d10000]/5" />
+                <div className="relative z-10 flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-gradient-to-br from-[#d10000] to-[#1D2D52] text-white shadow-xl">
+                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d={fact.icon} /></svg>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{fact.title}</p>
+                    <p className="mt-3 text-3xl font-bold text-[#1D2D52]"><span className="bg-gradient-to-r from-[#d10000] to-[#1D2D52] bg-clip-text text-transparent">{fact.numericValue}</span>{fact.unit}</p>
+                  </div>
                 </div>
+                <p className="mt-6 text-sm leading-6 text-slate-600">{fact.description}</p>
               </div>
-
-              {/* Title */}
-              <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 group-hover:text-fourth transition-colors duration-300">
-                {fact.title}
-              </h3>
-
-              {/* Animated Counter */}
-              <div className="flex items-baseline mb-4">
-                <Counter 
-                  value={fact.numericValue} 
-                  isVisible={isVisible} 
-                  duration={2000}
-                />
-                {fact.unit && (
-                  <span className="text-2xl font-bold text-gray-800 ml-1 bg-gradient-to-r from-primary to-fourth text-transparent bg-clip-text">
-                    {fact.unit}
-                  </span>
-                )}
-              </div>
-
-              {/* Description with Icon */}
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                {fact.description}
-              </p>
-
-              {/* Progress Bar */}
-              <div className="relative h-1 bg-gray-100 rounded-full overflow-hidden">
-                <div 
-                  className="absolute top-0 left-0 h-full bg-fourth rounded-full transition-all duration-1000 ease-out"
-                  style={{ 
-                    width: isVisible ? `${(fact.numericValue / (fact.id === 2 ? 100 : fact.id === 1 ? 500 : fact.id === 3 ? 10 : 50)) * 100}%` : '0%'
-                  }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div> 
+            ))}
+          </div>
+        </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes blob {
-          0% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-          100% { transform: translate(0px, 0px) scale(1); }
-        }
-        
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-      `}</style>
     </section>
   );
 };
 
-// Counter Component
-const Counter = ({ value, isVisible, duration }) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    let startTime;
-    let animationFrame;
-
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      
-      setCount(Math.floor(progress * value));
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isVisible, value, duration]);
-
-  return (
-    <span className="text-5xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 text-transparent bg-clip-text">
-      {count}
-    </span>
-  );
-};
-
-// Testimonials Component
 const TestimonialsSection = () => {
-  const colors = {
-    primary: "#FD5621",
-    secondary: "#122652",
-  };
-
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
   const testimonials = [
     {
       image: "/images/team (1).jpg",
@@ -350,145 +194,119 @@ const TestimonialsSection = () => {
   ];
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [isAutoPlaying, testimonials.length]);
-
-  const next = () => setActiveIndex((p) => (p + 1) % testimonials.length);
-  const prev = () =>
-    setActiveIndex((p) => (p - 1 + testimonials.length) % testimonials.length);
+  }, [testimonials.length]);
 
   const active = testimonials[activeIndex];
-  const visibleTestimonials = [0, 1, 2].map(
-    (offset) => testimonials[(activeIndex + offset) % testimonials.length]
-  );
 
- 
-};
-
-// Main Component
-export default function OurCompany() {
   return (
-    <div>
-      {/* Banner Section */}
-      <div 
-        className="min-h-[340px] bg-cover bg-center bg-no-repeat relative mx-6"
-        style={{
-          backgroundImage: "url('/images/aboutBannerimg.jpeg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="relative z-10 p-8">
-          <nav className="flex items-center text-sm font-medium text-white" aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-2">
-              <li>
-                <a href="/" className="hover:text-primary transition-colors duration-200">
-                  Home
-                </a>
-              </li>
-              <li>
-                <HiChevronRight className="h-4 w-4 text-gray-400" aria-hidden="true" />
-              </li>
-              <li className="text-primary font-semibold" aria-current="page">
-                Our Company
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-
-      {/* About Section */}
-      <section className="bg-gray-100 py-20">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative">
-            <div className="rounded-xl overflow-hidden shadow-lg">
-              <img
-                src="/images/about1.jpg"
-                alt="Cargo Ship"
-                className="w-full h-[450px] object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-12 right-8 border-8 border-orange-500 rounded-xl overflow-hidden shadow-xl w-[70%]">
-              <img
-                src="/images/about2.jpg"
-                alt="Workers"
-                className="w-full h-[300px] object-cover"
-              />
-            </div>
-
-            <div className="absolute top-6 right-6 w-36 h-36">
-              <div className="relative w-full h-full flex items-center justify-center">
-                <svg viewBox="0 0 200 200" className="absolute w-full h-full animate-[spin_12s_linear_infinite]">
-                  <defs>
-                    <path
-                      id="circlePath"
-                      d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
-                    />
-                  </defs>
-                  <text fill="white" fontSize="14" fontWeight="600" letterSpacing="2">
-                    <textPath href="#circlePath" startOffset="50%" textAnchor="middle">
-                      MOVING GOODS • BUILDING RELATIONSHIPS •
-                    </textPath>
-                  </text>
-                </svg>
-                <img
-                  src="/images/logo.png"
-                  alt="logo"
-                  className="w-80 h-80 object-contain"
-                />
-              </div>
-            </div>
+    <section className="relative overflow-hidden bg-white py-20">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-60 bg-[radial-gradient(circle_at_top_right,rgba(209,0,0,0.08),transparent_30%),radial-gradient(circle_at_top_left,rgba(29,45,82,0.08),transparent_32%)]" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
+          <div className="rounded-[32px] border border-slate-200 bg-[#F8FAFC] p-10 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+            <p className="text-[#d10000] font-semibold uppercase tracking-[0.36em] text-xs">What clients say</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-[#1D2D52]">Stories from teams who rely on our service.</h2>
+            <p className="mt-6 text-base leading-8 text-slate-600">
+              Clean presentation, thoughtful detail, and a calm visual rhythm make it easy to scan the message.
+            </p>
           </div>
 
-          <div className="relative">
-            <p className="text-primary font-semibold uppercase tracking-widest mb-4">
-              About Us
-            </p>
-            <h2 className="text-4xl lg:text-5xl font-bold text-fourth leading-tight mb-6">
-              Building Trust <br /> Through Excellence
-            </h2>
-            <p className="text-gray-600 mb-8">
-              When our power choice is untrammelled and when nothing prevents being able 
-              to do what we like best, every pleasure is to be welcomed and every pain 
-              avoided. But in certain circumstances and owing to the claims of duty.
-            </p>
-            <div className="space-y-6 mb-10">
-              <div>
-                <h4 className="text-xl font-semibold text-fourth">Mission</h4>
-                <p className="text-gray-500">Uncover Our Core Purpose.</p>
+          <div className="space-y-6">
+            <div className="rounded-[28px] border border-slate-200 bg-white p-8 shadow-[0_20px_65px_rgba(15,23,42,0.08)]">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{active.role}</p>
+                  <h3 className="mt-3 text-2xl font-semibold text-[#1D2D52]">{active.title}</h3>
+                </div>
+                <div className="h-14 w-14 overflow-hidden rounded-full border border-slate-200">
+                  <Image src={active.image} alt={active.name} width={56} height={56} className="h-full w-full object-cover" />
+                </div>
               </div>
-              <div>
-                <h4 className="text-xl font-semibold text-fourth">Vision</h4>
-                <p className="text-gray-500">Discover Our Future Goals.</p>
+              <p className="mt-6 text-slate-600 leading-8">{active.content}</p>
+              <div className="mt-8 flex items-center gap-4">
+                <div className="flex items-center gap-1 text-sm text-[#d10000]">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="block h-2.5 w-2.5 rounded-full bg-[#d10000]" />
+                  ))}
+                </div>
+                <p className="text-sm font-semibold text-[#1D2D52]">{active.name}</p>
               </div>
             </div>
-            <div className="bg-fourth text-white p-8 rounded-xl w-full max-w-sm shadow-xl">
-              <p className="uppercase text-sm tracking-widest text-gray-300 mb-4">
-                Industry Awards
+            <div className="flex items-center justify-center gap-3">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`h-3 w-10 rounded-full transition-all duration-300 ${index === activeIndex ? 'bg-[#d10000]' : 'bg-slate-300'}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default function OurCompany() {
+  return (
+    <div className="bg-white text-[#1D2D52]">
+      <section className="relative overflow-hidden bg-white py-24">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.12),transparent_40%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_35%)]" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] items-center">
+            <div className="space-y-8">
+              <p className="text-[#d10000] font-semibold uppercase tracking-[0.4em] text-sm">About Us</p>
+              <h1 className="max-w-3xl text-4xl sm:text-5xl font-bold leading-tight text-[#1D2D52]">Modern cargo logistics, simplified for global teams.</h1>
+              <p className="max-w-2xl text-lg leading-8 text-slate-600">
+                We combine intelligence, flexibility, and trusted execution to reduce complexity and move more freight with confidence.
               </p>
-              <div className="flex items-center gap-4">
-                <span className="text-5xl font-bold text-primary">
-                  <CountUp end={25} duration={3} enableScrollSpy scrollSpyDelay={200} />+
-                </span>
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)]">
+                  <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Years</p>
+                  <p className="mt-3 text-3xl font-bold text-[#d10000]">40+</p>
+                </div>
+                <div className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)]">
+                  <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Countries</p>
+                  <p className="mt-3 text-3xl font-bold text-[#1D2D52]">100+</p>
+                </div>
+                <div className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)]">
+                  <p className="text-sm uppercase tracking-[0.3em] text-slate-400">On-time</p>
+                  <p className="mt-3 text-3xl font-bold text-[#d10000]">98%</p>
+                </div>
               </div>
-              <p className="mt-4 text-gray-300">
-                Industry awards in the past decade.
-              </p>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="rounded-[32px] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+                <div className="relative h-72 overflow-hidden rounded-[28px]">
+                  <Image src="/images/about1.jpg" alt="Cargo Ship" fill className="object-cover" />
+                </div>
+              </div>
+              <div className="space-y-6">
+                <div className="rounded-[32px] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+                  <div className="relative h-40 overflow-hidden rounded-[28px]">
+                    <Image src="/images/about2.jpg" alt="Workers" fill className="object-cover" />
+                  </div>
+                </div>
+                <div className="rounded-[32px] bg-[#F8FAFC] p-8 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
+                  <p className="text-sm uppercase tracking-[0.32em] text-[#d10000]">Precision delivery</p>
+                  <h2 className="mt-4 text-2xl font-semibold text-[#1D2D52]">A modern logistics partner for complex supply chains.</h2>
+                  <p className="mt-4 text-slate-600 leading-7">
+                    Our customer-first process helps businesses move faster, reduce risk, and stay in control from pickup to final mile.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
       <WhyChooseUs />
-
-      {/* Interesting Facts Section */}
       <InterestingFacts />
-
-      {/* Testimonials Section */}
       <TestimonialsSection />
     </div>
   );
