@@ -42,7 +42,7 @@ export default function IndustriesSection() {
   return (
     <section id="industries-section" className="py-8 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col lg:flex-row gap-6 items-start">
+        <div className="flex flex-col lg:flex-row gap-4 items-start">
           {/* Left: vertical nav */}
           <div className="w-full lg:w-1/3">
             <div className="mb-6">
@@ -51,7 +51,7 @@ export default function IndustriesSection() {
               <p className="text-sm text-gray-600 mt-2">Select an industry to view dedicated solutions, case highlights and quick stats.</p>
             </div>
 
-            <div className="space-y-3 max-h-[520px] overflow-auto pr-2">
+            <div className="space-y-2 max-h-[420px] overflow-auto pr-2">
               {industries.map((it) => {
                 const Icon = it.icon;
                 const isActive = it.name === active;
@@ -59,7 +59,7 @@ export default function IndustriesSection() {
                   <button
                     key={it.id}
                     onClick={() => setActive(it.name)}
-                    className={`w-full text-left flex items-center gap-4 p-3 rounded-xl transition-all duration-200 ${isActive ? 'bg-gradient-to-r from-[#d10000] to-[#1D2D52] text-white shadow-lg' : 'bg-gray-50 hover:bg-white hover:shadow-sm'}`}
+                    className={`w-full text-left flex items-center gap-3 p-3 rounded-xl transition-all duration-200 ${isActive ? 'bg-gradient-to-r from-[#d10000] to-[#1D2D52] text-white shadow-lg' : 'bg-gray-50 hover:bg-white hover:shadow-sm'}`}
                   >
                     <div className={`p-2 rounded-md ${isActive ? 'bg-white/20' : 'bg-white'}`}>
                       <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-[#1D2D52]'}`} />
@@ -104,8 +104,6 @@ export default function IndustriesSection() {
                           const slug = activeData.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
                           return (
                             <>
-                              <Link href={`/industries/${slug}`} className="px-4 py-2 rounded-md bg-white text-[#0E2047] font-semibold shadow-sm">Explore Solutions</Link>
-                              <Link href={`/case-studies/${slug}`} className="px-4 py-2 rounded-md bg-white/10 border border-white text-white">Case Studies</Link>
                             </>
                           );
                         })()}

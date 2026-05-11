@@ -83,7 +83,7 @@ const EcommerceSectors = () => {
   };
 
   return (
-    <div className="relative  w-full overflow-hidden">
+    <div className="relative  w-full overflow-hidden mb-10">
       {/* Fixed Background */}
       <div 
         className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"

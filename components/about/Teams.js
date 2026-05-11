@@ -9,16 +9,9 @@ const teamMembers = [
   {
     name: "Leo George",
     title: "Chief Executive Officer",
-    image: "/images/team (1).jpg",
+    image: "/images/team (2).jpg",
     email: "leo.george@cargologisticscompany.com",
     experience: "15+ years",
-  },
-  {
-    name: "Benjamin Ebenezer",
-    title: "Logistics Manager",
-    image: "/images/team (2).jpg",
-    email: "benjamin.ebenezer@cargologisticscompany.com",
-    experience: "12+ years",
   },
   {
     name: "Sophia Luna",
@@ -30,24 +23,11 @@ const teamMembers = [
   {
     name: "Michael Chen",
     title: "Operations Director",
-    image: "/images/team (4).jpg",
+    image: "/images/team (5).jpg",
     email: "michael.chen@cargologisticscompany.com",
     experience: "10+ years",
   },
-  {
-    name: "Sarah Williams",
-    title: "Finance Manager",
-    image: "/images/team (5).jpg",
-    email: "sarah.williams@cargologisticscompany.com",
-    experience: "9+ years",
-  },
-  {
-    name: "David Rodriguez",
-    title: "Fleet Supervisor",
-    image: "/images/team (6).jpg",
-    email: "david.rodriguez@cargologisticscompany.com",
-    experience: "7+ years",
-  },
+  
 ]
 
 const stats = [
@@ -81,16 +61,7 @@ export default function Teams() {
             <div className="flex h-64 overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-lg">
               <Image src="/images/team (1).jpg" alt="Executive team" width={720} height={480} className="object-cover" />
             </div>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {stats.map((stat) => (
-                <div key={stat.label} className="rounded-[24px] bg-white p-5 text-center shadow-sm border border-slate-200">
-                  <p className="text-sm uppercase tracking-[0.35em] text-slate-400">{stat.label}</p>
-                  <p className="mt-4 text-3xl font-bold text-[#1D2D52]">
-                    {inView ? <CountUp end={stat.value} duration={1.8} suffix={stat.suffix} /> : `0${stat.suffix}`}
-                  </p>
-                </div>
-              ))}
-            </div>
+            
           </div>
         </div>
 

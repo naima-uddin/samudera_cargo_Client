@@ -42,7 +42,7 @@ function industries() {
               </div>
             </div>
             <Serve/>
-            <Ecommerce className="mb-16"/>
+            <Ecommerce />
             <Partner />
     </div>
   )
