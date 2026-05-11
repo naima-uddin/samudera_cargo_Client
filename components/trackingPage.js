@@ -1745,30 +1745,30 @@ export default function TrackingPage() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen pt-24 sm:pt-0">
 
       {/* Hero Section */}
-      <div className="relative h-80 overflow-hidden">
+      <div className="relative h-64 sm:h-80 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-[url('/images/tracking.png')] " />
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/30 to-gray-50/10" />
-        <div className="absolute inset-0 max-w-4xl mx-auto text-center px-4 pt-16 text-white flex flex-col justify-center">
-          <h1 className="text-4xl font-bold mb-4 drop-shadow-lg">Track Your Shipment</h1>
-          <p className="text-xl drop-shadow-md">
+        <div className="absolute inset-0 max-w-4xl mx-auto text-center px-4 pt-12 sm:pt-16 text-white flex flex-col justify-center">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 drop-shadow-lg">Track Your Shipment</h1>
+          <p className="text-base sm:text-xl drop-shadow-md">
             Enter your tracking number to get real-time updates
           </p>
         </div>
       </div>
 
       {/* Search Section */}
-      <div className="relative max-w-3xl mx-auto px-4 -mt-8 z-50">
-        <form onSubmit={handleTrack} className="bg-white rounded-xl shadow-xl p-2">
-          <div className="flex flex-col sm:flex-row gap-2">
+      <div className="relative z-20 mx-auto max-w-3xl px-3 sm:px-4 mt-4 sm:-mt-8 sm:z-50">
+        <form onSubmit={handleTrack} className="bg-white rounded-xl shadow-xl p-3 sm:p-2">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-2">
             {/* Search Type Dropdown */}
-            <div className="flex items-center px-3 border-r border-gray-200">
+            <div className="flex w-full items-center px-3 py-1 sm:w-auto sm:py-0 sm:border-r border-gray-200">
               <select
                 value={searchType}
                 onChange={(e) => setSearchType(e.target.value)}
-                className="px-2 py-4 focus:outline-none text-gray-700 font-medium text-sm"
+                className="w-full px-2 py-3 sm:py-4 focus:outline-none text-gray-700 font-medium text-sm"
               >
                 <option value="tracking_number">Tracking Number</option>
                 <option value="bl_number">BL Number</option>
@@ -1778,14 +1778,14 @@ export default function TrackingPage() {
             </div>
             
             {/* Search Input */}
-            <div className="flex-1 flex items-center px-4">
+            <div className="flex-1 flex items-center px-4 py-1 sm:py-0">
               <Search className="h-5 w-5 text-gray-400" />
               <input
                 type="text"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value.toUpperCase())}
                 placeholder={SEARCH_TYPE_PLACEHOLDERS[searchType] || 'Enter search number'}
-                className="w-full px-3 py-4 focus:outline-none"
+                className="w-full px-3 py-3 sm:py-4 focus:outline-none"
                 disabled={loading}
               />
             </div>
@@ -1794,7 +1794,7 @@ export default function TrackingPage() {
             <button
               type="submit"
               disabled={loading}
-              className="px-8 py-4 bg-[#dc0000] text-white rounded-lg hover:bg-[#9c0000] disabled:bg-gray-300 font-medium min-w-[120px]"
+              className="w-full sm:w-auto px-8 py-3 sm:py-4 bg-[#dc0000] text-white rounded-lg hover:bg-[#9c0000] disabled:bg-gray-300 font-medium min-w-[120px]"
             >
               {loading ? 'Searching...' : 'Search'}
             </button>
@@ -1803,7 +1803,7 @@ export default function TrackingPage() {
       </div>
 
       {/* Results Section */}
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-8">
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-xl p-8 text-center">
             <XCircle className="h-16 w-16 text-red-400 mx-auto mb-4" />
