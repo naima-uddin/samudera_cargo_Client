@@ -256,7 +256,8 @@ export default function OurCompany() {
   return (
     <div className="bg-white text-[#1D2D52]">
       <section className="relative overflow-hidden bg-white py-24">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.12),transparent_40%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_35%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-cover bg-center bg-no-repeat bg-[url('/images/aboutBanner.jpg')]" />
+        <div className="absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-[#1D2D52]/10 via-transparent to-white/90" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] items-center">
             <div className="space-y-8">
@@ -282,8 +283,16 @@ export default function OurCompany() {
             </div>
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="rounded-[32px] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-                <div className="relative h-72 overflow-hidden rounded-[28px]">
-                  <Image src="/images/about1.jpg" alt="Cargo Ship" fill className="object-cover" />
+                <div className="grid h-72 grid-rows-2 gap-4 overflow-hidden rounded-[28px]">
+                  <div className="relative overflow-hidden rounded-[20px]">
+                    <Image src="/images/about1.jpg" alt="Cargo Ship" fill className="object-cover" />
+                  </div>
+                  <div className="relative overflow-hidden rounded-[20px]">
+                    <Image src="/images/about2.jpg" alt="Cargo Terminal" fill className="object-cover" />
+                  </div>
+                  <div className="relative overflow-hidden rounded-[20px]">
+                    <Image src="/images/about2.jpg" alt="Cargo Terminal" fill className="object-cover" />
+                  </div>
                 </div>
               </div>
               <div className="space-y-6">
@@ -309,5 +318,4 @@ export default function OurCompany() {
       <InterestingFacts />
       <TestimonialsSection />
     </div>
-  );
-}
+  )}
