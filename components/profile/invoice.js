@@ -108,7 +108,7 @@ const InvoicePDF = ({ invoice, companyInfo }) => {
      name: 'B2B Logistics Group',
     address: '8825 STANFORD BLVD, SUITE 306,  ',
     city: 'COLUMBIA, MD 21045,USA',
-    phone: '+66 2 105 6119',
+    phone: '+66977830395',
     email: 'info@samuderathai.com'
   };
   const info = companyInfo || defaultCompany;
@@ -194,7 +194,7 @@ const COMPANY_INFO = {
   name: 'B2B Logistics Group',
   address: '8825 STANFORD BLVD, SUITE 306,',
   city: 'COLUMBIA, MD 21045,USA',
-  phone: '+66 2 105 6119',
+  phone: '+66977830395',
   email: 'info@samuderathai.com'
 };
  

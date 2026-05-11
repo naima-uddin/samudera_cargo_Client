@@ -133,7 +133,7 @@ export default function Page() {
             },
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+66 2 105 6119",
+              telephone: "+66977830395",
               contactType: "customer support",
               email: "info@samuderathai.com",
               availableLanguage: ["English"],

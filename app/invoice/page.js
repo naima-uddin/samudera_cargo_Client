@@ -131,7 +131,7 @@ export default function Page() {
             },
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+66 2 105 6119",
+              telephone: "+66977830395",
               contactType: "billing support",
               email: "billing@cargologisticscompany.com",
               availableLanguage: ["English"],

@@ -413,11 +413,11 @@ Bangkok 10110, Thailand
               PHONE:
             </span>
             <a
-              href="tel:+66 2 105 6119"
+              href="tel:+66977830395"
               className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5"
             >
               <Phone className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
-              +66 2 105 6119
+              +66977830395
             </a>
           </div>
           <div className="flex flex-wrap items-center gap-x-1">

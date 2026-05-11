@@ -131,7 +131,7 @@ const ServicesSection = () => {
         </p>
 
         {/* Features with Red Checkmarks */}
-        <div className="space-y-2 mb-5">
+        <div className="space-y-2">
           {service.features.map((feature, idx) => (
             <div key={idx} className="flex items-start gap-2">
               <div className="text-primary mt-0.5">
@@ -145,10 +145,7 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        {/* Read More Button */}
-        <button className="w-full bg-slate-900 text-white py-2.5 rounded-md font-bold text-sm hover:bg-slate-800 transition-colors">
-          Read More
-        </button>
+       
       </div>
     </div>
   );

@@ -128,7 +128,7 @@ export default function Page() {
             },
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+66 2 105 6119",
+              telephone: "+66977830395",
               contactType: "privacy",
               email: "info@samuderathai.com",
               availableLanguage: ["English"],
@@ -157,7 +157,7 @@ export default function Page() {
             legislation: ["GDPR", "CCPA"],
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+66 2 105 6119",
+              telephone: "+66977830395",
               email: "info@samuderathai.com",
               contactType: "privacy officer",
             },
