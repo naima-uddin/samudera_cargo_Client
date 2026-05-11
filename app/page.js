@@ -124,7 +124,7 @@ export default function Page() {
               "@type": "ContactPoint",
               telephone: "+66 2 367 3747",
               contactType: "customer service",
-              email: "support@cargologisticscompany.com",
+              email: "info@samuderathai.com",
               availableLanguage: ["English"],
             },
             sameAs: [
@@ -154,7 +154,7 @@ export default function Page() {
               addressCountry: "Thailand",
             },
             telephone: "+66 2 367 3747",
-            email: "support@cargologisticscompany.com",
+            email: "info@samuderathai.com",
             openingHoursSpecification: [
               {
                 "@type": "OpeningHoursSpecification",

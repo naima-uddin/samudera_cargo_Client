@@ -135,7 +135,7 @@ export default function Page() {
               "@type": "ContactPoint",
               telephone: "+66 2 367 3747",
               contactType: "customer support",
-              email: "support@cargologisticscompany.com",
+              email: "info@samuderathai.com",
               availableLanguage: ["English"],
             },
           }),

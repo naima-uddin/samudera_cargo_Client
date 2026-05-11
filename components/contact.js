@@ -195,7 +195,7 @@ function Contact() {
           <p className="text-gray-600 text-xs sm:text-sm lg:text-base">
             Email:{" "}
             <span className="font-medium break-all">
-              support@cargologisticscompany.com
+              info@samuderathai.com
             </span>
           </p>
         </div>
