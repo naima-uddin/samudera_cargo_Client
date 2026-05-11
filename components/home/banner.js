@@ -47,7 +47,7 @@ const Banner = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-7 relative h-[400px] sm:h-[300px] lg:h-[480px] z-20">
+            <div className="lg:col-span-7 relative h-[400px] sm:h-[300px] lg:h-[480px] z-0">
               <img
                 src="/banner/container1.png"
                 alt="Cargo container"
@@ -56,7 +56,7 @@ const Banner = () => {
             </div>
           </div>
 
-          <div className="relative -mt-22 sm:-mt-26 lg:-mt-36 z-10 rounded-xl overflow-hidden shadow-lg">
+          <div className="relative -mt-22 sm:-mt-26 lg:-mt-36 z-0 rounded-xl overflow-hidden shadow-lg">
             <img
               src="/banner/ship.jpg"
               alt="Cargo ship"
@@ -64,7 +64,7 @@ const Banner = () => {
             />
           </div>
 
-          <div className="relative lg:absolute  lg:bottom-0 mt-6 lg:mt-0 lg:translate-y-1/2 w-auto bg-primary text-white  overflow-hidden shadow-2xl z-30">
+          <div className="relative lg:absolute lg:bottom-0 mt-6 lg:mt-0 lg:translate-y-1/2 w-auto bg-primary text-white overflow-hidden shadow-2xl z-0">
             <div className="grid grid-cols-3 divide-x divide-white/20">
               {stats.map((item) => (
                 <div key={item.label} className="px-4 sm:px-6 py-4 sm:py-2 text-center">
