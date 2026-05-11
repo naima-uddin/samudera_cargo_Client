@@ -312,6 +312,7 @@ export const getMyBookings = async (params = {}) => {
       page: params.page || 1,
       limit: params.limit || 10,
       ...(params.status && { status: params.status }),
+      ...(params.search && { search: params.search }),
       ...(params.sort && { sort: params.sort || '-createdAt' })
     });
 

@@ -314,9 +314,20 @@ const mergeInvoices = (invoices) => {
 
     if (!seen.has(key)) {
       seen.add(key);
+
+      // Normalize paymentStatus for manual invoices that only have 'status'
+      const source = getInvoiceSource(invoice);
+      let paymentStatus = invoice.paymentStatus;
+      if (!paymentStatus && invoice.status) {
+        if (invoice.status === 'paid') paymentStatus = 'paid';
+        else if (invoice.status === 'overdue') paymentStatus = 'overdue';
+        else paymentStatus = 'pending';
+      }
+
       merged.push({
         ...invoice,
-        source: getInvoiceSource(invoice),
+        source,
+        paymentStatus,
         invoiceNumber: invoice.invoiceNumber || invoice.manualInvoiceNumber || invoice.number,
         invoiceDate: getInvoiceDateValue(invoice)
       });

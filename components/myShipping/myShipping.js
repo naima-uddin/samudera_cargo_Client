@@ -1617,6 +1617,7 @@ export default function ShipmentsPage() {
         limit: 100,
         sortBy: 'createdAt',
         sortOrder: 'desc',
+        ...(filters.search && { search: filters.search }),
         status: filters.status === 'cancelled' ? 'cancelled' : (filters.status === 'delivered' ? 'delivered' : '')
       };
       const secondResponse = await getMyNewShipments(secondParams);
