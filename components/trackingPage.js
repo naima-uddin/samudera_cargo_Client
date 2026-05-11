@@ -712,6 +712,28 @@ export default function TrackingPage() {
       );
     }
 
+    // Check top-level containers array (for manual shipments with multiple containers)
+    if (Array.isArray(trackingData?.containers) && trackingData.containers.length > 0) {
+      for (const container of trackingData.containers) {
+        addContainerEntry(
+          container.containerNumber,
+          container.sealNumber,
+          container.blNumber
+        );
+      }
+    }
+
+    // Check shipmentDetails.containers array (for manual shipments with multiple containers)
+    if (Array.isArray(trackingData?.shipmentDetails?.containers) && trackingData.shipmentDetails.containers.length > 0) {
+      for (const container of trackingData.shipmentDetails.containers) {
+        addContainerEntry(
+          container.containerNumber,
+          container.sealNumber,
+          container.blNumber
+        );
+      }
+    }
+
     if (trackingData?.shipmentDetails?.containerNumber) {
       const nums = trackingData.shipmentDetails.containerNumber
         .split(',')
@@ -832,7 +854,16 @@ export default function TrackingPage() {
       });
     }
 
-    // Priority 3: Get from transportLegs array (multiple entries)
+    // Priority 3: Get from individual containers (for manual shipments)
+    const containers = getShipmentContainers();
+    containers.forEach(container => {
+      if (container?.vesselName && container.vesselName !== 'N/A' && !seenVessels.has(container.vesselName)) {
+        seenVessels.add(container.vesselName);
+        vessels.push(container.vesselName);
+      }
+    });
+
+    // Priority 4: Get from transportLegs array (multiple entries)
     if (Array.isArray(trackingData?.shipmentDetails?.transportLegs) && trackingData.shipmentDetails.transportLegs.length > 0) {
       trackingData.shipmentDetails.transportLegs.forEach(leg => {
         if (leg?.vesselName && !seenVessels.has(leg.vesselName)) {
@@ -842,7 +873,7 @@ export default function TrackingPage() {
       });
     }
 
-    // Priority 4: Get from transportLegs at top level
+    // Priority 5: Get from transportLegs at top level
     if (Array.isArray(trackingData?.transportLegs) && trackingData.transportLegs.length > 0) {
       trackingData.transportLegs.forEach(leg => {
         if (leg?.vesselName && !seenVessels.has(leg.vesselName)) {
@@ -852,7 +883,7 @@ export default function TrackingPage() {
       });
     }
 
-    // Priority 5: Fallback to single transport object
+    // Priority 6: Fallback to single transport object
     if (vessels.length === 0) {
       const singleVessel = trackingData?.transport?.vesselName ||
                            trackingData?.shipmentDetails?.vesselName ||
@@ -864,7 +895,7 @@ export default function TrackingPage() {
       }
     }
 
-    // Priority 6: Additional fallback: bookings collection
+    // Priority 7: Additional fallback: bookings collection
     if (vessels.length === 0) {
       if (Array.isArray(trackingData?.bookings)) {
         trackingData.bookings.forEach(b => {
@@ -919,7 +950,16 @@ export default function TrackingPage() {
       });
     }
 
-    // Priority 3: Get from transportLegs array (multiple entries)
+    // Priority 3: Get from individual containers (for manual shipments)
+    const containers = getShipmentContainers();
+    containers.forEach(container => {
+      if (container?.voyageNumber && container.voyageNumber !== 'N/A' && !seenVoyages.has(container.voyageNumber)) {
+        seenVoyages.add(container.voyageNumber);
+        voyages.push(container.voyageNumber);
+      }
+    });
+
+    // Priority 4: Get from transportLegs array (multiple entries)
     if (Array.isArray(trackingData?.shipmentDetails?.transportLegs) && trackingData.shipmentDetails.transportLegs.length > 0) {
       trackingData.shipmentDetails.transportLegs.forEach(leg => {
         if (leg?.voyageNumber && !seenVoyages.has(leg.voyageNumber)) {
@@ -929,7 +969,7 @@ export default function TrackingPage() {
       });
     }
 
-    // Priority 4: Get from transportLegs at top level
+    // Priority 5: Get from transportLegs at top level
     if (Array.isArray(trackingData?.transportLegs) && trackingData.transportLegs.length > 0) {
       trackingData.transportLegs.forEach(leg => {
         if (leg?.voyageNumber && !seenVoyages.has(leg.voyageNumber)) {
@@ -939,7 +979,7 @@ export default function TrackingPage() {
       });
     }
 
-    // Priority 5: Fallback to single transport object
+    // Priority 6: Fallback to single transport object
     if (voyages.length === 0) {
       const singleVoyage = trackingData?.transport?.voyageNumber ||
                           trackingData?.shipmentDetails?.voyageNumber ||
@@ -951,7 +991,7 @@ export default function TrackingPage() {
       }
     }
 
-    // Priority 6: Additional fallback: bookings collection
+    // Priority 7: Additional fallback: bookings collection
     if (voyages.length === 0) {
       if (Array.isArray(trackingData?.bookings)) {
         trackingData.bookings.forEach(b => {
@@ -1488,22 +1528,66 @@ export default function TrackingPage() {
             </div>
 
             {/* Container & Vessel Details */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-4">
               <div>
                 <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Container</p>
                 <p className="text-sm font-semibold text-gray-900">{selectedContainerDetails.containerNumber || 'N/A'}</p>
               </div>
               <div>
+                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Seal Number</p>
+                <div className="space-y-1">
+                  {selectedContainerDetails.sealNumbers && selectedContainerDetails.sealNumbers.length > 0 ? (
+                    selectedContainerDetails.sealNumbers.map((seal, i) => (
+                      <p key={`seal-${i}`} className="text-sm font-semibold text-gray-900">
+                        {selectedContainerDetails.sealNumbers.length > 1 ? `${i + 1}. ${seal}` : seal}
+                      </p>
+                    ))
+                  ) : (
+                    <p className="text-sm font-semibold text-gray-900">N/A</p>
+                  )}
+                </div>
+              </div>
+              <div>
                 <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Vessel</p>
-                <p className="text-sm font-semibold text-gray-900">{selectedContainerDetails.vesselNumber || 'N/A'}</p>
+                <div className="space-y-1">
+                  {selectedContainerDetails.vessels && selectedContainerDetails.vessels.length > 0 ? (
+                    selectedContainerDetails.vessels.map((v, i) => (
+                      <p key={`vessel-${i}`} className="text-sm font-semibold text-gray-900">
+                        {selectedContainerDetails.vessels.length > 1 ? `${i + 1}. ${v}` : v}
+                      </p>
+                    ))
+                  ) : (
+                    <p className="text-sm font-semibold text-gray-900">N/A</p>
+                  )}
+                </div>
               </div>
               <div>
                 <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Voyage</p>
-                <p className="text-sm font-semibold text-gray-900">{selectedContainerDetails.voyageNumber || 'N/A'}</p>
+                <div className="space-y-1">
+                  {selectedContainerDetails.voyages && selectedContainerDetails.voyages.length > 0 ? (
+                    selectedContainerDetails.voyages.map((v, i) => (
+                      <p key={`voyage-${i}`} className="text-sm font-semibold text-gray-900">
+                        {selectedContainerDetails.voyages.length > 1 ? `${i + 1}. ${v}` : v}
+                      </p>
+                    ))
+                  ) : (
+                    <p className="text-sm font-semibold text-gray-900">N/A</p>
+                  )}
+                </div>
               </div>
               <div>
                 <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">BL Number</p>
-                <p className="text-sm font-semibold text-gray-900">{selectedContainerDetails.blNumber || 'N/A'}</p>
+                <div className="space-y-1">
+                  {selectedContainerDetails.blNumbers && selectedContainerDetails.blNumbers.length > 0 ? (
+                    selectedContainerDetails.blNumbers.map((bl, i) => (
+                      <p key={`bl-${i}`} className="text-sm font-semibold text-gray-900">
+                        {selectedContainerDetails.blNumbers.length > 1 ? `${i + 1}. ${bl}` : bl}
+                      </p>
+                    ))
+                  ) : (
+                    <p className="text-sm font-semibold text-gray-900">N/A</p>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -2031,6 +2115,14 @@ export default function TrackingPage() {
                                     const bookingInfo = getBookingInfo();
                                     const senderInfo = getSenderInfo();
                                     const receiverInfo = getReceiverInfo();
+                                    const blText = getShipmentBlValue();
+                                    const blArray = blText && blText !== 'N/A' 
+                                      ? blText.split(', ').filter(Boolean) 
+                                      : [];
+                                    const sealText = getShipmentContainerValue('sealNumber');
+                                    const sealArray = sealText && sealText !== 'N/A' 
+                                      ? sealText.split(', ').filter(s => s && s.trim() !== 'N/A')
+                                      : [];
                                     setSelectedContainerDetails({
                                       stepTitle,
                                       stepDate,
@@ -2041,12 +2133,13 @@ export default function TrackingPage() {
                                       quantity: bookingInfo.quantity,
                                       weight: bookingInfo.weight,
                                       volume: bookingInfo.volume,
-                                      vesselNumber: getShipmentVessel(),
+                                      vessels: getShipmentVessels(),
+                                      voyages: getShipmentVoyages(),
+                                      blNumbers: blArray,
+                                      sealNumbers: sealArray,
                                       containerNumber: getShipmentContainerValue('containerNumber'),
-                                      voyageNumber: getShipmentVoyage(),
                                       portOfLoading: getRouteOrigin() || 'N/A',
                                       portOfDischarge: getRouteDestination() || 'N/A',
-                                      blNumber: getShipmentBlValue(),
                                       senderName: senderInfo.name,
                                       senderEmail: senderInfo.email,
                                       senderPhone: senderInfo.phone,
@@ -2116,7 +2209,23 @@ export default function TrackingPage() {
                     </div>
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wide">BL Number</p>
-                      <p className="font-medium text-sm text-gray-900 mt-1">{getShipmentBlValue()}</p>
+                      {(() => {
+                        const blText = getShipmentBlValue();
+                        const blArray = blText && blText !== 'N/A' 
+                          ? blText.split(', ').filter(Boolean) 
+                          : [];
+                        return (
+                          <div className="mt-1">
+                            {blArray.length > 0 ? (
+                              <div className="space-y-1">
+                                {blArray.map((bl, i) => <p key={i} className="font-medium text-sm text-gray-900">{bl}</p>)}
+                              </div>
+                            ) : (
+                              <p className="font-medium text-sm text-gray-900">N/A</p>
+                            )}
+                          </div>
+                        );
+                      })()}
                     </div>
                   </div>
                   {trackingData.packages && trackingData.packages.length > 0 ? (
@@ -2299,10 +2408,17 @@ export default function TrackingPage() {
                         })()}
                         {(() => {
                           const blText = getShipmentBlValue();
-                          return blText && blText !== 'N/A' ? (
-                            <div className="flex justify-between py-1 border-b">
-                              <span className="text-gray-500">BL Number</span>
-                              <span className="font-medium">{blText}</span>
+                          const blArray = blText && blText !== 'N/A' 
+                            ? blText.split(', ').filter(Boolean) 
+                            : [];
+                          return blArray.length > 0 ? (
+                            <div>
+                              {blArray.map((bl, i) => (
+                                <div key={`bl-${i}`} className="flex justify-between py-1 border-b">
+                                  <span className="text-gray-500">{blArray.length > 1 ? `BL Number ${i + 1}` : 'BL Number'}</span>
+                                  <span className="font-medium">{bl}</span>
+                                </div>
+                              ))}
                             </div>
                           ) : null;
                         })()}
