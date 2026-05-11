@@ -163,6 +163,8 @@ export default function TrackingPage() {
   const [timelineView, setTimelineView] = useState('newToOld');
   const [shareSuccess, setShareSuccess] = useState(false);
   const [showRouteDetails, setShowRouteDetails] = useState(false);
+  const [searchType, setSearchType] = useState('tracking_number');
+  const [selectedContainerDetails, setSelectedContainerDetails] = useState(null);
 
   // Get tracking number from URL on load
   const handleTrackFromUrl = useCallback(async (trackingNum) => {
@@ -806,21 +808,21 @@ export default function TrackingPage() {
 
   const getShipmentVessels = () => {
     const vessels = [];
-    
+
     // Get from transportLegs array (multiple entries)
     if (Array.isArray(trackingData?.shipmentDetails?.transportLegs) && trackingData.shipmentDetails.transportLegs.length > 0) {
       trackingData.shipmentDetails.transportLegs.forEach(leg => {
         if (leg?.vesselName) vessels.push(leg.vesselName);
       });
     }
-    
+
     // Get from transportLegs at top level
     if (Array.isArray(trackingData?.transportLegs) && trackingData.transportLegs.length > 0) {
       trackingData.transportLegs.forEach(leg => {
         if (leg?.vesselName && !vessels.includes(leg.vesselName)) vessels.push(leg.vesselName);
       });
     }
-    
+
     // Fallback to single transport object
     if (vessels.length === 0) {
       const singleVessel = trackingData?.transport?.vesselName ||
@@ -831,27 +833,45 @@ export default function TrackingPage() {
                            trackingData?.vessel;
       if (singleVessel) vessels.push(singleVessel);
     }
-    
+
+    // Additional fallback: bookings collection (some APIs store vessel/voyage there)
+    if (vessels.length === 0) {
+      const bookingVessels = [];
+      if (Array.isArray(trackingData?.bookings)) {
+        trackingData.bookings.forEach(b => {
+          if (b?.vesselName) bookingVessels.push(b.vesselName);
+          if (b?.transport?.vesselName) bookingVessels.push(b.transport.vesselName);
+        });
+      }
+      if (trackingData?.booking) {
+        if (trackingData.booking.vesselName) bookingVessels.push(trackingData.booking.vesselName);
+        if (trackingData.booking.transport?.vesselName) bookingVessels.push(trackingData.booking.transport.vesselName);
+      }
+      if (bookingVessels.length > 0) {
+        bookingVessels.forEach(v => { if (v && !vessels.includes(v)) vessels.push(v); });
+      }
+    }
+
     return vessels;
   };
 
   const getShipmentVoyages = () => {
     const voyages = [];
-    
+
     // Get from transportLegs array (multiple entries)
     if (Array.isArray(trackingData?.shipmentDetails?.transportLegs) && trackingData.shipmentDetails.transportLegs.length > 0) {
       trackingData.shipmentDetails.transportLegs.forEach(leg => {
         if (leg?.voyageNumber) voyages.push(leg.voyageNumber);
       });
     }
-    
+
     // Get from transportLegs at top level
     if (Array.isArray(trackingData?.transportLegs) && trackingData.transportLegs.length > 0) {
       trackingData.transportLegs.forEach(leg => {
         if (leg?.voyageNumber && !voyages.includes(leg.voyageNumber)) voyages.push(leg.voyageNumber);
       });
     }
-    
+
     // Fallback to single transport object
     if (voyages.length === 0) {
       const singleVoyage = trackingData?.transport?.voyageNumber ||
@@ -861,7 +881,25 @@ export default function TrackingPage() {
                           trackingData?.voyage;
       if (singleVoyage) voyages.push(singleVoyage);
     }
-    
+
+    // Additional fallback: bookings collection
+    if (voyages.length === 0) {
+      const bookingVoyages = [];
+      if (Array.isArray(trackingData?.bookings)) {
+        trackingData.bookings.forEach(b => {
+          if (b?.voyageNumber) bookingVoyages.push(b.voyageNumber);
+          if (b?.transport?.voyageNumber) bookingVoyages.push(b.transport.voyageNumber);
+        });
+      }
+      if (trackingData?.booking) {
+        if (trackingData.booking.voyageNumber) bookingVoyages.push(trackingData.booking.voyageNumber);
+        if (trackingData.booking.transport?.voyageNumber) bookingVoyages.push(trackingData.booking.transport.voyageNumber);
+      }
+      if (bookingVoyages.length > 0) {
+        bookingVoyages.forEach(v => { if (v && !voyages.includes(v)) voyages.push(v); });
+      }
+    }
+
     return voyages;
   };
 
@@ -886,6 +924,25 @@ export default function TrackingPage() {
     }
 
     const blValues = [];
+
+    // Highest-priority fallback: newShipments / newShipment collection
+    if (Array.isArray(trackingData?.newShipments)) {
+      trackingData.newShipments.forEach(ns => {
+        if (ns?.blNumber) blValues.push(ns.blNumber);
+        if (ns?.blNumbers) blValues.push(...(Array.isArray(ns.blNumbers) ? ns.blNumbers : String(ns.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+      });
+    }
+    if (trackingData?.newShipment) {
+      if (trackingData.newShipment.blNumber) blValues.push(trackingData.newShipment.blNumber);
+      if (trackingData.newShipment.blNumbers) blValues.push(...(Array.isArray(trackingData.newShipment.blNumbers) ? trackingData.newShipment.blNumbers : String(trackingData.newShipment.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+    }
+    if (Array.isArray(trackingData?.newshipments)) {
+      trackingData.newshipments.forEach(ns => {
+        if (ns?.blNumber) blValues.push(ns.blNumber);
+        if (ns?.blNumbers) blValues.push(...(Array.isArray(ns.blNumbers) ? ns.blNumbers : String(ns.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+      });
+    }
+
     if (trackingData?.consolidation?.blNumber) blValues.push(trackingData.consolidation.blNumber);
     if (trackingData?.consolidation?.blNumbers) {
       blValues.push(...trackingData.consolidation.blNumbers.map((v) => v.trim()).filter(Boolean));
@@ -902,6 +959,28 @@ export default function TrackingPage() {
       ? [...new Set(blValues)].join(', ')
       : 'N/A';
   };
+
+  const getBookingInfo = () => ({
+    bookingNumber: trackingData?.bookingNumber || 'N/A',
+    shipmentNumber: trackingData?.shipmentNumber || 'N/A',
+    quantity: trackingData?.shipmentDetails?.totalPackages || trackingData?.totalPackages || 'N/A',
+    weight: trackingData?.shipmentDetails?.totalWeight || trackingData?.totalWeight || 'N/A',
+    volume: trackingData?.shipmentDetails?.totalVolume || trackingData?.totalVolume || 'N/A'
+  });
+
+  const getSenderInfo = () => ({
+    name: trackingData?.sender?.name || 'N/A',
+    email: trackingData?.sender?.email || 'N/A',
+    phone: trackingData?.sender?.phone || 'N/A',
+    address: formatAddress(trackingData?.sender?.address) || 'N/A'
+  });
+
+  const getReceiverInfo = () => ({
+    name: trackingData?.receiver?.name || 'N/A',
+    email: trackingData?.receiver?.email || 'N/A',
+    phone: trackingData?.receiver?.phone || 'N/A',
+    address: formatAddress(trackingData?.receiver?.address) || 'N/A'
+  });
 
   const getPackageSealNumber = (pkg) => {
     return (
@@ -1246,39 +1325,200 @@ export default function TrackingPage() {
   const isManualShipment = trackingData?.source === 'manual' || trackingData?.source === 'booking' || trackingData?.type === 'booking';
   const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/tracking-number?tracking=${trackingNumber}` : '';
 
+  // Container Details Modal Component
+  const ContainerDetailsModal = () => {
+    if (!selectedContainerDetails) return null;
+
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+        <div className="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+          {/* Modal Header */}
+          <div className="sticky top-0 bg-gradient-to-r from-[#3D5885] to-[#133978] text-white p-6 flex justify-between items-center">
+            <h2 className="text-2xl font-bold">Container Tracking Details</h2>
+            <button
+              onClick={() => setSelectedContainerDetails(null)}
+              className="text-white hover:bg-white/20 p-2 rounded-lg transition"
+            >
+              ✕
+            </button>
+          </div>
+
+            {/* Modal Content */}
+          <div className="p-6 space-y-6">
+            {selectedContainerDetails.stepTitle && (
+              <div className="border border-orange-200 bg-orange-50 rounded-lg p-4">
+                <p className="text-xs text-orange-600 uppercase tracking-wide mb-1 font-semibold">Timeline Step</p>
+                <p className="text-lg font-bold text-orange-900">{selectedContainerDetails.stepTitle}</p>
+                {selectedContainerDetails.stepDate && (
+                  <p className="text-sm text-orange-800 mt-1">{selectedContainerDetails.stepDate}</p>
+                )}
+                {selectedContainerDetails.stepLocation && (
+                  <p className="text-sm text-orange-800 mt-1">Location: {selectedContainerDetails.stepLocation}</p>
+                )}
+                {selectedContainerDetails.stepDescription && (
+                  <p className="text-sm text-orange-900 mt-2">{selectedContainerDetails.stepDescription}</p>
+                )}
+              </div>
+            )}
+
+            {/* Booking & Shipment Reference */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <p className="text-xs text-blue-600 uppercase tracking-wide font-semibold">Booking Number</p>
+                <p className="text-sm font-bold text-blue-900 mt-1">{selectedContainerDetails.bookingNumber || 'N/A'}</p>
+              </div>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <p className="text-xs text-blue-600 uppercase tracking-wide font-semibold">Shipment Number</p>
+                <p className="text-sm font-bold text-blue-900 mt-1">{selectedContainerDetails.shipmentNumber || 'N/A'}</p>
+              </div>
+            </div>
+
+            {/* Container & Vessel Details */}
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Container</p>
+                <p className="text-sm font-semibold text-gray-900">{selectedContainerDetails.containerNumber || 'N/A'}</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Vessel</p>
+                <p className="text-sm font-semibold text-gray-900">{selectedContainerDetails.vesselNumber || 'N/A'}</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Voyage</p>
+                <p className="text-sm font-semibold text-gray-900">{selectedContainerDetails.voyageNumber || 'N/A'}</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">BL Number</p>
+                <p className="text-sm font-semibold text-gray-900">{selectedContainerDetails.blNumber || 'N/A'}</p>
+              </div>
+            </div>
+
+            {/* Shipment Dimensions */}
+            <div className="grid grid-cols-3 gap-3">
+              <div className="border border-gray-200 rounded-lg p-3 bg-gray-50">
+                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold">Quantity</p>
+                <p className="text-base font-bold text-gray-900 mt-1">{selectedContainerDetails.quantity || 'N/A'}</p>
+              </div>
+              <div className="border border-gray-200 rounded-lg p-3 bg-gray-50">
+                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold">Weight</p>
+                <p className="text-base font-bold text-gray-900 mt-1">{selectedContainerDetails.weight || 'N/A'}</p>
+              </div>
+              <div className="border border-gray-200 rounded-lg p-3 bg-gray-50">
+                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold">Volume</p>
+                <p className="text-base font-bold text-gray-900 mt-1">{selectedContainerDetails.volume || 'N/A'}</p>
+              </div>
+            </div>
+
+            {/* Port Information */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="border border-gray-300 rounded-lg p-3 bg-gray-50">
+                <p className="text-xs text-gray-600 uppercase tracking-wide font-semibold">Port of Loading</p>
+                <p className="text-sm font-semibold text-gray-900 mt-1">{selectedContainerDetails.portOfLoading || 'N/A'}</p>
+              </div>
+              <div className="border border-gray-300 rounded-lg p-3 bg-gray-50">
+                <p className="text-xs text-gray-600 uppercase tracking-wide font-semibold">Port of Discharge</p>
+                <p className="text-sm font-semibold text-gray-900 mt-1">{selectedContainerDetails.portOfDischarge || 'N/A'}</p>
+              </div>
+            </div>
+
+            {/* Sender Information */}
+            {selectedContainerDetails.senderName && (
+              <div className="border border-green-200 bg-green-50 rounded-lg p-3">
+                <p className="text-xs text-green-700 uppercase tracking-wide font-semibold mb-2">📤 Sender</p>
+                <div className="space-y-1 text-sm text-green-900">
+                  <p><span className="font-semibold">Name:</span> {selectedContainerDetails.senderName}</p>
+                  {selectedContainerDetails.senderEmail && <p><span className="font-semibold">Email:</span> {selectedContainerDetails.senderEmail}</p>}
+                  {selectedContainerDetails.senderPhone && <p><span className="font-semibold">Phone:</span> {selectedContainerDetails.senderPhone}</p>}
+                  {selectedContainerDetails.senderAddress && <p><span className="font-semibold">Address:</span> {selectedContainerDetails.senderAddress}</p>}
+                </div>
+              </div>
+            )}
+
+            {/* Receiver Information */}
+            {selectedContainerDetails.receiverName && (
+              <div className="border border-purple-200 bg-purple-50 rounded-lg p-3">
+                <p className="text-xs text-purple-700 uppercase tracking-wide font-semibold mb-2">📥 Receiver</p>
+                <div className="space-y-1 text-sm text-purple-900">
+                  <p><span className="font-semibold">Name:</span> {selectedContainerDetails.receiverName}</p>
+                  {selectedContainerDetails.receiverEmail && <p><span className="font-semibold">Email:</span> {selectedContainerDetails.receiverEmail}</p>}
+                  {selectedContainerDetails.receiverPhone && <p><span className="font-semibold">Phone:</span> {selectedContainerDetails.receiverPhone}</p>}
+                  {selectedContainerDetails.receiverAddress && <p><span className="font-semibold">Address:</span> {selectedContainerDetails.receiverAddress}</p>}
+                </div>
+              </div>
+            )}
+
+            {/* Status */}
+            <div className="border border-orange-200 bg-orange-50 rounded-lg p-3">
+              <p className="text-xs text-orange-600 uppercase tracking-wide mb-2 font-semibold">Current Status</p>
+              <p className="text-sm font-semibold text-orange-900">{selectedContainerDetails.status || 'N/A'}</p>
+            </div>
+
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedContainerDetails(null)}
+              className="w-full border border-bg-red-500 text-black hover:bg-gradient-to-r hover:from-orange-400 hover:to-orange-600 hover:text-white py-2 rounded-lg font-medium hover:from-orange-500 hover:to-orange-700 transition"
+            >
+              Close Details
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen">
+
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-orange-300 to-red-600 text-white py-16">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <h1 className="text-4xl font-bold mb-4">Track Your Shipment</h1>
-          <p className="text-xl opacity-90">
+      <div className="relative h-80 overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-[url('/images/tracking.png')] " />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/30 to-gray-50/10" />
+        <div className="absolute inset-0 max-w-4xl mx-auto text-center px-4 pt-16 text-white flex flex-col justify-center">
+          <h1 className="text-4xl font-bold mb-4 drop-shadow-lg">Track Your Shipment</h1>
+          <p className="text-xl drop-shadow-md">
             Enter your tracking number to get real-time updates
           </p>
         </div>
       </div>
 
       {/* Search Section */}
-      <div className="max-w-3xl mx-auto px-4 -mt-8">
+      <div className="relative max-w-3xl mx-auto px-4 -mt-8 z-50">
         <form onSubmit={handleTrack} className="bg-white rounded-xl shadow-xl p-2">
           <div className="flex flex-col sm:flex-row gap-2">
+            {/* Search Type Dropdown */}
+            <div className="flex items-center px-3 border-r border-gray-200">
+              <select
+                value={searchType}
+                onChange={(e) => setSearchType(e.target.value)}
+                className="px-2 py-4 focus:outline-none text-gray-700 font-medium text-sm"
+              >
+                <option value="tracking_number">Tracking Number</option>
+                <option value="bl_number">BL Number</option>
+                <option value="booking_number">Booking Number</option>
+                <option value="container_number">Container Number</option>
+              </select>
+            </div>
+            
+            {/* Search Input */}
             <div className="flex-1 flex items-center px-4">
               <Search className="h-5 w-5 text-gray-400" />
               <input
                 type="text"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value.toUpperCase())}
-                placeholder="Enter tracking number (e.g., CLG-BC6944CD)"
+                placeholder="Enter search number (e.g., CLG-BC6944CD)"
                 className="w-full px-3 py-4 focus:outline-none"
                 disabled={loading}
               />
             </div>
+            
+            {/* Search Button */}
             <button
               type="submit"
               disabled={loading}
               className="px-8 py-4 bg-[#E67E22] text-white rounded-lg hover:bg-[#d35400] disabled:bg-gray-300 font-medium min-w-[120px]"
             >
-              {loading ? 'Searching...' : 'Track'}
+              {loading ? 'Searching...' : 'Search'}
             </button>
           </div>
         </form>
@@ -1550,254 +1790,168 @@ export default function TrackingPage() {
 
               {/* ===== TIMELINE TAB ===== */}
               {activeTab === 'timeline' && (
-                <div className="p-4 sm:p-3">
-                  <div className="flex justify-between items-center mb-3">
-                    <div>
-                      <h3 className="font-medium">Tracking Timeline</h3>
-                      <p className="text-xs text-gray-500 mt-0.5">Professional event log with milestone progress and operational notes</p>
-                    </div>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => setTimelineView('oldToNew')}
-                        className={`px-3 py-1 text-xs rounded-lg ${
-                          timelineView === 'oldToNew' 
-                            ? 'bg-orange-500 text-white' 
-                            : 'bg-gray-100 text-gray-600'
-                        }`}
-                      >
-                        Old → New
-                      </button>
-                      <button
-                        onClick={() => setTimelineView('newToOld')}
-                        className={`px-3 py-1 text-xs rounded-lg ${
-                          timelineView === 'newToOld' 
-                            ? 'bg-orange-500 text-white' 
-                            : 'bg-gray-100 text-gray-600'
-                        }`}
-                      >
-                        New → Old
-                      </button>
-                    </div>
+                <div className="p-4 sm:p-6">
+                  <div className="mb-6">
+                    <h3 className="text-lg font-bold text-gray-900">Shipment Timeline</h3>
+                    <p className="text-sm text-gray-500 mt-1">Track your shipment through each step of the journey</p>
                   </div>
-                  
+
                   {(() => {
-                    const timeline = getTimeline();
+                    // Define canonical timeline steps in order (with booking_confirmed replacing booking/pending)
+                    const TIMELINE_STEPS = [
+                      'booking_confirmed',
+                      'picked_up_from_warehouse',
+                      'loaded_into_container',
+                      'container_sealed',
+                      'departed_port_of_origin',
+                      'in_transit_sea_freight',
+                      'arrived_at_destination_port',
+                      'under_customs_clearance',
+                      'customs_cleared',
+                      'unloaded_from_vessel',
+                      'out_for_delivery',
+                      'delivered',
+                      'on_hold',
+                      'cancelled',
+                      'returned'
+                    ];
+
+                    // Get timeline events (new to old - most recent first)
+                    const timelineEvents = getTimelineNewToOld();
                     
-                    if (timeline.length === 0) {
-                      return <p className="text-gray-400 text-center py-4">No timeline events to display</p>;
+                    // Map timeline events by normalized status
+                    const eventsByStatus = {};
+                    timelineEvents.forEach(event => {
+                      const status = normalizeTimelineStatus(event.mappedStatus || event.status);
+                      // Map booking/pending to booking_confirmed for display
+                      const displayStatus = (status === 'booking' || status === 'pending') ? 'booking_confirmed' : status;
+                      if (!eventsByStatus[displayStatus]) {
+                        eventsByStatus[displayStatus] = event;
+                      }
+                    });
+
+                    // Determine if in early stage (Booking Confirmed only)
+                    const currentStatus = normalizeTimelineStatus(trackingData?.status || '');
+                    const isEarlyStage = ['booking', 'pending', 'booking_requested', 'draft'].includes(currentStatus);
+
+                    // Extract unique statuses in the order they appear in timeline (already new-to-old)
+                    const uniqueStatusesInOrder = [];
+                    timelineEvents.forEach(event => {
+                      const status = normalizeTimelineStatus(event.mappedStatus || event.status);
+                      const displayStatus = (status === 'booking' || status === 'pending') ? 'booking_confirmed' : status;
+                      if (!uniqueStatusesInOrder.includes(displayStatus)) {
+                        uniqueStatusesInOrder.push(displayStatus);
+                      }
+                    });
+
+                    // Filter to display steps (in chronological order of first occurrence)
+                    let displaySteps = [];
+                    if (isEarlyStage) {
+                      displaySteps = uniqueStatusesInOrder.filter(step => step === 'booking_confirmed');
+                    } else {
+                      displaySteps = uniqueStatusesInOrder;
                     }
-                    
+
+                    if (displaySteps.length === 0) {
+                      return (
+                        <div className="text-center py-12 bg-gray-50 rounded-lg border border-gray-200">
+                          <Activity className="h-12 w-12 text-gray-300 mx-auto mb-3" />
+                          <p className="text-gray-500">No timeline steps available yet</p>
+                        </div>
+                      );
+                    }
+
                     return (
-                      <div className="relative mt-3 sm:mt-4 pl-1 sm:pl-2">
-                        <div className="absolute left-4 sm:left-[22px] top-2 bottom-2 w-px bg-gradient-to-b from-orange-200 via-gray-200 to-transparent" />
-                        <div className="space-y-2.5 sm:space-y-3">
-                        {timeline.map((event, index) => {
-                          const displayStatus = event.mappedStatus || event.status;
-                          const StatusIconComponent = getStatusIcon(displayStatus);
-                          const statusConfig = getStatusConfig(displayStatus);
-                          const progress = statusConfig.progress;
-                          const location = getDisplayLocation(event);
-                          const isCurrentStep = timelineView === 'oldToNew' 
-                            ? index === timeline.length - 1 
-                            : index === 0;
-                          const isCompleted = progress === 100;
-                          const isHold = event.isHoldEvent === true;
-                          const isReturn = displayStatus?.includes('return');
-                          const isCustoms = displayStatus?.includes('customs');
-                          const isBookingRequest = event.isBookingRequest === true;
-                          const displayProgress = displayStatus === 'return_completed' ? 100 : progress;
-                          const sealedContainers = Array.isArray(event.containers) && event.containers.length > 0 ? event.containers : getShipmentContainers();
-                          const cleanedSealedContainers = sealedContainers.map((container) => ({
-                            containerNumber: container.containerNumber,
-                            sealNumber: container.sealNumber,
-                            blNumber: container.blNumber,
-                          })).filter((container) => {
-                            const containerNumber = container.containerNumber && container.containerNumber !== 'N/A';
-                            const sealNumber = container.sealNumber && container.sealNumber !== 'N/A';
-                            const blNumber = container.blNumber && container.blNumber !== 'N/A';
-                            return containerNumber || sealNumber || blNumber;
-                          });
-                          const hasSealedContainerInfo = (displayStatus === 'container_sealed' || event.status === 'container_sealed') && cleanedSealedContainers.length > 0;
-                          const bookingRequestLabel = isManualShipment
-                            ? MANUAL_TIMELINE_LABELS.booking_requested
-                            : 'Booking Requested';
-                          
-                          // Special styling for booking requested
-                          if (isBookingRequest) {
-                            return (
-                              <div key={index} className="relative flex items-start gap-2.5 sm:gap-4 opacity-80">
-                                <div className="relative z-10">
-                                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-gray-100 border border-gray-200 shadow-sm ring-2 sm:ring-4 ring-gray-100/80">
-                                    <Package className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+                      <div className="grid grid-cols-1 gap-4">
+                        {displaySteps.map((stepStatus, index) => {
+                          const event = eventsByStatus[stepStatus];
+                          // Use booking_confirmed label or fallback to status config
+                          const stepTitle = stepStatus === 'booking_confirmed' ? 'Booking Confirmed' : getStatusConfig(stepStatus).label;
+                          const stepLocation = getDisplayLocation(event);
+                          const stepDate = formatDate(event.date || event.timestamp || event.createdAt);
+                          const stepDescription = event.description || '';
+
+                          return (
+                            <div
+                              key={stepStatus}
+                              className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                            >
+                              <div className="bg-gradient-to-r from-orange-50 to-orange-100 border-b border-orange-200 px-6 py-4">
+                                <h3 className="text-lg font-bold text-gray-900">{stepTitle}</h3>
+                              </div>
+
+                              <div className="p-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+                                  <div className="border border-gray-200 rounded-lg p-4 bg-white">
+                                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-2 font-semibold">Status</p>
+                                    <p className="text-sm font-semibold text-gray-900">{stepTitle}</p>
+                                    <p className="text-xs text-gray-500 uppercase tracking-wide mt-3 mb-2 font-semibold">Date</p>
+                                    <p className="text-sm font-semibold text-gray-900">{stepDate}</p>
+                                  </div>
+
+                                  <div className="border border-gray-200 rounded-lg p-4 bg-white">
+                                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-2 font-semibold">Location</p>
+                                    <p className="text-sm font-semibold text-gray-900">{stepLocation}</p>
+                                    <p className="text-xs text-gray-500 uppercase tracking-wide mt-3 mb-2 font-semibold">Description</p>
+                                    <p className="text-sm text-gray-700">{stepDescription || 'No description available'}</p>
+                                  </div>
+
+                                  <div className="border border-gray-200 rounded-lg p-4 bg-white">
+                                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-2 font-semibold">Port of Loading</p>
+                                    <p className="text-sm font-semibold text-gray-900">{getRouteOrigin() || 'N/A'}</p>
+                                    <p className="text-xs text-gray-500 uppercase tracking-wide mt-3 mb-2 font-semibold">Port of Destination</p>
+                                    <p className="text-sm font-semibold text-gray-900">{getRouteDestination() || 'N/A'}</p>
+                                    {stepStatus === 'container_sealed' && (
+                                      <>
+                                        <p className="text-xs text-gray-500 uppercase tracking-wide mt-3 mb-1 font-semibold">Container & Seal</p>
+                                        <p className="text-sm font-semibold text-red-600">{getShipmentContainerValue('containerNumber')} / {getShipmentContainerValue('sealNumber')}</p>
+                                      </>
+                                    )}
+                                    <p className="text-xs text-gray-500 uppercase tracking-wide mt-3 mb-1 font-semibold">Reference</p>
+                                    <p className="text-sm font-semibold text-gray-900">{trackingData.shipmentNumber || trackingData.bookingNumber || 'N/A'}</p>
                                   </div>
                                 </div>
 
-                                  <div className="flex-1 pb-2 sm:pb-3">
-                                    <div className="rounded-lg sm:rounded-xl border border-gray-200/90 bg-gray-50/80 p-2.5 sm:p-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.06)] sm:shadow-sm">
-                                    <div className="flex flex-col items-start gap-1.5 sm:flex-row sm:justify-between sm:items-start sm:gap-2">
-                                      <div className="flex-1">
-                                        <div className="flex items-center gap-2 flex-wrap">
-                                            <p className="text-sm sm:text-base leading-snug font-semibold text-gray-600">{bookingRequestLabel}</p>
-                                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-200 text-gray-600">Start</span>
-                                        </div>
-                                        <p className="text-xs sm:text-sm text-gray-400 mt-0.5 sm:mt-1 flex items-center gap-1">
-                                          <MapPin className="h-3 w-3 text-gray-400" />
-                                          System
-                                        </p>
-                                      </div>
-                                      <p className="text-[11px] sm:text-xs text-gray-500 bg-white sm:bg-transparent border border-gray-200 sm:border-0 rounded-full sm:rounded-none px-2 py-0.5 sm:px-0 sm:py-0 whitespace-nowrap">
-                                        {formatDateOnly(event.date) || formatDate(event.timestamp || event.createdAt)}
-                                      </p>
-                                    </div>
-                                    {getEventDescription(event) && (
-                                      <p className="text-xs mt-2.5 p-2 rounded-lg text-gray-500 bg-white border border-gray-100">
-                                        {getEventDescription(event)}
-                                      </p>
-                                    )}
-                                    {!isHold && (
-                                      <div className="mt-1.5 sm:mt-2.5 w-full h-1 sm:h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                                        <div className="h-full rounded-full bg-gray-300" style={{ width: '5%' }} />
-                                      </div>
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-                            );
-                          }
-                          
-                          return (
-                            <div key={index} className="relative flex items-start gap-2.5 sm:gap-4">
-                              <div className="relative z-10">
-                                <div className={`relative w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shadow-sm ${
-                                  isCurrentStep 
-                                    ? isReturn ? 'bg-purple-100 border-2 border-purple-500 animate-[pulse_1.6s_ease-in-out_infinite]' 
-                                      : isCustoms ? 'bg-blue-100 border-2 border-blue-500 animate-[pulse_1.6s_ease-in-out_infinite]'
-                                      : 'bg-orange-100 border-2 border-orange-500 animate-[pulse_1.6s_ease-in-out_infinite]'
-                                    : isCompleted 
-                                      ? 'bg-green-100 border border-green-200' 
-                                      : isHold
-                                        ? 'bg-gray-200 border-2 border-gray-400'
-                                        : 'bg-gray-100 border border-gray-200'
-                                }`}>
-                                  {isCurrentStep && (
-                                    <span className={`absolute inset-0 rounded-full opacity-40 animate-[pulse_1.6s_ease-in-out_infinite] ${
-                                      isReturn ? 'bg-purple-300' : isCustoms ? 'bg-blue-300' : 'bg-orange-300'
-                                    }`} />
-                                  )}
-                                  {isCompleted && !isCurrentStep && !isReturn ? (
-                                    <CheckCircle className="relative z-10 h-3.5 w-3.5 sm:h-5 sm:w-5 text-green-600" />
-                                  ) : (
-                                    <StatusIconComponent className={`relative z-10 h-3.5 w-3.5 sm:h-5 sm:w-5 ${
-                                      isCurrentStep && !isHold ? (isReturn ? 'text-purple-600' : 'text-red-600') : 
-                                      isHold ? 'text-gray-600' : 'text-gray-500'
-                                    }`} />
-                                  )}
-                                </div>
-                              </div>
-                              
-                              <div className="flex-1 pb-2 sm:pb-3">
-                                <div className={`rounded-lg sm:rounded-xl border p-2.5 sm:p-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.06)] sm:shadow-sm ${
-                                  isCurrentStep && !isHold
-                                    ? isReturn
-                                      ? 'border-purple-200 bg-purple-50/80'
-                                      : isCustoms
-                                      ? 'border-blue-200 bg-blue-50/80'
-                                      : 'border-orange-200 bg-orange-50/80'
-                                    : isCompleted
-                                    ? 'border-green-200 bg-green-50/70'
-                                    : isHold
-                                    ? 'border-gray-200 bg-gray-50'
-                                    : 'border-gray-200 bg-white'
-                                }`}>
-                                  <div className="flex flex-col items-start gap-1.5 sm:flex-row sm:justify-between sm:items-start sm:gap-2">
-                                    <div className="flex-1">
-                                      <div className="flex items-center gap-2 flex-wrap">
-                                        <p className={`text-sm sm:text-base leading-snug font-semibold ${
-                                          isCurrentStep && !isHold ? (isReturn ? 'text-purple-700' : 'text-orange-700') : 
-                                          isHold ? 'text-gray-600' : 'text-gray-900'
-                                        }`}>
-                                          {statusConfig.label}
-                                        </p>
-                                        {/* <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
-                                          displayProgress === 100 ? 'bg-green-100 text-green-700' : 
-                                          isHold ? 'bg-gray-100 text-gray-600' : 
-                                          isReturn ? 'bg-purple-100 text-purple-700' : 'bg-orange-100 text-orange-700'
-                                        }`}>
-                                          {displayProgress}%
-                                        </span> */}
-                                        {isCurrentStep && !isHold && !isReturn && (
-                                          <span className="text-[10px] bg-orange-500 text-white px-1.5 py-0.5 rounded-full">
-                                            Current
-                                          </span>
-                                        )}
-                                        {isCurrentStep && isReturn && (
-                                          <span className="text-[10px] bg-purple-500 text-white px-1.5 py-0.5 rounded-full">
-                                            Return
-                                          </span>
-                                        )}
-                                        {isHold && isCurrentStep && (
-                                          <span className="text-[10px] bg-gray-500 text-white px-1.5 py-0.5 rounded-full">
-                                            On Hold
-                                          </span>
-                                        )}
-                                      </div>
-                                      
-                                      <p className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1 flex items-center gap-1">
-                                        <MapPin className="h-3 w-3 text-gray-400" />
-                                        {location}
-                                      </p>
-                                      
-                                      {hasSealedContainerInfo && (
-                                        <div className="mt-2 rounded-lg border border-orange-200 bg-orange-50/70 px-3 py-2">
-                                          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-orange-700 mb-1.5">
-                                            <Container className="h-3.5 w-3.5" />
-                                            Container, Sealed & BL Numbers
-                                          </div>
-                                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
-                                            <p className="text-gray-700 break-words">
-                                              <span className="font-semibold text-red-600">Container:</span>{' '}
-                                              {cleanedSealedContainers.map((container) => container.containerNumber).filter((value) => value && value !== 'N/A').join(', ') || 'N/A'}
-                                            </p>
-                                            <p className="text-gray-700 break-words">
-                                              <span className="font-semibold text-red-600">Seal:</span>{' '}
-                                              {cleanedSealedContainers.map((container) => container.sealNumber).filter((value) => value && value !== 'N/A').join(', ') || 'N/A'}
-                                            </p>
-                                            <p className="text-gray-700 break-words">
-                                              <span className="font-semibold text-red-600">BL:</span>{' '}
-                                              {cleanedSealedContainers.map((container) => container.blNumber).filter((value) => value && value !== 'N/A').join(', ') || 'N/A'}
-                                            </p>
-                                          </div>
-                                        </div>
-                                      )}
-                                      
-                                    </div>
-                                    
-                                    <div className="text-left sm:text-right">
-                                      <p className="text-[11px] sm:text-xs text-gray-500 bg-white sm:bg-transparent border border-gray-200 sm:border-0 rounded-full sm:rounded-none px-2 py-0.5 sm:px-0 sm:py-0 whitespace-nowrap">
-                                        {formatDateOnly(event.date) || formatDate(event.timestamp || event.createdAt)}
-                                      </p>
-                                      
-                                    </div>
-                                  </div>
-                                  
-                                  {!isHold && !statusConfig.hideProgress && (
-                                    <div className="mt-1.5 sm:mt-3 w-full h-1 bg-gray-200 rounded-full overflow-hidden">
-                                      <div 
-                                        className={`h-full rounded-full transition-all duration-500 ${
-                                          displayStatus === 'return_approved' ? 'bg-purple-500' :
-                                          displayProgress === 100 ? 'bg-green-500' : 
-                                          isReturn ? 'bg-purple-500' : 'bg-orange-500'
-                                        }`}
-                                        style={{ width: `${displayProgress}%` }}
-                                      />
-                                    </div>
-                                  )}
-                                </div>
+                                <button
+                                  onClick={() => {
+                                    const bookingInfo = getBookingInfo();
+                                    const senderInfo = getSenderInfo();
+                                    const receiverInfo = getReceiverInfo();
+                                    setSelectedContainerDetails({
+                                      stepTitle,
+                                      stepDate,
+                                      stepLocation,
+                                      stepDescription,
+                                      bookingNumber: bookingInfo.bookingNumber,
+                                      shipmentNumber: bookingInfo.shipmentNumber,
+                                      quantity: bookingInfo.quantity,
+                                      weight: bookingInfo.weight,
+                                      volume: bookingInfo.volume,
+                                      vesselNumber: getShipmentVessel(),
+                                      containerNumber: getShipmentContainerValue('containerNumber'),
+                                      voyageNumber: getShipmentVoyage(),
+                                      portOfLoading: getRouteOrigin() || 'N/A',
+                                      portOfDischarge: getRouteDestination() || 'N/A',
+                                      blNumber: getShipmentBlValue(),
+                                      senderName: senderInfo.name,
+                                      senderEmail: senderInfo.email,
+                                      senderPhone: senderInfo.phone,
+                                      senderAddress: senderInfo.address,
+                                      receiverName: receiverInfo.name,
+                                      receiverEmail: receiverInfo.email,
+                                      receiverPhone: receiverInfo.phone,
+                                      receiverAddress: receiverInfo.address,
+                                      status: stepTitle || 'N/A'
+                                    });
+                                  }}
+                                  className="w-full bg-gradient-to-r from-[#AB1139] to-red-500 text-white py-2 rounded-lg font-semibold hover:bg-red-700 transition"
+                                >
+                                  Check Details
+                                </button>
                               </div>
                             </div>
                           );
                         })}
-                        </div>
                       </div>
                     );
                   })()}
@@ -2198,6 +2352,9 @@ export default function TrackingPage() {
           </div>
         )}
       </div>
+
+      {/* Container Details Modal */}
+      <ContainerDetailsModal />
     </div>
   );
 }
