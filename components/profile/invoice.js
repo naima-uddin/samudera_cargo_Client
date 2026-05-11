@@ -105,7 +105,7 @@ const getStatusTextPDF = (paymentStatus) => {
 // PDF Component
 const InvoicePDF = ({ invoice, companyInfo }) => {
   const defaultCompany = {
-     name: 'B2B Logistics Group',
+     name: 'Samudera Cargo',
     address: '8825 STANFORD BLVD, SUITE 306,  ',
     city: 'COLUMBIA, MD 21045,USA',
     phone: '+66977830395',
@@ -191,7 +191,7 @@ const InvoicePDF = ({ invoice, companyInfo }) => {
 };
  
 const COMPANY_INFO = {
-  name: 'B2B Logistics Group',
+  name: 'Samudera Cargo',
   address: '8825 STANFORD BLVD, SUITE 306,',
   city: 'COLUMBIA, MD 21045,USA',
   phone: '+66977830395',
