@@ -161,20 +161,17 @@ const InterestingFacts = () => {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden bg-slate-50 py-20 text-slate-900">
-     
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
           <div className="rounded-[32px] border border-slate-200 bg-white p-10 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <span className="inline-flex rounded-full bg-[#d10000]/10 px-4 py-2 text-xs uppercase tracking-[0.35em] text-[#b32f2f]">
-                  Cargo performance
-                </span>
-                <h2 className="mt-5 text-3xl sm:text-4xl font-semibold text-slate-950">
+                <h2 className="mt-0 text-3xl sm:text-4xl font-semibold text-slate-950 pt-serif-bold">
                   Light data, heavy logistics impact.
                 </h2>
               </div>
-              <div className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-600">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 px-2 py-1 text-xs
+             font-medium text-slate-600">
                 Compact, confident, cargo-ready
               </div>
             </div>
@@ -182,27 +179,10 @@ const InterestingFacts = () => {
             <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600">
               Our cargo metrics are designed for quick decision-making — clear, modern, and grounded in real shipment performance.
             </p>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {facts.map((fact, index) => (
-                <div key={fact.id} className="rounded-[24px] border border-slate-200 bg-slate-50 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#1D2D52] hover:bg-white">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-[#1D2D52] text-white shadow-md">
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d={fact.icon} /></svg>
-                  </div>
-                  <p className="mt-4 text-xs uppercase tracking-[0.35em] text-slate-500">{fact.title}</p>
-                  <p className="mt-3 text-3xl font-semibold text-slate-950">
-                    {isVisible ? counters[index] : 0}
-                    <span className="text-xl text-[#d10000]">{fact.unit}</span>
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{fact.description}</p>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="grid gap-4">
             <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
-              
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/15 via-transparent to-transparent" />
               <div className="absolute left-5 bottom-5 right-5 rounded-[24px] bg-white/95 p-5 text-slate-950 shadow-lg backdrop-blur-sm">
                 <p className="text-xs uppercase tracking-[0.35em] text-[#d10000]">Cargo visibility</p>
@@ -226,6 +206,26 @@ const InterestingFacts = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          {facts.map((fact, index) => (
+            <div key={fact.id} className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#d10000]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-[#d10000] text-white shadow-lg">
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d={fact.icon} /></svg>
+                </div>
+                <p className="text-xs uppercase tracking-[0.35em] text-[#6b7280]">{fact.title}</p>
+              </div>
+              <div className="mt-4 flex items-end gap-2">
+                <p className="text-3xl font-semibold text-[#d10000] leading-none">
+                  {isVisible ? counters[index] : 0}
+                </p>
+                <span className="pb-1 text-lg font-semibold text-[#1D2D52]">{fact.unit}</span>
+              </div>
+              <p className="mt-3 text-sm leading-6 text-slate-500">{fact.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
