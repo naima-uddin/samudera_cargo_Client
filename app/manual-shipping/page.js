@@ -29,7 +29,7 @@ const STATUS_CONFIG = {
 };
 
 const COLORS = {
-  primary: '#f97316',
+  primary: '#F91616',
   secondary: '#3b82f6',
   success: '#10b981',
   info: '#0ea5e9',

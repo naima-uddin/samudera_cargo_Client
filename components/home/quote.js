@@ -22,7 +22,7 @@ export default function RequestQuote() {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.samuderathai.com/api/v1';
 
   // Dropdown options
   const originOptions = ['China', 'Thailand'];

@@ -2011,7 +2011,7 @@ export default function CustomerBookingsPage() {
                       <td className="px-4 py-3">
                         <div>
                           <div 
-                            className="text-sm font-medium cursor-pointer hover:underline text-[#E67E22]"
+                            className="text-sm font-medium cursor-pointer hover:underline text-[#F91616]"
                             onClick={() => handleViewBooking(booking)}
                           >
                             #{booking.bookingNumber || booking._id?.slice(-8).toUpperCase()}

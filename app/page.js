@@ -31,13 +31,13 @@ export const metadata = {
     "Global Logistics",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com",
+    canonical: "https://samuderathai.com",
   },
   openGraph: {
     title: "Samudera Traffic Co., Ltd.s Group | Global Freight Forwarding & Supply Chain Solutions",
     description:
       "Samudera Traffic Co., Ltd.s Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide.",
-    url: "https://client.cargologisticscompany.com",
+    url: "https://samuderathai.com",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -91,12 +91,12 @@ export default function Page() {
             name: "Samudera Traffic Co., Ltd.s Group",
             description:
               "Samudera Traffic Co., Ltd.s Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide.",
-            url: "https://client.cargologisticscompany.com",
+            url: "https://samuderathai.com",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
           }),
         }}
@@ -110,8 +110,8 @@ export default function Page() {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "Samudera Traffic Co., Ltd.s Group",
-            url: "https://client.cargologisticscompany.com",
-            logo: "https://client.cargologisticscompany.com/logo.png",
+            url: "https://samuderathai.com",
+            logo: "https://samuderathai.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
             foundingDate: "2009",
             address: {
@@ -146,7 +146,7 @@ export default function Page() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "Samudera Traffic Co., Ltd.s Group",
-            image: "https://client.cargologisticscompany.com/logo.png",
+            image: "https://samuderathai.com/logo.png",
             address: {
               "@type": "PostalAddress",
               streetAddress: "Green Tower, 9th floor, 3656/27-28 Rama IV Road",
@@ -224,7 +224,7 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
             ],
           }),

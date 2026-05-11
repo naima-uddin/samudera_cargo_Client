@@ -18,13 +18,13 @@ export const metadata = {
     "Pricing Table",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/about",
+    canonical: "https://samuderathai.com/about",
   },
   openGraph: {
     title: "About Us | Samudera Traffic Co., Ltd.s Group",
     description:
       "Learn more about Samudera Traffic Co., Ltd.s Group, including our company story, history, team, projects, and pricing information.",
-    url: "https://client.cargologisticscompany.com/about",
+    url: "https://samuderathai.com/about",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -65,14 +65,14 @@ export default function Page() {
             "@context": "https://schema.org",
             "@type": "AboutPage",
             name: "About Us",
-            url: "https://client.cargologisticscompany.com/about",
+            url: "https://samuderathai.com/about",
             description:
               "Learn more about Samudera Traffic Co., Ltd.s Group, including our company story, history, team, projects, and pricing information.",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
           }),
         }}

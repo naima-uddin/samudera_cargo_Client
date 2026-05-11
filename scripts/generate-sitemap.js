@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SITE_URL = (process.env.SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://client.cargologisticscompany.com').replace(/\/$/, '');
+const SITE_URL = (process.env.SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://samuderathai.com').replace(/\/$/, '');
 const APP_DIR = path.join(process.cwd(), 'app');
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 const PUBLIC_SITEMAP_PATH = path.join(PUBLIC_DIR, 'sitemap.xml');

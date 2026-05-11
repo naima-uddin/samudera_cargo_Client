@@ -19,13 +19,13 @@ export const metadata = {
     "Shipment History",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/bookings/my_bookings",
+    canonical: "https://samuderathai.com/bookings/my_bookings",
   },
   openGraph: {
     title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
     description:
       "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
-    url: "https://client.cargologisticscompany.com/bookings/my_bookings",
+    url: "https://samuderathai.com/bookings/my_bookings",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -65,12 +65,12 @@ export default function Page() {
             name: "My Shipments Dashboard",
             description:
               "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
-            url: "https://client.cargologisticscompany.com/bookings/my_bookings",
+            url: "https://samuderathai.com/bookings/my_bookings",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "WebPageElement",
@@ -83,7 +83,7 @@ export default function Page() {
               description: "View, track, and manage all logistics shipments",
               target: {
                 "@type": "EntryPoint",
-                urlTemplate: "https://client.cargologisticscompany.com/bookings/my_bookings",
+                urlTemplate: "https://samuderathai.com/bookings/my_bookings",
                 actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"],
               },
             },
@@ -103,19 +103,19 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Bookings",
-                item: "https://client.cargologisticscompany.com/bookings",
+                item: "https://samuderathai.com/bookings",
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: "My Shipments",
-                item: "https://client.cargologisticscompany.com/bookings/my_bookings",
+                item: "https://samuderathai.com/bookings/my_bookings",
               },
             ],
           }),

@@ -19,13 +19,13 @@ export const metadata = {
     "Logistics Payments",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/invoices",
+    canonical: "https://samuderathai.com/invoices",
   },
   openGraph: {
     title: "My Invoices | Samudera Traffic Co., Ltd.s Group",
     description:
       "View and manage your shipping invoices with Samudera Traffic Co., Ltd.s Group. Track invoice status, download PDF copies, view payment history, and manage your logistics billing online.",
-    url: "https://client.cargologisticscompany.com/invoices",
+    url: "https://samuderathai.com/invoices",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -65,12 +65,12 @@ export default function Page() {
             name: "My Invoices",
             description:
               "View and manage your shipping invoices with Samudera Traffic Co., Ltd.s Group. Track invoice status, download PDF copies, view payment history, and manage your logistics billing online.",
-            url: "https://client.cargologisticscompany.com/invoices",
+            url: "https://samuderathai.com/invoices",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "ItemList",
@@ -93,19 +93,19 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Customer Dashboard",
-                item: "https://client.cargologisticscompany.com/customer/dashboard",
+                item: "https://samuderathai.com/customer/dashboard",
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: "My Invoices",
-                item: "https://client.cargologisticscompany.com/invoices",
+                item: "https://samuderathai.com/invoices",
               },
             ],
           }),

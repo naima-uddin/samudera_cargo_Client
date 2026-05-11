@@ -20,13 +20,13 @@ export const metadata = {
     "Business Profile",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/profile",
+    canonical: "https://samuderathai.com/profile",
   },
   openGraph: {
     title: "My Profile | Samudera Traffic Co., Ltd.s Group",
     description:
       "Manage your Samudera Traffic Co., Ltd.s Group profile. Update personal information, view business details, manage preferences, and access security settings for your logistics account.",
-    url: "https://client.cargologisticscompany.com/profile",
+    url: "https://samuderathai.com/profile",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -69,12 +69,12 @@ export default function Page() {
             name: "User Profile",
             description:
               "Manage your Samudera Traffic Co., Ltd.s Group profile. Update personal information, view business details, manage preferences, and access security settings.",
-            url: "https://client.cargologisticscompany.com/profile",
+            url: "https://samuderathai.com/profile",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "ProfilePage",
@@ -97,19 +97,19 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Customer Dashboard",
-                item: "https://client.cargologisticscompany.com/customer/dashboard",
+                item: "https://samuderathai.com/customer/dashboard",
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: "My Profile",
-                item: "https://client.cargologisticscompany.com/profile",
+                item: "https://samuderathai.com/profile",
               },
             ],
           }),

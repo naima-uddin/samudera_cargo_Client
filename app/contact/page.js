@@ -19,13 +19,13 @@ export const metadata = {
     "Transportation Solutions",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/contact",
+    canonical: "https://samuderathai.com/contact",
   },
   openGraph: {
     title: "Contact Us | Samudera Traffic Co., Ltd.s Group",
     description:
       "Get in touch with Samudera Traffic Co., Ltd.s Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
-    url: "https://client.cargologisticscompany.com/contact",
+    url: "https://samuderathai.com/contact",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -65,12 +65,12 @@ export default function Page() {
             name: "Contact Us",
             description:
               "Get in touch with Samudera Traffic Co., Ltd.s Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
-            url: "https://client.cargologisticscompany.com/contact",
+            url: "https://samuderathai.com/contact",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "Organization",
@@ -133,13 +133,13 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Contact Us",
-                item: "https://client.cargologisticscompany.com/contact",
+                item: "https://samuderathai.com/contact",
               },
             ],
           }),

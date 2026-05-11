@@ -19,13 +19,13 @@ export const metadata = {
     "Freight Registration",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/auth/register",
+    canonical: "https://samuderathai.com/auth/register",
   },
   openGraph: {
     title: "Create Account | Samudera Traffic Co., Ltd.s Group",
     description:
       "Join Samudera Traffic Co., Ltd.s Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
-    url: "https://client.cargologisticscompany.com/auth/register",
+    url: "https://samuderathai.com/auth/register",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -65,12 +65,12 @@ export default function Page() {
             name: "Create Account",
             description:
               "Join Samudera Traffic Co., Ltd.s Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
-            url: "https://client.cargologisticscompany.com/auth/register",
+            url: "https://samuderathai.com/auth/register",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "WebPageElement",
@@ -83,7 +83,7 @@ export default function Page() {
               description: "Create new customer account for logistics services",
               target: {
                 "@type": "EntryPoint",
-                urlTemplate: "https://client.cargologisticscompany.com/auth/register",
+                urlTemplate: "https://samuderathai.com/auth/register",
                 actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"],
               },
             },
@@ -103,19 +103,19 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Authentication",
-                item: "https://client.cargologisticscompany.com/auth",
+                item: "https://samuderathai.com/auth",
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: "Create Account",
-                item: "https://client.cargologisticscompany.com/auth/register",
+                item: "https://samuderathai.com/auth/register",
               },
             ],
           }),

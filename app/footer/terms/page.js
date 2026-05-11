@@ -19,13 +19,13 @@ export const metadata = {
     "User Agreement",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/terms-of-service",
+    canonical: "https://samuderathai.com/terms-of-service",
   },
   openGraph: {
     title: "Terms of Service | Samudera Traffic Co., Ltd.s Group",
     description:
       "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations.",
-    url: "https://client.cargologisticscompany.com/terms-of-service",
+    url: "https://samuderathai.com/terms-of-service",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -65,12 +65,12 @@ export default function Page() {
             name: "Terms of Service",
             description:
               "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations across Thailand, China, USA, UK & Canada.",
-            url: "https://client.cargologisticscompany.com/terms-of-service",
+            url: "https://samuderathai.com/terms-of-service",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "WebPageElement",

@@ -19,13 +19,13 @@ export const metadata = {
     "Logistics Plans",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/pricing",
+    canonical: "https://samuderathai.com/pricing",
   },
   openGraph: {
     title: "Pricing Table | Samudera Traffic Co., Ltd.s Group",
     description:
       "Explore our competitive pricing plans for logistics, supply chain management, warehousing, and cargo services. Find the right solution for your business needs at Samudera Traffic Co., Ltd.s Group.",
-    url: "https://client.cargologisticscompany.com/pricing",
+    url: "https://samuderathai.com/pricing",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -74,8 +74,8 @@ export default function Page() {
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
           }),
         }}

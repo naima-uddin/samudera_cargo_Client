@@ -19,13 +19,13 @@ export const metadata = {
     "Account Access",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/auth/forgot-password",
+    canonical: "https://samuderathai.com/auth/forgot-password",
   },
   openGraph: {
     title: "Forgot Password | Samudera Traffic Co., Ltd.s Group",
     description:
       "Reset your password for Samudera Traffic Co., Ltd.s Group account. Enter your email to receive a verification code and create a new password to regain access to your logistics account.",
-    url: "https://client.cargologisticscompany.com/auth/forgot-password",
+    url: "https://samuderathai.com/auth/forgot-password",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -65,12 +65,12 @@ export default function Page() {
             name: "Forgot Password",
             description:
               "Reset your password for Samudera Traffic Co., Ltd.s Group account. Enter your email to receive a verification code and create a new password to regain access to your logistics account.",
-            url: "https://client.cargologisticscompany.com/auth/forgot-password",
+            url: "https://samuderathai.com/auth/forgot-password",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "WebPageElement",

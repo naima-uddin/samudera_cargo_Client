@@ -19,13 +19,13 @@ export const metadata = {
     "Freight Services",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/why-choose-us",
+    canonical: "https://samuderathai.com/why-choose-us",
   },
   openGraph: {
     title: "Why Choose Us | Samudera Traffic Co., Ltd.s Group",
     description:
       "Discover why Samudera Traffic Co., Ltd.s Group is the right choice for your shipping needs. We offer precision timing, end-to-end visibility, advanced technology, and a reliable global network.",
-    url: "https://client.cargologisticscompany.com/why-choose-us",
+    url: "https://samuderathai.com/why-choose-us",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {

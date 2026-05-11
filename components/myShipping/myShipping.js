@@ -48,7 +48,7 @@ import {
 
 // ==================== COLOR CONSTANTS ====================
 const COLORS = {
-  primary: '#E67E22',
+  primary: '#F91616',
   secondary: '#3C719D',
   success: '#10b981',
   danger: '#ef4444',
@@ -1796,8 +1796,7 @@ export default function ShipmentsPage() {
               >
                 Refresh
               </Button>
-              <Button 
-                variant="primary" 
+              <Button className='bg-red-600 text-white'
                 size="sm" 
                 onClick={() => router.push('/Bookings/my_bookings')}
                 icon={Plus}

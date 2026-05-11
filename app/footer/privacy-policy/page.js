@@ -19,13 +19,13 @@ export const metadata = {
     "Privacy Rights",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/privacy-policy",
+    canonical: "https://samuderathai.com/privacy-policy",
   },
   openGraph: {
     title: "Privacy Policy | Samudera Traffic Co., Ltd.s Group",
     description:
       "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd.s Group collects, uses, and protects your personal information. Learn about data security and your privacy rights.",
-    url: "https://client.cargologisticscompany.com/privacy-policy",
+    url: "https://samuderathai.com/privacy-policy",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -65,12 +65,12 @@ export default function Page() {
             name: "Privacy Policy",
             description:
               "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd.s Group collects, uses, and protects your personal information. Learn about data security, your rights, and our commitment to privacy.",
-            url: "https://client.cargologisticscompany.com/privacy-policy",
+            url: "https://samuderathai.com/privacy-policy",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "WebPageElement",

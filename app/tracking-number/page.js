@@ -19,13 +19,13 @@ export const metadata = {
     "Delivery Status",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/tracking",
+    canonical: "https://samuderathai.com/tracking",
   },
   openGraph: {
     title: "Track Shipment | Samudera Traffic Co., Ltd.s Group",
     description:
       "Track your shipment in real-time with Samudera Traffic Co., Ltd.s Group. Enter your tracking number to get live updates on your cargo location, status, and estimated delivery time.",
-    url: "https://client.cargologisticscompany.com/tracking",
+    url: "https://samuderathai.com/tracking",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -65,12 +65,12 @@ export default function Page() {
             name: "Track Shipment",
             description:
               "Track your shipment in real-time with Samudera Traffic Co., Ltd.s Group. Enter your tracking number to get live updates on your cargo location, status, and estimated delivery time.",
-            url: "https://client.cargologisticscompany.com/tracking",
+            url: "https://samuderathai.com/tracking",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "WebPageElement",
@@ -83,7 +83,7 @@ export default function Page() {
               description: "Track your shipment by entering tracking number",
               target: {
                 "@type": "EntryPoint",
-                urlTemplate: "https://client.cargologisticscompany.com/tracking",
+                urlTemplate: "https://samuderathai.com/tracking",
                 actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"],
               },
             },
@@ -103,13 +103,13 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Track Shipment",
-                item: "https://client.cargologisticscompany.com/tracking",
+                item: "https://samuderathai.com/tracking",
               },
             ],
           }),
@@ -138,7 +138,7 @@ export default function Page() {
               name: "Track Shipment",
               target: {
                 "@type": "EntryPoint",
-                urlTemplate: "https://client.cargologisticscompany.com/tracking?trackingNumber={tracking_number}",
+                urlTemplate: "https://samuderathai.com/tracking?trackingNumber={tracking_number}",
                 actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"],
               },
             },

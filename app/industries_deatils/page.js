@@ -21,13 +21,13 @@ export const metadata = {
     "Global Transport Network",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/industries-details",
+    canonical: "https://samuderathai.com/industries-details",
   },
   openGraph: {
     title: "Industries Details | Samudera Traffic Co., Ltd.s Group",
     description:
       "Discover our tailored logistics solutions for various industries. We provide just-in-time delivery, returnable packaging, specialized vehicles, rapid delivery, and advanced technology solutions.",
-    url: "https://client.cargologisticscompany.com/industries-details",
+    url: "https://samuderathai.com/industries-details",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -69,12 +69,12 @@ export default function Page() {
             name: "Industries Details",
             description:
               "Discover our tailored logistics solutions for various industries. We provide just-in-time delivery, returnable packaging, specialized vehicles, rapid delivery, and advanced technology solutions for your business needs.",
-            url: "https://client.cargologisticscompany.com/industries-details",
+            url: "https://samuderathai.com/industries-details",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "ItemList",
@@ -122,19 +122,19 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Industries",
-                item: "https://client.cargologisticscompany.com/industries",
+                item: "https://samuderathai.com/industries",
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: "Industries Details",
-                item: "https://client.cargologisticscompany.com/industries-details",
+                item: "https://samuderathai.com/industries-details",
               },
             ],
           }),

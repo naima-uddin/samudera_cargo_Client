@@ -20,13 +20,13 @@ export const metadata = {
     "Freight Forwarding",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/service",
+    canonical: "https://samuderathai.com/service",
   },
   openGraph: {
     title: "Our Services | Samudera Traffic Co., Ltd.s Group",
     description:
       "Explore our comprehensive logistics services at Samudera Traffic Co., Ltd.s Group. We offer sea freight, air freight, road freight, warehousing, customs clearance, and supply chain solutions for businesses worldwide.",
-    url: "https://client.cargologisticscompany.com/service",
+    url: "https://samuderathai.com/service",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -69,12 +69,12 @@ export default function Page() {
             name: "Our Services",
             description:
               "Explore our comprehensive logistics services at Samudera Traffic Co., Ltd.s Group. We offer sea freight, air freight, road freight, warehousing, customs clearance, and supply chain solutions.",
-            url: "https://client.cargologisticscompany.com/service",
+            url: "https://samuderathai.com/service",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "ItemList",
@@ -134,13 +134,13 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Services",
-                item: "https://client.cargologisticscompany.com/service",
+                item: "https://samuderathai.com/service",
               },
             ],
           }),

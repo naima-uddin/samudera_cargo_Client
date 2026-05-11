@@ -19,13 +19,13 @@ export const metadata = {
     "Shipping History",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/history",
+    canonical: "https://samuderathai.com/history",
   },
   openGraph: {
     title: "Our History | Samudera Traffic Co., Ltd.s Group",
     description:
       "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd.s Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
-    url: "https://client.cargologisticscompany.com/history",
+    url: "https://samuderathai.com/history",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -65,12 +65,12 @@ export default function Page() {
             name: "Our History",
             description:
               "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd.s Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
-            url: "https://client.cargologisticscompany.com/history",
+            url: "https://samuderathai.com/history",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "Organization",

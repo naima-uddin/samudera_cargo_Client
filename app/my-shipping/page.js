@@ -20,13 +20,13 @@ export const metadata = {
     "Real-time Tracking",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/shipments",
+    canonical: "https://samuderathai.com/shipments",
   },
   openGraph: {
     title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
     description:
       "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View real-time shipment status, track packages, monitor transit progress, and manage your logistics operations from one dashboard.",
-    url: "https://client.cargologisticscompany.com/shipments",
+    url: "https://samuderathai.com/shipments",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -69,12 +69,12 @@ export default function Page() {
             name: "My Shipments Dashboard",
             description:
               "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View real-time shipment status, track packages, monitor transit progress, and manage your logistics operations.",
-            url: "https://client.cargologisticscompany.com/shipments",
+            url: "https://samuderathai.com/shipments",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "ItemList",
@@ -97,19 +97,19 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Customer Dashboard",
-                item: "https://client.cargologisticscompany.com/customer/dashboard",
+                item: "https://samuderathai.com/customer/dashboard",
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: "My Shipments",
-                item: "https://client.cargologisticscompany.com/shipments",
+                item: "https://samuderathai.com/shipments",
               },
             ],
           }),

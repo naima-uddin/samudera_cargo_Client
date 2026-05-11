@@ -20,13 +20,13 @@ export const metadata = {
     "Shipment Booking",
   ],
   alternates: {
-    canonical: "https://client.cargologisticscompany.com/create-booking",
+    canonical: "https://samuderathai.com/create-booking",
   },
   openGraph: {
     title: "Create Booking | Samudera Traffic Co., Ltd.s Group",
     description:
       "Create a new shipping booking with Samudera Traffic Co., Ltd.s Group. Book sea freight, air freight, inland trucking, or multimodal shipping. Get competitive rates with real-time tracking.",
-    url: "https://client.cargologisticscompany.com/create-booking",
+    url: "https://samuderathai.com/create-booking",
     siteName: "Samudera Traffic Co., Ltd.s Group",
     images: [
       {
@@ -66,12 +66,12 @@ export default function Page() {
             name: "Create Shipping Booking",
             description:
               "Create a new shipping booking with Samudera Traffic Co., Ltd.s Group. Book sea freight, air freight, inland trucking, or multimodal shipping with competitive rates.",
-            url: "https://client.cargologisticscompany.com/create-booking",
+            url: "https://samuderathai.com/create-booking",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",
-              url: "https://client.cargologisticscompany.com",
-              logo: "https://client.cargologisticscompany.com/logo.png",
+              url: "https://samuderathai.com",
+              logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "WebPageElement",
@@ -84,7 +84,7 @@ export default function Page() {
               description: "Book shipping services including sea freight, air freight, and inland trucking",
               target: {
                 "@type": "EntryPoint",
-                urlTemplate: "https://client.cargologisticscompany.com/create-booking",
+                urlTemplate: "https://samuderathai.com/create-booking",
                 actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"],
               },
             },
@@ -104,19 +104,19 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Bookings",
-                item: "https://client.cargologisticscompany.com/bookings",
+                item: "https://samuderathai.com/bookings",
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: "Create Booking",
-                item: "https://client.cargologisticscompany.com/create-booking",
+                item: "https://samuderathai.com/create-booking",
               },
             ],
           }),
