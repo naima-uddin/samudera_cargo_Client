@@ -1034,8 +1034,8 @@ export default function TrackingPage() {
 
     const dedupedContainers = [...new Set(containerNumbers)];
     const dedupedSeals = [...new Set(sealNumbers)];
-    const vesselName = getShipmentVessel();
-    const voyageNumber = getShipmentVoyage();
+    const vessels = getShipmentVessels();
+    const voyages = getShipmentVoyages();
     const blNumber = getShipmentBlValue();
 
     return (
@@ -1051,16 +1051,24 @@ export default function TrackingPage() {
             <span className="text-red-600">Seal:</span> {dedupedSeals.join(', ')}
           </>
         )}
-        {(vesselName && vesselName !== 'N/A') && (
+        {(vessels.length > 0 && vessels[0] !== 'N/A') && (
           <>
             <br />
-            <span className="text-red-600">Vessel:</span> {vesselName}
+            {vessels.map((v, i) => (
+              <div key={`vessel-${i}`}>
+                <span className="text-red-600">Vessel{vessels.length > 1 ? ` ${i + 1}` : ''}:</span> {v}
+              </div>
+            ))}
           </>
         )}
-        {(voyageNumber && voyageNumber !== 'N/A') && (
+        {(voyages.length > 0 && voyages[0] !== 'N/A') && (
           <>
             <br />
-            <span className="text-red-600">Voyage:</span> {voyageNumber}
+            {voyages.map((v, i) => (
+              <div key={`voyage-${i}`}>
+                <span className="text-red-600">Voyage{voyages.length > 1 ? ` ${i + 1}` : ''}:</span> {v}
+              </div>
+            ))}
           </>
         )}
         {(blNumber && blNumber !== 'N/A') && (
@@ -1741,7 +1749,7 @@ export default function TrackingPage() {
                                         <div className="mt-2 rounded-lg border border-orange-200 bg-orange-50/70 px-3 py-2">
                                           <div className="flex items-center gap-1.5 text-[11px] font-semibold text-orange-700 mb-1.5">
                                             <Container className="h-3.5 w-3.5" />
-                                            Container & Sealed Details
+                                            Container, Sealed & BL Numbers
                                           </div>
                                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
                                             <p className="text-gray-700 break-words">
@@ -1751,6 +1759,10 @@ export default function TrackingPage() {
                                             <p className="text-gray-700 break-words">
                                               <span className="font-semibold text-red-600">Seal:</span>{' '}
                                               {cleanedSealedContainers.map((container) => container.sealNumber).filter((value) => value && value !== 'N/A').join(', ') || 'N/A'}
+                                            </p>
+                                            <p className="text-gray-700 break-words">
+                                              <span className="font-semibold text-red-600">BL:</span>{' '}
+                                              {cleanedSealedContainers.map((container) => container.blNumber).filter((value) => value && value !== 'N/A').join(', ') || 'N/A'}
                                             </p>
                                           </div>
                                         </div>
