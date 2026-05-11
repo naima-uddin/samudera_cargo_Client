@@ -128,26 +128,26 @@ const InterestingFacts = () => {
 
       <div className="relative max-w-7xl mx-auto px-4">
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {facts.map((fact, index) => (
             <motion.div
               key={fact.id}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 8 }}
               transition={{ delay: 0.06 * index, duration: 0.5 }}
-              className="relative  p-4 sm:p-6 rounded-xl shadow hover:shadow-xl transition-shadow duration-300"
+              className="relative p-3 sm:p-4 md:p-6 rounded-xl shadow hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#ff2a2a] to-[#521801] text-white shadow-md">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={fact.icon} /></svg>
+                  <div className="w-10 h-10 sm:w-12 md:w-14 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#d10000] to-[#1D2D52] text-white shadow-md">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={fact.icon} /></svg>
                   </div>
                 </div>
 
                 <div className="flex-1">
-                  <div className="text-xl text-white uppercase tracking-wider pt-serif-regular">{fact.title}</div>
+                  <div className="text-base sm:text-lg md:text-xl text-white uppercase tracking-wider pt-serif-regular">{fact.title}</div>
                   <div className="mt-2 flex items-baseline gap-2">
-                    <div className="md:text-4xl text-3xl lg:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#d10000] to-[#a12402]">
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#d10000] to-[#a12402]">
                       {fact.displayValue.includes('K') ? formatCounterValue(index) : counters[index]}
                     </div>
                     {fact.unit && <div className="text-sm text-white">{fact.unit}</div>}
