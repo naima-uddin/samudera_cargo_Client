@@ -807,6 +807,8 @@ export default function TrackingPage() {
   const getShipmentVessel = () => {
     return trackingData?.transport?.vesselName ||
            trackingData?.shipmentDetails?.vesselName ||
+           trackingData?.consolidation?.vesselName ||
+           trackingData?.consolidation?.carrier?.vesselNumber ||
            trackingData?.vesselName ||
            trackingData?.vessel ||
            'N/A';
@@ -815,6 +817,7 @@ export default function TrackingPage() {
   const getShipmentVoyage = () => {
     return trackingData?.transport?.voyageNumber ||
            trackingData?.shipmentDetails?.voyageNumber ||
+           trackingData?.consolidation?.voyageNumber ||
            trackingData?.voyageNumber ||
            trackingData?.voyage ||
            'N/A';
@@ -832,6 +835,9 @@ export default function TrackingPage() {
 
     const blValues = [];
     if (trackingData?.consolidation?.blNumber) blValues.push(trackingData.consolidation.blNumber);
+    if (trackingData?.consolidation?.blNumbers) {
+      blValues.push(...trackingData.consolidation.blNumbers.map((v) => v.trim()).filter(Boolean));
+    }
     if (trackingData?.shipmentDetails?.blNumber) {
       blValues.push(...trackingData.shipmentDetails.blNumber.split(',').map((v) => v.trim()).filter(Boolean));
     }

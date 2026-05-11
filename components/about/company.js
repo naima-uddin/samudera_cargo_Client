@@ -30,6 +30,33 @@ const features = [
   },
 ];
 
+const facts = [
+  {
+    id: 1,
+    title: 'On-time delivery',
+    value: 98,
+    unit: '%',
+    description: 'Precision delivery across global lanes.',
+    icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    id: 2,
+    title: 'Global coverage',
+    value: 60,
+    unit: '+',
+    description: 'Countries connected through our logistics network.',
+    icon: 'M9 12l2 2 4-4',
+  },
+  {
+    id: 3,
+    title: 'Weekly shipments',
+    value: 15,
+    unit: 'K+',
+    description: 'Thousands of cargo movements managed every week.',
+    icon: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4',
+  },
+];
+
 function WhyChooseUs() {
   return (
     <section className="relative overflow-hidden bg-white py-12">
@@ -98,25 +125,7 @@ function FeatureCard({ item, compact }) {
 const InterestingFacts = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-
-  const facts = [
-    {
-      id: 1,
-      title: 'WAREHOUSE SPACE',
-      numericValue: 400,
-      unit: 'k ft²',
-      description: 'Strategic storage space across high-value logistics hubs.',
-      icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4'
-    },
-    {
-      id: 2,
-      title: 'ON-TIME DELIVERY',
-      numericValue: 98,
-      unit: '%',
-      description: 'Precision delivery that keeps your schedules on track.',
-      icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-    }
-  ];
+  const [counters, setCounters] = useState([0, 0, 0]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -126,7 +135,7 @@ const InterestingFacts = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.25 }
     );
 
     if (sectionRef.current) {
@@ -136,34 +145,86 @@ const InterestingFacts = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!isVisible) return;
+    const duration = 900;
+    const start = performance.now();
+
+    const tick = (time) => {
+      const progress = Math.min((time - start) / duration, 1);
+      setCounters(facts.map((fact) => Math.round(fact.value * progress)));
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  }, [isVisible]);
+
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-white py-20">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.12),transparent_34%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_30%)]" />
+    <section ref={sectionRef} className="relative overflow-hidden bg-slate-50 py-20 text-slate-900">
+     
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-center">
-          <div className="rounded-[32px] border border-slate-200 bg-[#F8FAFC] p-10 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
-            <p className="text-[#d10000] font-semibold uppercase tracking-[0.35em] text-xs">Fast facts</p>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-[#1D2D52]">Performance metrics that speak for themselves.</h2>
-            <p className="mt-6 text-base leading-8 text-slate-600">
-              Every number reflects the efficiency, scale, and reliability built into our logistics network.
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
+          <div className="rounded-[32px] border border-slate-200 bg-white p-10 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <span className="inline-flex rounded-full bg-[#d10000]/10 px-4 py-2 text-xs uppercase tracking-[0.35em] text-[#b32f2f]">
+                  Cargo performance
+                </span>
+                <h2 className="mt-5 text-3xl sm:text-4xl font-semibold text-slate-950">
+                  Light data, heavy logistics impact.
+                </h2>
+              </div>
+              <div className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-600">
+                Compact, confident, cargo-ready
+              </div>
+            </div>
+
+            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600">
+              Our cargo metrics are designed for quick decision-making — clear, modern, and grounded in real shipment performance.
             </p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {facts.map((fact) => (
-              <div key={fact.id} className="relative overflow-hidden rounded-[28px] border border-slate-200 bg-white p-8 shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(29,45,82,0.12)]">
-                <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-[#d10000]/5" />
-                <div className="relative z-10 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-gradient-to-br from-[#d10000] to-[#1D2D52] text-white shadow-xl">
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              {facts.map((fact, index) => (
+                <div key={fact.id} className="rounded-[24px] border border-slate-200 bg-slate-50 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#1D2D52] hover:bg-white">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-[#1D2D52] text-white shadow-md">
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d={fact.icon} /></svg>
                   </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{fact.title}</p>
-                    <p className="mt-3 text-3xl font-bold text-[#1D2D52]"><span className="bg-gradient-to-r from-[#d10000] to-[#1D2D52] bg-clip-text text-transparent">{fact.numericValue}</span>{fact.unit}</p>
-                  </div>
+                  <p className="mt-4 text-xs uppercase tracking-[0.35em] text-slate-500">{fact.title}</p>
+                  <p className="mt-3 text-3xl font-semibold text-slate-950">
+                    {isVisible ? counters[index] : 0}
+                    <span className="text-xl text-[#d10000]">{fact.unit}</span>
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{fact.description}</p>
                 </div>
-                <p className="mt-6 text-sm leading-6 text-slate-600">{fact.description}</p>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/15 via-transparent to-transparent" />
+              <div className="absolute left-5 bottom-5 right-5 rounded-[24px] bg-white/95 p-5 text-slate-950 shadow-lg backdrop-blur-sm">
+                <p className="text-xs uppercase tracking-[0.35em] text-[#d10000]">Cargo visibility</p>
+                <h3 className="mt-2 text-xl font-semibold">Insight-led route control</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  Track every shipment with clearer timelines, smarter alerts, and delivery-grade planning.
+                </p>
               </div>
-            ))}
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-[24px] bg-[#F8FAFC] p-6 text-slate-900 shadow-sm border border-slate-200">
+                <p className="text-xs uppercase tracking-[0.35em] text-[#d10000]">Fuel savings</p>
+                <p className="mt-3 text-2xl font-semibold">18%</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">Lower costs from smarter route optimization.</p>
+              </div>
+              <div className="rounded-[24px] bg-[#F8FAFC] p-6 text-slate-900 shadow-sm border border-slate-200">
+                <p className="text-xs uppercase tracking-[0.35em] text-[#1D2D52]">Real-time alerts</p>
+                <p className="mt-3 text-2xl font-semibold">Instant</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">Stay ahead with event-based tracking and updates.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
