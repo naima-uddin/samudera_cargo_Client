@@ -190,7 +190,7 @@ function Contact() {
         <div>
           <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-1 sm:mb-2">Reach Us</h3>
           <p className="text-gray-600 text-xs sm:text-sm lg:text-base mb-0.5 sm:mb-1">
-            Phone: <span className="font-medium">+1-647-362-7735</span>
+            Phone: <span className="font-medium">+66 2 367 3747</span>
           </p>
           <p className="text-gray-600 text-xs sm:text-sm lg:text-base">
             Email:{" "}

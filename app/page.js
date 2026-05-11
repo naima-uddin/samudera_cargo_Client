@@ -122,7 +122,7 @@ export default function Page() {
             },
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+1-647-362-7735",
+              telephone: "+66 2 367 3747",
               contactType: "customer service",
               email: "support@cargologisticscompany.com",
               availableLanguage: ["English"],
@@ -153,7 +153,7 @@ export default function Page() {
               postalCode: "10110",
               addressCountry: "Thailand",
             },
-            telephone: "+1-647-362-7735",
+            telephone: "+66 2 367 3747",
             email: "support@cargologisticscompany.com",
             openingHoursSpecification: [
               {

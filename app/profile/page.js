@@ -126,7 +126,7 @@ export default function Page() {
             name: "Samudera Traffic Co., Ltd.s Customer",
             url: "https://client.cargologisticscompany.com/profile",
             email: "customer@cargologisticscompany.com",
-            telephone: "+1-647-362-7735",
+            telephone: "+66 2 367 3747",
             worksFor: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd.s Group",

@@ -413,11 +413,11 @@ Bangkok 10110, Thailand
               PHONE:
             </span>
             <a
-              href="tel:+1-647-362-7735"
+              href="tel:+66 2 367 3747"
               className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5"
             >
               <Phone className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
-              +1-647-362-7735
+              +66 2 367 3747
             </a>
           </div>
           <div className="flex flex-wrap items-center gap-x-1">

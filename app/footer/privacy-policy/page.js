@@ -128,7 +128,7 @@ export default function Page() {
             },
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+1-647-362-7735",
+              telephone: "+66 2 367 3747",
               contactType: "privacy",
               email: "info@samuderathai.com",
               availableLanguage: ["English"],
@@ -157,7 +157,7 @@ export default function Page() {
             legislation: ["GDPR", "CCPA"],
             contactPoint: {
               "@type": "ContactPoint",
-              telephone: "+1-647-362-7735",
+              telephone: "+66 2 367 3747",
               email: "info@samuderathai.com",
               contactType: "privacy officer",
             },
