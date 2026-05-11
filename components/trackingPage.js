@@ -1610,10 +1610,12 @@ export default function TrackingPage() {
                           const cleanedSealedContainers = sealedContainers.map((container) => ({
                             containerNumber: container.containerNumber,
                             sealNumber: container.sealNumber,
+                            blNumber: container.blNumber,
                           })).filter((container) => {
                             const containerNumber = container.containerNumber && container.containerNumber !== 'N/A';
                             const sealNumber = container.sealNumber && container.sealNumber !== 'N/A';
-                            return containerNumber || sealNumber;
+                            const blNumber = container.blNumber && container.blNumber !== 'N/A';
+                            return containerNumber || sealNumber || blNumber;
                           });
                           const hasSealedContainerInfo = (displayStatus === 'container_sealed' || event.status === 'container_sealed') && cleanedSealedContainers.length > 0;
                           const bookingRequestLabel = isManualShipment
