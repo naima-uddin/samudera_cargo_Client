@@ -808,30 +808,47 @@ export default function TrackingPage() {
 
   const getShipmentVessels = () => {
     const vessels = [];
+    const seenVessels = new Set();
 
     // Priority 1: Get from top-level vesselName (from consolidation or transport)
     if (trackingData?.vesselName && trackingData.vesselName !== 'N/A') {
-      vessels.push(trackingData.vesselName);
+      const vals = Array.isArray(trackingData.vesselName) ? trackingData.vesselName : [trackingData.vesselName];
+      vals.forEach(v => {
+        if (v && !seenVessels.has(v)) {
+          seenVessels.add(v);
+          vessels.push(v);
+        }
+      });
     }
 
     // Priority 2: Get from consolidation
     if (trackingData?.consolidation?.vesselName && trackingData.consolidation.vesselName !== 'N/A') {
-      if (!vessels.includes(trackingData.consolidation.vesselName)) {
-        vessels.push(trackingData.consolidation.vesselName);
-      }
+      const vals = Array.isArray(trackingData.consolidation.vesselName) ? trackingData.consolidation.vesselName : [trackingData.consolidation.vesselName];
+      vals.forEach(v => {
+        if (v && !seenVessels.has(v)) {
+          seenVessels.add(v);
+          vessels.push(v);
+        }
+      });
     }
 
     // Priority 3: Get from transportLegs array (multiple entries)
     if (Array.isArray(trackingData?.shipmentDetails?.transportLegs) && trackingData.shipmentDetails.transportLegs.length > 0) {
       trackingData.shipmentDetails.transportLegs.forEach(leg => {
-        if (leg?.vesselName && !vessels.includes(leg.vesselName)) vessels.push(leg.vesselName);
+        if (leg?.vesselName && !seenVessels.has(leg.vesselName)) {
+          seenVessels.add(leg.vesselName);
+          vessels.push(leg.vesselName);
+        }
       });
     }
 
     // Priority 4: Get from transportLegs at top level
     if (Array.isArray(trackingData?.transportLegs) && trackingData.transportLegs.length > 0) {
       trackingData.transportLegs.forEach(leg => {
-        if (leg?.vesselName && !vessels.includes(leg.vesselName)) vessels.push(leg.vesselName);
+        if (leg?.vesselName && !seenVessels.has(leg.vesselName)) {
+          seenVessels.add(leg.vesselName);
+          vessels.push(leg.vesselName);
+        }
       });
     }
 
@@ -841,24 +858,35 @@ export default function TrackingPage() {
                            trackingData?.shipmentDetails?.vesselName ||
                            trackingData?.consolidation?.carrier?.vesselNumber ||
                            trackingData?.vessel;
-      if (singleVessel) vessels.push(singleVessel);
+      if (singleVessel && !seenVessels.has(singleVessel)) {
+        seenVessels.add(singleVessel);
+        vessels.push(singleVessel);
+      }
     }
 
-    // Priority 6: Additional fallback: bookings collection (some APIs store vessel/voyage there)
+    // Priority 6: Additional fallback: bookings collection
     if (vessels.length === 0) {
-      const bookingVessels = [];
       if (Array.isArray(trackingData?.bookings)) {
         trackingData.bookings.forEach(b => {
-          if (b?.vesselName) bookingVessels.push(b.vesselName);
-          if (b?.transport?.vesselName) bookingVessels.push(b.transport.vesselName);
+          if (b?.vesselName && !seenVessels.has(b.vesselName)) {
+            seenVessels.add(b.vesselName);
+            vessels.push(b.vesselName);
+          }
+          if (b?.transport?.vesselName && !seenVessels.has(b.transport.vesselName)) {
+            seenVessels.add(b.transport.vesselName);
+            vessels.push(b.transport.vesselName);
+          }
         });
       }
       if (trackingData?.booking) {
-        if (trackingData.booking.vesselName) bookingVessels.push(trackingData.booking.vesselName);
-        if (trackingData.booking.transport?.vesselName) bookingVessels.push(trackingData.booking.transport.vesselName);
-      }
-      if (bookingVessels.length > 0) {
-        bookingVessels.forEach(v => { if (v && !vessels.includes(v)) vessels.push(v); });
+        if (trackingData.booking.vesselName && !seenVessels.has(trackingData.booking.vesselName)) {
+          seenVessels.add(trackingData.booking.vesselName);
+          vessels.push(trackingData.booking.vesselName);
+        }
+        if (trackingData.booking.transport?.vesselName && !seenVessels.has(trackingData.booking.transport.vesselName)) {
+          seenVessels.add(trackingData.booking.transport.vesselName);
+          vessels.push(trackingData.booking.transport.vesselName);
+        }
       }
     }
 
@@ -867,30 +895,47 @@ export default function TrackingPage() {
 
   const getShipmentVoyages = () => {
     const voyages = [];
+    const seenVoyages = new Set();
 
     // Priority 1: Get from top-level voyageNumber (from consolidation or transport)
     if (trackingData?.voyageNumber && trackingData.voyageNumber !== 'N/A') {
-      voyages.push(trackingData.voyageNumber);
+      const vals = Array.isArray(trackingData.voyageNumber) ? trackingData.voyageNumber : [trackingData.voyageNumber];
+      vals.forEach(v => {
+        if (v && !seenVoyages.has(v)) {
+          seenVoyages.add(v);
+          voyages.push(v);
+        }
+      });
     }
 
     // Priority 2: Get from consolidation
     if (trackingData?.consolidation?.voyageNumber && trackingData.consolidation.voyageNumber !== 'N/A') {
-      if (!voyages.includes(trackingData.consolidation.voyageNumber)) {
-        voyages.push(trackingData.consolidation.voyageNumber);
-      }
+      const vals = Array.isArray(trackingData.consolidation.voyageNumber) ? trackingData.consolidation.voyageNumber : [trackingData.consolidation.voyageNumber];
+      vals.forEach(v => {
+        if (v && !seenVoyages.has(v)) {
+          seenVoyages.add(v);
+          voyages.push(v);
+        }
+      });
     }
 
     // Priority 3: Get from transportLegs array (multiple entries)
     if (Array.isArray(trackingData?.shipmentDetails?.transportLegs) && trackingData.shipmentDetails.transportLegs.length > 0) {
       trackingData.shipmentDetails.transportLegs.forEach(leg => {
-        if (leg?.voyageNumber && !voyages.includes(leg.voyageNumber)) voyages.push(leg.voyageNumber);
+        if (leg?.voyageNumber && !seenVoyages.has(leg.voyageNumber)) {
+          seenVoyages.add(leg.voyageNumber);
+          voyages.push(leg.voyageNumber);
+        }
       });
     }
 
     // Priority 4: Get from transportLegs at top level
     if (Array.isArray(trackingData?.transportLegs) && trackingData.transportLegs.length > 0) {
       trackingData.transportLegs.forEach(leg => {
-        if (leg?.voyageNumber && !voyages.includes(leg.voyageNumber)) voyages.push(leg.voyageNumber);
+        if (leg?.voyageNumber && !seenVoyages.has(leg.voyageNumber)) {
+          seenVoyages.add(leg.voyageNumber);
+          voyages.push(leg.voyageNumber);
+        }
       });
     }
 
@@ -900,24 +945,35 @@ export default function TrackingPage() {
                           trackingData?.shipmentDetails?.voyageNumber ||
                           trackingData?.voyageNumber ||
                           trackingData?.voyage;
-      if (singleVoyage) voyages.push(singleVoyage);
+      if (singleVoyage && !seenVoyages.has(singleVoyage)) {
+        seenVoyages.add(singleVoyage);
+        voyages.push(singleVoyage);
+      }
     }
 
     // Priority 6: Additional fallback: bookings collection
     if (voyages.length === 0) {
-      const bookingVoyages = [];
       if (Array.isArray(trackingData?.bookings)) {
         trackingData.bookings.forEach(b => {
-          if (b?.voyageNumber) bookingVoyages.push(b.voyageNumber);
-          if (b?.transport?.voyageNumber) bookingVoyages.push(b.transport.voyageNumber);
+          if (b?.voyageNumber && !seenVoyages.has(b.voyageNumber)) {
+            seenVoyages.add(b.voyageNumber);
+            voyages.push(b.voyageNumber);
+          }
+          if (b?.transport?.voyageNumber && !seenVoyages.has(b.transport.voyageNumber)) {
+            seenVoyages.add(b.transport.voyageNumber);
+            voyages.push(b.transport.voyageNumber);
+          }
         });
       }
       if (trackingData?.booking) {
-        if (trackingData.booking.voyageNumber) bookingVoyages.push(trackingData.booking.voyageNumber);
-        if (trackingData.booking.transport?.voyageNumber) bookingVoyages.push(trackingData.booking.transport.voyageNumber);
-      }
-      if (bookingVoyages.length > 0) {
-        bookingVoyages.forEach(v => { if (v && !voyages.includes(v)) voyages.push(v); });
+        if (trackingData.booking.voyageNumber && !seenVoyages.has(trackingData.booking.voyageNumber)) {
+          seenVoyages.add(trackingData.booking.voyageNumber);
+          voyages.push(trackingData.booking.voyageNumber);
+        }
+        if (trackingData.booking.transport?.voyageNumber && !seenVoyages.has(trackingData.booking.transport.voyageNumber)) {
+          seenVoyages.add(trackingData.booking.transport.voyageNumber);
+          voyages.push(trackingData.booking.transport.voyageNumber);
+        }
       }
     }
 
@@ -939,14 +995,20 @@ export default function TrackingPage() {
 
     // Priority 1: Get from top-level blNumber first
     if (trackingData?.blNumber && trackingData.blNumber !== 'N/A') {
-      blValues.push(...(Array.isArray(trackingData.blNumber) ? trackingData.blNumber : [trackingData.blNumber]));
+      const vals = Array.isArray(trackingData.blNumber) 
+        ? trackingData.blNumber 
+        : String(trackingData.blNumber).split(',').map(v => v.trim()).filter(Boolean);
+      blValues.push(...vals);
     }
 
     // Priority 2: Get from consolidation
     if (trackingData?.consolidation?.blNumber && trackingData.consolidation.blNumber !== 'N/A') {
-      if (!blValues.includes(trackingData.consolidation.blNumber)) {
-        blValues.push(trackingData.consolidation.blNumber);
-      }
+      const vals = String(trackingData.consolidation.blNumber).split(',').map(v => v.trim()).filter(Boolean);
+      vals.forEach(bl => {
+        if (bl && !blValues.includes(bl)) {
+          blValues.push(bl);
+        }
+      });
     }
     if (trackingData?.consolidation?.blNumbers && Array.isArray(trackingData.consolidation.blNumbers)) {
       trackingData.consolidation.blNumbers.forEach(bl => {
@@ -960,32 +1022,53 @@ export default function TrackingPage() {
     if (blValues.length === 0) {
       if (Array.isArray(trackingData?.newShipments)) {
         trackingData.newShipments.forEach(ns => {
-          if (ns?.blNumber) blValues.push(ns.blNumber);
-          if (ns?.blNumbers) blValues.push(...(Array.isArray(ns.blNumbers) ? ns.blNumbers : String(ns.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+          if (ns?.blNumber) {
+            const vals = String(ns.blNumber).split(',').map(v => v.trim()).filter(Boolean);
+            vals.forEach(bl => { if (bl && !blValues.includes(bl)) blValues.push(bl); });
+          }
+          if (ns?.blNumbers) {
+            const vals = Array.isArray(ns.blNumbers) ? ns.blNumbers : String(ns.blNumbers).split(',').map(v => v.trim()).filter(Boolean);
+            vals.forEach(bl => { if (bl && !blValues.includes(bl)) blValues.push(bl); });
+          }
         });
       }
       if (trackingData?.newShipment) {
-        if (trackingData.newShipment.blNumber) blValues.push(trackingData.newShipment.blNumber);
-        if (trackingData.newShipment.blNumbers) blValues.push(...(Array.isArray(trackingData.newShipment.blNumbers) ? trackingData.newShipment.blNumbers : String(trackingData.newShipment.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+        if (trackingData.newShipment.blNumber) {
+          const vals = String(trackingData.newShipment.blNumber).split(',').map(v => v.trim()).filter(Boolean);
+          vals.forEach(bl => { if (bl && !blValues.includes(bl)) blValues.push(bl); });
+        }
+        if (trackingData.newShipment.blNumbers) {
+          const vals = Array.isArray(trackingData.newShipment.blNumbers) ? trackingData.newShipment.blNumbers : String(trackingData.newShipment.blNumbers).split(',').map(v => v.trim()).filter(Boolean);
+          vals.forEach(bl => { if (bl && !blValues.includes(bl)) blValues.push(bl); });
+        }
       }
       if (Array.isArray(trackingData?.newshipments)) {
         trackingData.newshipments.forEach(ns => {
-          if (ns?.blNumber) blValues.push(ns.blNumber);
-          if (ns?.blNumbers) blValues.push(...(Array.isArray(ns.blNumbers) ? ns.blNumbers : String(ns.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+          if (ns?.blNumber) {
+            const vals = String(ns.blNumber).split(',').map(v => v.trim()).filter(Boolean);
+            vals.forEach(bl => { if (bl && !blValues.includes(bl)) blValues.push(bl); });
+          }
+          if (ns?.blNumbers) {
+            const vals = Array.isArray(ns.blNumbers) ? ns.blNumbers : String(ns.blNumbers).split(',').map(v => v.trim()).filter(Boolean);
+            vals.forEach(bl => { if (bl && !blValues.includes(bl)) blValues.push(bl); });
+          }
         });
       }
     }
 
     // Priority 4: Get from shipmentDetails
     if (blValues.length === 0 && trackingData?.shipmentDetails?.blNumber) {
-      blValues.push(...trackingData.shipmentDetails.blNumber.split(',').map((v) => v.trim()).filter(Boolean));
+      const vals = String(trackingData.shipmentDetails.blNumber).split(',').map(v => v.trim()).filter(Boolean);
+      vals.forEach(bl => { if (bl && !blValues.includes(bl)) blValues.push(bl); });
     }
 
     // Priority 5: Get from transport
     if (blValues.length === 0 && trackingData?.transport?.blNumber) {
-      blValues.push(trackingData.transport.blNumber);
+      const vals = String(trackingData.transport.blNumber).split(',').map(v => v.trim()).filter(Boolean);
+      vals.forEach(bl => { if (bl && !blValues.includes(bl)) blValues.push(bl); });
     }
 
+    // Final deduplication and return
     return blValues.length > 0
       ? [...new Set(blValues)].join(', ')
       : 'N/A';
