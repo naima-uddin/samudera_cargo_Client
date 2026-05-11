@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -156,12 +157,9 @@ function Contact() {
           >
             <ol className="flex items-center space-x-2">
               <li>
-                <a
-                  href="/"
-                  className="hover:text-red-400 transition-colors duration-200"
-                >
+                <Link href="/" className="hover:text-red-400 transition-colors duration-200">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <HiChevronRight className="h-4 w-4 text-gray-300" />

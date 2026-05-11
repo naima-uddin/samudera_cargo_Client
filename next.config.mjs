@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  // output: 'export', // Static export mode for Client
-  trailingSlash: true,  
+  output: 'export', // Static export mode for Client
+  trailingSlash: true,
   
   // Image Optimization - DISABLED for static export
   images: {
