@@ -12,7 +12,7 @@ const stats = [
 const Banner = () => {
   return (
     <section className="bg-white relative overflow-visible">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-1 pb-16 lg:pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-1 mb-3 md:pb-16 lg:pb-20">
         <div className="relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
             <div className="lg:col-span-5 z-10 pt-2 lg:pt-4">
@@ -47,7 +47,7 @@ const Banner = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-7 relative h-[220px] sm:h-[300px] lg:h-[480px] z-0">
+            <div className="lg:col-span-7 relative h-[220px] sm:h-[300px] lg:h-[480px] z-0 hidden md:block">
               <img
                 src="/banner/container1.png"
                 alt="Cargo container"
