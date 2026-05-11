@@ -809,32 +809,42 @@ export default function TrackingPage() {
   const getShipmentVessels = () => {
     const vessels = [];
 
-    // Get from transportLegs array (multiple entries)
+    // Priority 1: Get from top-level vesselName (from consolidation or transport)
+    if (trackingData?.vesselName && trackingData.vesselName !== 'N/A') {
+      vessels.push(trackingData.vesselName);
+    }
+
+    // Priority 2: Get from consolidation
+    if (trackingData?.consolidation?.vesselName && trackingData.consolidation.vesselName !== 'N/A') {
+      if (!vessels.includes(trackingData.consolidation.vesselName)) {
+        vessels.push(trackingData.consolidation.vesselName);
+      }
+    }
+
+    // Priority 3: Get from transportLegs array (multiple entries)
     if (Array.isArray(trackingData?.shipmentDetails?.transportLegs) && trackingData.shipmentDetails.transportLegs.length > 0) {
       trackingData.shipmentDetails.transportLegs.forEach(leg => {
-        if (leg?.vesselName) vessels.push(leg.vesselName);
+        if (leg?.vesselName && !vessels.includes(leg.vesselName)) vessels.push(leg.vesselName);
       });
     }
 
-    // Get from transportLegs at top level
+    // Priority 4: Get from transportLegs at top level
     if (Array.isArray(trackingData?.transportLegs) && trackingData.transportLegs.length > 0) {
       trackingData.transportLegs.forEach(leg => {
         if (leg?.vesselName && !vessels.includes(leg.vesselName)) vessels.push(leg.vesselName);
       });
     }
 
-    // Fallback to single transport object
+    // Priority 5: Fallback to single transport object
     if (vessels.length === 0) {
       const singleVessel = trackingData?.transport?.vesselName ||
                            trackingData?.shipmentDetails?.vesselName ||
-                           trackingData?.consolidation?.vesselName ||
                            trackingData?.consolidation?.carrier?.vesselNumber ||
-                           trackingData?.vesselName ||
                            trackingData?.vessel;
       if (singleVessel) vessels.push(singleVessel);
     }
 
-    // Additional fallback: bookings collection (some APIs store vessel/voyage there)
+    // Priority 6: Additional fallback: bookings collection (some APIs store vessel/voyage there)
     if (vessels.length === 0) {
       const bookingVessels = [];
       if (Array.isArray(trackingData?.bookings)) {
@@ -858,31 +868,42 @@ export default function TrackingPage() {
   const getShipmentVoyages = () => {
     const voyages = [];
 
-    // Get from transportLegs array (multiple entries)
+    // Priority 1: Get from top-level voyageNumber (from consolidation or transport)
+    if (trackingData?.voyageNumber && trackingData.voyageNumber !== 'N/A') {
+      voyages.push(trackingData.voyageNumber);
+    }
+
+    // Priority 2: Get from consolidation
+    if (trackingData?.consolidation?.voyageNumber && trackingData.consolidation.voyageNumber !== 'N/A') {
+      if (!voyages.includes(trackingData.consolidation.voyageNumber)) {
+        voyages.push(trackingData.consolidation.voyageNumber);
+      }
+    }
+
+    // Priority 3: Get from transportLegs array (multiple entries)
     if (Array.isArray(trackingData?.shipmentDetails?.transportLegs) && trackingData.shipmentDetails.transportLegs.length > 0) {
       trackingData.shipmentDetails.transportLegs.forEach(leg => {
-        if (leg?.voyageNumber) voyages.push(leg.voyageNumber);
+        if (leg?.voyageNumber && !voyages.includes(leg.voyageNumber)) voyages.push(leg.voyageNumber);
       });
     }
 
-    // Get from transportLegs at top level
+    // Priority 4: Get from transportLegs at top level
     if (Array.isArray(trackingData?.transportLegs) && trackingData.transportLegs.length > 0) {
       trackingData.transportLegs.forEach(leg => {
         if (leg?.voyageNumber && !voyages.includes(leg.voyageNumber)) voyages.push(leg.voyageNumber);
       });
     }
 
-    // Fallback to single transport object
+    // Priority 5: Fallback to single transport object
     if (voyages.length === 0) {
       const singleVoyage = trackingData?.transport?.voyageNumber ||
                           trackingData?.shipmentDetails?.voyageNumber ||
-                          trackingData?.consolidation?.voyageNumber ||
                           trackingData?.voyageNumber ||
                           trackingData?.voyage;
       if (singleVoyage) voyages.push(singleVoyage);
     }
 
-    // Additional fallback: bookings collection
+    // Priority 6: Additional fallback: bookings collection
     if (voyages.length === 0) {
       const bookingVoyages = [];
       if (Array.isArray(trackingData?.bookings)) {
@@ -914,46 +935,56 @@ export default function TrackingPage() {
   };
 
   const getShipmentBlValue = () => {
-    const containers = getShipmentContainers();
-    const values = containers
-      .map((container) => container?.blNumber)
-      .filter((val) => val && val !== 'N/A');
-
-    if (values.length > 0) {
-      return [...new Set(values.join(', ').split(',').map((v) => v.trim()).filter(Boolean))].join(', ');
-    }
-
     const blValues = [];
 
-    // Highest-priority fallback: newShipments / newShipment collection
-    if (Array.isArray(trackingData?.newShipments)) {
-      trackingData.newShipments.forEach(ns => {
-        if (ns?.blNumber) blValues.push(ns.blNumber);
-        if (ns?.blNumbers) blValues.push(...(Array.isArray(ns.blNumbers) ? ns.blNumbers : String(ns.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
-      });
+    // Priority 1: Get from top-level blNumber first
+    if (trackingData?.blNumber && trackingData.blNumber !== 'N/A') {
+      blValues.push(...(Array.isArray(trackingData.blNumber) ? trackingData.blNumber : [trackingData.blNumber]));
     }
-    if (trackingData?.newShipment) {
-      if (trackingData.newShipment.blNumber) blValues.push(trackingData.newShipment.blNumber);
-      if (trackingData.newShipment.blNumbers) blValues.push(...(Array.isArray(trackingData.newShipment.blNumbers) ? trackingData.newShipment.blNumbers : String(trackingData.newShipment.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+
+    // Priority 2: Get from consolidation
+    if (trackingData?.consolidation?.blNumber && trackingData.consolidation.blNumber !== 'N/A') {
+      if (!blValues.includes(trackingData.consolidation.blNumber)) {
+        blValues.push(trackingData.consolidation.blNumber);
+      }
     }
-    if (Array.isArray(trackingData?.newshipments)) {
-      trackingData.newshipments.forEach(ns => {
-        if (ns?.blNumber) blValues.push(ns.blNumber);
-        if (ns?.blNumbers) blValues.push(...(Array.isArray(ns.blNumbers) ? ns.blNumbers : String(ns.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+    if (trackingData?.consolidation?.blNumbers && Array.isArray(trackingData.consolidation.blNumbers)) {
+      trackingData.consolidation.blNumbers.forEach(bl => {
+        if (bl && bl !== 'N/A' && !blValues.includes(bl)) {
+          blValues.push(bl);
+        }
       });
     }
 
-    if (trackingData?.consolidation?.blNumber) blValues.push(trackingData.consolidation.blNumber);
-    if (trackingData?.consolidation?.blNumbers) {
-      blValues.push(...trackingData.consolidation.blNumbers.map((v) => v.trim()).filter(Boolean));
+    // Priority 3: Highest-priority fallback: newShipments / newShipment collection
+    if (blValues.length === 0) {
+      if (Array.isArray(trackingData?.newShipments)) {
+        trackingData.newShipments.forEach(ns => {
+          if (ns?.blNumber) blValues.push(ns.blNumber);
+          if (ns?.blNumbers) blValues.push(...(Array.isArray(ns.blNumbers) ? ns.blNumbers : String(ns.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+        });
+      }
+      if (trackingData?.newShipment) {
+        if (trackingData.newShipment.blNumber) blValues.push(trackingData.newShipment.blNumber);
+        if (trackingData.newShipment.blNumbers) blValues.push(...(Array.isArray(trackingData.newShipment.blNumbers) ? trackingData.newShipment.blNumbers : String(trackingData.newShipment.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+      }
+      if (Array.isArray(trackingData?.newshipments)) {
+        trackingData.newshipments.forEach(ns => {
+          if (ns?.blNumber) blValues.push(ns.blNumber);
+          if (ns?.blNumbers) blValues.push(...(Array.isArray(ns.blNumbers) ? ns.blNumbers : String(ns.blNumbers).split(',')).map(v => v.trim()).filter(Boolean));
+        });
+      }
     }
-    if (trackingData?.shipmentDetails?.blNumber) {
+
+    // Priority 4: Get from shipmentDetails
+    if (blValues.length === 0 && trackingData?.shipmentDetails?.blNumber) {
       blValues.push(...trackingData.shipmentDetails.blNumber.split(',').map((v) => v.trim()).filter(Boolean));
     }
-    if (trackingData?.blNumber) {
-      blValues.push(...(Array.isArray(trackingData.blNumber) ? trackingData.blNumber : [trackingData.blNumber]));
+
+    // Priority 5: Get from transport
+    if (blValues.length === 0 && trackingData?.transport?.blNumber) {
+      blValues.push(trackingData.transport.blNumber);
     }
-    if (trackingData?.transport?.blNumber) blValues.push(trackingData.transport.blNumber);
 
     return blValues.length > 0
       ? [...new Set(blValues)].join(', ')
