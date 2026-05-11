@@ -1058,6 +1058,33 @@ export default function TrackingPage() {
       });
     }
 
+    // Priority 2.5: Get from top-level blNumbers array (covers all container BLs for both sources)
+    if (Array.isArray(trackingData?.blNumbers)) {
+      trackingData.blNumbers.forEach(bl => {
+        if (bl && bl !== 'N/A' && !blValues.includes(bl)) {
+          blValues.push(bl);
+        }
+      });
+    }
+
+    // Priority 2.6: Get from containers[] array (manual shipments multiple BLs)
+    if (Array.isArray(trackingData?.containers)) {
+      trackingData.containers.forEach(container => {
+        if (container?.blNumber && container.blNumber !== 'N/A') {
+          const vals = String(container.blNumber).split(',').map(v => v.trim()).filter(Boolean);
+          vals.forEach(bl => { if (bl && !blValues.includes(bl)) blValues.push(bl); });
+        }
+      });
+    }
+    if (Array.isArray(trackingData?.shipmentDetails?.containers)) {
+      trackingData.shipmentDetails.containers.forEach(container => {
+        if (container?.blNumber && container.blNumber !== 'N/A') {
+          const vals = String(container.blNumber).split(',').map(v => v.trim()).filter(Boolean);
+          vals.forEach(bl => { if (bl && !blValues.includes(bl)) blValues.push(bl); });
+        }
+      });
+    }
+
     // Priority 3: Highest-priority fallback: newShipments / newShipment collection
     if (blValues.length === 0) {
       if (Array.isArray(trackingData?.newShipments)) {
