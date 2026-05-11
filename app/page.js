@@ -79,6 +79,8 @@ export default function Page() {
       <Quote />
       <Warehouse />
 
+      
+
       {/* 🔹 Schema Markup for Home Page */}
       <script
         type="application/ld+json"
