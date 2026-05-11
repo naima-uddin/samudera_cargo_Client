@@ -67,7 +67,7 @@ export default function Teams() {
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] items-center">
           <div className="space-y-6">
             <p className="text-[#d10000] text-xs uppercase tracking-[0.45em] font-semibold">Leadership</p>
-            <h2 className="text-4xl font-black text-[#1D2D52] sm:text-5xl">The team steering your cargo with confidence.</h2>
+            <h2 className="text-3xl font-black text-[#1D2D52] md:text-4xl pt-serif-bold">The team steering your cargo with confidence.</h2>
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
               A high-impact leadership section with real people, authentic visuals, and clear operational strength.
             </p>

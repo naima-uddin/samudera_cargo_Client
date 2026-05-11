@@ -21,14 +21,6 @@ const milestonesData = [
     accent: "from-[#d10000] to-[#1D2D52]",
   },
   {
-    year: "1992",
-    title: "Expanded into Air Freight",
-    subtitle: "Connecting markets faster",
-    desc: "Our air logistics offering opened new possibilities for global commerce.",
-    icon: HiPaperAirplane,
-    accent: "from-[#1D2D52] to-[#0E2047]",
-  },
-  {
     year: "1998",
     title: "First Global Hub",
     subtitle: "A network built for scale",
@@ -72,20 +64,20 @@ const statsData = [
 export default function History() {
   return (
     <div className="bg-white text-[#1D2D52]">
-      <section className="relative overflow-hidden bg-white py-20">
+      <section className="relative overflow-hidden bg-white py-10">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top_left,rgba(209,0,0,0.08),transparent_30%),radial-gradient(circle_at_top_right,rgba(29,45,82,0.08),transparent_28%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-14 lg:grid-cols-[0.9fr_0.95fr] lg:items-start">
-            <div className="space-y-10">
-              <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+              <div className=" p-8 ">
                 <p className="text-[#d10000] text-sm uppercase tracking-[0.3em]">Cargo milestones</p>
-                <h2 className="mt-4 text-4xl font-semibold text-[#1D2D52]">Proven logistics progress.</h2>
-                <p className="mt-5 text-slate-600 leading-7">
+                <h2 className="mt-4 text-4xl font-semibold text-[#1D2D52] pt-serif-bold">Proven logistics progress.</h2>
+                <p className="mt-3 text-slate-600 leading-7">
                   Every milestone reflects how we’ve grown smarter, faster, and more resilient for our clients.
                 </p>
               </div>
+          <div className="grid gap-14 lg:grid-cols-[0.9fr_0.95fr] lg:items-start">
+            <div className="space-y-10">
 
-              <div className="space-y-6">
+              <div className="space-y-3">
                 {milestonesData.map((item, index) => (
                   <div key={item.year} className="grid gap-6 lg:grid-cols-[84px_minmax(0,1fr)]">
                     <div className="relative flex flex-col items-center text-center">
@@ -94,14 +86,14 @@ export default function History() {
                       </div>
                       {index < milestonesData.length - 1 ? <div className="mt-4 h-full w-px bg-slate-200" /> : null}
                     </div>
-                    <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_16px_45px_rgba(15,23,42,0.06)]">
+                    <div className="rounded-[2rem] border border-slate-200 bg-white px-8 py-5 shadow-[0_16px_45px_rgba(15,23,42,0.06)]">
                       <div className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.28em] text-[#d10000]">
                         <span>{item.year}</span>
                         <span className="h-px flex-1 bg-slate-200" />
                       </div>
-                      <h3 className="mt-4 text-2xl font-semibold text-[#1D2D52]">{item.title}</h3>
-                      <p className="mt-2 text-slate-600">{item.subtitle}</p>
-                      <p className="mt-4 leading-7 text-slate-600">{item.desc}</p>
+                      <h3 className="mt-2 text-2xl font-semibold text-[#1D2D52]">{item.title}</h3>
+                      <p className="mt-1 text-slate-600">{item.subtitle}</p>
+                      <p className="mt-2 leading-7 text-slate-600">{item.desc}</p>
                     </div>
                   </div>
                 ))}
