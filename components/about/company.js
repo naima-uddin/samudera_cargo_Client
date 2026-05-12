@@ -160,10 +160,72 @@ const InterestingFacts = () => {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-slate-50 py-20 text-slate-900">
+    <>
+     <section className="relative overflow-hidden bg-[#f8fafc] py-16">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,rgba(209,0,0,0.08),transparent_55%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+            <div className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)] md:p-9">
+              <p className="text-xs font-semibold uppercase tracking-[0.45em] text-[#d10000]">About Samudera</p>
+              <h2 className="mt-4 text-3xl font-black text-[#1D2D52] md:text-4xl">
+                A regional shipping network built in Singapore and connected across Asia.
+              </h2>
+              <div className="mt-6 space-y-4 text-base leading-8 text-slate-600">
+                <p>
+                  Samudera Shipping Line Ltd ({"Samudera"}) was incorporated in Singapore in 1993. The company was converted into a public company on 2nd October 1997 when its shares got listed and quoted on SESDAQ. Following an approval from the Singapore Exchange, its shares have been transferred from SESDAQ to the Main Board, where Samudera’s shares are now listed and quoted since July, 2000.
+                </p>
+                <p>
+                  Samudera is a regional Container Shipping line serving the Middle East and the Indian Sub-continent in the West, South East Asia and Indo-China at center, and the Far East to the north. This extensive network of services is run from its headquarters in Singapore, with able support from its own offices in Dubai and Mumbai for the Middle East and the Indian Sub-continent operations, Bangkok, Klang and Jakarta for the South East Asia and Indo-China operations, and Shanghai for the Far East operations.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              <div className="rounded-[28px] border border-slate-200 bg-[#1D2D52] p-7 text-white shadow-[0_22px_60px_rgba(15,23,42,0.14)] md:p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.45em] text-white/70">1.2 Contact us</p>
+                <div className="mt-4 space-y-3 text-sm leading-7 text-white/85">
+                  <p>Green Tower, 9th floor, 3656/27-28 Rama 4 road, Klongton, Klongtoey, Bangkok 10110, Thailand</p>
+                  <p>Email : center@samuderathai.com</p>
+                  <p>Tel : +66977830395</p>
+                  <p>Fax : +66-2367-3740-43</p>
+                </div>
+              </div>
+
+              <div className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-[0_18px_50px_rgba(15,23,42,0.08)] md:p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.45em] text-[#d10000]">Department Lines</p>
+                <div className="mt-4 grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                    <p className="font-semibold text-[#1D2D52]">SOC</p>
+                    <p>Ext 21-23</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                    <p className="font-semibold text-[#1D2D52]">Import</p>
+                    <p>Ext 32-36 (Sales &amp; Cs)</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                    <p className="font-semibold text-[#1D2D52]">Document</p>
+                    <p>Ext 41-45</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                    <p className="font-semibold text-[#1D2D52]">Logistics</p>
+                    <p>67-69</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 sm:col-span-2">
+                    <p className="font-semibold text-[#1D2D52]">Export</p>
+                    <p>Ext 60,62,64-66 (Cs)</p>
+                    <p>Ext 24-27,63 (Sales)</p>
+                    <p>Ext (Documents)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <section ref={sectionRef} className="relative overflow-hidden bg-slate-50 py-0 -mb-6 text-slate-900">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
-          <div className="rounded-[32px] border border-slate-200 bg-white p-10 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+          <div className="rounded-[32px] border border-slate-200 bg-white px-10 py-4 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 className="mt-0 text-3xl sm:text-4xl font-semibold text-slate-950 pt-serif-bold">
@@ -229,6 +291,7 @@ const InterestingFacts = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
@@ -320,6 +383,7 @@ const TestimonialsSection = () => {
 export default function OurCompany() {
   return (
     <div className="bg-white text-[#1D2D52] ">
+
       <section className="relative overflow-hidden bg-white py-20">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-cover bg-center bg-no-repeat bg-[url('/images/aboutBannerimg.jpeg')]" />
         <div className="absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-white/15 via-transparent to-[#1D2D52]/80" />
