@@ -7,28 +7,35 @@ import { useInView } from 'react-intersection-observer'
 
 const teamMembers = [
   {
-    name: "Leo George",
-    title: "Chief Executive Officer",
-    image: "/images/team (2).jpg",
-    email: "leo.george@cargologisticscompany.com",
+    name: "Anong Kittisak",
+    title: "Client Relations Specialist",
+    image: "/images/team (3).jpg",
+    email: "anongkittisak@samuderathai.com",
     experience: "15+ years",
   },
   {
-    name: "Sophia Luna",
-    title: "Client Relations Specialist",
-    image: "/images/team (3).jpg",
-    email: "sophia.luna@cargologisticscompany.com",
+    name: "Nattapong Wattanakul",
+    title: "Operations Director",
+    image: "/images/team (5).jpg",
+    email: "nattapongwattanakul@samuderathai.com",
     experience: "8+ years",
   },
   {
-    name: "Michael Chen",
-    title: "Operations Director",
-    image: "/images/team (5).jpg",
-    email: "michael.chen@cargologisticscompany.com",
+    name: "Suda Chaiyakul",
+    title: "Logistics Coordinator",
+    image: "/images/team (2).jpg",
+    email: "sudachaiyakul@samuderathai.com",
     experience: "10+ years",
   },
   
 ]
+
+const ceo = {
+  name: 'Mr. Pinit',
+  title: 'Chief Executive Officer',
+  image: '/images/team (1).jpg',
+  email: 'mr.pinit@samuderathai.com',
+}
 
 const stats = [
   { label: 'Team Members', value: 50, suffix: '+' },
@@ -58,8 +65,17 @@ export default function Teams() {
           </div>
 
           <div className="rounded-[32px] border border-slate-200 bg-[#F8FAFC] p-8 shadow-[0_25px_75px_rgba(15,23,42,0.08)]">
-            <div className="flex h-64 overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-lg">
+            <div className="relative flex h-64 overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-lg">
               <Image src="/images/team (1).jpg" alt="Executive team" width={720} height={480} className="object-cover" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1D2D52]/90 via-[#1D2D52]/60 to-transparent p-5 text-white">
+                <p className="text-sm uppercase tracking-[0.35em] text-white/75">Leadership</p>
+                <h3 className="mt-2 text-2xl font-semibold">{ceo.name}</h3>
+                <p className="text-sm text-white/80">{ceo.title}</p>
+                <a href={`mailto:${ceo.email}`} className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-white">
+                  <FaEnvelope />
+                  <span>{ceo.email}</span>
+                </a>
+              </div>
             </div>
             
           </div>
@@ -75,7 +91,13 @@ export default function Teams() {
                 <span className="inline-flex rounded-full bg-[#d10000]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#d10000]">{member.experience}</span>
                 <h3 className="mt-4 text-xl font-semibold text-[#1D2D52]">{member.name}</h3>
                 <p className="mt-2 text-sm font-medium text-slate-500">{member.title}</p>
-                
+                <a
+                  href={`mailto:${member.email}`}
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition-colors hover:text-[#d10000]"
+                >
+                  <FaEnvelope className="text-[#d10000]" />
+                  <span>{member.email}</span>
+                </a>
               </div>
             </div>
           ))}
