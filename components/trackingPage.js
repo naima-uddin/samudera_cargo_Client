@@ -2147,7 +2147,7 @@ export default function TrackingPage() {
                           // Use booking_confirmed label or fallback to status config
                           const stepTitle = stepStatus === 'booking_confirmed' ? 'Booking Confirmed' : getStatusConfig(stepStatus).label;
                           const stepLocation = getDisplayLocation(event);
-                          const stepDate = formatDate(event.date || event.timestamp || event.createdAt);
+                          const stepDate = formatDateOnly(event.date || event.timestamp || event.createdAt);
                           const stepDescription = event.description || '';
 
                           return (
