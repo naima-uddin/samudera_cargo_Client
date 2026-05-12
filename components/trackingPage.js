@@ -77,7 +77,7 @@ const SEARCH_TYPE_LABELS = {
 };
 
 const SEARCH_TYPE_PLACEHOLDERS = {
-  tracking_number: 'Enter tracking number (e.g., CLGWF2764TN)',
+  tracking_number: 'Enter tracking number (e.g., SSLCA2345678)',
   bl_number: 'Enter BL number (e.g., HBLSMU1234567)',
   booking_number: 'Enter booking number (e.g., BKG-2501-00001)',
   container_number: 'Enter container number (e.g., ABCD1234567)',
