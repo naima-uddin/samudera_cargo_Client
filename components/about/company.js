@@ -182,7 +182,7 @@ const InterestingFacts = () => {
 
             <div className="grid gap-4">
               <div className="rounded-[28px] border border-slate-200 bg-[#1D2D52] p-7 text-white shadow-[0_22px_60px_rgba(15,23,42,0.14)] md:p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.45em] text-white/70">1.2 Contact us</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.45em] text-white/70">Contact us</p>
                 <div className="mt-4 space-y-3 text-sm leading-7 text-white/85">
                   <p>Green Tower, 9th floor, 3656/27-28 Rama 4 road, Klongton, Klongtoey, Bangkok 10110, Thailand</p>
                   <p>Email : center@samuderathai.com</p>
@@ -331,7 +331,7 @@ const TestimonialsSection = () => {
   const active = testimonials[activeIndex];
 
   return (
-    <section className="relative overflow-hidden bg-white py-20">
+    <section className="relative overflow-hidden bg-white py-10 mt-6">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-60 bg-[radial-gradient(circle_at_top_right,rgba(209,0,0,0.08),transparent_30%),radial-gradient(circle_at_top_left,rgba(29,45,82,0.08),transparent_32%)]" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
@@ -384,7 +384,7 @@ export default function OurCompany() {
   return (
     <div className="bg-white text-[#1D2D52] ">
 
-      <section className="relative overflow-hidden bg-white py-20">
+      <section className="relative overflow-hidden bg-white py-10">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-cover bg-center bg-no-repeat bg-[url('/images/aboutBannerimg.jpeg')]" />
         <div className="absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-white/15 via-transparent to-[#1D2D52]/80" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
