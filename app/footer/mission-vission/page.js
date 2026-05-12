@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Our History
 export const metadata = {
-  title: "Our History | Samudera Traffic Co., Ltd.s Group",
+  title: "Our History | Samudera Traffic Co., Ltd. Group",
   description:
-    "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd.s Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
+    "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd. Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "Our History",
     "Company History",
     "Logistics Vision",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://samuderathai.com/history",
   },
   openGraph: {
-    title: "Our History | Samudera Traffic Co., Ltd.s Group",
+    title: "Our History | Samudera Traffic Co., Ltd. Group",
     description:
-      "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd.s Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
+      "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd. Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
     url: "https://samuderathai.com/history",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-history.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - Our History",
+        alt: "Samudera Traffic Co., Ltd. Group - Our History",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our History | Samudera Traffic Co., Ltd.s Group",
+    title: "Our History | Samudera Traffic Co., Ltd. Group",
     description:
-      "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd.s Group. Discover our commitment to logistics excellence.",
+      "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd. Group. Discover our commitment to logistics excellence.",
     images: ["/og-history.jpg"],
   },
   robots: {
@@ -64,17 +64,17 @@ export default function Page() {
             "@type": "WebPage",
             name: "Our History",
             description:
-              "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd.s Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
+              "Learn about the history, vision, and mission of Samudera Traffic Co., Ltd. Group. Discover our commitment to providing secure, efficient, and cost-effective logistics solutions worldwide.",
             url: "https://samuderathai.com/history",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               foundingDate: "2009",
               foundingLocation: {
                 "@type": "Place",
@@ -119,7 +119,7 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Samudera Traffic Co., Ltd.s Group",
+            name: "Samudera Traffic Co., Ltd. Group",
             url: "https://client.cargologisticscompany.com",
             logo: "https://client.cargologisticscompany.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
@@ -161,12 +161,12 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "AboutPage",
-            name: "About Samudera Traffic Co., Ltd.s Group",
+            name: "About Samudera Traffic Co., Ltd. Group",
             description:
-              "Samudera Traffic Co., Ltd.s Group is a leading provider of secure, efficient, and cost-effective logistics solutions worldwide.",
+              "Samudera Traffic Co., Ltd. Group is a leading provider of secure, efficient, and cost-effective logistics solutions worldwide.",
             mainEntity: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               description: "Global logistics and supply chain solutions provider",
             },
           }),

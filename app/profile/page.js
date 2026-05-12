@@ -4,11 +4,11 @@ import React, { Suspense } from "react";
 
 // 🔹 SEO metadata for Profile
 export const metadata = {
-  title: "My Profile | Samudera Traffic Co., Ltd.s Group",
+  title: "My Profile | Samudera Traffic Co., Ltd. Group",
   description:
-    "Manage your Samudera Traffic Co., Ltd.s Group profile. Update personal information, view business details, manage preferences, and access security settings for your logistics account.",
+    "Manage your Samudera Traffic Co., Ltd. Group profile. Update personal information, view business details, manage preferences, and access security settings for your logistics account.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "My Profile",
     "Profile Settings",
     "Account Management",
@@ -23,26 +23,26 @@ export const metadata = {
     canonical: "https://samuderathai.com/profile",
   },
   openGraph: {
-    title: "My Profile | Samudera Traffic Co., Ltd.s Group",
+    title: "My Profile | Samudera Traffic Co., Ltd. Group",
     description:
-      "Manage your Samudera Traffic Co., Ltd.s Group profile. Update personal information, view business details, manage preferences, and access security settings for your logistics account.",
+      "Manage your Samudera Traffic Co., Ltd. Group profile. Update personal information, view business details, manage preferences, and access security settings for your logistics account.",
     url: "https://samuderathai.com/profile",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-profile.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - My Profile",
+        alt: "Samudera Traffic Co., Ltd. Group - My Profile",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "My Profile | Samudera Traffic Co., Ltd.s Group",
+    title: "My Profile | Samudera Traffic Co., Ltd. Group",
     description:
-      "Manage your Samudera Traffic Co., Ltd.s Group profile. Update personal information, view business details, and manage preferences.",
+      "Manage your Samudera Traffic Co., Ltd. Group profile. Update personal information, view business details, and manage preferences.",
     images: ["/og-profile.jpg"],
   },
   robots: {
@@ -68,11 +68,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "User Profile",
             description:
-              "Manage your Samudera Traffic Co., Ltd.s Group profile. Update personal information, view business details, manage preferences, and access security settings.",
+              "Manage your Samudera Traffic Co., Ltd. Group profile. Update personal information, view business details, manage preferences, and access security settings.",
             url: "https://samuderathai.com/profile",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },
@@ -123,13 +123,13 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            name: "Samudera Traffic Co., Ltd.s Customer",
+            name: "Samudera Traffic Co., Ltd. Customer",
             url: "https://client.cargologisticscompany.com/profile",
             email: "customer@cargologisticscompany.com",
             telephone: "+66977830395",
             worksFor: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
             },
             knowsAbout: [
               "Logistics Management",

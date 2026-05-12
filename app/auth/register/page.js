@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Registration
 export const metadata = {
-  title: "Create Account | Samudera Traffic Co., Ltd.s Group",
+  title: "Create Account | Samudera Traffic Co., Ltd. Group",
   description:
-    "Join Samudera Traffic Co., Ltd.s Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
+    "Join Samudera Traffic Co., Ltd. Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "Create Account",
     "Register",
     "Sign Up",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://samuderathai.com/auth/register",
   },
   openGraph: {
-    title: "Create Account | Samudera Traffic Co., Ltd.s Group",
+    title: "Create Account | Samudera Traffic Co., Ltd. Group",
     description:
-      "Join Samudera Traffic Co., Ltd.s Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
+      "Join Samudera Traffic Co., Ltd. Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
     url: "https://samuderathai.com/auth/register",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-register.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - Create Account",
+        alt: "Samudera Traffic Co., Ltd. Group - Create Account",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Create Account | Samudera Traffic Co., Ltd.s Group",
+    title: "Create Account | Samudera Traffic Co., Ltd. Group",
     description:
-      "Join Samudera Traffic Co., Ltd.s Group today. Create your customer account to access real-time shipment tracking and global logistics solutions.",
+      "Join Samudera Traffic Co., Ltd. Group today. Create your customer account to access real-time shipment tracking and global logistics solutions.",
     images: ["/og-register.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Create Account",
             description:
-              "Join Samudera Traffic Co., Ltd.s Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
+              "Join Samudera Traffic Co., Ltd. Group today. Create your customer account to access real-time shipment tracking, global logistics solutions, competitive shipping rates, and 24/7 customer support.",
             url: "https://samuderathai.com/auth/register",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },

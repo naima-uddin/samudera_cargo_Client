@@ -20,17 +20,17 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL("https://samuderathai.com"),
   title: {
-    default: "Samudera Traffic Co., Ltd.s Group | Global Freight Forwarding & Supply Chain Solutions",
-    template: "%s | Samudera Traffic Co., Ltd.s Group",
+    default: "Samudera Traffic Co., Ltd. Group | Global Freight Forwarding & Supply Chain Solutions",
+    template: "%s | Samudera Traffic Co., Ltd. Group",
   },
   description:
-    "Samudera Traffic Co., Ltd.s Group provides global freight forwarding, warehousing, customs clearance, and end-to-end supply chain solutions.",
-  applicationName: "Samudera Traffic Co., Ltd.s Group",
+    "Samudera Traffic Co., Ltd. Group provides global freight forwarding, warehousing, customs clearance, and end-to-end supply chain solutions.",
+  applicationName: "Samudera Traffic Co., Ltd. Group",
   alternates: {
     canonical: "/",
   },
   keywords: [
-    "Samudera Traffic Co., Ltd.s", 
+    "Samudera Traffic Co., Ltd.", 
     "freight forwarding",
     "international shipping",
     "air freight",
@@ -43,24 +43,24 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
-    title: "Samudera Traffic Co., Ltd.s Group | Global Freight Forwarding & Supply Chain Solutions",
+    siteName: "Samudera Traffic Co., Ltd. Group",
+    title: "Samudera Traffic Co., Ltd. Group | Global Freight Forwarding & Supply Chain Solutions",
     description:
-      "Samudera Traffic Co., Ltd.s Group provides global freight forwarding, warehousing, customs clearance, and end-to-end supply chain solutions.",
+      "Samudera Traffic Co., Ltd. Group provides global freight forwarding, warehousing, customs clearance, and end-to-end supply chain solutions.",
     images: [
       {
         url: "/og-home.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group",
+        alt: "Samudera Traffic Co., Ltd. Group",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Samudera Traffic Co., Ltd.s Group | Global Freight Forwarding & Supply Chain Solutions",
+    title: "Samudera Traffic Co., Ltd. Group | Global Freight Forwarding & Supply Chain Solutions",
     description:
-      "Global freight forwarding, warehousing, and supply chain services by Samudera Traffic Co., Ltd.s Group.",
+      "Global freight forwarding, warehousing, and supply chain services by Samudera Traffic Co., Ltd. Group.",
     images: ["/og-home.jpg"],
   },
   robots: {

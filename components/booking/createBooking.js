@@ -410,7 +410,7 @@ export default function CreateBooking() {
     },
     
     courier: {
-      company: 'Samudera Traffic Co., Ltd.s Group',
+      company: 'Samudera Traffic Co., Ltd. Group',
       serviceType: 'standard'
     },
     
@@ -1084,7 +1084,7 @@ export default function CreateBooking() {
           isResidential: formData.receiver.isResidential || false
         },
         courier: {
-          company: 'Samudera Traffic Co., Ltd.s Group',
+          company: 'Samudera Traffic Co., Ltd. Group',
           serviceType: formData.serviceType
         },
         status: 'booking_requested',

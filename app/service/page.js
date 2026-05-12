@@ -4,11 +4,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Our Services
 export const metadata = {
-  title: "Our Services | Samudera Traffic Co., Ltd.s Group",
+  title: "Our Services | Samudera Traffic Co., Ltd. Group",
   description:
-    "Explore our comprehensive logistics services at Samudera Traffic Co., Ltd.s Group. We offer sea freight, air freight, road freight, warehousing, customs clearance, and supply chain solutions for businesses worldwide.",
+    "Explore our comprehensive logistics services at Samudera Traffic Co., Ltd. Group. We offer sea freight, air freight, road freight, warehousing, customs clearance, and supply chain solutions for businesses worldwide.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "Our Services",
     "Logistics Services",
     "Sea Freight",
@@ -23,26 +23,26 @@ export const metadata = {
     canonical: "https://samuderathai.com/service",
   },
   openGraph: {
-    title: "Our Services | Samudera Traffic Co., Ltd.s Group",
+    title: "Our Services | Samudera Traffic Co., Ltd. Group",
     description:
-      "Explore our comprehensive logistics services at Samudera Traffic Co., Ltd.s Group. We offer sea freight, air freight, road freight, warehousing, customs clearance, and supply chain solutions for businesses worldwide.",
+      "Explore our comprehensive logistics services at Samudera Traffic Co., Ltd. Group. We offer sea freight, air freight, road freight, warehousing, customs clearance, and supply chain solutions for businesses worldwide.",
     url: "https://samuderathai.com/service",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-service.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - Our Services",
+        alt: "Samudera Traffic Co., Ltd. Group - Our Services",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Services | Samudera Traffic Co., Ltd.s Group",
+    title: "Our Services | Samudera Traffic Co., Ltd. Group",
     description:
-      "Explore our comprehensive logistics services at Samudera Traffic Co., Ltd.s Group. We offer sea freight, air freight, road freight, and supply chain solutions.",
+      "Explore our comprehensive logistics services at Samudera Traffic Co., Ltd. Group. We offer sea freight, air freight, road freight, and supply chain solutions.",
     images: ["/og-service.jpg"],
   },
   robots: {
@@ -68,11 +68,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Our Services",
             description:
-              "Explore our comprehensive logistics services at Samudera Traffic Co., Ltd.s Group. We offer sea freight, air freight, road freight, warehousing, customs clearance, and supply chain solutions.",
+              "Explore our comprehensive logistics services at Samudera Traffic Co., Ltd. Group. We offer sea freight, air freight, road freight, warehousing, customs clearance, and supply chain solutions.",
             url: "https://samuderathai.com/service",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },
@@ -157,7 +157,7 @@ export default function Page() {
             serviceType: "Logistics Services",
             provider: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
             },
             areaServed: {
               "@type": "Country",

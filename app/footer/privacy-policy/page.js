@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Privacy Policy
 export const metadata = {
-  title: "Privacy Policy | Samudera Traffic Co., Ltd.s Group",
+  title: "Privacy Policy | Samudera Traffic Co., Ltd. Group",
   description:
-    "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd.s Group collects, uses, and protects your personal information. Learn about data security, your rights, and our commitment to privacy.",
+    "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd. Group collects, uses, and protects your personal information. Learn about data security, your rights, and our commitment to privacy.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "Privacy Policy",
     "Data Protection",
     "Information Security",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://samuderathai.com/privacy-policy",
   },
   openGraph: {
-    title: "Privacy Policy | Samudera Traffic Co., Ltd.s Group",
+    title: "Privacy Policy | Samudera Traffic Co., Ltd. Group",
     description:
-      "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd.s Group collects, uses, and protects your personal information. Learn about data security and your privacy rights.",
+      "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd. Group collects, uses, and protects your personal information. Learn about data security and your privacy rights.",
     url: "https://samuderathai.com/privacy-policy",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-privacy-policy.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - Privacy Policy",
+        alt: "Samudera Traffic Co., Ltd. Group - Privacy Policy",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Privacy Policy | Samudera Traffic Co., Ltd.s Group",
+    title: "Privacy Policy | Samudera Traffic Co., Ltd. Group",
     description:
-      "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd.s Group collects, uses, and protects your personal information.",
+      "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd. Group collects, uses, and protects your personal information.",
     images: ["/og-privacy-policy.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Privacy Policy",
             description:
-              "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd.s Group collects, uses, and protects your personal information. Learn about data security, your rights, and our commitment to privacy.",
+              "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd. Group collects, uses, and protects your personal information. Learn about data security, your rights, and our commitment to privacy.",
             url: "https://samuderathai.com/privacy-policy",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },
@@ -114,7 +114,7 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Samudera Traffic Co., Ltd.s Group",
+            name: "Samudera Traffic Co., Ltd. Group",
             url: "https://client.cargologisticscompany.com",
             logo: "https://client.cargologisticscompany.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
@@ -133,7 +133,7 @@ export default function Page() {
               email: "info@samuderathai.com",
               availableLanguage: ["English"],
             },
-            legalName: "Samudera Traffic Co., Ltd.s Group",
+            legalName: "Samudera Traffic Co., Ltd. Group",
             foundingDate: "2009",
             privacyPolicy: "https://client.cargologisticscompany.com/privacy-policy",
           }),
@@ -147,9 +147,9 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "PrivacyPolicy",
-            name: "Privacy Policy of Samudera Traffic Co., Ltd.s Group",
+            name: "Privacy Policy of Samudera Traffic Co., Ltd. Group",
             description:
-              "This Privacy Policy describes how Samudera Traffic Co., Ltd.s Group collects, uses, and protects personal information of its customers and website visitors.",
+              "This Privacy Policy describes how Samudera Traffic Co., Ltd. Group collects, uses, and protects personal information of its customers and website visitors.",
             url: "https://client.cargologisticscompany.com/privacy-policy",
             lastReviewed: "2026-03-10",
             inLanguage: "en-US",

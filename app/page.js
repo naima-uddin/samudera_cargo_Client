@@ -15,11 +15,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Home Page
 export const metadata = {
-  title: "Samudera Traffic Co., Ltd.s Group | Global Freight Forwarding & Supply Chain Solutions",
+  title: "Samudera Traffic Co., Ltd. Group | Global Freight Forwarding & Supply Chain Solutions",
   description:
-    "Samudera Traffic Co., Ltd.s Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide. Trusted logistics partner for businesses across USA, UK, Canada, China, and Thailand.",
+    "Samudera Traffic Co., Ltd. Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide. Trusted logistics partner for businesses across USA, UK, Canada, China, and Thailand.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "Freight Forwarding",
     "Sea Freight",
     "Air Freight",
@@ -34,26 +34,26 @@ export const metadata = {
     canonical: "https://samuderathai.com",
   },
   openGraph: {
-    title: "Samudera Traffic Co., Ltd.s Group | Global Freight Forwarding & Supply Chain Solutions",
+    title: "Samudera Traffic Co., Ltd. Group | Global Freight Forwarding & Supply Chain Solutions",
     description:
-      "Samudera Traffic Co., Ltd.s Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide.",
+      "Samudera Traffic Co., Ltd. Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide.",
     url: "https://samuderathai.com",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-home.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - Global Logistics Solutions",
+        alt: "Samudera Traffic Co., Ltd. Group - Global Logistics Solutions",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Samudera Traffic Co., Ltd.s Group | Global Logistics Solutions",
+    title: "Samudera Traffic Co., Ltd. Group | Global Logistics Solutions",
     description:
-      "International freight forwarding and supply chain solutions from Samudera Traffic Co., Ltd.s Group.",
+      "International freight forwarding and supply chain solutions from Samudera Traffic Co., Ltd. Group.",
     images: ["/og-home.jpg"],
   },
   robots: {
@@ -88,13 +88,13 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: "Samudera Traffic Co., Ltd.s Group",
+            name: "Samudera Traffic Co., Ltd. Group",
             description:
-              "Samudera Traffic Co., Ltd.s Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide.",
+              "Samudera Traffic Co., Ltd. Group provides international freight forwarding, sea freight, air freight, warehousing, customs clearance, and supply chain solutions worldwide.",
             url: "https://samuderathai.com",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },
@@ -109,7 +109,7 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Samudera Traffic Co., Ltd.s Group",
+            name: "Samudera Traffic Co., Ltd. Group",
             url: "https://samuderathai.com",
             logo: "https://samuderathai.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
@@ -145,7 +145,7 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "Samudera Traffic Co., Ltd.s Group",
+            name: "Samudera Traffic Co., Ltd. Group",
             image: "https://samuderathai.com/logo.png",
             address: {
               "@type": "PostalAddress",

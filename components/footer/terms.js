@@ -52,7 +52,7 @@ const TermsOfService = () => {
       content: (
         <div className="space-y-3">
           <p className="text-gray-700 leading-relaxed">
-            By accessing and using the Samudera Traffic Co., Ltd.s Company freight forwarding platform
+            By accessing and using the Samudera Traffic Co., Ltd. Company freight forwarding platform
             (the "Platform"), you agree to be bound by these Terms of Service ("Terms").
             These Terms apply to all users including Samudera Cargo customers, freight forwarders,
             warehouse managers, and administrative personnel operating within Thailand,
@@ -78,7 +78,7 @@ const TermsOfService = () => {
       content: (
         <div className="space-y-3">
           <p className="text-gray-700 leading-relaxed">
-            Samudera Traffic Co., Ltd.s Company offers international freight forwarding services including:
+            Samudera Traffic Co., Ltd. Company offers international freight forwarding services including:
           </p>
           <ul className="space-y-2 ml-6">
             {[
@@ -359,7 +359,7 @@ const TermsOfService = () => {
       content: (
         <div className="space-y-3">
           <p className="text-gray-700 leading-relaxed">
-            Samudera Traffic Co., Ltd.s Company shall not be liable for delays caused by customs
+            Samudera Traffic Co., Ltd. Company shall not be liable for delays caused by customs
             holds, natural disasters, political instability, labor strikes, pandemics,
             or any force majeure events. Liability for lost or damaged goods is
             limited to the declared value on the shipping documentation, not exceeding

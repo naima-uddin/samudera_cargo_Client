@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Terms of Service
 export const metadata = {
-  title: "Terms of Service | Samudera Traffic Co., Ltd.s Group",
+  title: "Terms of Service | Samudera Traffic Co., Ltd. Group",
   description:
-    "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations across Thailand, China, USA, UK & Canada.",
+    "Read the Terms of Service for Samudera Traffic Co., Ltd. Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations across Thailand, China, USA, UK & Canada.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "Terms of Service",
     "Terms and Conditions",
     "Legal Terms",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://samuderathai.com/terms-of-service",
   },
   openGraph: {
-    title: "Terms of Service | Samudera Traffic Co., Ltd.s Group",
+    title: "Terms of Service | Samudera Traffic Co., Ltd. Group",
     description:
-      "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations.",
+      "Read the Terms of Service for Samudera Traffic Co., Ltd. Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations.",
     url: "https://samuderathai.com/terms-of-service",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-terms-of-service.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - Terms of Service",
+        alt: "Samudera Traffic Co., Ltd. Group - Terms of Service",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terms of Service | Samudera Traffic Co., Ltd.s Group",
+    title: "Terms of Service | Samudera Traffic Co., Ltd. Group",
     description:
-      "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding.",
+      "Read the Terms of Service for Samudera Traffic Co., Ltd. Group. Understand our legal framework for international freight forwarding.",
     images: ["/og-terms-of-service.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Terms of Service",
             description:
-              "Read the Terms of Service for Samudera Traffic Co., Ltd.s Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations across Thailand, China, USA, UK & Canada.",
+              "Read the Terms of Service for Samudera Traffic Co., Ltd. Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations across Thailand, China, USA, UK & Canada.",
             url: "https://samuderathai.com/terms-of-service",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },
@@ -114,7 +114,7 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Samudera Traffic Co., Ltd.s Group",
+            name: "Samudera Traffic Co., Ltd. Group",
             url: "https://client.cargologisticscompany.com",
             logo: "https://client.cargologisticscompany.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
@@ -133,7 +133,7 @@ export default function Page() {
               email: "info@samuderathai.com",
               availableLanguage: ["English"],
             },
-            legalName: "Samudera Traffic Co., Ltd.s Group",
+            legalName: "Samudera Traffic Co., Ltd. Group",
             foundingDate: "2009",
             termsOfService: "https://client.cargologisticscompany.com/terms-of-service",
           }),
@@ -147,9 +147,9 @@ export default function Page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "TermsOfService",
-            name: "Terms of Service of Samudera Traffic Co., Ltd.s Group",
+            name: "Terms of Service of Samudera Traffic Co., Ltd. Group",
             description:
-              "These Terms of Service govern the use of Samudera Traffic Co., Ltd.s Group's freight forwarding platform and logistics services.",
+              "These Terms of Service govern the use of Samudera Traffic Co., Ltd. Group's freight forwarding platform and logistics services.",
             url: "https://client.cargologisticscompany.com/terms-of-service",
             lastReviewed: "2026-02-02",
             inLanguage: "en-US",

@@ -15,7 +15,7 @@ const footer = () => {
       <div className=' mb-4 '>
         <div className="flex items-center gap-2 mb-1">
           <img src="/images/logo.png" alt="Company Logo" className="md:w-14 md:h-10 w-10 h-10 mb-1" />
-          <p className="text-gray-900 text-[9px] sm:text-sm md:text-xl leading-tight font-bold">Samudera Traffic Co., Ltd.s </p>
+          <p className="text-gray-900 text-[9px] sm:text-sm md:text-xl leading-tight font-bold">Samudera Traffic Co., Ltd. </p>
         </div>
         <div>
           
@@ -205,7 +205,7 @@ Bangkok 10110, Thailand
           className="mt-4 sm:mt-5 lg:mt-6 pt-3 sm:pt-4 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4"
         >
           <p className="text-gray-600 text-[8px] sm:text-xs lg:text-sm text-center md:text-left">
-            © {new Date().getFullYear()} Samudera Traffic Co., Ltd.s Company. All rights reserved.
+            © {new Date().getFullYear()} Samudera Traffic Co., Ltd. Company. All rights reserved.
           </p>
           
           <div className="flex gap-3 sm:gap-4 lg:gap-6 text-[8px] sm:text-xs lg:text-sm">

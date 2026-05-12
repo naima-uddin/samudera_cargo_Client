@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for My Shipments
 export const metadata = {
-  title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
+  title: "My Shipments | Samudera Traffic Co., Ltd. Group",
   description:
-    "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
+    "Track and manage your shipments with Samudera Traffic Co., Ltd. Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "My Shipments",
     "Track Shipment",
     "Booking Management",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://samuderathai.com/bookings/my_bookings",
   },
   openGraph: {
-    title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
+    title: "My Shipments | Samudera Traffic Co., Ltd. Group",
     description:
-      "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
+      "Track and manage your shipments with Samudera Traffic Co., Ltd. Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
     url: "https://samuderathai.com/bookings/my_bookings",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-my-bookings.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - My Shipments",
+        alt: "Samudera Traffic Co., Ltd. Group - My Shipments",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "My Shipments | Samudera Traffic Co., Ltd.s Group",
+    title: "My Shipments | Samudera Traffic Co., Ltd. Group",
     description:
-      "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View booking details, track real-time status, and manage your logistics operations.",
+      "Track and manage your shipments with Samudera Traffic Co., Ltd. Group. View booking details, track real-time status, and manage your logistics operations.",
     images: ["/og-my-bookings.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "My Shipments Dashboard",
             description:
-              "Track and manage your shipments with Samudera Traffic Co., Ltd.s Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
+              "Track and manage your shipments with Samudera Traffic Co., Ltd. Group. View booking details, track real-time status, accept/reject quotes, download invoices, and manage your logistics operations.",
             url: "https://samuderathai.com/bookings/my_bookings",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },

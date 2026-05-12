@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Contact Us
 export const metadata = {
-  title: "Contact Us | Samudera Traffic Co., Ltd.s Group",
+  title: "Contact Us | Samudera Traffic Co., Ltd. Group",
   description:
-    "Get in touch with Samudera Traffic Co., Ltd.s Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
+    "Get in touch with Samudera Traffic Co., Ltd. Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "Contact Us",
     "Logistics Support",
     "Shipping Inquiries",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://samuderathai.com/contact",
   },
   openGraph: {
-    title: "Contact Us | Samudera Traffic Co., Ltd.s Group",
+    title: "Contact Us | Samudera Traffic Co., Ltd. Group",
     description:
-      "Get in touch with Samudera Traffic Co., Ltd.s Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
+      "Get in touch with Samudera Traffic Co., Ltd. Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
     url: "https://samuderathai.com/contact",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-contact.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - Contact Us",
+        alt: "Samudera Traffic Co., Ltd. Group - Contact Us",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us | Samudera Traffic Co., Ltd.s Group",
+    title: "Contact Us | Samudera Traffic Co., Ltd. Group",
     description:
-      "Get in touch with Samudera Traffic Co., Ltd.s Group for all your shipping and logistics needs. Contact our support team for inquiries.",
+      "Get in touch with Samudera Traffic Co., Ltd. Group for all your shipping and logistics needs. Contact our support team for inquiries.",
     images: ["/og-contact.jpg"],
   },
   robots: {
@@ -64,17 +64,17 @@ export default function Page() {
             "@type": "ContactPage",
             name: "Contact Us",
             description:
-              "Get in touch with Samudera Traffic Co., Ltd.s Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
+              "Get in touch with Samudera Traffic Co., Ltd. Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
             url: "https://samuderathai.com/contact",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },
             mainEntity: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               contactPoint: [
                 {
                   "@type": "ContactPoint",

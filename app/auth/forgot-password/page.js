@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Forgot Password
 export const metadata = {
-  title: "Forgot Password | Samudera Traffic Co., Ltd.s Group",
+  title: "Forgot Password | Samudera Traffic Co., Ltd. Group",
   description:
-    "Reset your password for Samudera Traffic Co., Ltd.s Group account. Enter your email to receive a verification code and create a new password to regain access to your logistics account.",
+    "Reset your password for Samudera Traffic Co., Ltd. Group account. Enter your email to receive a verification code and create a new password to regain access to your logistics account.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "Forgot Password",
     "Reset Password",
     "Password Recovery",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://samuderathai.com/auth/forgot-password",
   },
   openGraph: {
-    title: "Forgot Password | Samudera Traffic Co., Ltd.s Group",
+    title: "Forgot Password | Samudera Traffic Co., Ltd. Group",
     description:
-      "Reset your password for Samudera Traffic Co., Ltd.s Group account. Enter your email to receive a verification code and create a new password to regain access to your logistics account.",
+      "Reset your password for Samudera Traffic Co., Ltd. Group account. Enter your email to receive a verification code and create a new password to regain access to your logistics account.",
     url: "https://samuderathai.com/auth/forgot-password",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-forgot-password.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - Forgot Password",
+        alt: "Samudera Traffic Co., Ltd. Group - Forgot Password",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Forgot Password | Samudera Traffic Co., Ltd.s Group",
+    title: "Forgot Password | Samudera Traffic Co., Ltd. Group",
     description:
-      "Reset your password for Samudera Traffic Co., Ltd.s Group account. Enter your email to receive a verification code and create a new password.",
+      "Reset your password for Samudera Traffic Co., Ltd. Group account. Enter your email to receive a verification code and create a new password.",
     images: ["/og-forgot-password.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Forgot Password",
             description:
-              "Reset your password for Samudera Traffic Co., Ltd.s Group account. Enter your email to receive a verification code and create a new password to regain access to your logistics account.",
+              "Reset your password for Samudera Traffic Co., Ltd. Group account. Enter your email to receive a verification code and create a new password to regain access to your logistics account.",
             url: "https://samuderathai.com/auth/forgot-password",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },

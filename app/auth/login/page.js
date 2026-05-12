@@ -3,11 +3,11 @@ import React from "react";
 
 // 🔹 SEO metadata for Login
 export const metadata = {
-  title: "Customer Login | Samudera Traffic Co., Ltd.s Group",
+  title: "Customer Login | Samudera Traffic Co., Ltd. Group",
   description:
-    "Login to your Samudera Traffic Co., Ltd.s Group customer account. Track shipments in real-time, manage your logistics operations, access digital documents, and enjoy seamless supply chain management.",
+    "Login to your Samudera Traffic Co., Ltd. Group customer account. Track shipments in real-time, manage your logistics operations, access digital documents, and enjoy seamless supply chain management.",
   keywords: [
-    "Samudera Traffic Co., Ltd.s",
+    "Samudera Traffic Co., Ltd.",
     "Customer Login",
     "Login Portal",
     "Logistics Account",
@@ -22,26 +22,26 @@ export const metadata = {
     canonical: "https://samuderathai.com/auth/login",
   },
   openGraph: {
-    title: "Customer Login | Samudera Traffic Co., Ltd.s Group",
+    title: "Customer Login | Samudera Traffic Co., Ltd. Group",
     description:
-      "Login to your Samudera Traffic Co., Ltd.s Group customer account. Track shipments in real-time, manage your logistics operations, access digital documents, and enjoy seamless supply chain management.",
+      "Login to your Samudera Traffic Co., Ltd. Group customer account. Track shipments in real-time, manage your logistics operations, access digital documents, and enjoy seamless supply chain management.",
     url: "https://samuderathai.com/auth/login",
-    siteName: "Samudera Traffic Co., Ltd.s Group",
+    siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
         url: "/og-login.jpg",
         width: 1200,
         height: 630,
-        alt: "Samudera Traffic Co., Ltd.s Group - Customer Login",
+        alt: "Samudera Traffic Co., Ltd. Group - Customer Login",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Customer Login | Samudera Traffic Co., Ltd.s Group",
+    title: "Customer Login | Samudera Traffic Co., Ltd. Group",
     description:
-      "Login to your Samudera Traffic Co., Ltd.s Group customer account. Track shipments in real-time and manage your logistics operations.",
+      "Login to your Samudera Traffic Co., Ltd. Group customer account. Track shipments in real-time and manage your logistics operations.",
     images: ["/og-login.jpg"],
   },
   robots: {
@@ -64,11 +64,11 @@ export default function Page() {
             "@type": "WebPage",
             name: "Customer Login",
             description:
-              "Login to your Samudera Traffic Co., Ltd.s Group customer account. Track shipments in real-time, manage your logistics operations, access digital documents, and enjoy seamless supply chain management.",
+              "Login to your Samudera Traffic Co., Ltd. Group customer account. Track shipments in real-time, manage your logistics operations, access digital documents, and enjoy seamless supply chain management.",
             url: "https://samuderathai.com/auth/login",
             publisher: {
               "@type": "Organization",
-              name: "Samudera Traffic Co., Ltd.s Group",
+              name: "Samudera Traffic Co., Ltd. Group",
               url: "https://samuderathai.com",
               logo: "https://samuderathai.com/logo.png",
             },
