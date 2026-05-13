@@ -87,7 +87,7 @@ const SEARCH_TYPE_PLACEHOLDERS = {
 
 const buildTrackingPath = (value) => {
   const normalizedValue = value.trim();
-  return `/tracking-number/${encodeURIComponent(normalizedValue)}`;
+  return `/tracking-number?tracking=${encodeURIComponent(normalizedValue)}`;
 };
 
 const decodeTrackingValue = (value) => {
@@ -322,7 +322,7 @@ export default function TrackingPage() {
 
   // Copy shareable link to clipboard
   const handleCopyShareLink = () => {
-    const shareUrl = `${window.location.origin}${window.location.pathname}`;
+    const shareUrl = window.location.href;
     navigator.clipboard.writeText(shareUrl);
     setShareSuccess(true);
     toast.success('Shareable link copied to clipboard!');
@@ -342,7 +342,7 @@ export default function TrackingPage() {
 
   // Share using Web Share API (mobile)
   const handleShare = async () => {
-    const shareUrl = `${window.location.origin}${window.location.pathname}`;
+    const shareUrl = window.location.href;
     if (navigator.share) {
       try {
         await navigator.share({
