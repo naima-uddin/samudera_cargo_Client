@@ -18,6 +18,8 @@ import { trackByNumber, getBookingById } from '@/services/booking';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { TrackingPDF } from '@/components/trackingPdf';
 
+const SEARCH_TYPE_STORAGE_KEY = 'samudera_tracking_search_type';
+
 // ==================== STATUS CONFIG ====================
 const STATUS_CONFIG = {
   booking: { label: 'Booking', color: 'bg-gray-100 text-gray-600', icon: Package, progress: 5, order: 0, stage: 'pending' },
@@ -86,6 +88,16 @@ const SEARCH_TYPE_PLACEHOLDERS = {
 const buildTrackingPath = (value) => {
   const normalizedValue = value.trim();
   return `/tracking-number/${encodeURIComponent(normalizedValue)}`;
+};
+
+const decodeTrackingValue = (value) => {
+  if (!value) return '';
+
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
 };
 
 /**
@@ -237,12 +249,15 @@ export default function TrackingPage() {
   // Form submissions update the URL via window.history.replaceState which does NOT
   // trigger this effect, preventing any race condition.
   useEffect(() => {
-    const trackingParam = routeTrackingValue || searchParams.get('tracking');
+    const trackingParam = decodeTrackingValue(routeTrackingValue || searchParams.get('tracking'));
     const typeParam = searchParams.get('type');
 
     if (trackingParam) {
       const normalizedTracking = trackingParam.toUpperCase();
-      const inferredType = typeParam || detectInputType(normalizedTracking) || 'bl_number';
+      const storedType = typeof window !== 'undefined'
+        ? window.sessionStorage.getItem(SEARCH_TYPE_STORAGE_KEY)
+        : null;
+      const inferredType = typeParam || storedType || detectInputType(normalizedTracking) || 'bl_number';
 
       setTrackingNumber(normalizedTracking);
       setSearchType(inferredType);
@@ -276,14 +291,14 @@ export default function TrackingPage() {
     const normalizedTracking = trimmed.toUpperCase();
     setTrackingNumber(normalizedTracking);
 
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.setItem(SEARCH_TYPE_STORAGE_KEY, searchType);
+    }
+
     // Update URL so the browser shows the correct address and the page is
     // bookmarkable / shareable. Use replaceState (not router.push) so the
     // page keeps the current state while exposing a clean path-based URL.
-    window.history.replaceState(
-      null,
-      '',
-      buildTrackingPath(normalizedTracking)
-    );
+    router.replace(buildTrackingPath(normalizedTracking), { scroll: false });
 
     setLoading(true);
     setError(null);
@@ -1790,7 +1805,12 @@ export default function TrackingPage() {
             <div className="flex w-full items-center px-3 py-1 sm:w-auto sm:py-0 sm:border-r border-gray-200">
               <select
                 value={searchType}
-                onChange={(e) => setSearchType(e.target.value)}
+                onChange={(e) => {
+                  setSearchType(e.target.value);
+                  setTrackingNumber('');
+                  setError(null);
+                  setTrackingData(null);
+                }}
                 className="w-full px-2 py-3 sm:py-4 focus:outline-none text-gray-700 font-medium text-sm"
               >
                 <option value="tracking_number">Tracking Number</option>
