@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { 
   Search, Package, MapPin, Calendar, Clock, Ship, Truck,
   Weight, Box, Layers, ChevronDown, ChevronUp, FileText,
@@ -87,7 +87,7 @@ const SEARCH_TYPE_PLACEHOLDERS = {
 
 const buildTrackingPath = (value) => {
   const normalizedValue = value.trim();
-  return `/tracking-number?tracking=${encodeURIComponent(normalizedValue)}`;
+  return `/tracking-number/${encodeURIComponent(normalizedValue)}`;
 };
 
 const decodeTrackingValue = (value) => {
@@ -201,8 +201,7 @@ const getActionButtonsForStatus = (source, currentStatusOrder) => {
 };
 
 export default function TrackingPage() {
-  const router = useRouter();
-  const params = useParams();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   
   const [trackingNumber, setTrackingNumber] = useState('');
@@ -218,9 +217,18 @@ export default function TrackingPage() {
   const [searchType, setSearchType] = useState('tracking_number');
   const [selectedContainerDetails, setSelectedContainerDetails] = useState(null);
 
-  const routeTrackingValue = Array.isArray(params?.tracking)
-    ? params.tracking[0]
-    : params?.tracking;
+  const routeTrackingValue = (() => {
+    if (!pathname) return '';
+
+    const segments = pathname.split('/').filter(Boolean);
+    const trackingIndex = segments.indexOf('tracking-number');
+
+    if (trackingIndex >= 0 && segments[trackingIndex + 1]) {
+      return decodeTrackingValue(segments[trackingIndex + 1]);
+    }
+
+    return '';
+  })();
 
   // Get tracking number from URL on load
   const handleTrackFromUrl = useCallback(async (trackingNum, typeParam = 'tracking_number') => {
@@ -295,9 +303,8 @@ export default function TrackingPage() {
     }
 
     // Update URL so the browser shows the correct address and the page is
-    // bookmarkable / shareable. Use replaceState (not router.push) so the
-    // page keeps the current state while exposing a clean path-based URL.
-    router.replace(buildTrackingPath(normalizedTracking), { scroll: false });
+    // bookmarkable / shareable without triggering a Next.js route transition.
+    window.history.replaceState(null, '', buildTrackingPath(normalizedTracking));
 
     setLoading(true);
     setError(null);

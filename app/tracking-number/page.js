@@ -19,13 +19,13 @@ export const metadata = {
     "Delivery Status",
   ],
   alternates: {
-    canonical: "https://samuderathai.com/tracking",
+    canonical: "https://samuderathai.com/tracking-number",
   },
   openGraph: {
     title: "Track Shipment | Samudera Traffic Co., Ltd. Group",
     description:
       "Track your shipment in real-time with Samudera Traffic Co., Ltd. Group. Enter your tracking number to get live updates on your cargo location, status, and estimated delivery time.",
-    url: "https://samuderathai.com/tracking",
+    url: "https://samuderathai.com/tracking-number",
     siteName: "Samudera Traffic Co., Ltd. Group",
     images: [
       {
@@ -65,7 +65,7 @@ export default function Page() {
             name: "Track Shipment",
             description:
               "Track your shipment in real-time with Samudera Traffic Co., Ltd. Group. Enter your tracking number to get live updates on your cargo location, status, and estimated delivery time.",
-            url: "https://samuderathai.com/tracking",
+            url: "https://samuderathai.com/tracking-number",
             publisher: {
               "@type": "Organization",
               name: "Samudera Traffic Co., Ltd. Group",
@@ -83,7 +83,7 @@ export default function Page() {
               description: "Track your shipment by entering tracking number",
               target: {
                 "@type": "EntryPoint",
-                urlTemplate: "https://samuderathai.com/tracking",
+                urlTemplate: "https://samuderathai.com/tracking-number",
                 actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"],
               },
             },
@@ -109,7 +109,7 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 2,
                 name: "Track Shipment",
-                item: "https://samuderathai.com/tracking",
+                item: "https://samuderathai.com/tracking-number",
               },
             ],
           }),
@@ -138,7 +138,7 @@ export default function Page() {
               name: "Track Shipment",
               target: {
                 "@type": "EntryPoint",
-                urlTemplate: "https://samuderathai.com/tracking?trackingNumber={tracking_number}",
+                urlTemplate: "https://samuderathai.com/tracking-number/{tracking_number}",
                 actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"],
               },
             },
