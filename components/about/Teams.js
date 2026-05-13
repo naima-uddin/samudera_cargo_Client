@@ -34,7 +34,7 @@ const ceo = {
   name: 'Mr. Pinit',
   title: 'Chief Executive Officer',
   image: '/images/team (1).jpg',
-  email: 'mr.pinit@samuderathai.com',
+  email: 'pinit@samuderathai.com',
 }
 
 const stats = [
