@@ -151,7 +151,7 @@ const Navbar = () => {
 
   if (isLoading) {
     return (
-      <div className={`fixed ${navbarTopPosition} left-0 right-0 z-[50] bg-white py-4 shadow-sm w-full`}>
+      <div className={`fixed ${navbarTopPosition} left-0 right-0 z-[100] bg-white py-4 shadow-sm w-full`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
           <div className="flex items-center justify-between">
             <div className="h-12 w-32 bg-gray-200 rounded animate-pulse"></div>
@@ -179,7 +179,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed ${navbarTopPosition} left-0 right-0 z-[50] transition-all duration-300 w-full ${
+        className={`fixed ${navbarTopPosition} left-0 right-0 z-[100] transition-all duration-300 w-full ${
           scrolled ? 'bg-white py-2 shadow-lg' : 'bg-secondary py-4'
         }`}
       >

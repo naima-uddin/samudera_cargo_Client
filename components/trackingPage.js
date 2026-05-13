@@ -229,7 +229,7 @@ export default function TrackingPage() {
     setTrackingData(null);
     
     try {
-      const result = await trackByNumber(trackingNum, typeParam);
+      const result = await trackByNumber(trackingNum.toUpperCase(), typeParam);
       
       if (result.success) {
         const processedData = processTimelineForHoldResume(result.data);
@@ -253,15 +253,14 @@ export default function TrackingPage() {
     const typeParam = searchParams.get('type');
 
     if (trackingParam) {
-      const normalizedTracking = trackingParam.toUpperCase();
       const storedType = typeof window !== 'undefined'
         ? window.sessionStorage.getItem(SEARCH_TYPE_STORAGE_KEY)
         : null;
-      const inferredType = typeParam || storedType || detectInputType(normalizedTracking) || 'bl_number';
+      const inferredType = typeParam || storedType || detectInputType(trackingParam) || 'bl_number';
 
-      setTrackingNumber(normalizedTracking);
+      setTrackingNumber(trackingParam);
       setSearchType(inferredType);
-      handleTrackFromUrl(normalizedTracking, inferredType);
+      handleTrackFromUrl(trackingParam, inferredType);
     }
   }, [handleTrackFromUrl, routeTrackingValue, searchParams]);
 
@@ -288,7 +287,7 @@ export default function TrackingPage() {
       return;
     }
 
-    const normalizedTracking = trimmed.toUpperCase();
+    const normalizedTracking = trimmed;
     setTrackingNumber(normalizedTracking);
 
     if (typeof window !== 'undefined') {
@@ -305,7 +304,7 @@ export default function TrackingPage() {
     setTrackingData(null);
     
     try {
-      const result = await trackByNumber(normalizedTracking, searchType);
+      const result = await trackByNumber(trimmed.toUpperCase(), searchType);
       
       if (result.success) {
         const processedData = processTimelineForHoldResume(result.data);
@@ -1798,7 +1797,7 @@ export default function TrackingPage() {
       </div>
 
       {/* Search Section */}
-      <div className="relative z-20 mx-auto max-w-3xl px-3 sm:px-4 mt-4 sm:-mt-8 sm:z-50">
+      <div className="relative z-10 mx-auto max-w-3xl px-3 sm:px-4 mt-4 sm:-mt-8 sm:z-10">
         <form onSubmit={handleTrack} className="bg-white rounded-xl shadow-xl p-3 sm:p-2">
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-2">
             {/* Search Type Dropdown */}
@@ -1826,7 +1825,7 @@ export default function TrackingPage() {
               <input
                 type="text"
                 value={trackingNumber}
-                onChange={(e) => setTrackingNumber(e.target.value.toUpperCase())}
+                onChange={(e) => setTrackingNumber(e.target.value)}
                 placeholder={SEARCH_TYPE_PLACEHOLDERS[searchType] || 'Enter search number'}
                 className="w-full px-3 py-3 sm:py-4 focus:outline-none"
                 disabled={loading}
