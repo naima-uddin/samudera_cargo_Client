@@ -2183,7 +2183,12 @@ export default function TrackingPage() {
                           const stepTitle = stepStatus === 'booking_confirmed' ? 'Booking Confirmed' : getStatusConfig(stepStatus).label;
                           const stepLocation = getDisplayLocation(event);
                           const stepDate = formatDateOnly(event.date || event.timestamp || event.createdAt);
-                          const stepDescription = event.description || '';
+                          let stepDescription = event.description || '';
+                          
+                          // Override description for picked_up_from_warehouse
+                          if (stepStatus === 'picked_up_from_warehouse') {
+                            stepDescription = 'Shipment Updated into Picked up from Warehouse';
+                          }
 
                           return (
                             <div
