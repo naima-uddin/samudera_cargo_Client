@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { 
   Search, Package, MapPin, Calendar, Clock, Ship, Truck,
   Weight, Box, Layers, ChevronDown, ChevronUp, FileText,
@@ -81,6 +81,11 @@ const SEARCH_TYPE_PLACEHOLDERS = {
   bl_number: 'Enter BL number (e.g., HBLSMU1234567)',
   booking_number: 'Enter booking number (e.g., BKG-2501-00001)',
   container_number: 'Enter container number (e.g., ABCD1234567)',
+};
+
+const buildTrackingPath = (value) => {
+  const normalizedValue = value.trim();
+  return `/tracking-number/${encodeURIComponent(normalizedValue)}`;
 };
 
 /**
@@ -185,6 +190,7 @@ const getActionButtonsForStatus = (source, currentStatusOrder) => {
 
 export default function TrackingPage() {
   const router = useRouter();
+  const params = useParams();
   const searchParams = useSearchParams();
   
   const [trackingNumber, setTrackingNumber] = useState('');
@@ -199,6 +205,10 @@ export default function TrackingPage() {
   const [showRouteDetails, setShowRouteDetails] = useState(false);
   const [searchType, setSearchType] = useState('tracking_number');
   const [selectedContainerDetails, setSelectedContainerDetails] = useState(null);
+
+  const routeTrackingValue = Array.isArray(params?.tracking)
+    ? params.tracking[0]
+    : params?.tracking;
 
   // Get tracking number from URL on load
   const handleTrackFromUrl = useCallback(async (trackingNum, typeParam = 'tracking_number') => {
@@ -227,15 +237,18 @@ export default function TrackingPage() {
   // Form submissions update the URL via window.history.replaceState which does NOT
   // trigger this effect, preventing any race condition.
   useEffect(() => {
-    const trackingParam = searchParams.get('tracking');
-    const typeParam = searchParams.get('type') || 'tracking_number';
+    const trackingParam = routeTrackingValue || searchParams.get('tracking');
+    const typeParam = searchParams.get('type');
+
     if (trackingParam) {
-      setTrackingNumber(trackingParam.toUpperCase());
-      setSearchType(typeParam);
-      handleTrackFromUrl(trackingParam.toUpperCase(), typeParam);
+      const normalizedTracking = trackingParam.toUpperCase();
+      const inferredType = typeParam || detectInputType(normalizedTracking) || 'bl_number';
+
+      setTrackingNumber(normalizedTracking);
+      setSearchType(inferredType);
+      handleTrackFromUrl(normalizedTracking, inferredType);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // run once on mount only
+  }, [handleTrackFromUrl, routeTrackingValue, searchParams]);
 
   const handleTrack = async (e) => {
     e.preventDefault();
@@ -260,14 +273,16 @@ export default function TrackingPage() {
       return;
     }
 
+    const normalizedTracking = trimmed.toUpperCase();
+    setTrackingNumber(normalizedTracking);
+
     // Update URL so the browser shows the correct address and the page is
-    // bookmarkable / shareable. Use replaceState (not router.push) so that
-    // Next.js searchParams does NOT change — preventing the useEffect from
-    // firing a duplicate search with the wrong type.
+    // bookmarkable / shareable. Use replaceState (not router.push) so the
+    // page keeps the current state while exposing a clean path-based URL.
     window.history.replaceState(
       null,
       '',
-      `/tracking-number?tracking=${encodeURIComponent(trimmed.toUpperCase())}&type=${encodeURIComponent(searchType)}`
+      buildTrackingPath(normalizedTracking)
     );
 
     setLoading(true);
@@ -275,7 +290,7 @@ export default function TrackingPage() {
     setTrackingData(null);
     
     try {
-      const result = await trackByNumber(trimmed, searchType);
+      const result = await trackByNumber(normalizedTracking, searchType);
       
       if (result.success) {
         const processedData = processTimelineForHoldResume(result.data);
@@ -293,7 +308,7 @@ export default function TrackingPage() {
 
   // Copy shareable link to clipboard
   const handleCopyShareLink = () => {
-    const shareUrl = `${window.location.origin}/tracking-number?tracking=${trackingNumber}`;
+    const shareUrl = `${window.location.origin}${window.location.pathname}`;
     navigator.clipboard.writeText(shareUrl);
     setShareSuccess(true);
     toast.success('Shareable link copied to clipboard!');
@@ -313,7 +328,7 @@ export default function TrackingPage() {
 
   // Share using Web Share API (mobile)
   const handleShare = async () => {
-    const shareUrl = `${window.location.origin}/tracking-number?tracking=${trackingNumber}`;
+    const shareUrl = `${window.location.origin}${window.location.pathname}`;
     if (navigator.share) {
       try {
         await navigator.share({
@@ -1563,7 +1578,7 @@ export default function TrackingPage() {
   const currentStatusConfig = getStatusConfig(trackingData?.status);
   const hasReturn = hasReturnStatus();
   const isManualShipment = trackingData?.source === 'manual' || trackingData?.source === 'booking' || trackingData?.type === 'booking';
-  const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/tracking-number?tracking=${trackingNumber}` : '';
+  const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : '';
 
   // Container Details Modal Component
   const ContainerDetailsModal = () => {
