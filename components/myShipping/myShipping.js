@@ -766,7 +766,7 @@ const ReturnRequestModal = ({ isOpen, onClose, shipment, onSuccess }) => {
 
         <div className="flex justify-end space-x-3 pt-4">
           <Button variant="light" onClick={onClose}>Cancel</Button>
-          <Button variant="primary" onClick={handleSubmit} isLoading={loading} disabled={loading || !eligibleForReturn}>
+          <Button className='bg-red-600 text-white' onClick={handleSubmit} isLoading={loading} disabled={loading || !eligibleForReturn}>
             Submit Return Request
           </Button>
         </div>
