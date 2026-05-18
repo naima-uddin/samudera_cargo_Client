@@ -19,6 +19,9 @@ Options -MultiViews
     RewriteCond %{REQUEST_URI} \.[A-Za-z0-9]{1,8}$ [NC]
     RewriteRule ^ - [L]
 
+    # Route shared tracking links to the exported tracking page.
+    RewriteRule ^tracking-number(?:/.*)?$ tracking-number/index.html [L]
+
     # Route clean URLs to exported index.html files
     RewriteRule ^(.+?)/?$ $1/index.html [L]
 
