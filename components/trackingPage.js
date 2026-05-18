@@ -40,7 +40,6 @@ import {
   Undo2,
   Copy,
   Share2,
-  ShipIcon,
   ThumbsUp,
   ThumbsDown,
 } from "lucide-react";
@@ -2445,7 +2444,7 @@ export default function TrackingPage() {
             {/* Close Button */}
             <button
               onClick={() => setSelectedContainerDetails(null)}
-              className="w-full border border-bg-red-500 text-black hover:bg-gradient-to-r hover:from-red-400 hover:to-red-600 hover:text-white py-2 rounded-lg font-medium hover:from-red-500 hover:to-red-700 transition"
+              className="w-full border border-red-500 text-black hover:bg-gradient-to-r hover:from-red-400 hover:to-red-600 hover:text-white py-2 rounded-lg font-medium hover:from-red-500 hover:to-red-700 transition"
             >
               Close Details
             </button>
@@ -3469,7 +3468,7 @@ export default function TrackingPage() {
                   <div className="grid grid-cols-1">
                     <div className="px-6">
                       <h3 className="font-medium mb-3 flex items-center text-center border-b border-red-200">
-                        <ShipIcon className="h-4 w-4 text-red-500 mr-2 " />
+                        <Ship className="h-4 w-4 text-red-500 mr-2 " />
                         Shipment Summary
                       </h3>
                       <div className="space-y-2 ">
