@@ -24,6 +24,7 @@ Options -MultiViews
 
     # Root fallback
     RewriteRule ^$ index.html [L]
+
 </IfModule>
 
 <IfModule mod_mime.c>
