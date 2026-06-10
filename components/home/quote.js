@@ -1,40 +1,41 @@
 "use client";
-import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RequestQuote() {
   // Form state
   const [formData, setFormData] = useState({
-    origin: '',
-    destination: '',
-    freightType: '',
-    weight: '',
-    dimensions: '',
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    address: '',
-    instructions: '',
-    agreeToTerms: false
+    origin: "",
+    destination: "",
+    freightType: "",
+    weight: "",
+    dimensions: "",
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    address: "",
+    instructions: "",
+    agreeToTerms: false,
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://samudera-cargo-server.vercel.app/api/v1';
+  const API_URL =
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
 
   // Dropdown options
-  const originOptions = ['China', 'Thailand'];
-  const destinationOptions = ['USA', 'Canada', 'UK'];
+  const originOptions = ["China", "Thailand"];
+  const destinationOptions = ["USA", "Canada", "UK"];
   const freightTypeOptions = [
-    'Sea Freight (FCL)',
-    'Sea Freight (LCL)',
-    'Air Freight',
-    'Rail Freight',
-    'Express Delivery',
-    'Inland Transport',
-    'Door to Door'
+    "Sea Freight (FCL)",
+    "Sea Freight (LCL)",
+    "Air Freight",
+    "Rail Freight",
+    "Express Delivery",
+    "Inland Transport",
+    "Door to Door",
   ];
 
   // Simple validation function
@@ -42,35 +43,44 @@ export default function RequestQuote() {
     const newErrors = {};
 
     // Required fields validation
-    if (!formData.origin) newErrors.origin = 'Please select origin';
-    if (!formData.destination) newErrors.destination = 'Please select destination';
-    if (!formData.freightType) newErrors.freightType = 'Please select freight type';
-    if (!formData.weight.trim()) newErrors.weight = 'Weight is required';
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.address.trim()) newErrors.address = 'Address is required';
-    
+    if (!formData.origin) newErrors.origin = "Please select origin";
+    if (!formData.destination)
+      newErrors.destination = "Please select destination";
+    if (!formData.freightType)
+      newErrors.freightType = "Please select freight type";
+    if (!formData.weight.trim()) newErrors.weight = "Weight is required";
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.address.trim()) newErrors.address = "Address is required";
+
     // Email validation
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = "Invalid email format";
     }
 
     // Phone validation
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone is required';
-    } else if (!/^[\+]?[(]?[0-9]{1,3}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,4}[-\s\.]?[0-9]{1,9}$/.test(formData.phone)) {
-      newErrors.phone = 'Invalid phone number';
+      newErrors.phone = "Phone is required";
+    } else if (
+      !/^[\+]?[(]?[0-9]{1,3}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,4}[-\s\.]?[0-9]{1,9}$/.test(
+        formData.phone,
+      )
+    ) {
+      newErrors.phone = "Invalid phone number";
     }
 
     // Weight validation
-    if (formData.weight && !/^\d*\.?\d+\s*(kg|g|lb|lbs)?$/.test(formData.weight)) {
-      newErrors.weight = 'Use format: 10kg, 5.5lbs';
+    if (
+      formData.weight &&
+      !/^\d*\.?\d+\s*(kg|g|lb|lbs)?$/.test(formData.weight)
+    ) {
+      newErrors.weight = "Use format: 10kg, 5.5lbs";
     }
 
     // Terms validation
     if (!formData.agreeToTerms) {
-      newErrors.agreeToTerms = 'You must agree to terms';
+      newErrors.agreeToTerms = "You must agree to terms";
     }
 
     setErrors(newErrors);
@@ -80,14 +90,14 @@ export default function RequestQuote() {
   // Handle input change
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
 
     // Clear error for this field when user selects/types
     if (errors[name]) {
-      setErrors(prev => {
+      setErrors((prev) => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
@@ -98,26 +108,26 @@ export default function RequestQuote() {
   // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       setIsSubmitting(true);
-      
+
       // Show loading toast
-      const loadingToast = toast.loading('Sending quote request...');
-      
+      const loadingToast = toast.loading("Sending quote request...");
+
       try {
         const response = await fetch(`${API_URL}/request-quote`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         });
 
         // রেসপন্স চেক করুন
         let result;
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
           result = await response.json();
         } else {
           const text = await response.text();
@@ -132,7 +142,7 @@ export default function RequestQuote() {
           toast.success(
             <div>
               <strong>✓ Quote sent successfully!</strong>
-              <p style={{ fontSize: '14px', marginTop: '5px' }}>
+              <p style={{ fontSize: "14px", marginTop: "5px" }}>
                 Quote ID: {result.quoteId}
               </p>
             </div>,
@@ -143,38 +153,49 @@ export default function RequestQuote() {
               closeOnClick: true,
               pauseOnHover: true,
               draggable: true,
-            }
+            },
           );
-          
+
           // ফর্ম রিসেট করুন
           setFormData({
-            origin: '', destination: '', freightType: '', weight: '', dimensions: '',
-            name: '', email: '', phone: '', company: '', address: '',
-            instructions: '', agreeToTerms: false
+            origin: "",
+            destination: "",
+            freightType: "",
+            weight: "",
+            dimensions: "",
+            name: "",
+            email: "",
+            phone: "",
+            company: "",
+            address: "",
+            instructions: "",
+            agreeToTerms: false,
           });
           setErrors({});
-          
         } else {
           // Error toast
-          toast.error(result?.message || 'Something went wrong', {
+          toast.error(result?.message || "Something went wrong", {
             position: "top-right",
             autoClose: 5000,
           });
         }
       } catch (error) {
-        console.error('Submission error:', error);
-        
+        console.error("Submission error:", error);
+
         // Dismiss loading toast
         toast.dismiss(loadingToast);
-        
+
         // নেটওয়ার্ক বা অন্যান্য এরর
-        if (error.message.includes('Failed to fetch')) {
-          toast.error('⚠️ Cannot connect to server. Please make sure the backend is running on port 8000.', {
-            position: "top-right",
-            autoClose: 5000,
-          });
+        if (error.message.includes("Failed to fetch")) {
+          toast.error(
+            "⚠️ Cannot connect to server. Please make sure the backend is running on port 8000.",
+            {
+              position: "top-right",
+              autoClose: 5000,
+            },
+          );
         } else {
-          toast.error('Error: ' + error.message, {
+          toast.error("Error: " + error.message, {
             position: "top-right",
             autoClose: 5000,
           });
@@ -184,8 +205,8 @@ export default function RequestQuote() {
       }
     } else {
       // Form validation errors
-      const errorMessages = Object.values(errors).join('\n');
-      toast.error('Please fix the following errors:\n' + errorMessages, {
+      const errorMessages = Object.values(errors).join("\n");
+      toast.error("Please fix the following errors:\n" + errorMessages, {
         position: "top-right",
         autoClose: 5000,
       });
@@ -207,13 +228,11 @@ export default function RequestQuote() {
         pauseOnHover
         theme="light"
       />
-      
+
       <section className="bg-gradient-to-br from-slate-50 to-primary/5 py-4 px-4 flex items-center justify-center">
         <div className="max-w-5xl mx-auto w-full">
-
           {/* Header */}
           <div className="mb-8 text-center">
-            
             <h2 className="text-2xl md:text-3xl font-bold mb-2 mt-2">
               <span className="bg-gradient-to-r from-third via-primary to-fourth bg-clip-text text-transparent">
                 Moving Your Cargo Forward, get a quote in seconds!
@@ -222,21 +241,24 @@ export default function RequestQuote() {
           </div>
 
           {/* Form Card */}
-          <form onSubmit={handleSubmit} className="bg-white/90 backdrop-blur-sm border border-primary/10 rounded-3xl p-4 md:p-6 shadow-xl relative overflow-hidden">
-            
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white/90 backdrop-blur-sm border border-primary/10 rounded-3xl p-4 md:p-6 shadow-xl relative overflow-hidden"
+          >
             {/* Decorative Elements */}
             <div className="absolute top-0 right-0 w-72 h-72 bg-primary/20 rounded-full blur-3xl opacity-20"></div>
             <div className="absolute bottom-0 left-0 w-72 h-72 bg-fourth/20 rounded-full blur-3xl opacity-20"></div>
-            
-            <div className="grid lg:grid-cols-2 gap-4 lg:gap-6 relative z-10">
 
+            <div className="grid lg:grid-cols-2 gap-4 lg:gap-6 relative z-10">
               {/* Shipment Info */}
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-center gap-3 mb-4 md:mb-5">
                   <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center">
                     <span className="text-lg">📦</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-slate-800">Shipment & Cargo Details</h3>
+                  <h3 className="text-lg font-semibold text-slate-800">
+                    Shipment & Cargo Details
+                  </h3>
                 </div>
 
                 <Select
@@ -249,7 +271,7 @@ export default function RequestQuote() {
                   icon="🌍"
                   placeholder="Select origin country"
                 />
-                
+
                 <Select
                   label="Destination"
                   name="destination"
@@ -260,7 +282,7 @@ export default function RequestQuote() {
                   icon="📍"
                   placeholder="Select destination country -mb-1"
                 />
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3  -mt-1">
                   <Select
                     label="Freight Type"
@@ -286,7 +308,8 @@ export default function RequestQuote() {
 
                 <div className="mt-1">
                   <label className="text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
-                    <span className="text-base">📝</span> Special Instructions (Optional)
+                    <span className="text-base">📝</span> Special Instructions
+                    (Optional)
                   </label>
                   <textarea
                     name="instructions"
@@ -305,7 +328,9 @@ export default function RequestQuote() {
                   <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center">
                     <span className="text-lg">👤</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-slate-800">Contact Information</h3>
+                  <h3 className="text-lg font-semibold text-slate-800">
+                    Contact Information
+                  </h3>
                 </div>
 
                 <Input
@@ -317,7 +342,7 @@ export default function RequestQuote() {
                   error={errors.name}
                   icon="👤"
                 />
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Input
                     label="Email"
@@ -340,7 +365,7 @@ export default function RequestQuote() {
                     icon="📞"
                   />
                 </div>
-                
+
                 <Input
                   label="Company"
                   name="company"
@@ -349,7 +374,7 @@ export default function RequestQuote() {
                   onChange={handleChange}
                   icon="🏢"
                 />
-                
+
                 <Input
                   label="Address"
                   name="address"
@@ -364,43 +389,44 @@ export default function RequestQuote() {
 
             {/* Terms */}
             <div className="mt-4 md:mt-5 relative z-10">
-  <label className="flex items-start gap-3 cursor-pointer group">
-    <input
-      type="checkbox"
-      name="agreeToTerms"
-      checked={formData.agreeToTerms}
-      onChange={handleChange}
-      className="w-5 h-5 mt-0.5 accent-primary rounded border-slate-300 text-primary focus:ring-primary/20 focus:ring-offset-0"
-    />
-    <span className="text-slate-600 text-sm">
-      I agree to the{" "}
-      <a 
-        href="/footer/terms" 
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-primary font-medium hover:text-[#b00000] hover:underline cursor-pointer transition-colors"
-        onClick={(e) => e.stopPropagation()} // checkbox trigger না হওয়ার জন্য
-      >
-        Terms & Conditions
-      </a>{" "}
-      and{" "}
-      <a 
-        href="/footer/privacy-policy" 
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-primary font-medium hover:text-[#b00000] hover:underline cursor-pointer transition-colors"
-        onClick={(e) => e.stopPropagation()}
-      >
-        Privacy Policy
-      </a>.
-    </span>
-  </label>
-  {errors.agreeToTerms && (
-    <p className="mt-2 text-sm text-red-500 flex items-center gap-1 bg-red-50 px-3 py-2 rounded-lg">
-      <span>⚠️</span> {errors.agreeToTerms}
-    </p>
-  )}
-</div>
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  name="agreeToTerms"
+                  checked={formData.agreeToTerms}
+                  onChange={handleChange}
+                  className="w-5 h-5 mt-0.5 accent-primary rounded border-slate-300 text-primary focus:ring-primary/20 focus:ring-offset-0"
+                />
+                <span className="text-slate-600 text-sm">
+                  I agree to the{" "}
+                  <a
+                    href="/footer/terms"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary font-medium hover:text-[#b00000] hover:underline cursor-pointer transition-colors"
+                    onClick={(e) => e.stopPropagation()} // checkbox trigger না হওয়ার জন্য
+                  >
+                    Terms & Conditions
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="/footer/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary font-medium hover:text-[#b00000] hover:underline cursor-pointer transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Privacy Policy
+                  </a>
+                  .
+                </span>
+              </label>
+              {errors.agreeToTerms && (
+                <p className="mt-2 text-sm text-red-500 flex items-center gap-1 bg-red-50 px-3 py-2 rounded-lg">
+                  <span>⚠️</span> {errors.agreeToTerms}
+                </p>
+              )}
+            </div>
 
             {/* Button */}
             <div className="mt-6 md:mt-6 text-center relative z-10">
@@ -412,24 +438,49 @@ export default function RequestQuote() {
                 <span className="flex items-center justify-center gap-3">
                   {isSubmitting ? (
                     <>
-                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      <svg
+                        className="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
                       </svg>
                       Sending Request...
                     </>
                   ) : (
                     <>
                       Get Your Quote
-                      <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      <svg
+                        className="w-5 h-5 group-hover:translate-x-2 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
                       </svg>
                     </>
                   )}
                 </span>
               </button>
             </div>
-
           </form>
         </div>
 
@@ -454,10 +505,24 @@ export default function RequestQuote() {
 }
 
 // Input Component
-function Input({ label, name, type = 'text', placeholder, value, onChange, error, icon, hint, required }) {
+function Input({
+  label,
+  name,
+  type = "text",
+  placeholder,
+  value,
+  onChange,
+  error,
+  icon,
+  hint,
+  required,
+}) {
   return (
     <div>
-      <label htmlFor={name} className="text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+      <label
+        htmlFor={name}
+        className="text-sm font-medium text-slate-700 mb-2 flex items-center gap-2"
+      >
         <span className="text-base">{icon}</span>
         <span className="flex items-center gap-1">
           {label}
@@ -473,9 +538,10 @@ function Input({ label, name, type = 'text', placeholder, value, onChange, error
         onChange={onChange}
         className={`
           w-full bg-white border rounded-xl px-3 py-2 outline-none transition-all duration-300 text-sm text-slate-700 placeholder:text-sm placeholder-slate-400
-          ${error 
-            ? 'border-red-400 focus:border-red-400 focus:ring-4 focus:ring-red-100' 
-            : 'border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10'
+          ${
+            error
+              ? "border-red-400 focus:border-red-400 focus:ring-4 focus:ring-red-100"
+              : "border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10"
           }
           hover:border-primary/30
         `}
@@ -493,10 +559,22 @@ function Input({ label, name, type = 'text', placeholder, value, onChange, error
 }
 
 // Select Component
-function Select({ label, name, value, onChange, options, error, icon, placeholder }) {
+function Select({
+  label,
+  name,
+  value,
+  onChange,
+  options,
+  error,
+  icon,
+  placeholder,
+}) {
   return (
     <div>
-      <label htmlFor={name} className="text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+      <label
+        htmlFor={name}
+        className="text-sm font-medium text-slate-700 mb-2 flex items-center gap-2"
+      >
         <span className="text-base">{icon}</span> {label}
       </label>
       <div className="relative">
@@ -507,15 +585,18 @@ function Select({ label, name, value, onChange, options, error, icon, placeholde
           onChange={onChange}
           className={`
             w-full bg-white border rounded-xl px-3 py-2 outline-none appearance-none cursor-pointer transition-all duration-300 text-sm text-slate-700 placeholder:text-sm
-            ${error 
-              ? 'border-red-400 focus:border-red-400 focus:ring-4 focus:ring-red-100' 
-              : 'border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10'
+            ${
+              error
+                ? "border-red-400 focus:border-red-400 focus:ring-4 focus:ring-red-100"
+                : "border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/10"
             }
             hover:border-primary/30
-            ${!value && 'text-slate-400'}
+            ${!value && "text-slate-400"}
           `}
         >
-          <option value="" disabled className="text-slate-400">{placeholder}</option>
+          <option value="" disabled className="text-slate-400">
+            {placeholder}
+          </option>
           {options.map((option) => (
             <option key={option} value={option} className="text-slate-700">
               {option}
@@ -523,8 +604,18 @@ function Select({ label, name, value, onChange, options, error, icon, placeholde
           ))}
         </select>
         <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-          <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <svg
+            className="w-5 h-5 text-slate-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </div>
       </div>
