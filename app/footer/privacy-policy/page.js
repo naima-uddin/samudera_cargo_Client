@@ -94,13 +94,13 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Privacy Policy",
-                item: "https://client.cargologisticscompany.com/privacy-policy",
+                item: "https://samuderathai.com/privacy-policy",
               },
             ],
           }),
@@ -115,8 +115,8 @@ export default function Page() {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "Samudera Traffic Co., Ltd. Group",
-            url: "https://client.cargologisticscompany.com",
-            logo: "https://client.cargologisticscompany.com/logo.png",
+            url: "https://samuderathai.com",
+            logo: "https://samuderathai.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
             address: {
               "@type": "PostalAddress",
@@ -135,7 +135,7 @@ export default function Page() {
             },
             legalName: "Samudera Traffic Co., Ltd. Group",
             foundingDate: "2009",
-            privacyPolicy: "https://client.cargologisticscompany.com/privacy-policy",
+            privacyPolicy: "https://samuderathai.com/privacy-policy",
           }),
         }}
       />
@@ -150,7 +150,7 @@ export default function Page() {
             name: "Privacy Policy of Samudera Traffic Co., Ltd. Group",
             description:
               "This Privacy Policy describes how Samudera Traffic Co., Ltd. Group collects, uses, and protects personal information of its customers and website visitors.",
-            url: "https://client.cargologisticscompany.com/privacy-policy",
+            url: "https://samuderathai.com/privacy-policy",
             lastReviewed: "2026-03-10",
             inLanguage: "en-US",
             jurisdiction: "USA",

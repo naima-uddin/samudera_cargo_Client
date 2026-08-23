@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { registerCustomer } from '@/services/Authentication';
 
+import { useSiteSettings } from '@/components/context/SiteSettingsProvider';
+
 const useAuth = () => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
@@ -156,6 +158,7 @@ const Button = ({
 };
  
 export default function Page() {
+  const site = useSiteSettings();
   const router = useRouter();
   const { register, loading } = useAuth();
   const [currentStep, setCurrentStep] = useState(1);
@@ -425,9 +428,9 @@ const handlePhoneChange = (e) => {
           <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E67E22] to-[#3C719D] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur"></div>
         </div>
         <div className="relative">
-          <img 
-            src="/images/logo.png" 
-            alt="LogiSwift Logo" 
+          <img
+            src={site.logo}
+            alt={site.companyName}
             className="h-10 w-auto brightness-0 invert filter"
           />
           <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-[#E67E22] to-transparent"></div>

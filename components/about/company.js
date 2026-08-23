@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { FaHeadset, FaShieldAlt, FaDollarSign, FaCogs } from "react-icons/fa";
 import React, { useState, useEffect, useRef } from "react";
+import { useSiteSettings } from "@/components/context/SiteSettingsProvider";
 
 const features = [
   {
@@ -171,6 +172,7 @@ function FeatureCard({ item, compact }) {
 }
 
 const InterestingFacts = () => {
+  const site = useSiteSettings();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
   const [counters, setCounters] = useState([0, 0, 0]);
@@ -251,13 +253,10 @@ const InterestingFacts = () => {
                   Contact us
                 </p>
                 <div className="mt-4 space-y-3 text-sm leading-7 text-white/85">
-                  <p>
-                    Green Tower, 9th floor, 3656/27-28 Rama 4 road, Klongton,
-                    Klongtoey, Bangkok 10110, Thailand
-                  </p>
-                  <p>Email : center@samuderathai.com</p>
-                  <p>Tel : +66977830395</p>
-                  <p>Fax : +66-2367-3740-43</p>
+                  <p className="whitespace-pre-line">{site.address}</p>
+                  <p>Email : {site.email}</p>
+                  <p>Tel : {site.phone}</p>
+                  {site.fax ? <p>Fax : {site.fax}</p> : null}
                 </div>
               </div>
 

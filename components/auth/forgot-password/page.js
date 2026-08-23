@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { forgotPassword, verifyOTP, resetPassword } from '@/services/Authentication';
 
+import { useSiteSettings } from '@/components/context/SiteSettingsProvider';
+
 const Button = ({
   children,
   type = 'button',
@@ -139,6 +141,7 @@ const OtpInput = ({
 };
 
 export default function ForgotPasswordPage() {
+  const site = useSiteSettings();
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [email, setEmail] = useState('');
@@ -439,9 +442,9 @@ export default function ForgotPasswordPage() {
         <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E67E22] to-[#3C719D] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur"></div>
       </div>
       <div className="relative">
-        <img 
-          src="/images/logo.png" 
-          alt="LogiSwift Logo" 
+        <img
+          src={site.logo}
+          alt={site.companyName}
           className="h-12 w-auto brightness-0 invert filter"
         />
         <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-[#E67E22] to-transparent"></div>

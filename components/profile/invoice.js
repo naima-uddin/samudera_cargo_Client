@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useSiteSettings } from '@/components/context/SiteSettingsProvider';
 import { 
   getInvoicesByCustomer,
   getInvoiceById,
@@ -874,7 +875,15 @@ const EmptyState = ({ onRefresh }) => (
 
 export default function MyInvoicesPage() {
   const router = useRouter();
-  
+  const site = useSiteSettings();
+  const companyInfo = {
+    name: site.companyName,
+    address: site.address,
+    city: '',
+    phone: site.phone,
+    email: site.email,
+  };
+
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [invoices, setInvoices] = useState([]);
@@ -1106,7 +1115,7 @@ export default function MyInvoicesPage() {
         invoiceData.charges = [];
       }
 
-      const blob = await pdf(<InvoicePDF invoice={invoiceData} companyInfo={COMPANY_INFO} />).toBlob();
+      const blob = await pdf(<InvoicePDF invoice={invoiceData} companyInfo={companyInfo} />).toBlob();
       const url = URL.createObjectURL(blob);
       const downloadLink = document.createElement('a');
       downloadLink.href = url;

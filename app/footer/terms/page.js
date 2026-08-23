@@ -94,13 +94,13 @@ export default function Page() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://client.cargologisticscompany.com",
+                item: "https://samuderathai.com",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Terms of Service",
-                item: "https://client.cargologisticscompany.com/terms-of-service",
+                item: "https://samuderathai.com/terms-of-service",
               },
             ],
           }),
@@ -115,8 +115,8 @@ export default function Page() {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "Samudera Traffic Co., Ltd. Group",
-            url: "https://client.cargologisticscompany.com",
-            logo: "https://client.cargologisticscompany.com/logo.png",
+            url: "https://samuderathai.com",
+            logo: "https://samuderathai.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
             address: {
               "@type": "PostalAddress",
@@ -135,7 +135,7 @@ export default function Page() {
             },
             legalName: "Samudera Traffic Co., Ltd. Group",
             foundingDate: "2009",
-            termsOfService: "https://client.cargologisticscompany.com/terms-of-service",
+            termsOfService: "https://samuderathai.com/terms-of-service",
           }),
         }}
       />
@@ -150,7 +150,7 @@ export default function Page() {
             name: "Terms of Service of Samudera Traffic Co., Ltd. Group",
             description:
               "These Terms of Service govern the use of Samudera Traffic Co., Ltd. Group's freight forwarding platform and logistics services.",
-            url: "https://client.cargologisticscompany.com/terms-of-service",
+            url: "https://samuderathai.com/terms-of-service",
             lastReviewed: "2026-02-02",
             inLanguage: "en-US",
             jurisdiction: "USA",

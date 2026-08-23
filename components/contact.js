@@ -12,8 +12,10 @@ import {
 } from "react-icons/hi";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { useSiteSettings } from "@/components/context/SiteSettingsProvider";
 
 function Contact() {
+  const site = useSiteSettings();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -198,14 +200,19 @@ function Contact() {
                   Reach Us
                 </h3>
                 <p className="text-gray-600 text-xs sm:text-sm lg:text-base mb-0.5 sm:mb-1">
-                  Phone: <span className="font-medium">+66977830395</span>
+                  Phone: <span className="font-medium">{site.phone}</span>
                 </p>
                 <p className="text-gray-600 text-xs sm:text-sm lg:text-base">
                   Email:{" "}
                   <span className="font-medium break-all">
-                    info@samuderathai.com
+                    {site.email}
                   </span>
                 </p>
+                {site.fax ? (
+                  <p className="text-gray-600 text-xs sm:text-sm lg:text-base">
+                    Fax: <span className="font-medium">{site.fax}</span>
+                  </p>
+                ) : null}
               </div>
             </div>
           </div>
@@ -240,9 +247,8 @@ function Contact() {
                 <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-1 sm:mb-2">
                   Location
                 </h3>
-                <p className="text-gray-600 text-xs sm:text-sm lg:text-base">
-                  Green Tower, 9th floor, 3656/27-28 Rama IV Road <br />
-                  Klongton-Klong Toey Bangkok 10110, Thailand
+                <p className="text-gray-600 text-xs sm:text-sm lg:text-base whitespace-pre-line">
+                  {site.address}
                 </p>
               </div>
             </div>

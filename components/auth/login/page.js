@@ -39,6 +39,8 @@ if (typeof window !== 'undefined') {
 
 // ==================== COMPONENTS ====================
 import { googleLogin } from '@/services/Authentication';
+import { useSiteSettings } from '@/components/context/SiteSettingsProvider';
+
 const Button = ({
   children,
   type = 'button',
@@ -146,6 +148,7 @@ const Input = ({
 // ==================== MAIN LOGIN COMPONENT ====================
 
 export default function LoginPage() {
+  const site = useSiteSettings();
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
@@ -403,9 +406,9 @@ export default function LoginPage() {
           <div className="relative z-10">
             <div className="flex items-center space-x-3 mb-8">
               <div className="relative">
-                <img 
-                  src="/images/logo.png" 
-                  alt="LogiSwift Logo" 
+                <img
+                  src={site.logo}
+                  alt={site.companyName}
                   className="h-12 w-auto brightness-0 invert filter"
                 />
                 <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-[#E67E22] to-transparent"></div>

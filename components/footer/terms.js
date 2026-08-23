@@ -22,8 +22,10 @@ import {
   Package,
 } from "lucide-react";
 import Link from "next/link";
+import { useSiteSettings } from "@/components/context/SiteSettingsProvider";
 
 const TermsOfService = () => {
+  const site = useSiteSettings();
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -402,10 +404,8 @@ const TermsOfService = () => {
             <h3 className="font-semibold text-third text-[10px] sm:text-sm leading-tight mb-2">
               HEAD OFFICE
             </h3>
-            <p className="text-gray-600 text-[9px] sm:text-sm leading-tight">
-              Green Tower, 9th floor, 3656/27-28
-Rama IV Road, Klongton-Klong Toey
-Bangkok 10110, Thailand
+            <p className="text-gray-600 text-[9px] sm:text-sm leading-tight whitespace-pre-line">
+              {site.address}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-x-1 mb-4 sm:mb-1">
@@ -413,11 +413,11 @@ Bangkok 10110, Thailand
               PHONE:
             </span>
             <a
-              href="tel:+66977830395"
+              href={`tel:${site.phone}`}
               className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5"
             >
               <Phone className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
-              +66977830395
+              {site.phone}
             </a>
           </div>
           <div className="flex flex-wrap items-center gap-x-1">
@@ -425,11 +425,11 @@ Bangkok 10110, Thailand
               EMAIL:
             </span>
             <a
-              href="mailto:info@samuderathai.com"
+              href={`mailto:${site.email}`}
               className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5 truncate max-w-[180px] sm:max-w-none"
             >
               <Mail className="w-2.5 h-2.5 sm:w-4 sm:h-4 flex-shrink-0" />
-              <span className="truncate">info@samuderathai.com</span>
+              <span className="truncate">{site.email}</span>
             </a>
           </div>
         </div>
@@ -583,10 +583,10 @@ Bangkok 10110, Thailand
               <p className="text-gray-600">
                 For questions or clarifications, please contact our legal team at{" "}
                 <a
-                  href="mailto:info@samuderathai.com"
+                  href={`mailto:${site.email}`}
                   className="text-primary hover:underline"
                 >
-                  info@samuderathai.com
+                  {site.email}
                 </a>
               </p>
             </motion.div>

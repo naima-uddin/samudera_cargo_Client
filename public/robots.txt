@@ -8,4 +8,4 @@ Disallow: /manual-shipping
 Disallow: /Bookings/
 Disallow: /api/
 Disallow: /_next/
-Sitemap: https://client.cargologisticscompany.com/sitemap.xml
+Sitemap: https://samuderathai.com/sitemap.xml

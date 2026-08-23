@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, ChevronRight, Facebook, Twitter, Linkedin, Instagram, Globe } from 'lucide-react';
 import Link from 'next/link';
+import { useSiteSettings } from '@/components/context/SiteSettingsProvider';
 
-const footer = () => { 
+const Footer = () => {
+  const site = useSiteSettings();
 
   const footerSections = [
     {
@@ -14,33 +16,39 @@ const footer = () => {
           {/* Head Office - Ultra Compact */}
       <div className=' mb-4 '>
         <div className="flex items-center gap-2 mb-1">
-          <img src="/images/logo.png" alt="Company Logo" className="md:w-14 md:h-10 w-10 h-10 mb-1" />
-          <p className="text-gray-900 text-[9px] sm:text-sm md:text-xl leading-tight font-bold">Samudera Traffic Co., Ltd. </p>
+          <img src={site.logo} alt={site.companyName} className="md:w-14 md:h-10 w-10 h-10 mb-1 object-contain" />
+          <p className="text-gray-900 text-[9px] sm:text-sm md:text-xl leading-tight font-bold">{site.companyName} </p>
         </div>
         <div>
-          
+
         <h3 className="font-semibold text-third text-[10px] sm:text-sm leading-tight mb-2">
           HEAD OFFICE
         </h3>
-        <p className="text-gray-600 text-[9px] sm:text-sm leading-tight">
-          Green Tower, 9th floor, 3656/27-28
-Rama IV Road, Klongton-Klong Toey
-Bangkok 10110, Thailand
+        <p className="text-gray-600 text-[9px] sm:text-sm leading-tight whitespace-pre-line">
+          {site.address}
         </p>
       </div>
-      
+
       {/* Phone & Email - Side by side, no gap */}
       <div className="flex flex-wrap items-center gap-x-1 mb-4 sm:mb-1">
-        <a href="tel:+66977830395" className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5">
+        <a href={`tel:${site.phone}`} className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5">
           <Phone className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
-          +66977830395
+          {site.phone}
         </a>
       </div>
-      
+
+      {site.fax ? (
+      <div className="flex flex-wrap items-center gap-x-1 mb-4 sm:mb-1">
+        <span className="text-gray-600 text-[9px] sm:text-sm inline-flex items-center gap-0.5">
+          Fax: {site.fax}
+        </span>
+      </div>
+      ) : null}
+
       <div className="flex flex-wrap items-center gap-x-1">
-        <a href="mailto:info@samuderathai.com" className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5 truncate max-w-[180px] sm:max-w-none">
+        <a href={`mailto:${site.email}`} className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5 truncate max-w-[180px] sm:max-w-none">
           <Mail className="w-2.5 h-2.5 sm:w-4 sm:h-4 flex-shrink-0" />
-          <span className="truncate">info@samuderathai.com</span>
+          <span className="truncate">{site.email}</span>
         </a>
       </div>
       </div>
@@ -205,7 +213,7 @@ Bangkok 10110, Thailand
           className="mt-4 sm:mt-5 lg:mt-6 pt-3 sm:pt-4 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4"
         >
           <p className="text-gray-600 text-[8px] sm:text-xs lg:text-sm text-center md:text-left">
-            © {new Date().getFullYear()} Samudera Traffic Co., Ltd. Company. All rights reserved.
+            © {new Date().getFullYear()} {site.companyName}. All rights reserved.
           </p>
           
           <div className="flex gap-3 sm:gap-4 lg:gap-6 text-[8px] sm:text-xs lg:text-sm">
@@ -222,4 +230,4 @@ Bangkok 10110, Thailand
   );
 };
 
-export default footer;
+export default Footer;

@@ -6,9 +6,11 @@ import { Menu, X, ChevronDown, Home, FileText, User, Settings, Mail, LogOut, Use
 import { getAuthToken, getUserDetails, logout } from '@/utils/SessionHelper';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useSiteSettings } from '@/components/context/SiteSettingsProvider';
 
 const Navbar = () => {
   const router = useRouter();
+  const site = useSiteSettings();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
@@ -189,7 +191,7 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex items-center space-x-2 flex-shrink-0">
               <a href="/">
-                <img src="/images/logo.png" alt="Samudera Traffic Co., Ltd. Company" className="h-12 w-auto" />
+                <img src={site.logo} alt={site.companyName} className="h-12 w-auto" />
               </a>
             </div>
 

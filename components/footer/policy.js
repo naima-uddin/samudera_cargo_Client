@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import { useSiteSettings } from '@/components/context/SiteSettingsProvider';
 import { 
   HiShieldCheck,
   HiChevronRight,
@@ -42,6 +43,7 @@ import {
 } from 'react-icons/hi';
 
 const PrivacyPolicy = () => {
+  const site = useSiteSettings();
   const lastUpdated = "March 10, 2026";
   const introRef = useRef(null);
   const isIntroInView = useInView(introRef, { once: true, amount: 0.3 });
@@ -163,22 +165,22 @@ const PrivacyPolicy = () => {
   ];
 
   const contacts = [
-    { 
-      icon: <HiMail className="w-5 h-5" />, 
-      text: "info@samuderathai.com", 
-      href: "mailto:info@samuderathai.com",
+    {
+      icon: <HiMail className="w-5 h-5" />,
+      text: site.email,
+      href: `mailto:${site.email}`,
       label: "Email our DPO"
     },
-    { 
-      icon: <HiPhone className="w-5 h-5" />, 
-      text: "+66977830395", 
-      href: "tel:+66977830395",
+    {
+      icon: <HiPhone className="w-5 h-5" />,
+      text: site.phone,
+      href: `tel:${site.phone}`,
       label: "Call Privacy Office"
     },
-    { 
-      icon: <HiLocationMarker className="w-5 h-5" />, 
-      text: "Green Tower, 9th floor, 3656/27-28 Rama IV Road, Klongton-Klong Toey Bangkok 10110, Thailand", 
-      href: "https://maps.google.com/?q=8825+Stanford+Blvd+Suite+306+Columbia+MD+21045",
+    {
+      icon: <HiLocationMarker className="w-5 h-5" />,
+      text: site.address,
+      href: `https://maps.google.com/?q=${encodeURIComponent(site.address)}`,
       label: "View Headquarters"
     }
   ];

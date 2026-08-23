@@ -8,6 +8,7 @@ import Topbar from "@/components/common/topbar";
 import Footer from "@/components/common/footer";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import PageTransition from "@/components/common/PageTransition";
+import SiteSettingsProvider from "@/components/context/SiteSettingsProvider";
 
 function LayoutContent({ children }) {
   const [isNavigating, setIsNavigating] = useState(false);
@@ -49,8 +50,10 @@ export default function ClientLayout({ children }) {
 
   return (
     <Suspense fallback={<LoadingSpinner fullScreen />}>
-      <LayoutContent>{children}</LayoutContent>
-      <ToastProvider />
+      <SiteSettingsProvider>
+        <LayoutContent>{children}</LayoutContent>
+        <ToastProvider />
+      </SiteSettingsProvider>
     </Suspense>
   );
 }

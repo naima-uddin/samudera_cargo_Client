@@ -124,8 +124,8 @@ export default function Page() {
             "@context": "https://schema.org",
             "@type": "Person",
             name: "Samudera Traffic Co., Ltd. Customer",
-            url: "https://client.cargologisticscompany.com/profile",
-            email: "customer@cargologisticscompany.com",
+            url: "https://samuderathai.com/profile",
+            email: "customer@samuderathai.com",
             telephone: "+66977830395",
             worksFor: {
               "@type": "Organization",

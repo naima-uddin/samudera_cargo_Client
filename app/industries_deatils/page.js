@@ -149,8 +149,8 @@ export default function Page() {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "Samudera Traffic Co., Ltd. Group",
-            url: "https://client.cargologisticscompany.com",
-            logo: "https://client.cargologisticscompany.com/logo.png",
+            url: "https://samuderathai.com",
+            logo: "https://samuderathai.com/logo.png",
             description: "Leading logistics and supply chain solutions provider",
             numberOfEmployees: {
               "@type": "QuantitativeValue",
