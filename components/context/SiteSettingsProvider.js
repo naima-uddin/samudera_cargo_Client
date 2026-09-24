@@ -1,7 +1,15 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { getSiteSettings } from '@/services/siteSettings';
+
+// localStorage key holding the last successfully fetched settings, so a reload
+// can paint the uploaded logo/favicon immediately instead of flashing defaults.
+const CACHE_KEY = 'siteSettingsCache';
+
+// useLayoutEffect on the client (runs before paint → no visible flash),
+// useEffect on the server (avoids the SSR warning).
+const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 // Current values act as fallback defaults so the site never renders empty
 // even if the API is unreachable.
@@ -24,6 +32,21 @@ export const useSiteSettings = () => useContext(SiteSettingsContext);
 export default function SiteSettingsProvider({ children }) {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
 
+  // Before the browser paints, hydrate from the cached settings so a reload
+  // shows the uploaded logo/favicon straight away — no default-then-swap flash.
+  // Starting state stays DEFAULT so it matches the server-rendered HTML (no
+  // hydration mismatch); this runs right after and updates before paint.
+  useIsoLayoutEffect(() => {
+    try {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        setSettings({ ...DEFAULT_SETTINGS, ...JSON.parse(cached) });
+      }
+    } catch (e) {
+      /* ignore corrupt cache */
+    }
+  }, []);
+
   useEffect(() => {
     let active = true;
     (async () => {
@@ -38,6 +61,11 @@ export default function SiteSettingsProvider({ children }) {
           }
         });
         setSettings(merged);
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify(merged));
+        } catch (e) {
+          /* storage full/unavailable — non-fatal */
+        }
       }
     })();
     return () => {
