@@ -2458,7 +2458,7 @@ export default function TrackingPage() {
     <div className="bg-gray-50 min-h-screen pt-4 md:pt-24 sm:pt-0">
       {/* Hero Section */}
       <div className="relative h-64 sm:h-80 overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-[url('/images/aboutBannerimg.jpeg')] " />
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-[url('https://samudera-cargo-server.vercel.app/uploads/images/aboutBannerimg.jpeg')] " />
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/30 to-gray-50/10" />
         <div className="absolute inset-0 max-w-4xl mx-auto text-center px-4 pt-12 sm:pt-16 text-white flex flex-col justify-center">
           <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 drop-shadow-lg">

@@ -49,7 +49,7 @@ const Banner = () => {
 
             <div className="lg:col-span-7 relative h-[220px] sm:h-[300px] lg:h-[480px] z-20 hidden md:block">
               <img
-                src="/banner/container1.png"
+                src="https://samudera-cargo-server.vercel.app/uploads/banner/container1.png"
                 alt="Cargo container"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
@@ -58,7 +58,7 @@ const Banner = () => {
 
           <div className="relative -mt-12 sm:-mt-16 lg:-mt-36 z-0 rounded-xl overflow-hidden shadow-lg">
             <img
-              src="/banner/ship.jpg"
+              src="https://samudera-cargo-server.vercel.app/uploads/banner/ship.jpg"
               alt="Cargo ship"
               className="w-full h-[200px] sm:h-[360px] lg:h-[400px] object-cover"
             />

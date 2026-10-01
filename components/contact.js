@@ -150,7 +150,7 @@ function Contact() {
       <div
         className="min-h-[300px] bg-cover bg-center bg-no-repeat relative mx-6 rounded-xl overflow-hidden"
         style={{
-          backgroundImage: "url('/images/tracking.png')",
+          backgroundImage: "url('https://samudera-cargo-server.vercel.app/uploads/images/tracking.png')",
         }}
       >
         <div className="absolute inset-0 bg-black/30"></div>

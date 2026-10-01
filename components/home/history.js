@@ -16,7 +16,7 @@ function history() {
             <div className="relative h-[260px] sm:h-[340px] md:h-[590px] lg:h-[640px] w-full sm:w-4/5">
               {/* Ship background image */}
               <img
-                src="/images/cargo-ship.jpg"
+                src="https://samudera-cargo-server.vercel.app/uploads/images/cargo-ship.jpg"
                 alt="Cargo Ship"
                 className="w-full h-full object-cover shadow-2xl"
               />
@@ -27,7 +27,7 @@ function history() {
               {/* Double Container overlay - positioned absolutely, can overflow */}
               <div className="absolute -bottom-12 -left-4 w-40 h-28 sm:-bottom-20 sm:-left-8 sm:w-72 sm:h-44 md:-bottom-32 md:-left-14 md:w-[424px] md:h-[360px] lg:w-[450px] lg:h-[504px]">
                 <img
-                  src="/images/doubleContainer.png"
+                  src="https://samudera-cargo-server.vercel.app/uploads/images/doubleContainer.png"
                   alt="Double Container"
                   className="w-full h-full object-contain"
                 />

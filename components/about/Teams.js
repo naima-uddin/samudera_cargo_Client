@@ -9,21 +9,21 @@ const teamMembers = [
   {
     name: "Anong Kittisak",
     title: "Client Relations Specialist",
-    image: "/images/team (3).jpg",
+    image: "https://samudera-cargo-server.vercel.app/uploads/images/team (3).jpg",
     email: "anongkittisak@samuderathai.com",
     experience: "15+ years",
   },
   {
     name: "Nattapong Wattanakul",
     title: "Operations Director",
-    image: "/images/team (5).jpg",
+    image: "https://samudera-cargo-server.vercel.app/uploads/images/team (5).jpg",
     email: "nattapongwattanakul@samuderathai.com",
     experience: "8+ years",
   },
   {
     name: "Suda Chaiyakul",
     title: "Logistics Coordinator",
-    image: "/images/team (2).jpg",
+    image: "https://samudera-cargo-server.vercel.app/uploads/images/team (2).jpg",
     email: "sudachaiyakul@samuderathai.com",
     experience: "10+ years",
   },
@@ -33,7 +33,7 @@ const teamMembers = [
 const ceo = {
   name: 'Mr. Pinit',
   title: 'Chief Executive Officer',
-  image: '/images/team (1).jpg',
+  image: 'https://samudera-cargo-server.vercel.app/uploads/images/team (1).jpg',
   email: 'pinit@samuderathai.com',
 }
 
@@ -66,7 +66,7 @@ export default function Teams() {
 
           <div className="rounded-[32px] border border-slate-200 bg-[#F8FAFC] p-8 shadow-[0_25px_75px_rgba(15,23,42,0.08)]">
             <div className="relative flex h-64 overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-lg">
-              <Image src="/images/team (1).jpg" alt="Executive team" width={720} height={480} className="object-cover" />
+              <Image src="https://samudera-cargo-server.vercel.app/uploads/images/team (1).jpg" alt="Executive team" width={720} height={480} className="object-cover" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1D2D52]/90 via-[#1D2D52]/60 to-transparent p-5 text-white">
                 <p className="text-sm uppercase tracking-[0.35em] text-white/75">Leadership</p>
                 <h3 className="mt-2 text-2xl font-semibold">{ceo.name}</h3>

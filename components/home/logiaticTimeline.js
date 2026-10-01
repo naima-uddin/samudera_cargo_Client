@@ -78,7 +78,7 @@ export default function logisticTimeline() {
       {/* Background Image - শুধু এই কম্পোনেন্টের জন্য */}
       <div className="absolute inset-0">
         <Image
-          src="/images/overlay.jpg"
+          src="https://samudera-cargo-server.vercel.app/uploads/images/overlay.jpg"
           alt="Logistics background"
           fill
           className="object-cover"

@@ -81,12 +81,12 @@ const Footer = () => {
         <div>
           <div className="grid grid-cols-3 gap-1 sm:gap-2">
             {[
-              { id: 1, src: "/images/history (2).jpg", alt: "Gallery 1", path: "/images/history (2).jpg" },
-              { id: 2, src: "/images/history (5).jpg", alt: "Gallery 2", path: "/images/history (5).jpg" },
-              { id: 3, src: "/images/serviceBanner.jpg", alt: "Gallery 3", path: "/images/serviceBanner.jpg" },
-              { id: 4, src: "/images/project (7).jpg", alt: "Gallery 4", path: "/images/project (7).jpg" },
-              { id: 5, src: "/images/service3.jpg", alt: "Gallery 5", path: "/images/service3.jpg" },
-              { id: 6, src: "/images/packaging.jpg", alt: "Gallery 6", path: "/images/packaging.jpg" }
+              { id: 1, src: "https://samudera-cargo-server.vercel.app/uploads/images/history (2).jpg", alt: "Gallery 1", path: "https://samudera-cargo-server.vercel.app/uploads/images/history (2).jpg" },
+              { id: 2, src: "https://samudera-cargo-server.vercel.app/uploads/images/history (5).jpg", alt: "Gallery 2", path: "https://samudera-cargo-server.vercel.app/uploads/images/history (5).jpg" },
+              { id: 3, src: "https://samudera-cargo-server.vercel.app/uploads/images/serviceBanner.jpg", alt: "Gallery 3", path: "https://samudera-cargo-server.vercel.app/uploads/images/serviceBanner.jpg" },
+              { id: 4, src: "https://samudera-cargo-server.vercel.app/uploads/images/project (7).jpg", alt: "Gallery 4", path: "https://samudera-cargo-server.vercel.app/uploads/images/project (7).jpg" },
+              { id: 5, src: "https://samudera-cargo-server.vercel.app/uploads/images/service3.jpg", alt: "Gallery 5", path: "https://samudera-cargo-server.vercel.app/uploads/images/service3.jpg" },
+              { id: 6, src: "https://samudera-cargo-server.vercel.app/uploads/images/packaging.jpg", alt: "Gallery 6", path: "https://samudera-cargo-server.vercel.app/uploads/images/packaging.jpg" }
             ].map((item) => (
               <Link href={item.path} key={item.id}>
                 <motion.div

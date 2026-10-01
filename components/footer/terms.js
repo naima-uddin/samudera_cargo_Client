@@ -467,7 +467,7 @@ const TermsOfService = () => {
                   className="aspect-square bg-primary/10 rounded-lg overflow-hidden cursor-pointer"
                 >
                   <img
-                    src={`/images/gal${id}.jpg`}
+                    src={`https://samudera-cargo-server.vercel.app/uploads/images/gal${id}.jpg`}
                     alt={`Gallery ${id}`}
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -493,7 +493,7 @@ const TermsOfService = () => {
           className="absolute inset-0 z-0 opacity-40"
           style={{
             backgroundImage:
-              "url('/images/products.jpg')",
+              "url('https://samudera-cargo-server.vercel.app/uploads/images/products.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

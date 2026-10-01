@@ -111,16 +111,16 @@ function WhyChooseUs() {
           <div className="flex h-full flex-col gap-4">
             <div className="grid h-full grid-cols-2 gap-2 overflow-hidden rounded-[28px] border border-slate-200 bg-slate-100 p-2 shadow-lg">
               {[
-                "/images/blog2.jpg",
-                "/images/cargo-ship.jpg",
-                "/images/project (8).jpg",
-                "/images/imgi_8_services-2.jpg",
-                "/images/service2.jpg",
-                "/images/blue-container.png",
-                "/images/blog1.jpg",
-                "/images/project (4).jpg",
-                "/images/manufacturing.jpg",
-                "/images/shipping.png",
+                "https://samudera-cargo-server.vercel.app/uploads/images/blog2.jpg",
+                "https://samudera-cargo-server.vercel.app/uploads/images/cargo-ship.jpg",
+                "https://samudera-cargo-server.vercel.app/uploads/images/project (8).jpg",
+                "https://samudera-cargo-server.vercel.app/uploads/images/imgi_8_services-2.jpg",
+                "https://samudera-cargo-server.vercel.app/uploads/images/service2.jpg",
+                "https://samudera-cargo-server.vercel.app/uploads/images/blue-container.png",
+                "https://samudera-cargo-server.vercel.app/uploads/images/blog1.jpg",
+                "https://samudera-cargo-server.vercel.app/uploads/images/project (4).jpg",
+                "https://samudera-cargo-server.vercel.app/uploads/images/manufacturing.jpg",
+                "https://samudera-cargo-server.vercel.app/uploads/images/shipping.png",
               ].map((src, idx) => (
                 <div
                   key={idx}
@@ -410,7 +410,7 @@ const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const testimonials = [
     {
-      image: "/images/team (1).jpg",
+      image: "https://samudera-cargo-server.vercel.app/uploads/images/team (1).jpg",
       name: "John Doe",
       role: "CEO, Company Inc.",
       title: "Excellent Service!",
@@ -418,7 +418,7 @@ const TestimonialsSection = () => {
         "They provided outstanding logistics support for our global supply chain. Highly reliable and professional.",
     },
     {
-      image: "/images/team (2).jpg",
+      image: "https://samudera-cargo-server.vercel.app/uploads/images/team (2).jpg",
       name: "Jane Smith",
       role: "Operations Manager",
       title: "Smooth & Efficient",
@@ -426,7 +426,7 @@ const TestimonialsSection = () => {
         "The team handled everything seamlessly. We saved time and costs with their expertise.",
     },
     {
-      image: "/images/team (3).jpg",
+      image: "https://samudera-cargo-server.vercel.app/uploads/images/team (3).jpg",
       name: "Mike Johnson",
       role: "Supply Chain Lead",
       title: "Trusted Partner",
@@ -518,7 +518,7 @@ export default function OurCompany() {
   return (
     <div className="bg-white text-[#1D2D52] ">
       <section className="relative overflow-hidden bg-white py-10">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-cover bg-center bg-no-repeat bg-[url('/images/aboutBannerimg.jpeg')]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-cover bg-center bg-no-repeat bg-[url('https://samudera-cargo-server.vercel.app/uploads/images/aboutBannerimg.jpeg')]" />
         <div className="absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-white/15 via-transparent to-[#1D2D52]/80" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] items-center">
@@ -555,7 +555,7 @@ export default function OurCompany() {
                 <div className="grid h-full grid-rows-[1fr_1fr] gap-6 overflow-hidden rounded-xl">
                   <div className="relative h-full overflow-hidden">
                     <Image
-                      src="/images/about1.jpg"
+                      src="https://samudera-cargo-server.vercel.app/uploads/images/about1.jpg"
                       alt="Cargo Ship"
                       fill
                       className="object-cover"
@@ -563,7 +563,7 @@ export default function OurCompany() {
                   </div>
                   <div className="relative h-full overflow-hidden">
                     <Image
-                      src="/images/supplychain.webp"
+                      src="https://samudera-cargo-server.vercel.app/uploads/images/supplychain.webp"
                       alt="Cargo Terminal"
                       fill
                       className="object-cover"
@@ -575,7 +575,7 @@ export default function OurCompany() {
                 <div className="rounded-[22px] bg-white p-4 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
                   <div className="relative h-40 overflow-hidden rounded-[22px]">
                     <Image
-                      src="/images/about2.jpg"
+                      src="https://samudera-cargo-server.vercel.app/uploads/images/about2.jpg"
                       alt="Workers"
                       fill
                       className="object-cover"

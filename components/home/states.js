@@ -7,7 +7,7 @@ export default function States() {
   return (
     <section className="relative w-full overflow-hidden bg-[#e3ddd7]">
       <img
-        src="/images/orange-container.jpg"
+        src="https://samudera-cargo-server.vercel.app/uploads/images/orange-container.jpg"
         alt="Cargo container illustration"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none bg-black/10"
       />

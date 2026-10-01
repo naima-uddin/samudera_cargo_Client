@@ -88,7 +88,7 @@ const EcommerceSectors = () => {
       <div 
         className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/images/products.jpg')`,
+          backgroundImage: `url('https://samudera-cargo-server.vercel.app/uploads/images/products.jpg')`,
         }}
       >
         {/* Gradient Overlay */}

@@ -10,18 +10,18 @@ import {
 } from "lucide-react";
 
 const industries = [
-  { id: 1, name: "Automotive", icon: Car, image: "/images/automotive.jpg", description: "EV components, autonomous systems and smart manufacturing.", stats: { projects: "150+", clients: "45+", growth: "28%" } },
-  { id: 2, name: "Retail", icon: ShoppingBag, image: "/images/retail.jpg", description: "Omnichannel platforms and inventory intelligence.", stats: { projects: "200+", clients: "80+", growth: "35%" } },
-  { id: 3, name: "Manufacturing", icon: Factory, image: "/images/manufacturing.jpg", description: "Industry 4.0, predictive maintenance and optimization.", stats: { projects: "180+", clients: "60+", growth: "42%" } },
-  { id: 4, name: "Healthcare", icon: HeartPulse, image: "/images/healthcare.jpg", description: "Telemedicine, EHR and imaging AI solutions.", stats: { projects: "120+", clients: "35+", growth: "52%" } },
-  { id: 5, name: "Technology", icon: Cpu, image: "/images/technology.jpg", description: "Cloud platforms, IoT and enterprise software.", stats: { projects: "250+", clients: "95+", growth: "45%" } },
-  { id: 6, name: "Consumer Goods", icon: Package, image: "/images/goods.jpg", description: "Supply chain visibility and D2C platforms.", stats: { projects: "140+", clients: "55+", growth: "31%" } },
-  { id: 7, name: "Energy", icon: Zap, image: "/images/energy.jpg", description: "Smart grid and renewable optimization.", stats: { projects: "90+", clients: "25+", growth: "38%" } },
-  { id: 8, name: "Aerospace", icon: Rocket, image: "/images/aerospace.jpg", description: "Flight systems, maintenance and simulation.", stats: { projects: "75+", clients: "20+", growth: "33%" } },
-  { id: 9, name: "Food & Beverage", icon: Coffee, image: "/images/foods.jpg", description: "Traceability and quality-control systems.", stats: { projects: "110+", clients: "40+", growth: "29%" } },
-  { id: 10, name: "Oil & Gas", icon: Fuel, image: "/images/oil gas.jpg", description: "Exploration analytics and pipeline monitoring.", stats: { projects: "85+", clients: "22+", growth: "24%" } },
-  { id: 11, name: "Chemicals", icon: FlaskConical, image: "/images/chemical.jpg", description: "Process optimization and safety compliance.", stats: { projects: "95+", clients: "30+", growth: "27%" } },
-  { id: 12, name: "Building", icon: Building2, image: "/images/building.jpg", description: "Smart building automation and construction tech.", stats: { projects: "130+", clients: "48+", growth: "36%" } },
+  { id: 1, name: "Automotive", icon: Car, image: "https://samudera-cargo-server.vercel.app/uploads/images/automotive.jpg", description: "EV components, autonomous systems and smart manufacturing.", stats: { projects: "150+", clients: "45+", growth: "28%" } },
+  { id: 2, name: "Retail", icon: ShoppingBag, image: "https://samudera-cargo-server.vercel.app/uploads/images/retail.jpg", description: "Omnichannel platforms and inventory intelligence.", stats: { projects: "200+", clients: "80+", growth: "35%" } },
+  { id: 3, name: "Manufacturing", icon: Factory, image: "https://samudera-cargo-server.vercel.app/uploads/images/manufacturing.jpg", description: "Industry 4.0, predictive maintenance and optimization.", stats: { projects: "180+", clients: "60+", growth: "42%" } },
+  { id: 4, name: "Healthcare", icon: HeartPulse, image: "https://samudera-cargo-server.vercel.app/uploads/images/healthcare.jpg", description: "Telemedicine, EHR and imaging AI solutions.", stats: { projects: "120+", clients: "35+", growth: "52%" } },
+  { id: 5, name: "Technology", icon: Cpu, image: "https://samudera-cargo-server.vercel.app/uploads/images/technology.jpg", description: "Cloud platforms, IoT and enterprise software.", stats: { projects: "250+", clients: "95+", growth: "45%" } },
+  { id: 6, name: "Consumer Goods", icon: Package, image: "https://samudera-cargo-server.vercel.app/uploads/images/goods.jpg", description: "Supply chain visibility and D2C platforms.", stats: { projects: "140+", clients: "55+", growth: "31%" } },
+  { id: 7, name: "Energy", icon: Zap, image: "https://samudera-cargo-server.vercel.app/uploads/images/energy.jpg", description: "Smart grid and renewable optimization.", stats: { projects: "90+", clients: "25+", growth: "38%" } },
+  { id: 8, name: "Aerospace", icon: Rocket, image: "https://samudera-cargo-server.vercel.app/uploads/images/aerospace.jpg", description: "Flight systems, maintenance and simulation.", stats: { projects: "75+", clients: "20+", growth: "33%" } },
+  { id: 9, name: "Food & Beverage", icon: Coffee, image: "https://samudera-cargo-server.vercel.app/uploads/images/foods.jpg", description: "Traceability and quality-control systems.", stats: { projects: "110+", clients: "40+", growth: "29%" } },
+  { id: 10, name: "Oil & Gas", icon: Fuel, image: "https://samudera-cargo-server.vercel.app/uploads/images/oil gas.jpg", description: "Exploration analytics and pipeline monitoring.", stats: { projects: "85+", clients: "22+", growth: "24%" } },
+  { id: 11, name: "Chemicals", icon: FlaskConical, image: "https://samudera-cargo-server.vercel.app/uploads/images/chemical.jpg", description: "Process optimization and safety compliance.", stats: { projects: "95+", clients: "30+", growth: "27%" } },
+  { id: 12, name: "Building", icon: Building2, image: "https://samudera-cargo-server.vercel.app/uploads/images/building.jpg", description: "Smart building automation and construction tech.", stats: { projects: "130+", clients: "48+", growth: "36%" } },
 ];
 
 export default function IndustriesSection() {

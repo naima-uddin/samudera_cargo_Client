@@ -483,7 +483,7 @@ export default function LoginPage() {
           <div 
             className="absolute inset-0 z-0"
             style={{
-              backgroundImage: 'url("/images/project (1).jpg")',
+              backgroundImage: 'url("https://samudera-cargo-server.vercel.app/uploads/images/project (1).jpg")',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'

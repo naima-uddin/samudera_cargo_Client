@@ -10,7 +10,7 @@ const ServicesSection = () => {
       id: 1,
       title: 'Air Freight',
       description: 'We provide air freight with the competence and service in the sphere of urgent, valuable, time cargo we ensure.',
-      image: '/images/service2.jpg',
+      image: 'https://samudera-cargo-server.vercel.app/uploads/images/service2.jpg',
       features: [
         '100% Satisfaction Guarantee',
         'Highly Professional Staff',
@@ -21,7 +21,7 @@ const ServicesSection = () => {
       id: 2,
       title: 'Ocean Freight',
       description: 'We provide with the best types of basic conditions international sea transportation is implemented by our partners.',
-      image: '/images/service1.jpg',
+      image: 'https://samudera-cargo-server.vercel.app/uploads/images/service1.jpg',
       features: [
         'Accurate Testing Processes',
         'Professional and Qualified',
@@ -32,7 +32,7 @@ const ServicesSection = () => {
       id: 3,
       title: 'Road Freight',
       description: 'We provide a wide range of services including quality international road transportation services including goods & service.',
-      image: '/images/service3.jpg',
+      image: 'https://samudera-cargo-server.vercel.app/uploads/images/service3.jpg',
       features: [
         'Commercial expertise',
         'Logistical expertise',
@@ -43,7 +43,7 @@ const ServicesSection = () => {
       id: 4,
       title: 'Warehousing',
       description: 'We provide with the best types of basic conditions international sea transportation is implemented by our partners.',
-      image: '/images/project (4).jpg',
+      image: 'https://samudera-cargo-server.vercel.app/uploads/images/project (4).jpg',
       features: [
         '100% Satisfaction Guarantee',
         'Highly Professional Staff',
@@ -54,7 +54,7 @@ const ServicesSection = () => {
       id: 5,
       title: 'Supply Chain',
       description: 'We provide with the best types of basic conditions international sea transportation is implemented by our partners.',
-      image: '/images/supplychain.webp',
+      image: 'https://samudera-cargo-server.vercel.app/uploads/images/supplychain.webp',
       features: [
         'Accurate Testing Processes',
         'Professional and Qualified',
@@ -65,7 +65,7 @@ const ServicesSection = () => {
       id: 6,
       title: 'Packaging',
       description: 'We provide with the best types of basic conditions international sea transportation is implemented by our partners.',
-      image: '/images/packaging.jpg',
+      image: 'https://samudera-cargo-server.vercel.app/uploads/images/packaging.jpg',
       features: [
         'Commercial expertise',
         'Logistical expertise',
