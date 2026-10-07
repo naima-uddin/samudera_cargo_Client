@@ -111,6 +111,16 @@ const PACKAGING_TYPES = [
   { value: '40ft_container', label: '40FT Container' }
 ];
 
+// Resolve a human-readable label from an options array; falls back to the raw
+// value so the review step never shows an empty cell.
+const labelFromOptions = (options, value) =>
+  options.find((o) => o.value === value)?.label || value || '';
+
+const subTypeLabel = (mainType, subType) => {
+  const list = SHIPMENT_SUB_TYPES[mainType] || [];
+  return list.find((o) => o.value === subType)?.label || subType || '';
+};
+
 // ==================== COMPONENTS ====================
 
 const Button = ({ children, type = 'button', variant = 'primary', size = 'md', isLoading = false, disabled = false, onClick, className = '', icon: Icon, iconPosition = 'left' }) => {
@@ -1887,13 +1897,13 @@ export default function CreateBooking() {
                     Shipment Overview
                   </h3>
                   <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div><span className="text-gray-500">Type:</span> <span className="font-medium">{formData.shipmentClassification.mainType} - {formData.shipmentClassification.subType}</span></div>
-                    <div><span className="text-gray-500">Mode:</span> <span className="font-medium">{formData.shipmentDetails.shippingMode}</span></div>
-                    <div><span className="text-gray-500">Payment:</span> <span className="font-medium">{formData.payment.mode}</span></div>
+                    <div><span className="text-gray-500">Type:</span> <span className="font-medium">{labelFromOptions(SHIPMENT_MAIN_TYPES, formData.shipmentClassification.mainType)} - {subTypeLabel(formData.shipmentClassification.mainType, formData.shipmentClassification.subType)}</span></div>
+                    <div><span className="text-gray-500">Mode:</span> <span className="font-medium">{labelFromOptions(SHIPPING_MODES, formData.shipmentDetails.shippingMode)}</span></div>
+                    <div><span className="text-gray-500">Payment:</span> <span className="font-medium">{labelFromOptions(PAYMENT_MODES, formData.payment.mode)}</span></div>
                     <div><span className="text-gray-500">Origin:</span> <span className="font-medium">{formData.shipmentDetails.origin}</span></div>
                     <div><span className="text-gray-500">Destination:</span> <span className="font-medium">{formData.shipmentDetails.destination}</span></div>
                     <div><span className="text-gray-500">Currency:</span> <span className="font-medium">{formData.payment.currency} ({CURRENCY_SYMBOLS[formData.payment.currency]})</span></div>
-                    <div><span className="text-gray-500">Service:</span> <span className="font-medium">{formData.serviceType}</span></div> 
+                    <div><span className="text-gray-500">Service:</span> <span className="font-medium">{labelFromOptions(SERVICE_TYPES, formData.serviceType)}</span></div>
                     <div><span className="text-gray-500">Pickup Required:</span> <span className="font-medium">{pickupRequired ? 'Yes' : 'No'}</span></div>
                   </div>
                 </div>
