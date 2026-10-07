@@ -135,10 +135,10 @@ export const forgotPassword = async (email) => {
 // Reset Password (All Roles)
 export const resetPassword = async (email, otp, newPassword) => {
   try {
-    const response = await axiosInstance.post('/users/reset-password', { 
-      email, 
-      otp, 
-      newPassword 
+    const response = await axiosInstance.post('/reset-password', {
+      email,
+      otp,
+      newPassword
     });
     return response.data;
   } catch (error) {
