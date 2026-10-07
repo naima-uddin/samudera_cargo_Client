@@ -643,234 +643,157 @@ export default function TrackingPage() {
     }
   };
 
-  // Process hold/resume events
+  // Normalize the raw timeline into display-ready events.
+  //
+  // Responsibilities (kept intentionally small and deterministic):
+  //   1. Sort chronologically.
+  //   2. Synthesize a single leading "Booking" step.
+  //   3. Mark hold / resume events so the renderer can treat them specially
+  //      (resume events are hidden by getTimelineOldToNew but advance status).
+  //   4. Drop "pending" once any real status exists (so the journey never
+  //      bounces back to pending).
+  //   5. Resolve the current status, restoring the pre-hold status on resume.
+  //
+  // Output contract is unchanged: every event carries `{ ...raw, mappedStatus,
+  // originalStatus, isHoldEvent, isResumeEvent? , isBookingRequest? ,
+  // statusBeforeHold? , restoredFromHold? }` and the returned object carries
+  // `{ timeline, originalTimeline, status }`.
   const processTimelineForHoldResume = (data) => {
     if (!data?.timeline) return data;
 
-    let timeline = [...data.timeline];
-    let processedEvents = [];
-    let currentStatus = null;
-    let statusBeforeHold = null;
-    let isOnHold = false;
-    let holdEventEncountered = false;
-    let originalStatusBeforeHold = null;
+    const eventTime = (e) => {
+      const t = new Date(e.date || e.timestamp || e.createdAt || 0).getTime();
+      return Number.isNaN(t) ? 0 : t;
+    };
 
-    // Sort timeline chronologically
-    timeline.sort((a, b) => {
-      const dateA = new Date(a.date || a.timestamp || a.createdAt || 0);
-      const dateB = new Date(b.date || b.timestamp || b.createdAt || 0);
-      return dateA - dateB;
-    });
+    const sorted = [...data.timeline].sort((a, b) => eventTime(a) - eventTime(b));
 
-    // First pass: Find the status BEFORE any hold event
-    for (let i = 0; i < timeline.length; i++) {
-      const event = timeline[i];
-      const status = event.status?.toLowerCase() || "";
-      const description = event.description?.toLowerCase() || "";
+    const isHoldEvt = (e) => {
+      const s = (e.status || "").toLowerCase();
+      const d = (e.description || "").toLowerCase();
+      return s === "on_hold" || d.includes("on hold");
+    };
+    const isResumeEvt = (e) => {
+      const s = (e.status || "").toLowerCase();
+      const d = (e.description || "").toLowerCase();
+      return s.includes("resumed") || d.includes("resumed");
+    };
 
-      if (status === "on_hold" || description.includes("on hold")) {
-        if (
-          !holdEventEncountered &&
-          currentStatus &&
-          currentStatus !== "pending"
-        ) {
-          statusBeforeHold = currentStatus;
-          originalStatusBeforeHold = currentStatus;
-          holdEventEncountered = true;
-        }
-      } else if (status !== "on_hold" && !status.includes("hold")) {
-        if (!(isOnHold && status === "pending")) {
-          currentStatus = status;
-        }
-      }
+    let bookingEvent = null; // first "booking" event, re-dated to the very start
+    let leadingPending = null; // first "pending" event, kept only if nothing else
+    let lastRealStatus = null; // last non-hold, non-pending canonical status
+    let statusBeforeHold = null; // snapshot captured when entering a hold
+    let currentStatus = null; // running status used for the badge
+    const processed = [];
 
-      if (status === "on_hold" || description.includes("on hold")) {
-        isOnHold = true;
-      } else if (
-        description.includes("resumed") ||
-        status.includes("resumed")
-      ) {
-        isOnHold = false;
-      }
-    }
-
-    // Reset for second pass
-    currentStatus = null;
-    isOnHold = false;
-    holdEventEncountered = false;
-    let restoredStatus = null;
-    let pendingEvent = null;
-    let bookingRequestedEvent = null;
-
-    // Second pass: Process events for display
-    for (let i = 0; i < timeline.length; i++) {
-      const event = timeline[i];
-      const status = normalizeTimelineStatus(
-        event.displayStatus || event.status?.toLowerCase() || "",
+    for (const raw of sorted) {
+      const canonical = normalizeTimelineStatus(
+        raw.displayStatus || raw.status?.toLowerCase() || "",
       );
-      const description = event.description?.toLowerCase() || "";
 
-      // Booking Requested event
-      if (status === "booking") {
-        bookingRequestedEvent = {
-          ...event,
-          mappedStatus: "booking",
-          originalStatus: event.status,
-          isHoldEvent: false,
-          isBookingRequest: true,
-          date:
-            event.date ||
-            event.timestamp ||
-            event.createdAt ||
-            new Date().toISOString(),
-        };
-        continue;
-      }
-
-      // On Hold event
-      if (status === "on_hold" || description.includes("on hold")) {
-        if (!holdEventEncountered) {
-          if (currentStatus && currentStatus !== "pending") {
-            statusBeforeHold = currentStatus;
-          }
-          isOnHold = true;
-          holdEventEncountered = true;
-
-          processedEvents.push({
-            ...event,
-            isHoldEvent: true,
-            statusBeforeHold: statusBeforeHold,
-            originalStatus: event.status,
-            mappedStatus: "on_hold",
-          });
+      // (2) Booking — captured once, inserted at the start afterwards.
+      if (canonical === "booking") {
+        if (!bookingEvent) {
+          bookingEvent = {
+            ...raw,
+            mappedStatus: "booking",
+            originalStatus: raw.status,
+            isHoldEvent: false,
+            isBookingRequest: true,
+          };
         }
         continue;
       }
 
-      // Resume event
-      else if (
-        description.includes("resumed from hold") ||
-        status.includes("resumed")
-      ) {
-        isOnHold = false;
-
-        if (statusBeforeHold && statusBeforeHold !== "pending") {
-          restoredStatus = statusBeforeHold;
-
-          const restoredEvent = {
-            ...event,
-            status: statusBeforeHold,
-            displayStatus: statusBeforeHold,
-            mappedStatus: statusBeforeHold,
-            description: `Shipment resumed from hold. Status restored to ${statusBeforeHold.replace(/_/g, " ")}. ${event.description || ""}`,
+      // (3a) Resume — restores the pre-hold status. Hidden from the displayed
+      // timeline (getTimelineOldToNew skips isResumeEvent) but moves status on.
+      if (isResumeEvt(raw)) {
+        const restored = statusBeforeHold || lastRealStatus;
+        if (restored && restored !== "pending") {
+          processed.push({
+            ...raw,
+            status: restored,
+            displayStatus: restored,
+            mappedStatus: restored,
+            originalStatus: raw.status,
+            description:
+              `Shipment resumed from hold. Status restored to ${restored.replace(/_/g, " ")}. ${raw.description || ""}`.trim(),
             isResumeEvent: true,
             restoredFromHold: true,
-            originalStatus: statusBeforeHold,
-          };
-          processedEvents.push(restoredEvent);
-          currentStatus = statusBeforeHold;
+            isHoldEvent: false,
+          });
+          currentStatus = restored;
+          lastRealStatus = restored;
           statusBeforeHold = null;
-        } else if (originalStatusBeforeHold) {
-          restoredStatus = originalStatusBeforeHold;
-          const restoredEvent = {
-            ...event,
-            status: originalStatusBeforeHold,
-            displayStatus: originalStatusBeforeHold,
-            mappedStatus: originalStatusBeforeHold,
-            description: `Shipment resumed from hold. Status restored to ${originalStatusBeforeHold.replace(/_/g, " ")}. ${event.description || ""}`,
-            isResumeEvent: true,
-            restoredFromHold: true,
-            originalStatus: originalStatusBeforeHold,
-          };
-          processedEvents.push(restoredEvent);
-          currentStatus = originalStatusBeforeHold;
-          originalStatusBeforeHold = null;
         }
         continue;
       }
 
-      // Normal events
-      else {
-        if (
-          status === "pending" &&
-          currentStatus &&
-          currentStatus !== "pending"
-        ) {
-          continue;
+      // (3b) Hold — remember where we were, then show the hold step.
+      if (isHoldEvt(raw)) {
+        if (lastRealStatus && lastRealStatus !== "pending") {
+          statusBeforeHold = lastRealStatus;
         }
-
-        if (status === "pending" && !currentStatus) {
-          pendingEvent = event;
-          continue;
-        }
-
-        currentStatus = status;
-
-        processedEvents.push({
-          ...event,
-          mappedStatus: status,
-          originalStatus: event.status,
-          isHoldEvent: false,
+        processed.push({
+          ...raw,
+          mappedStatus: "on_hold",
+          originalStatus: raw.status,
+          statusBeforeHold,
+          isHoldEvent: true,
+          isResumeEvent: false,
         });
+        currentStatus = "on_hold";
+        continue;
       }
+
+      // (4) Pending — only meaningful as the very first step.
+      if (canonical === "pending") {
+        if (!lastRealStatus && !leadingPending) {
+          leadingPending = {
+            ...raw,
+            mappedStatus: "pending",
+            originalStatus: raw.status,
+            isHoldEvent: false,
+          };
+        }
+        continue;
+      }
+
+      // Normal, real status step.
+      processed.push({
+        ...raw,
+        mappedStatus: canonical,
+        originalStatus: raw.status,
+        isHoldEvent: false,
+      });
+      lastRealStatus = canonical;
+      currentStatus = canonical;
     }
 
-    // Add booking_requested at the beginning
-    if (bookingRequestedEvent) {
-      let earliestDate = new Date();
-      if (processedEvents.length > 0) {
-        const firstEventDate =
-          processedEvents[0].date ||
-          processedEvents[0].timestamp ||
-          processedEvents[0].createdAt;
-        if (firstEventDate) {
-          earliestDate = new Date(firstEventDate);
-        }
-      }
-      const bookingDate = new Date(earliestDate);
-      bookingDate.setMinutes(bookingDate.getMinutes() - 2);
-
-      processedEvents.unshift({
-        ...bookingRequestedEvent,
-        date: bookingDate.toISOString(),
-        timestamp: bookingDate.toISOString(),
-        mappedStatus: "booking",
-        isBookingRequest: true,
+    // (2) Insert the booking step, dated just before the first real event.
+    if (bookingEvent) {
+      const firstTime = processed.length ? eventTime(processed[0]) : Date.now();
+      const bookingDate = new Date(firstTime - 2 * 60 * 1000).toISOString();
+      processed.unshift({
+        ...bookingEvent,
+        date: bookingDate,
+        timestamp: bookingDate,
       });
     }
 
-    // Add pending event ONLY at the very beginning if no other events exist
-    if (pendingEvent && processedEvents.length === 0) {
-      processedEvents.unshift({
-        ...pendingEvent,
-        mappedStatus: "pending",
-        originalStatus: pendingEvent.status,
-      });
+    // Keep a single leading "pending" only when nothing else has happened.
+    if (processed.length === 0 && leadingPending) {
+      processed.push(leadingPending);
     }
 
-    // Clean up: Remove any 'pending' events that appear after real statuses
-    processedEvents = processedEvents.filter((event, index) => {
-      const mappedStatus =
-        event.mappedStatus || event.status?.toLowerCase() || "";
-      if (mappedStatus === "pending" && index > 0) {
-        const hasNonPendingBefore = processedEvents
-          .slice(0, index)
-          .some((e) => {
-            const s = e.mappedStatus || e.status?.toLowerCase() || "";
-            return s !== "pending" && s !== "booking_requested";
-          });
-        if (hasNonPendingBefore) {
-          return false;
-        }
-      }
-      return true;
-    });
+    // (5) Current status: prefer what we derived; fall back to the record's own.
+    const resolvedStatus = currentStatus || data.status;
 
     return {
       ...data,
-      timeline: processedEvents,
-      originalTimeline: timeline,
-      status: restoredStatus || data.status,
+      timeline: processed,
+      originalTimeline: sorted,
+      status: resolvedStatus,
     };
   };
 
