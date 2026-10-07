@@ -168,14 +168,19 @@ export const resendResetOTP = async (email) => {
 
 // Logout
 export const logout = () => {
+  // Clear EVERY key any login flow may have set, otherwise getAuthToken (which
+  // now reads all of them) could still find a stale token and keep the user
+  // "logged in" after logout.
   Cookies.remove('token');
+  Cookies.remove('authToken');
   Cookies.remove('user');
-  
+
   if (typeof window !== 'undefined') {
     localStorage.removeItem('auth_token');
+    localStorage.removeItem('authToken');
     localStorage.removeItem('user_details');
     localStorage.removeItem('user');
-    
+
     // Dispatch event for navbar to update
     window.dispatchEvent(new Event('authChange'));
   }

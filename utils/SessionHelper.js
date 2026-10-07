@@ -17,11 +17,17 @@ export const setAuthToken = (token) => {
 
 export const getAuthToken = () => {
   if (typeof window !== 'undefined') {
-    let token = Cookies.get('authToken');
-    if (!token) {
-      token = localStorage.getItem('authToken');
-    }
-    return token;
+    // Read every key the various login flows may have stored the token under.
+    // Email/password login + OTP verify store 'token'/'auth_token'; Google login
+    // and setAuthToken() store 'authToken'. Reading all of them keeps auth
+    // working no matter which flow signed the user in.
+    return (
+      Cookies.get('authToken') ||
+      Cookies.get('token') ||
+      localStorage.getItem('authToken') ||
+      localStorage.getItem('auth_token') ||
+      null
+    );
   }
   return null;
 };
@@ -117,10 +123,14 @@ export const clearAllSessions = () => {
 // ============ LOGOUT ============
 export const logout = () => {
   if (typeof window !== 'undefined') {
+    // Clear both token cookies ('authToken' AND 'token') plus 'user'/'userDetails'
+    // so no stale token survives; localStorage.clear() handles the rest.
     Cookies.remove('authToken');
+    Cookies.remove('token');
+    Cookies.remove('user');
+    Cookies.remove('userDetails');
     Cookies.remove('email');
     Cookies.remove('otp');
-    Cookies.remove('userDetails');
     localStorage.clear();
     window.location.href = "/auth/login";
   }
